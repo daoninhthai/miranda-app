@@ -1,0 +1,505 @@
+<!--
+/**
+ * @author      Magetop Developer (Kien)
+ * @package     Magento Multi Vendor Marketplace_Seller_Store_Pickup
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<?php $collection = $block->getCollection(); ?>
+<?php $helperMk = $this->helper(\Magetop\Marketplace\Helper\Collection::class); ?>
+<div class="w_stores">
+	<div class="search-stores" style="margin-bottom: 20px;">
+		<div class="filter-area">
+    		<form action="<?php echo $this->getUrl('sellerstorepickup'); ?>" method="post" id="search_by_address">
+                <legend class="legend">
+                    <h2><?php echo __('Search by Area') ?></h2>
+                </legend>
+                <table>
+                    <tr>
+                        <td>
+                            <label for="shop_location" style="width: 100%;"><?php echo __('Store Address') ?></label>
+                            <input class="input-text" type="text" value="<?php echo $this->getRequest()->getParam('shop_location'); ?>" name="shop_location" id="shop_location"/>
+        					<div class="clear"></div>
+                        </td>
+                        <td>
+                            <label for="store_name" style="width: 100%;"><?php echo __('Store name') ?></label>
+                            <input class="input-text" type="text" value="<?php echo $this->getRequest()->getParam('store_name'); ?>" name="store_name" id="store_name"/>
+        					<div class="clear"></div>
+                        </td>
+                        <td>
+                            <label for="phone_number" style="width: 100%;"><?php echo __('Contact Number') ?></label>
+                            <input class="input-text" type="text" value="<?php echo $this->getRequest()->getParam('phone_number'); ?>" name="phone_number" id="phone_number"/>
+        					<div class="clear"></div>
+                        </td>
+                        <td>
+                            <label for="address" style="width: 100%;"><?php echo __('Street Address') ?></label>
+                            <input class="input-text" type="text" value="<?php echo $this->getRequest()->getParam('address'); ?>" name="address" id="address"/>
+        					<div class="clear"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="country" style="width: 100%;"><?php echo __('Country') ?></label>
+                            <!--<input class="input-text" type="text" value="<?php echo $this->getRequest()->getParam('country'); ?>" name="country" id="country"/>-->
+                            <select id="sellerstorepickup_country" name="country" title="<?php /* @escapeNotVerified */ echo __('Country') ?>">
+                                <?php
+                                    $_countries = \Magento\Framework\App\ObjectManager::getInstance()->create('Magento\Directory\Model\Config\Source\Country')->toOptionArray();
+                                    foreach($_countries as $k=>$_countryitem) {
+                            	?>
+                                        <option value="<?php echo $_countryitem['value']?>" <?php echo $_countryitem['value'] == $this->getRequest()->getParam('country')?'selected="selected"':'' ?>><?php echo $_countryitem['label']?></option>
+                                <?php
+                            		}
+                                ?>
+                            </select> 
+        					<div class="clear"></div>
+                        </td>
+                        <td>
+                            <label for="state" style="width: 100%;"><?php echo __('State/Province') ?></label>
+                            <input class="input-text" type="text" value="<?php echo $this->getRequest()->getParam('state'); ?>" name="state" id="sellerstorepickup_state"/>
+                            <script type="text/javascript">
+                                require([
+                                    'jquery',
+                                    'mage/template',
+                                    'jquery/ui',
+                                    'mage/translate'
+                                ],
+                                function($, mageTemplate) {
+                                    var regionJson = <?php echo $this->helper('Magetop\Marketplace\Helper\Data')->JsonEncode(\Magento\Framework\App\ObjectManager::getInstance()->create('\Magento\Directory\Helper\Data')->getRegionData()); ?>;
+                                    $('#sellerstorepickup_country').on('change', function(event){
+                                        if(regionJson[$(this).val()]){
+                                            $('#sellerstorepickup_state').replaceWith("<select id='sellerstorepickup_state' name='state' title='State/Province'><option value=''>--Please Select--</option></select>");
+                                            $.each(regionJson[$(this).val()], function(key, value) {
+                                                $('#sellerstorepickup_state').append('<option title="'+value.name+'" data-region-code="'+value.code+'" value="'+key+'">'+value.name+'</option>');                                        
+                                            });
+                                        }else{
+                                            $('#sellerstorepickup_state').replaceWith('<input class="input-text" type="text" name="state" id="sellerstorepickup_state"/>');
+                                        }
+                                    });
+                                });
+                            </script> 
+        					<div class="clear"></div>
+                        </td>
+                        <td>
+                            <label for="city" style="width: 100%;"><?php echo __('City') ?></label>
+                            <input class="input-text" type="text" value="<?php echo $this->getRequest()->getParam('city'); ?>" name="city" id="city"/>
+        					<div class="clear"></div>
+                        </td>
+                        <td>
+                            <label for="zipcode" style="width: 100%;"><?php echo __('Zip/Postal Code') ?></label>
+                            <input class="input-text" type="text" value="<?php echo $this->getRequest()->getParam('zipcode'); ?>" name="zipcode" id="zipcode"/>
+        					<div class="clear"></div>
+                        </td>
+                    </tr>    
+                    <tr>
+                        <td>
+                            <label for="product_name" style="width: 100%;"><?php echo __('Product Name') ?></label>
+                            <input class="input-text" type="text" value="<?php echo $this->getRequest()->getParam('product_name'); ?>" name="product_name" id="product_name"/>
+        					<div class="clear"></div>
+                        </td>
+                        <td>
+                            <br />
+                            <button id="search_address" class="button" title="<?php echo __('Search'); ?>" type="button"><span><span><?php echo __('Search'); ?></span></span></button>
+                            <div class="clear"></div>
+                        </td>
+                    </tr>               
+                </table>                
+    		</form>
+        </div>
+        <div class="filter-distance">
+            <form action="<?php echo $block->getUrl('locator/index/searchbydistance') ?>" method="post" id="search_by_distance">
+                <legend class="legend">
+                    <h2><?php echo __('Search by Distance') ?></h2>
+                </legend>
+                <table>
+                    <tr>
+                        <td colspan="2">
+                            <label for="location" style="width: 100%;"><?php echo __('Location') ?></label>
+                            <input name="location" id="location" value="" title="<?php echo __('Location') ?>" class="input-text" placeholder="<?php echo __('Street, City, State, Zipcode, Country') ?>" data-validate="{required:true}" type="text"/>
+        					<input type="hidden" id="lat_search" value="" name="lat_search"/>
+                            <input type="hidden" id="long_search" value="" name="long_search"/>
+                            <div class="clear"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="radius" style="width: 100%;"><?php echo __('Radius') ?></label>
+                            <input name="radius" id="radius" value="" title="<?php echo __('Radius') ?>" class="input-text" placeholder="<?php echo __('Radius') ?>" data-validate="{required:true}" type="text"/>
+        					<div class="clear"></div>
+                        </td>
+                        <td>
+                            <label for="type" style="width: 100%;"><?php echo __('Type') ?></label>
+                            <select name="distance_type" class="distance_type">
+                                <option value="km"><?php echo __('KM') ?></option>
+    							<option value="m"><?php echo __('Miles') ?></option>
+    						</select>
+        					<div class="clear"></div>
+                        </td>
+                    </tr>    
+                    <tr>
+                        <td>
+                            <br />
+                            <button id="search_radius" class="button" title="<?php echo __('Search'); ?>" type="button"><span><span><?php echo __('Search'); ?></span></span></button>
+                            <div class="clear"></div>
+                        </td>
+                    </tr>               
+                </table> 
+            </form>
+        </div>
+        <div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+	<div class="store-storepickup-result">
+    	<?php if ( count($collection) ) { ?>
+        	<div class="list_stores">
+        		<?php 
+        		if ( count($collection) > 0 ) {
+            		foreach ($collection as $store) {
+                        $seller = $block->getSellerInfoById($store->getSellerId());
+                        if($store->getMapicon() != ''){
+                            $logo = $block->getMkBaseMediaUrl().$store->getMapicon();
+                        }else{
+                            $logo = $block->getViewFileUrl('Magetop_SellerStorePickup::images/noimage.png');
+                        }                                		  
+                ?>
+                		<div id="item-<?php echo $store->getId(); ?>" class="item-store" onclick="javascript:storeActive(<?php echo $store->getId(); ?>);">
+                			<div class="info-store">
+                    			<div class="logo-store" style="float: left; margin: 10px; width: 15%;">
+                                    <img src="<?php echo $logo; ?>" class="logo_img" style="width: 70px"/>
+                                </div>
+                                <div class="detail-store" style="float: left; margin: 10px; width: 65%;">
+                                    <strong><?php echo $seller[0]['storetitle']; ?></strong> - <a href="<?php echo  $helperMk->getRewriteUrl('marketplace/seller/view/vendor/'.$seller[0]['storeurl']); ?>"><?php echo __('View collections')?></a>
+                                    <div class="adress-store" style="font-size: 13px;"><?php echo $store->getShopLocation(); ?></div>
+                                    <a href="<?php echo  $this->getUrl()."sellerstorepickup/index/viewstore/id/".$store->getId(); ?>"><?php echo __('View store')?></a>
+                                </div>
+                			</div>
+                			<div class="clear"></div>
+                		</div>
+                <?php
+            		}
+        		}
+        		?>	
+        	</div>
+        	<div class="google_map">
+                <div id="button-reset" style="margin-bottom: 10px;">
+                    <button type="button">
+                        <span><?php echo __('Reset Google Map')?></span>
+                    </button>
+                </div>               
+                <div id="googleMap" style="height: 455px;"></div>
+            </div>
+    	<?php } else { ?>
+            <div class="list_stores">
+                <?php echo __('Store Not Found!');  ?>
+            </div>
+    	<?php }  ?>
+    	<div class="clear"></div>
+	</div>
+</div>
+<?php 
+	$_mkhelp = $this->helper('Magetop\Marketplace\Helper\Data');
+	$_mapkey =  $_mkhelp->getKeyMap();
+?>
+<?php if( isset($_SERVER['HTTPS'] ) ) { ?>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&key=<?php echo $_mapkey; ?>&libraries=places,geometry&sensor=false"></script>
+<?php }else{ ?>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&key=<?php echo $_mapkey; ?>&libraries=places,geometry&sensor=false"></script>
+<?php } ?>
+<script type="text/javascript" src="<?php echo $block->getBaseUrl() ?>/static/frontend/Magento/luma/en_US/Magetop_SellerStorePickup/js/mk_maps.js"></script>
+<script>
+    function init() {
+        var input = document.getElementById('shop_location');
+        var autocomplete = new google.maps.places.Autocomplete(input);
+    }
+    google.maps.event.addDomListener(window, 'load', init);
+</script>
+<?php if ( count($collection) > 0 ) { ?>
+	<script type="text/javascript">
+    	//<![CDATA[       
+        	var arrayHtml = [];
+        	var arrayInfo = [];
+            var arraySearch = [];
+        	var storeloactor = new sellerStorePickupMap();  
+            storeloactor.initialize(0, 0, 2, 'googleMap');
+        	var infoWindow = new google.maps.InfoWindow();
+        	var htmlInput = '';
+    	//]]>
+    </script> 
+	<?php foreach ($collection as $store) { ?>
+        <?php
+            $seller = $block->getSellerInfoById($store->getSellerId());
+            if($store->getMapicon() != ''){
+                $logo = $block->getMkBaseMediaUrl().$store->getMapicon();
+            }else{
+                $logo = $block->getViewFileUrl('Magetop_SellerStorePickup::images/noimage.png');
+            }  
+        ?>
+    	<script type="text/javascript">
+    		//<![CDATA[       
+        		var latitude = <?php echo $store->getLatitude(); ?>;
+        		var longtitude = <?php echo $store->getLongitude(); ?>;
+        		var store_id = <?php echo $store->getId(); ?>;
+                var image = '<?php echo $block->getViewFileUrl('Magetop_SellerStorePickup::images/magetop_big_icon.png'); ?>';
+        		var zoom_level = <?php echo $store->getZoomLevel(); ?>;
+                var base_image = '<?php echo $logo; ?>';
+        		var html_image = '';
+        		if(base_image != ''){
+                    html_image = '<div class="base-image" style="width: 70px; float: left; margin: 5px;">'
+                                    +'<img width="70px" src="'+base_image+'" alt="" />'
+            					+'</div>';
+        		}
+        		var info_store = '<div class="info-store" style="width: 150px; float: left;margin: 5px;">'
+            						+'<div class="title-store" style="font-size: 15px"><strong><?php echo $seller[0]['storetitle']; ?></strong></div>'
+            						+'<div class="adress-store" style="font-size: 12px"><?php echo $store->getShopLocation(); ?></div>'
+            						+'<div class="detail-store"><a href="<?php echo  $helperMk->getRewriteUrl("marketplace/seller/view/vendor/".$seller[0]['storeurl']); ?>"><?php echo __('View collections')?></a></div>'
+                                    +'<div class="detail-store"><a href="<?php echo  $this->getUrl()."sellerstorepickup/index/viewstore/id/".$store->getId(); ?>"><?php echo __('View store')?></a></div>'
+        						+'</div>'
+                                + html_image;
+        		marker_point = new google.maps.LatLng(latitude, longtitude);
+        		storeloactor.extendStoreBound(marker_point);
+        	   	//info
+        		var info_popup = {};
+                info_popup.store_id = store_id;
+                info_popup.html = info_store;
+                info_popup.zoom = <?php echo $store->getZoomLevel(); ?>;
+                info_popup.point = marker_point;
+        		arrayInfo.push(info_popup);	
+                arraySearch.push(info_popup);				
+        		storeloactor.placeStoreMarker(marker_point, info_store, store_id, image, zoom_level, infoWindow, 0);                                     				 
+            //]]>
+    	</script>
+	<?php } ?>
+	<script type="text/javascript">
+		function storeActive(id) {		  
+			for(i=0 ; i<arrayInfo.length; i++){
+                if(arrayInfo[i].store_id == id){
+					infoWindow.setContent(arrayInfo[i].html);
+					infoWindow.setPosition(arrayInfo[i].point);                      
+					storeloactor.map.setCenter(arrayInfo[i].point);            
+					infoWindow.open(storeloactor.map);
+					if(arrayInfo[i].zoom!=0){
+						storeloactor.map.setZoom(arrayInfo[i].zoom);
+					}
+					require(['jquery'],function($) {
+                	   $('.item-store').removeClass('active');
+					   $('#item-' + id).addClass('active');
+                    });
+					break;
+				}
+			}               
+		}
+		<?php if ( count($collection) == 1 ) { ?>
+            storeloactor.setFitStoreBoundsOne();
+		<?php } else { ?> 
+            storeloactor.setFitStoreBounds();
+		<?php } ?>
+	</script> 
+    <script type="text/javascript">
+        var markers = [];
+        require(['jquery'],function($) {
+    	   $('#button-reset').click(function(){
+                /*infoWindow.close();
+                <?php if ( count($collection) == 1 ) { ?>
+                    storeloactor.setFitStoreBoundsOne();
+                <?php } else { ?> 
+                    storeloactor.setFitStoreBounds();
+                <?php } ?>
+                $('.item-store').removeClass('active');*/
+                $.ajax({
+                	type: "POST",
+                	url: '<?php echo $this->getUrl('sellerstorepickup/index/search') ?>',
+                	data : null,
+                	cache: false,
+                    showLoader: true,
+                    beforeSend:  function() {
+                    },
+                    success: function(data){
+                        $('.result_search').html(data.map_search);  
+                        $('.list_stores').replaceWith(data.slidebar_left);   
+                        console.log('reset map');
+                    }
+                });
+            });
+            $('#search_address').click(function(){
+                $.ajax({
+                	type: "POST",
+                	url: '<?php echo $this->getUrl('sellerstorepickup/index/search') ?>',
+                	data : $('#search_by_address').serialize(),
+                	cache: false,
+                    showLoader: true,
+                    beforeSend:  function() {
+                    },
+                    success: function(data){
+                        $('.result_search').html(data.map_search);  
+                        $('.list_stores').replaceWith(data.slidebar_left);   
+                    }
+                });
+            });                                 
+            $('#search_radius').click(function(){
+                var latitude1 = document.getElementById('lat_search').value;
+                var longitude1 = document.getElementById('long_search').value;
+                var data_post = ''; 
+                for(i=0 ; i<arraySearch.length; i++){
+                    p1 = new google.maps.LatLng(latitude1, longitude1);
+                    p2 = arraySearch[i].point
+                    var km = calcDistance(p1, p2);
+                    var km_final = (km*1000/1609);  
+                    var km_filter = document.getElementById('radius').value?parseInt(document.getElementById('radius').value):1000;  
+                    km_filter = $('.distance_type').val()=='km'?km_filter:(km_filter/1000);                    
+                    if(km_filter >= km_final){
+                        data_post = data_post + arraySearch[i].store_id+'store_id';
+                    }    
+    			}
+                function calcDistance(p1, p2) {
+                    var d = (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(2);
+                    return d;             
+                }
+                $.ajax({
+                	type: "POST",
+                	url: '<?php echo $this->getUrl('sellerstorepickup/index/search') ?>',
+                	data : 'store_ids='+data_post+'&type=distance',
+                	cache: false,
+                    showLoader: true,
+                    beforeSend:  function() {
+                    },
+                    success: function(data){
+                        $('.result_search').html(data.map_search);  
+                        $('.list_stores').replaceWith(data.slidebar_left);  
+                        for (var i = 0; i < markers.length; i++) {
+                            markers[i].setMap(null);
+                        }
+                        if(typeof cityCircle !== 'undefined'){     
+                            cityCircle.setMap(null);
+                        } 
+                        radius = document.getElementById('radius').value?parseInt(document.getElementById('radius').value)*1609.0:1000*1609.0; 
+                        radius = $('.distance_type').val()=='km'?radius:(radius/1000); 
+                        storeloactor.map.setCenter(new google.maps.LatLng(document.getElementById('lat_search').value, document.getElementById('long_search').value));
+                        var populationOptions = {
+                            strokeColor: '#FF0000',
+                            strokeOpacity: 0.8,
+                            strokeWeight: 1,
+                            fillColor: '#FF0000',
+                            fillOpacity: 0.1,
+                            map: storeloactor.map,
+                            center: new google.maps.LatLng(document.getElementById('lat_search').value, document.getElementById('long_search').value),
+                            radius: radius
+                        };
+                        cityCircle = new google.maps.Circle(populationOptions);
+                        storeloactor.map.fitBounds(cityCircle.getBounds()); 
+                        
+                        var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+                        var marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(document.getElementById('lat_search').value, document.getElementById('long_search').value),
+                            map: storeloactor.map,
+                            icon: image
+                    	});
+                        
+                        markers.push(marker);  
+                    }
+                });
+            });
+        });
+    </script>
+<?php } ?>	
+<script>
+    /*storeloactor.map.setCenter(new google.maps.LatLng(20, 100));
+    var populationOptions = {
+        strokeColor: '#FF0000',
+        strokeOpacity: 0.8,
+        strokeWeight: 1,
+        fillColor: '#FF0000',
+        fillOpacity: 0.1,
+        map: storeloactor.map,
+        center: new google.maps.LatLng(20, 100),
+        radius: 1000 * 1609.0
+    };
+    cityCircle = new google.maps.Circle(populationOptions);
+    storeloactor.map.fitBounds(cityCircle.getBounds()); 
+    
+    var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+    var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(20, 100),
+        map: storeloactor.map,
+        icon: image
+	});*/    
+    
+    function  searchByDistance(){
+        /* auto complete */
+    	var input = /** @type {HTMLInputElement} */(document.getElementById('location'));
+        var autocomplete = new google.maps.places.Autocomplete(input);
+    	autocomplete.bindTo('bounds', storeloactor.map);
+    	var infowindow = new google.maps.InfoWindow();
+    	
+    	google.maps.event.addListener(autocomplete, 'place_changed', function() {
+            for (var i = 0; i < markers.length; i++) {
+                markers[i].setMap(null);
+            }
+            if(typeof cityCircle !== 'undefined'){     
+                cityCircle.setMap(null);
+            } 
+            var marker = new google.maps.Marker({
+        		map: storeloactor.map,
+        		anchorPoint: new google.maps.Point(0, -29),
+        		draggable : false,
+        		position : storeloactor.map.getCenter()
+        	});
+    		infowindow.close();
+    		marker.setVisible(false);
+    		var place = autocomplete.getPlace();
+    		if (!place.geometry) {
+                window.alert("Autocomplete's returned place contains no geometry");
+                return;
+    		}
+            
+            /*radius = document.getElementById('radius').value?parseInt(document.getElementById('radius').value)*1609.0:1000*1609.0;  
+            radius = $('.distance_type').val()=='km'?radius:(radius/1000);               
+            storeloactor.map.setCenter(new google.maps.LatLng( place.geometry.location.lat(),  place.geometry.location.lng()));
+            var populationOptions = {
+                strokeColor: '#FF0000',
+                strokeOpacity: 0.8,
+                strokeWeight: 1,
+                fillColor: '#FF0000',
+                fillOpacity: 0.1,
+                map: storeloactor.map,
+                center: new google.maps.LatLng( place.geometry.location.lat(),  place.geometry.location.lng()),
+                radius: radius
+            };
+            cityCircle = new google.maps.Circle(populationOptions);
+            storeloactor.map.fitBounds(cityCircle.getBounds()); 
+    
+    		marker.setIcon(({
+                url: place.icon,
+                size: new google.maps.Size(71, 71),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(17, 34),
+                scaledSize: new google.maps.Size(35, 35)
+    		}));*/
+            
+            var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+            marker.setIcon(image);
+    		marker.setPosition(place.geometry.location);
+    		marker.setVisible(true);
+    
+    		var address = '';
+    		if (place.address_components) {
+                address = [
+                    (place.address_components[0] && place.address_components[0].short_name || ''),
+                    (place.address_components[1] && place.address_components[1].short_name || ''),
+                    (place.address_components[2] && place.address_components[2].short_name || '')
+                ].join(' ');
+    		}
+    
+    		infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+    		infowindow.open(storeloactor.map, marker);
+            
+            document.getElementById('lat_search').value = place.geometry.location.lat();
+            document.getElementById('long_search').value = place.geometry.location.lng();  
+            storeloactor.map.setCenter(new google.maps.LatLng(document.getElementById('lat_search').value, document.getElementById('long_search').value));
+            
+            markers.push(marker);                                                                      
+        });  
+    }       
+    searchByDistance();
+</script>
+<div class="result_search"></div>

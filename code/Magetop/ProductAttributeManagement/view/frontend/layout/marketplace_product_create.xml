@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author      Magetop Developer (Hau)
+ * @package     Magento Multi Vendor Marketplace
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<body>
+		<referenceBlock name="magetop_marketplace.seller_product_add_new">
+			<block class="Magetop\ProductAttributeManagement\Block\Manageattribute" name="customattribute_attribute_add" template="Magetop_ProductAttributeManagement::create.phtml" cacheable="false"/>
+		</referenceBlock>
+    </body>
+</page>

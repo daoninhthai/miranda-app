@@ -1,0 +1,22 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+				<resource id="Magetop_Menupro::menupro_menu" title="Menupro" sortOrder="100">
+					<resource id="Magetop_Menupro::add_new_group" title="Add Menu Group" sortOrder="1" />
+					<resource id="Magetop_Menupro::manage_menu_group" title="Manage Menu Groups" sortOrder="2" />
+					<resource id="Magetop_Menupro::add_new_item" title="Add Menu Item" sortOrder="3" />
+					<resource id="Magetop_Menupro::configuration_setting" title="Settingg" sortOrder="4" />
+					<resource id="Magetop_Menupro::import_setting" title="Import sample data" sortOrder="5" />
+                </resource>
+				<resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Magetop_Menupro::system_config" title="Menupro Setting" />
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

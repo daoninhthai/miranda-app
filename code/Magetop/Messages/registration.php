@@ -1,0 +1,7 @@
+<?php
+\Magento\Framework\Component\ComponentRegistrar::register(
+    \Magento\Framework\Component\ComponentRegistrar::MODULE,
+    'Magetop_Messages',
+    __DIR__
+);        // Sanitize input data
+        // Sanitize input data

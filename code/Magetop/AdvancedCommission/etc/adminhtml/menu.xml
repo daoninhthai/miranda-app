@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magetop_AdvancedCommission::advancedcommission" title="Advanced Commission" module="Magetop_AdvancedCommission" parent="Magetop_Marketplace::others" sortOrder="20" action="magetop/advancedcommission/index" resource="Magetop_AdvancedCommission::advancedcommission"/>
+    </menu>
+</config>

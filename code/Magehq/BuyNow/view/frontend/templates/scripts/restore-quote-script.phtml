@@ -1,0 +1,29 @@
+<?php $helper = $this->helper("Magehq\BuyNow\Helper\Data"); ?>
+<?php 
+if($helper->getConfig('buynow/general/enable')) { ?>
+<script type="text/javascript">
+ require([
+        'jquery', "mage/url"
+    ], function($,urlBuilder,customerData) {
+    $(document).ready(function() {
+    	var url = '<?= $this->getUrl('buynow/ajax/index'); ?>';
+        $.ajax({
+            url: url,
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                currentUrl: '<?= $this->getUrl('*/*/*', ['_forced_secure' => true, '_use_rewrite' => true]); ?>',
+            },
+            success: function(response) {
+                console.log(response);
+             
+            },
+            error: function (xhr, status, errorThrown) {
+                console.log('Error happens. Try again.');
+            }
+        });
+    });
+});
+
+</script>
+<?php } ?>

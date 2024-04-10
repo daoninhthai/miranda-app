@@ -1,0 +1,153 @@
+<?php
+/**
+ * @author      Magetop Developer (Kien)
+ * @package     Magento Multi Vendor Marketplace_Seller_Coupon
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+
+// @codingStandardsIgnoreFile
+
+?>
+<div class="block discount" id="block-discount" data-mage-init='{"collapsible":{"openedState": "active", "saveState": false}}'>
+    <div class="title" data-role="title">
+        <strong id="block-discount-heading" role="heading" aria-level="2"><?php /* @escapeNotVerified */ echo __('Apply Discount Code') ?></strong>
+    </div>
+    <div class="content" data-role="content" aria-labelledby="block-discount-heading">
+        <!--<form id="discount-coupon-form"
+              action="<?php /* @escapeNotVerified */ echo $block->getUrl('sellercoupon/index/couponPost') ?>"
+              method="post"
+              data-mage-init='{"discountCode":{"couponCodeSelector": "#coupon_code",
+                                               "removeCouponSelector": "#remove-coupon",
+                                               "applyButton": "button.action.apply",
+                                               "cancelButton": "button.action.cancel"}}'>
+            <div class="fieldset coupon<?php @strlen($block->getCouponCode()) ? ' applied' : ''?>">
+                <input type="hidden" name="remove" id="remove-coupon" value="0" />
+                <div class="field">
+                    <label for="seller_id" class="label"><span><?php /* @escapeNotVerified */ echo __('Select Seller') ?></span></label>
+                    <div class="control">
+                        <?php
+                            $objectManager = \Magento\Framework\App\ObjectManager::getInstance();//instance of object manager 
+                            $checkoutSession = $objectManager->get('Magento\Checkout\Model\Session');//checkout session
+                            
+                            $allItems = $checkoutSession->getQuote()->getAllVisibleItems();//returns all the items in session
+                            $product_id = array();
+                            foreach ($allItems as $item) {
+                                $product_id[] = $item->getProductId();
+                            }
+                            
+                            $tableProducts = $objectManager->create('\Magento\Framework\App\ResourceConnection')->getTableName('multivendor_product');
+                    		$sellersModel = $objectManager->create('\Magetop\Marketplace\Model\Sellers');
+                    		$sellers = $sellersModel->getCollection();
+                    		$sellers->getSelect()->joinLeft(array('table_products'=>$tableProducts),'main_table.user_id = table_products.user_id',array('*'))->where('table_products.status = 1');
+                            $sellers->addFieldToFilter('product_id',array('in' => $product_id));
+                            
+                            $seller = array();
+                            $seller_link = array();
+                            foreach($sellers as $data){
+                                $seller[$data->getUserId()] = $data->getStoretitle();
+                                $seller_link[$data->getUserId()] = $data->getStoreurl();
+                            }
+                        ?>
+                        <select name="seller_id">
+                            <?php foreach($seller as $key=>$val){ ?>
+                                <option value="<?php echo $key ?>"><?php echo $val ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="coupon_code" class="label"><span><?php /* @escapeNotVerified */ echo __('Enter discount code') ?></span></label>
+                    <div class="control">
+                        <input type="text" class="input-text" id="coupon_code" name="coupon_code" value="<?php echo $block->escapeHtml($block->getCouponCode()) ?>" placeholder="<?php echo $block->escapeHtml(__('Enter discount code'));?>" />
+                    </div>
+                </div>
+                <div class="actions-toolbar">
+                    <?php if (!@strlen($block->getCouponCode())): ?>
+                    <div class="primary">
+                        <button class="action apply primary" type="button" value="<?php /* @escapeNotVerified */ echo __('Apply Discount') ?>">
+                            <span><?php /* @escapeNotVerified */ echo __('Apply Discount') ?></span>
+                        </button>
+                    </div>
+                    <?php else: ?>
+                        <div class="primary">
+                            <button  type="button" class="action cancel primary" value="<?php /* @escapeNotVerified */ echo __('Cancel Coupon') ?>"><span><?php /* @escapeNotVerified */ echo __('Cancel Coupon') ?></span></button>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </form>-->
+        <form id="discount-coupon-form"
+              action="<?php /* @escapeNotVerified */ echo $block->getUrl('sellercoupon/index/couponPost') ?>"
+              method="post"
+              data-mage-init='{"discountCode":{"couponCodeSelector": "#coupon_code",
+                                               "removeCouponSelector": "#remove-coupon",
+                                               "applyButton": "button.action.apply",
+                                               "cancelButton": "button.action.cancel"}}'>
+            <div class="fieldset coupon<?php @strlen($block->getCouponCode()) ? ' applied' : ''?>">
+                <input type="hidden" name="remove" id="remove-coupon" value="0" />
+                <?php
+                    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();//instance of object manager 
+                    $checkoutSession = $objectManager->get('Magento\Checkout\Model\Session');//checkout session
+                    
+                    $allItems = $checkoutSession->getQuote()->getAllVisibleItems();//returns all the items in session
+                    $product_id = array();
+                    $discountTotal = 0;
+                    foreach ($allItems as $item) {
+                        $product_id[] = $item->getProductId();
+                        $discountTotal += $item->getDiscountAmount();
+                    }
+                    
+                    $tableProducts = $objectManager->create('\Magento\Framework\App\ResourceConnection')->getTableName('multivendor_product');
+            		$sellersModel = $objectManager->create('\Magetop\Marketplace\Model\Sellers');
+            		$sellers = $sellersModel->getCollection();
+            		$sellers->getSelect()->joinLeft(array('table_products'=>$tableProducts),'main_table.user_id = table_products.user_id',array('*'))->where('table_products.status = 1');
+                    $sellers->addFieldToFilter('product_id',array('in' => $product_id));
+                    
+                    $seller = array();
+                    $seller_link = array();
+                    foreach($sellers as $data){
+                        $seller[$data->getUserId()] = $data->getStoretitle();
+                        $seller_link[$data->getUserId()] = $data->getStoreurl();
+                    }
+                ?>
+                    <?php foreach($seller as $key=>$val){ ?>
+                        <input type="hidden" name="seller_id[]" value="<?php echo $key ?>" />
+                    <?php } ?>
+                <div class="field">
+                    <label for="coupon_code" class="label"><span><?php /* @escapeNotVerified */ echo __('Enter discount code') ?></span></label>
+                    <div class="control">
+                        <input type="text" class="input-text" id="coupon_code" name="coupon_code" value="" placeholder="<?php echo $block->escapeHtml(__('Enter discount code'));?>" />
+                    </div>
+                </div>
+                <div class="actions-toolbar">
+                    <div class="primary">
+                        <button class="action apply primary" type="button" value="<?php /* @escapeNotVerified */ echo __('Apply Discount') ?>">
+                            <span><?php /* @escapeNotVerified */ echo __('Apply Discount') ?></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <hr />
+        <div class="applied_codes">
+            <label>
+                <h4><?php echo __('Applied Coupons') ?></h4>
+            </label>
+            <?php if($block->escapeHtml($block->getCouponCode())){ ?>
+                <div style="border-bottom: 1px dashed #CCCCCC;">
+                     <?php echo __('Store coupon code') ?>: <?php echo $block->escapeHtml($block->getCouponCode()) ?> - <?php echo __('Coupon price') ?>: <?php echo \Magento\Framework\App\ObjectManager::getInstance()->get('Magento\Framework\Pricing\Helper\Data')->currency(@number_format($discountTotal,2),true,false); ?> - <a href="<?php echo $block->getUrl('sellercoupon/index/couponDelete/coupon_code/'.$block->escapeHtml($block->getCouponCode())) ?>"><?php echo __('Cancel') ?></a>
+                </div>
+            <?php } ?>
+            <?php if($checkoutSession->getData('seller_coupon_price')){ ?>
+                <?php foreach($checkoutSession->getData('seller_coupon_price') as $key => $val){ ?>
+                    <div style="border-bottom: 1px dashed #CCCCCC;">
+                         <?php $helperMk = $this->helper(\Magetop\Marketplace\Helper\Collection::class); ?>
+						 <?php echo __('Seller') ?>: <a href="<?php echo  $helperMk->getRewriteUrl('marketplace/seller/view/vendor/'.$seller_link[$key]); ?>"><?php echo $seller[$key] ?></a> - <?php echo __('Coupon code') ?>: <?php echo $val[0] ?> - <?php echo __('Coupon price') ?>: <?php echo \Magento\Framework\App\ObjectManager::getInstance()->get('Magento\Framework\Pricing\Helper\Data')->currency(@number_format($val[1],2),true,false); ?> - <a href="<?php echo $block->getUrl('sellercoupon/index/couponDelete/coupon_code/'.$val[0]) ?>"><?php echo __('Cancel') ?></a>
+                    </div>
+                <?php } ?>
+            <?php } ?>
+        </div>
+    </div>
+</div>

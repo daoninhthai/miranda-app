@@ -1,0 +1,29 @@
+.clear { clear: both; } 
+.w_stores {  }
+.list_stores { float: left;height: 500px;width: 37%; overflow: auto; }
+.list_stores .item-store {background: none repeat scroll 0 0 #FFFFFF;border-bottom: 1px solid #CCCCCC; cursor: pointer; padding: 15px 10px; }
+.list_stores .item-store.active { background: none repeat scroll 0 0 #F1F2F7; }
+.list_stores .item-store.has-thumnail {  }
+.list_stores .item-store.has-thumnail .info-store {float: left;width: 73%;}
+.list_stores .item-store.has-thumnail .thumnail-store {float: right;width: 25%;}
+.list_stores .item-store.has-thumnail .thumnail-store img { width:100%;}
+
+#scrollbar1 .overview .content .store a {color: #999999;font-family: Tahoma;font-size: 13px;font-weight: bold;line-height: 25px;}
+.google_map { width: 60%; float: right; }
+.store-locator-result  { border-bottom: 1px solid #CCCCCC; border-top: 1px solid #CCCCCC; padding: 10px 0; }
+
+.search-stores {  }
+.search-stores .fields  {float: left;width: 40%;}
+.search-stores .fields label  { float: left;width: 30%;}
+.search-stores .fields input  { float: left;width: 60%;}
+.search-stores ul li {list-style: none;}
+
+.list_stores_view .fields  {float: left;width: 100%;}
+.list_stores_view .fields label  { float: left;width: 30%;}
+.list_stores_view .fields .info-text  { float: left;width: 70%;}
+.list_stores_view .fields .info-text p { margin: 0; }
+
+.list_stores_view { float: left; width: 37%;  }
+.list-images { margin: 10px 0 0; }
+.more-image { margin: 10px 0 0; }
+.more-image li { float: left; margin: 0 7px 0 0; }

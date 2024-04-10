@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magehq
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the Magehq.com license that is
+ * available through the world-wide-web at this URL:
+ * https://magehq.com/license.html
+ * 
+ * DISCLAIMER
+ * 
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ * 
+ * @category   Magehq
+ * @package    Magehq_BuyNow
+ * @copyright  Magehq\Copyright (c) 2022 Magehq (https://magehq.com/)
+ * @license    https://magehq.com/license.html
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <buynow>
+            <general>
+                <keep_cart_products>0</keep_cart_products>
+                <restore_cart_products>1</restore_cart_products>
+                <hide_add_to_cart>0</hide_add_to_cart>
+                <enable_list>1</enable_list>
+                <enable_view>1</enable_view>
+                <enable_search>1</enable_search>
+                <enable_advanced_search>1</enable_advanced_search>
+                <enable_related>1</enable_related>
+                <enable_upsell>1</enable_upsell>
+                <enable_crosssell>1</enable_crosssell>
+                <enable_compare>1</enable_compare>
+                <enable_wishlist>1</enable_wishlist>
+                <addtocart_id>product_addtocart_form</addtocart_id>
+                <button_title>Buy Now</button_title>
+            </general>
+        </buynow>
+    </default>
+</config>

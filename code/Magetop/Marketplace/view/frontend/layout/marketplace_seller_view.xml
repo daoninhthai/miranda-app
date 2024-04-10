@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+	<head>
+		<css src="Magetop_Marketplace::assets/global/plugins/font-awesome/css/font-awesome.min.css"/>
+		<css src="Magetop_Marketplace::css/style.css"/>
+		<css src="Magetop_Marketplace::css/mst_block.css"/>
+	</head>
+	<body>
+        <referenceContainer name="page.main.title" remove="true"/>
+		<referenceContainer name="content">
+			<block class="Magetop\Marketplace\Block\Sellers" name="marketplace.seller.profile.content.profile" template="seller/profile.phtml">
+				<block class="Magetop\Marketplace\Block\SellerProducts" name="marketplace.seller.profile.content.products" template="Magento_Catalog::product/list.phtml">
+					<block class="Magento\Catalog\Block\Product\ProductList\Toolbar" name="product_list_toolbar" template="Magento_Catalog::product/list/toolbar.phtml">
+						<block class="Magento\Theme\Block\Html\Pager" name="product_list_toolbar_pager"/>
+					</block>
+					<action method="setToolbarBlockName">
+						<argument name="name" xsi:type="string">product_list_toolbar</argument>
+					</action>
+					<arguments>
+                        <argument name="viewModel" xsi:type="object">Magento\Catalog\ViewModel\Product\OptionsData</argument>
+                    </arguments>
+				</block>
+			</block>
+		</referenceContainer>	
+        <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+        <referenceBlock name="wishlist_sidebar" remove="true"/>
+    </body>
+</page>

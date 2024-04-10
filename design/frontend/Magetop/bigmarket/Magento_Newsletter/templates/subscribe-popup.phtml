@@ -1,0 +1,62 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$mediaUrl = $objectManager->get('Magento\Store\Model\StoreManagerInterface')
+                    ->getStore()
+                    ->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+$cfg = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface');			
+$newsletterBg = $cfg->getValue('themes/newsletter/background_color',\Magento\Store\Model\ScopeInterface::SCOPE_STORE); 
+$newsletterImgBg = $mediaUrl . 'themes/newsletter/' . $cfg->getValue('themes/newsletter/background_image',\Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+?>
+<style>
+<?php if($newsletterBg): ?>
+.subscribe-modal-popup .modal-inner-wrap { background-color: <?php echo $newsletterBg; ?>; }
+<?php endif; ?>
+<?php if($cfg->getValue('themes/newsletter/background_image',\Magento\Store\Model\ScopeInterface::SCOPE_STORE)): ?>
+.subscribe-modal-popup .modal-inner-wrap:before { background-image: url(<?php echo $newsletterImgBg; ?>); }	
+<?php endif; ?>
+</style>
+<div id="subscribe-modal" class="subscribe-modal-popup" style="display:none;">
+	<p><?php /* @escapeNotVerified */ echo __('We are glad you\'ve discovered our store!') ?></p>
+	<p><?php /* @escapeNotVerified */ echo __('Sign up for our newsletter and get 5% off your first purchase!') ?></p>
+	<form class="form subscribe"
+		novalidate
+		action="<?php /* @escapeNotVerified */ echo $block->getFormActionUrl() ?>"
+		method="post"
+		data-mage-init='{"validation": {"errorClass": "mage-error"}}'
+		id="newsletter-mpdal-validate">
+		<div class="input-right-bottom">
+			<input name="email" type="email" id="newsletter" class="input-text"
+						placeholder="<?php /* @escapeNotVerified */ echo __('Enter your email address') ?>"
+						data-validate="{required:true, 'validate-email':true}"/>
+			<button class="action subscribe primary" title="<?php /* @escapeNotVerified */ echo __('Sign up') ?>" type="submit">
+				<span><?php /* @escapeNotVerified */ echo __('Sign up') ?></span>
+			</button>
+		</div>
+	</form>
+	<?php echo $block->getChildHtml('footer.socail'); ?>
+</div>
+<script type="text/javascript">
+	require(['jquery','Magento_Ui/js/modal/modal','mage/cookies'], 
+		function($,modal){
+			jQuery(document).ready(function($){
+				var options = {
+						type: 'popup',
+						responsive: true,
+						innerScroll: true,
+						modalClass:'subscribe-modal-popup',
+						title: 'Newsletter',
+						buttons: false
+					};
+		
+				var popupNewsletter = modal(options, $('#subscribe-modal'));
+				var popupNewsletterClose = $.mage.cookies.get('popupNewsletterClose');
+				if(!popupNewsletterClose){
+					setTimeout( function() {
+						$('#subscribe-modal').modal('openModal');
+					}, 300);
+					$.mage.cookies.set('popupNewsletterClose', true);
+				}
+			});	
+		}
+	);	
+</script>

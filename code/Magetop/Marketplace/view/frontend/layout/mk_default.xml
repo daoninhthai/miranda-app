@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <heads>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+		<meta name="format-detection" content="telephone=no"/>
+        <css src="mage/calendar.css"/>
+        <css src="css/styles-m.css"/>
+		<css src="css/print.css" media="print"/>        
+        <script src="requirejs/require.js"/>
+		<css src="Magetop_Marketplace::css/marketplace.css"/>
+		<css src="Magetop_Marketplace::css/custom.css"/>
+		<css src="Magetop_Marketplace::css/d-custom.css"/>
+		<css src="Magetop_Marketplace::css/dashboard-theme.css"/>
+		<!-- Seller backend -->
+		<css src="Magetop_Marketplace::css/mst_block.css"/>
+		<css src="Magetop_Marketplace::css/style.css"/>
+		<css src="Magetop_Marketplace::assets/global/plugins/font-awesome/css/font-awesome.min.css"/>
+		<css src="Magetop_Marketplace::assets/global/plugins/simple-line-icons/simple-line-icons.min.css"/>
+		<css src="Magetop_Marketplace::assets/global/plugins/bootstrap/css/bootstrap.min.css"/>
+		<css src="Magetop_Marketplace::assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css"/>
+		<!-- END GLOBAL MANDATORY STYLES -->
+		<!-- BEGIN PAGE LEVEL PLUGINS -->
+		<css src="Magetop_Marketplace::assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css"/>
+		<css src="Magetop_Marketplace::assets/global/plugins/morris/morris.css"/>
+		<css src="Magetop_Marketplace::assets/global/plugins/fullcalendar/fullcalendar.min.css"/>
+		<!-- END PAGE LEVEL PLUGINS -->
+		<!-- BEGIN THEME GLOBAL STYLES -->
+		<css src="Magetop_Marketplace::assets/global/css/components.min.css"/>
+		<css src="Magetop_Marketplace::assets/global/css/plugins.min.css"/>
+		<!-- END THEME GLOBAL STYLES -->
+		<!-- BEGIN THEME LAYOUT STYLES -->
+		<css src="Magetop_Marketplace::assets/layouts/layout/css/layout.min.css"/>
+		<css src="Magetop_Marketplace::assets/layouts/layout/css/themes/darkblue.min.css"/>
+		<!-- End Seller backend -->
+    </heads>
+	<body>
+		<referenceBlock name="authentication-popup" remove="true"/>
+		<referenceBlock name="page.main.title" remove="true"/>
+	</body>
+</page>

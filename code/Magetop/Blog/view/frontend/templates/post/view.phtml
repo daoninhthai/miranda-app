@@ -1,0 +1,44 @@
+<?php
+/**
+ * Copyright © 2015  (magetop99@gmail.com). All rights reserved.
+ * See LICENSE.txt for license details (http://opensource.org/licenses/osl-3.0.php).
+ *
+ * 
+ */
+?>
+<?php
+/**
+ * Blog post view template
+ *
+ * @var $block \Magetop\Blog\Block\Post\View
+ */
+?>
+<?php
+    $_post = $this->getPost();
+    $_postUrl = $_post->getPostUrl();
+    $_postName = $block->escapeHtml($_post->getTitle(), null, true);
+?>
+<div class="post-view">
+    <div class="post-holder post-holder-<?php echo $_post->getId() ?>">
+        <div class="post-header clearfix">
+            <?php if ($featuredImage = $_post->getFeaturedImage()) { ?>
+                <div class="hover-img">
+                    <img class="attachment-post-thumbnail" src="<?php echo $featuredImage ?>" alt="<?php echo $_postName ?>" />
+                </div>
+            <?php } ?>
+        </div>
+        <div class="post-content">
+            <?php echo $this->getInfoHtml() ?>
+			<div class="post-description clearfix">
+                
+                <div class="post-text-hld">
+                    <?php echo $block->getContent() ?>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+        <div class="post-bottom">
+            <?php echo $this->getChildHtml('blog.post.bottom') ?>
+        </div>
+    </div>
+</div>

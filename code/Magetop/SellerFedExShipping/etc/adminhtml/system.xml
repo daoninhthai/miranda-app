@@ -1,0 +1,212 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author      Magetop Developer (Kien)
+ * @package     Magento Multi Vendor Marketplace_Multiple_FedEx_Shipping
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="carriers" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+            <resource>Magetop_SellerFedExShipping::configuration</resource>   
+            <group id="sellerfedex" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Magetop Seller FedEx Shipping</label>
+                <field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Enable</label>
+                    <config_path>carriers/fedex/active</config_path>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="api_type" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>API Type</label>
+                    <config_path>carriers/fedex/api_type</config_path>
+                    <source_model>Magetop\SellerFedExShipping\Model\Source\Type</source_model>
+                </field>
+                <field id="title" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Title</label>
+                    <config_path>carriers/fedex/title</config_path>
+                </field>
+                <field id="account" translate="label comment" type="obscure" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Account ID</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <comment>Please make sure to use only digits here. No dashes are allowed.</comment>
+                    <config_path>carriers/fedex/account</config_path>
+                    <depends>
+                        <field id="api_type">admin</field>
+                    </depends>
+                </field>
+                <field id="meter_number" translate="label" type="obscure" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Meter Number</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <config_path>carriers/fedex/meter_number</config_path>
+                    <depends>
+                        <field id="api_type">admin</field>
+                    </depends>
+                </field>
+                <field id="key" translate="label" type="obscure" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Key</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <config_path>carriers/fedex/key</config_path>
+                    <depends>
+                        <field id="api_type">admin</field>
+                    </depends>
+                </field>
+                <field id="password" translate="label" type="obscure" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Password</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <config_path>carriers/fedex/password</config_path>
+                    <depends>
+                        <field id="api_type">admin</field>
+                    </depends>
+                </field>
+                <field id="sandbox_mode" translate="label" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Sandbox Mode</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <config_path>carriers/fedex/sandbox_mode</config_path>
+                </field>
+                <field id="production_webservices_url" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Web-Services URL (Production)</label>
+                    <depends>
+                        <field id="sandbox_mode">0</field>
+                    </depends>
+                    <config_path>carriers/fedex/production_webservices_url</config_path>
+                </field>
+                <field id="sandbox_webservices_url" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Web-Services URL (Sandbox)</label>
+                    <depends>
+                        <field id="sandbox_mode">1</field>
+                    </depends>
+                    <config_path>carriers/fedex/sandbox_webservices_url</config_path>
+                </field>
+                <field id="shipment_requesttype" translate="label" type="select" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Packages Request Type</label>
+                    <source_model>Magento\Shipping\Model\Config\Source\Online\Requesttype</source_model>
+                    <config_path>carriers/fedex/shipment_requesttype</config_path>
+                </field>
+                <field id="packaging" translate="label" type="select" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Packaging</label>
+                    <source_model>Magento\Fedex\Model\Source\Packaging</source_model>
+                    <config_path>carriers/fedex/packaging</config_path>
+                </field>
+                <field id="dropoff" translate="label" type="select" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Dropoff</label>
+                    <source_model>Magento\Fedex\Model\Source\Dropoff</source_model>
+                    <config_path>carriers/fedex/dropoff</config_path>
+                </field>
+                <field id="unit_of_measure" translate="label" type="select" sortOrder="135" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Weight Unit</label>
+                    <source_model>Magento\Fedex\Model\Source\Unitofmeasure</source_model>
+                    <config_path>carriers/fedex/unit_of_measure</config_path>
+                </field>
+                <field id="max_package_weight" translate="label" type="text" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Maximum Package Weight (Please consult your shipping carrier for maximum supported shipping weight)</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                    <config_path>carriers/fedex/max_package_weight</config_path>
+                    <depends>
+                        <field id="api_type">admin</field>
+                    </depends>
+                </field>
+                <field id="handling_type" translate="label" type="select" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Calculate Handling Fee</label>
+                    <source_model>Magento\Shipping\Model\Source\HandlingType</source_model>
+                    <config_path>carriers/fedex/handling_type</config_path>
+                </field>
+                <field id="handling_action" translate="label" type="select" sortOrder="160" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Handling Applied</label>
+                    <source_model>Magento\Shipping\Model\Source\HandlingAction</source_model>
+                    <config_path>carriers/fedex/handling_action</config_path>
+                </field>
+                <field id="handling_fee" translate="label" type="text" sortOrder="170" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Handling Fee</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                    <config_path>carriers/fedex/handling_fee</config_path>
+                </field>
+                <field id="residence_delivery" translate="label" type="select" sortOrder="180" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Residential Delivery</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <config_path>carriers/fedex/residence_delivery</config_path>
+                </field>
+                <field id="allowed_methods" translate="label" type="multiselect" sortOrder="190" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Allowed Methods</label>
+                    <source_model>Magento\Fedex\Model\Source\Method</source_model>
+                    <config_path>carriers/fedex/allowed_methods</config_path>
+                    <can_be_empty>1</can_be_empty>
+                    <depends>
+                        <field id="api_type">admin</field>
+                    </depends>
+                </field>
+                <field id="smartpost_hubid" translate="label comment" type="text" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Hub ID</label>
+                    <comment>The field is applicable if the Smart Post method is selected.</comment>
+                    <config_path>carriers/fedex/smartpost_hubid</config_path>
+                </field>
+                <field id="free_method" translate="label" type="select" sortOrder="210" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Free Method</label>
+                    <frontend_class>free-method</frontend_class>
+                    <source_model>Magento\Fedex\Model\Source\Freemethod</source_model>
+                    <config_path>carriers/fedex/free_method</config_path>
+                    <depends>
+                        <field id="api_type">admin</field>
+                    </depends>
+                </field>
+                <field id="free_shipping_enable" translate="label" type="select" sortOrder="220" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Free Shipping Amount Threshold</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                    <config_path>carriers/fedex/free_shipping_enable</config_path>
+                    <depends>
+                        <field id="api_type">admin</field>
+                    </depends>
+                </field>
+                <field id="free_shipping_subtotal" translate="label" type="text" sortOrder="230" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enable Free Shipping Threshold</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                    <depends>
+                        <field id="free_shipping_enable">1</field>
+                        <field id="api_type">admin</field>
+                    </depends>
+                    <config_path>carriers/fedex/free_shipping_subtotal</config_path>
+
+                </field>
+                <field id="specificerrmsg" translate="label" type="textarea" sortOrder="240" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Displayed Error Message</label>
+                    <config_path>carriers/fedex/specificerrmsg</config_path>
+                </field>
+                <field id="sallowspecific" translate="label" type="select" sortOrder="250" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Ship to Applicable Countries</label>
+                    <frontend_class>shipping-applicable-country</frontend_class>
+                    <source_model>Magento\Shipping\Model\Config\Source\Allspecificcountries</source_model>
+                    <config_path>carriers/fedex/sallowspecific</config_path>
+                    <depends>
+                        <field id="api_type">admin</field>
+                    </depends>
+                </field>
+                <field id="specificcountry" translate="label" type="multiselect" sortOrder="260" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Ship to Specific Countries</label>
+                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                    <can_be_empty>1</can_be_empty>
+                    <config_path>carriers/fedex/specificcountry</config_path>
+                    <depends>
+                        <field id="api_type">admin</field>
+                    </depends>
+                </field>
+                <field id="debug" translate="label" type="select" sortOrder="270" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Debug</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <config_path>carriers/fedex/debug</config_path>
+                </field>
+                <field id="showmethod" translate="label" type="select" sortOrder="280" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Show Method if Not Applicable</label>
+                    <frontend_class>shipping-skip-hide</frontend_class>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <config_path>carriers/fedex/showmethod</config_path>
+                </field>
+                <field id="sort_order" translate="label" type="text" sortOrder="290" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Sort Order</label>
+                    <config_path>carriers/fedex/sort_order</config_path>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,22 @@
+<?php
+/**
+ * Copyright © 2016  (magetop99@gmail.com). All rights reserved.
+ * See LICENSE.txt for license details (http://opensource.org/licenses/osl-3.0.php).
+ *
+ * 
+ */
+?>
+<?php
+/**
+ * Blog post list toolbar template
+ *
+ * @var $block \Magetop\Blog\Block\Post\PostList\Toolbar
+ */
+?>
+<?php if ($block->getCollection()->getSize()) { ?>
+	<?php if ($woj = $block->getWidgetOptionsJson()) { ?>
+    <div class="toolbar toolbar-blog-posts" data-mage-init='<?php echo $woj; ?>'>
+        <?php echo $block->getPagerHtml() ?>
+    </div>
+    <?php } ?>
+<?php } ?>

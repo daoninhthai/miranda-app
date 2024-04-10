@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author      Magetop Developer (Kien)
+ * @package     Magento Multi Vendor Marketplace_Seller_Membership
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etcpage_configuration.xsd">
+    <head>
+        <css src="jquery/fileUploader/css/jquery.fileupload-ui.css"/>
+    </head>
+    <update handle="editor"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Magetop\SellerMembership\Block\Adminhtml\SellerMembership\Edit" name="magetop.sellermembership.edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Magetop\SellerMembership\Block\Adminhtml\SellerMembership\Edit\Tabs" name="magetop.sellermembership.edit.tabs">
+                <block class="Magetop\SellerMembership\Block\Adminhtml\SellerMembership\Edit\Tab\Main" name="magetop.sellermembership.edit.tab.main"/>                           
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">main_section</argument>
+                    <argument name="block" xsi:type="string">magetop.sellermembership.edit.tab.main</argument>
+                </action>      			
+            </block>
+        </referenceContainer>
+    </body>
+</page>

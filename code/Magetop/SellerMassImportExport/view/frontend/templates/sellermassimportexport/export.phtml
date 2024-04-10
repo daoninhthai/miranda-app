@@ -1,0 +1,165 @@
+<!--
+/**
+ * @author      Magetop Developer (Kien)
+ * @package     Magento Multi Vendor Marketplace_Seller_Mass_Import_Export
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<div class="block content-import-export mgt-theme-div">
+    <div id="messages">
+        <div class="messages">
+            <div class="message message-notice notice">
+                <div><?php echo __('Export Data') ?></div>
+            </div>
+        </div>
+    </div>
+    <form enctype="multipart/form-data" method="post" action="<?php echo $block->getUrl('sellermassimportexport/index/ExportData') ?>" id="edit_form" novalidate="novalidate">
+        <legend class="admin__legend legend">
+            <span><?php echo __('Export Settings') ?></span>
+            <button class="action-default scalable save primary" type="submit" title="<?php echo __('Export Data') ?>" id="upload_button">
+                <span><?php echo __('Export Data') ?></span>
+            </button>
+        </legend>
+        <fieldset class="fieldset admin__fieldset fieldset_setting">
+            <div class="admin__field field required">
+                <label for="entity" class="label admin__field-label">
+                    <span><?php echo __('Entity Type') ?></span>
+                </label>
+                <div class="admin__field-control control">
+                    <div class="admin__field">
+                        <select title="<?php echo __('Entity Type') ?>" name="entity" id="entity" class="admin__control-select" data-validate="{required:true}">
+                            <option value=""><?php echo __('-- Please Select --') ?></option>
+                            <option value="catalog_product"><?php echo __('Products') ?></option>
+                        </select>
+                    </div>                            
+                </div>
+            </div>
+            <div class="admin__field field required">
+                <label for="file_format" class="label admin__field-label">
+                    <span><?php echo __('Export File Format') ?></span>
+                </label>
+                <div class="admin__field-control control">
+                    <div class="admin__field">
+                        <select title="<?php echo __('Export File Format') ?>" name="file_format" id="file_format" class="admin__control-select" data-validate="{required:true}">
+                            <option value="csv"><?php echo __('CSV') ?></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="admin__field field">
+                <label for="fields_enclosure" class="label admin__field-label">
+                    <span><?php echo __('Fields Enclosure') ?></span>
+                </label>
+                <div class="admin__field-control control">
+                    <div class="admin__field">
+                        <input title="<?php echo __('Fields Enclosure') ?>" name="fields_enclosure" id="fields_enclosure" class="input-file" value="1" type="checkbox"/>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <input type="hidden" name="key" value="5cc842767542c50f6ca1b0ff533605fbac8b9a817287fb4f66753c3f2795053f" />
+        <input type="hidden" name="form_key" value="QX4MfITQmJYcmUfq" />
+        <input type="hidden" name="frontend_label" value="" />
+        <input type="hidden" name="attribute_code" value="" />
+        <input type="hidden" name="export_filter[category_ids]" value="" />
+        <input type="hidden" name="export_filter[cost][]" value="" />
+        <input type="hidden" name="export_filter[cost][]" value="" />
+        <input type="hidden" name="export_filter[country_of_manufacture]" value="" />
+        <input type="hidden" name="export_filter[created_at][]" value="" />
+        <input type="hidden" name="export_filter[created_at][]" value="" />
+        <input type="hidden" name="export_filter[custom_design]" value="" />
+        <input type="hidden" name="export_filter[custom_design_from][]" value="" />
+        <input type="hidden" name="export_filter[custom_design_from][]" value="" />
+        <input type="hidden" name="export_filter[custom_design_to][]" value="" />
+        <input type="hidden" name="export_filter[custom_design_to][]" value="" />
+        <input type="hidden" name="export_filter[custom_layout]" value="" />
+        <input type="hidden" name="export_filter[custom_layout_update]" value="" />
+        <input type="hidden" name="export_filter[description]" value="" />
+        <input type="hidden" name="export_filter[gallery]" value="" />
+        <input type="hidden" name="export_filter[gift_message_available]" value="" />
+        <input type="hidden" name="export_filter[has_options]" value="" />
+        <input type="hidden" name="export_filter[image]" value="" />
+        <input type="hidden" name="export_filter[image_label]" value="" />
+        <input type="hidden" name="export_filter[links_exist][]" value="" />
+        <input type="hidden" name="export_filter[links_exist][]" value="" />
+        <input type="hidden" name="export_filter[links_purchased_separately][]" value="" />
+        <input type="hidden" name="export_filter[links_purchased_separately][]" value="" />
+        <input type="hidden" name="export_filter[links_title]" value="" />
+        <input type="hidden" name="export_filter[media_gallery]" value="" />
+        <input type="hidden" name="export_filter[meta_description]" value="" />
+        <input type="hidden" name="export_filter[meta_keyword]" value="" />
+        <input type="hidden" name="export_filter[meta_title]" value="" />
+        <input type="hidden" name="export_filter[minimal_price][]" value="" />
+        <input type="hidden" name="export_filter[minimal_price][]" value="" />
+        <input type="hidden" name="export_filter[msrp][]" value="" />
+        <input type="hidden" name="export_filter[msrp][]" value="" />
+        <input type="hidden" name="export_filter[msrp_display_actual_price_type]" value="" />
+        <input type="hidden" name="export_filter[name]" value="" />
+        <input type="hidden" name="export_filter[news_from_date][]" value="" />
+        <input type="hidden" name="export_filter[news_from_date][]" value="" />
+        <input type="hidden" name="export_filter[news_to_date][]" value="" />
+        <input type="hidden" name="export_filter[news_to_date][]" value="" />
+        <input type="hidden" name="export_filter[old_id][]" value="" />
+        <input type="hidden" name="export_filter[old_id][]" value="" />
+        <input type="hidden" name="export_filter[options_container]" value="" />
+        <input type="hidden" name="export_filter[page_layout]" value="" />
+        <input type="hidden" name="export_filter[price][]" value="" />
+        <input type="hidden" name="export_filter[price][]" value="" />
+        <input type="hidden" name="export_filter[price_type][]" value="" />
+        <input type="hidden" name="export_filter[price_type][]" value="" />
+        <input type="hidden" name="export_filter[price_view]" value="" />
+        <input type="hidden" name="export_filter[quantity_and_stock_status]" value="" />
+        <input type="hidden" name="export_filter[required_options]" value="" />
+        <input type="hidden" name="export_filter[samples_title]" value="" />
+        <input type="hidden" name="export_filter[shipment_type]" value="" />
+        <input type="hidden" name="export_filter[short_description]" value="" />
+        <input type="hidden" name="export_filter[sku]" value="" />
+        <input type="hidden" name="export_filter[sku_type][]" value="" />
+        <input type="hidden" name="export_filter[sku_type][]" value="" />
+        <input type="hidden" name="export_filter[small_image]" value="" />
+        <input type="hidden" name="export_filter[small_image_label]" value="" />
+        <input type="hidden" name="export_filter[special_from_date][]" value="" />
+        <input type="hidden" name="export_filter[special_from_date][]" value="" />
+        <input type="hidden" name="export_filter[special_price][]" value="" />
+        <input type="hidden" name="export_filter[special_price][]" value="" />
+        <input type="hidden" name="export_filter[special_to_date][]" value="" />
+        <input type="hidden" name="export_filter[special_to_date][]" value="" />
+        <input type="hidden" name="export_filter[status]" value="" />
+        <input type="hidden" name="export_filter[swatch_image]" value="" />
+        <input type="hidden" name="export_filter[tax_class_id]" value="" />
+        <input type="hidden" name="export_filter[thumbnail]" value="" />
+        <input type="hidden" name="export_filter[thumbnail_label]" value="" />
+        <input type="hidden" name="export_filter[tier_price][]" value="" />
+        <input type="hidden" name="export_filter[tier_price][]" value="" />
+        <input type="hidden" name="export_filter[updated_at][]" value="" />
+        <input type="hidden" name="export_filter[updated_at][]" value="" />
+        <input type="hidden" name="export_filter[url_key]" value="" />
+        <input type="hidden" name="export_filter[url_path]" value="" />
+        <input type="hidden" name="export_filter[visibility]" value="" />
+        <input type="hidden" name="export_filter[weight][]" value="" />
+        <input type="hidden" name="export_filter[weight][]" value="" />
+        <input type="hidden" name="export_filter[weight_type][]" value="" />
+        <input type="hidden" name="export_filter[weight_type][]" value="" />
+    </form>
+    <div class="messages_validate_import"></div>
+</div>
+<style>
+    .required > .admin__field-label > span::after{
+        content: "";
+    }
+    #upload_button{
+        float: right;
+    }
+</style>
+<script>
+    require([
+        "jquery",
+        "mage/mage"
+    ], function($){
+        var dataForm = $('#edit_form');
+        dataForm.mage('validation', {});
+        var _action = dataForm.attr('action');      
+    });
+</script>

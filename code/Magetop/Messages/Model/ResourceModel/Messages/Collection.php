@@ -1,0 +1,98 @@
+<?php
+namespace Magetop\Messages\Model\ResourceModel\Messages;
+
+class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
+{
+    /**
+     * @var \Magento\Store\Model\StoreManagerInterface
+     */
+    protected $_storeManager;
+
+    /**
+     * @param \Magento\Framework\Data\Collection\EntityFactory $entityFactory
+     * @param \Psr\Log\LoggerInterface $logger
+     * @param \Magento\Framework\Data\Collection\Db\FetchStrategyInterface $fetchStrategy
+     * @param \Magento\Framework\Event\ManagerInterface $eventManager
+     * @param \Magento\Store\Model\StoreManagerInterface $storeManager
+     * @param null|\Zend_Db_Adapter_Abstract $connection
+     * @param \Magento\Framework\Model\ResourceModel\Db\AbstractDb $resource
+     */
+    public function __construct(
+        \Magento\Framework\Data\Collection\EntityFactory $entityFactory,
+        \Psr\Log\LoggerInterface $logger,
+        \Magento\Framework\Data\Collection\Db\FetchStrategyInterface $fetchStrategy,
+        \Magento\Framework\Event\ManagerInterface $eventManager,
+        \Magento\Store\Model\StoreManagerInterface $storeManager,
+        $connection = null,
+        \Magento\Framework\Model\ResourceModel\Db\AbstractDb $resource = null
+    ) {
+        parent::__construct($entityFactory, $logger, $fetchStrategy, $eventManager, $connection, $resource);
+        $this->_storeManager = $storeManager;
+    }
+
+    /**
+     * Constructor
+     * Configures collection
+     *
+     * @return void
+     */
+    protected function _construct()
+    {
+        parent::_construct();
+        $this->_init('Magetop\Messages\Model\Messages', 'Magetop\Messages\Model\ResourceModel\Messages');        
+    }
+
+    /**
+     * Add enable filter to collection
+     * @return $this
+     */
+    public function addActiveFilter()
+    {
+        return $this->addFieldToFilter('is_active', 1);
+    }
+
+    /**
+     * Perform operations after collection load
+     *
+     * @return $this
+     */
+    protected function _afterLoad()
+    {
+        return parent::_afterLoad();
+    }
+
+    /**
+     * Join store relation table if there is store filter
+     *
+     * @return void
+     */
+    protected function _renderFiltersBefore()
+    {
+        parent::_renderFiltersBefore();
+    }
+
+    /**
+     * Validates if a given value is a positive number.
+     *
+     * @param mixed $value
+     * @return bool
+     */
+    protected function isPositiveNumber($value)
+    {
+        return is_numeric($value) && $value > 0;
+    }
+
+
+    /**
+     * Generates a formatted log message.
+     *
+     * @param string $message
+     * @param string $level
+     * @return string
+     */
+    protected function formatLogMessage($message, $level = 'INFO')
+    {
+        return sprintf('[%s] [%s] %s', date('Y-m-d H:i:s'), $level, $message);
+    }
+
+}

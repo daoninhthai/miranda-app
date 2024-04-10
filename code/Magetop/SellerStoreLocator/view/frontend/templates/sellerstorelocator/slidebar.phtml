@@ -1,0 +1,46 @@
+<!--
+/**
+ * @author      Magetop Developer (Kien)
+ * @package     Magento Multi Vendor Marketplace_Seller_Store_Locator
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<?php $collection = $block->getCollection(); ?>
+<?php if ( count($collection) ) { ?>
+	<div class="list_stores">
+		<?php 
+		if ( count($collection) > 0 ) {
+    		foreach ($collection as $store) {
+                $seller = $block->getSellerInfoById($store->getSellerId());
+                if($store->getMapicon() != ''){
+                    $logo = $block->getMkBaseMediaUrl().$store->getMapicon();
+                }else{
+                    $logo = $block->getViewFileUrl('Magetop_SellerStoreLocator::images/noimage.png');
+                }                                		  
+        ?>
+        		<div id="item-<?php echo $store->getId(); ?>" class="item-store" onclick="javascript:storeActive(<?php echo $store->getId(); ?>);">
+        			<div class="info-store">
+            			<div class="logo-store" style="float: left; margin: 10px; width: 15%;">
+                            <img src="<?php echo $logo; ?>" class="logo_img" style="width: 70px"/>
+                        </div>
+                        <div class="detail-store" style="float: left; margin: 10px; width: 65%;">
+                            <?php $helperMk = $this->helper(\Magetop\Marketplace\Helper\Collection::class); ?>
+							<strong><?php echo $seller[0]['storetitle']; ?></strong> - <a href="<?php echo  $helperMk->getRewriteUrl('marketplace/seller/view/vendor/'.$seller[0]['storeurl']); ?>"><?php echo __('View collections')?></a>
+                            <div class="adress-store" style="font-size: 13px;"><?php echo $store->getShopLocation(); ?></div>
+                            <a href="<?php echo  $this->getUrl()."sellerstorelocator/index/viewstore/id/".$store->getId(); ?>"><?php echo __('View store')?></a>
+                        </div>
+        			</div>
+        			<div class="clear"></div>
+        		</div>
+        <?php
+    		}
+		}
+		?>	
+	</div>
+<?php } else { ?>
+    <div class="list_stores">
+        <?php echo __('Store Not Found!');  ?>
+    </div>
+<?php }  ?>

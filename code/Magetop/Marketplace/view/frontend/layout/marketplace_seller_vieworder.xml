@@ -1,0 +1,14 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="market-layout" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<update handle="customer_account"/>
+	<update handle="mk_default"/>
+	<heads>
+		<css src="Magetop_Marketplace::css/marketplace_new.css"/>
+	</heads>
+    <body>
+        <referenceContainer name="market.content">
+			<container htmlTag="div" htmlClass="mk-container-admin seller-dashboard">
+				<block class="Magetop\Marketplace\Block\Sellerlist" name="magetop_marketplace.seller_order_detail" template="seller/order_detail.phtml" cacheable="false"/>
+			</container>
+        </referenceContainer>
+    </body>
+</page>

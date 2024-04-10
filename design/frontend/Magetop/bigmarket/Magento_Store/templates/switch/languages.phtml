@@ -1,0 +1,27 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php if (count($block->getStores())>1): ?>
+<li class="top-language">
+	<span class="current-language"><img alt="" src="<?php /* @escapeNotVerified */ echo $block->getViewFileUrl('images/flags/flag_' . $block->escapeHtml($block->getCurrentStoreCode()) . '.png') ?>"><?php echo $block->escapeHtml($block->getStoreName()) ?></span>
+	<div class="nav-drop-menu language_nav">
+		<ul class="switcher-language">
+			<?php foreach ($block->getStores() as $_lang): ?>
+                <?php if ($_lang->getId() != $block->getCurrentStoreId()): ?>
+                    <li class="view-<?php echo $block->escapeHtml($_lang->getCode()); ?> switcher-option">
+                        <a href="#" data-post='<?php /* @escapeNotVerified */ echo $block->getTargetStorePostData($_lang); ?>'>
+                            <img alt="" src="<?php /* @escapeNotVerified */ echo $block->getViewFileUrl('images/flags/flag_' . $_lang->getCode() . '.png') ?>">
+							<?php echo $block->escapeHtml($_lang->getName()) ?></a>
+                    </li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+		</ul>
+	</div>
+</li>
+<?php endif; ?>

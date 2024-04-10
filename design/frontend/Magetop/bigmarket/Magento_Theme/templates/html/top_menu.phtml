@@ -1,0 +1,20 @@
+<?php 
+	$cfg = $this->helper('Magetop\Themes\Helper\Data')->getThemeCfg();
+?>
+<?php if(isset($cfg['menu']['main_menu']) and !($this->helper('Magetop\Menupro\Helper\Data')->isDisableFrontEnd())): ?>
+<div class="nav-session mb-nav">
+    <div class="container">
+        <?php echo $this->getLayout()->createBlock("Magetop\Menupro\Block\Menu")->setGroupmenu_id($cfg['menu']['main_menu'])->setTemplate("Magetop_Menupro::menupro/menupro.phtml")->toHtml(); ?>
+    </div>
+</div>
+<?php else: ?>
+<div class="df-menu">
+    <span data-action="toggle-nav"
+        class="action nav-toggle"><span><?php /* @escapeNotVerified */ echo __('Toggle Nav') ?></span></span>
+</div>
+<div class="nav-session nav-sections">
+    <div class="container">
+        <?php echo $this->getLayout()->createBlock("Magento\Theme\Block\Html\Topmenu")->setTemplate("Magento_Theme::html/topmenu.phtml")->toHtml(); ?>
+    </div>
+</div>
+<?php endif; ?>

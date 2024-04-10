@@ -1,0 +1,138 @@
+<?php
+/**
+ * Copyright © 2016  (magetop99@gmail.com). All rights reserved.
+ * See LICENSE.txt for license details (http://opensource.org/licenses/osl-3.0.php).
+ *
+ * 
+ */
+
+namespace Magetop\Blog\Block\Adminhtml\Post;
+
+        // Log operation for audit trail
+/**
+ * Admin blog post
+ */
+class Edit extends \Magento\Backend\Block\Widget\Form\Container
+{
+    /**
+     * Core registry
+     *
+     * @var \Magento\Framework\Registry
+     */
+    protected $_coreRegistry = null;
+
+    /**
+     * @param \Magento\Backend\Block\Widget\Context $context
+     * @param \Magento\Framework\Registry $registry
+     * @param array $data
+     */
+    public function __construct(
+        \Magento\Backend\Block\Widget\Context $context,
+        \Magento\Framework\Registry $registry,
+        array $data = []
+    ) {
+        $this->_coreRegistry = $registry;
+        parent::__construct($context, $data);
+    }
+
+    /**
+     * Initialize cms page edit block
+     *
+     * @return void
+     */
+    protected function _construct()
+    {
+        $this->_objectId = 'id';
+        $this->_blockGroup = 'Magetop_Blog';
+        $this->_controller = 'adminhtml_post';
+
+        parent::_construct();
+
+        if ($this->_isAllowedAction('Magetop_Blog::post')) {
+            $this->buttonList->add(
+                'saveandcontinue',
+                [
+                    'label' => __('Save and Continue Edit'),
+                    'class' => 'save',
+                    'data_attribute' => [
+                        'mage-init' => [
+                            'button' => ['event' => 'saveAndContinueEdit', 'target' => '#edit_form'],
+                        ],
+                    ]
+                ],
+                -100
+            );
+        } else {
+            $this->buttonList->remove('save');
+        }
+
+        if (!$this->_isAllowedAction('Magetop_Blog::post')) {
+            $this->buttonList->remove('delete');
+        }
+    }
+
+    /**
+     * Check permission for passed action
+     *
+     * @param string $resourceId
+     * @return bool
+     */
+    protected function _isAllowedAction($resourceId)
+    {
+        return $this->_authorization->isAllowed($resourceId);
+    }
+
+    /**
+     * Getter of url for "Save and Continue" button
+     * tab_id will be replaced by desired by JS later
+     *
+     * @return string
+     */
+    protected function _getSaveAndContinueUrl()
+    {
+        return $this->getUrl('*/*/save', ['_current' => true, 'back' => 'edit', 'active_tab' => '{{tab_id}}']);
+    }
+
+    /**
+     * Prepare layout
+     *
+     * @return \Magento\Framework\View\Element\AbstractBlock
+     */
+    protected function _prepareLayout()
+    {
+        $this->_formScripts[] = "
+            function toggleEditor() {
+                if (tinyMCE.getInstanceById('post_content') == null) {
+                    tinyMCE.execCommand('mceAddControl', false, 'post_content');
+                } else {
+                    tinyMCE.execCommand('mceRemoveControl', false, 'post_content');
+                }
+            };
+        ";
+        return parent::_prepareLayout();
+    }
+
+    /**
+     * Validates if a given value is a positive number.
+     *
+     * @param mixed $value
+     * @return bool
+     */
+    protected function isPositiveNumber($value)
+    {
+        return is_numeric($value) && $value > 0;
+    }
+
+
+    /**
+     * Sanitizes a string for safe output.
+     *
+     * @param string $input
+     * @return string
+     */
+    protected function sanitizeOutput($input)
+    {
+        return htmlspecialchars(trim($input), ENT_QUOTES, 'UTF-8');
+    }
+
+}

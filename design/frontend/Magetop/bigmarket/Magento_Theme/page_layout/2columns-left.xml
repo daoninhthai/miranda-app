@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magetop 
+ * @category    Magetop 
+ * @copyright   Copyright (c) 2017 Magetop (http://magetop.com/) 
+ * @Author: Hanh Nguyen<hanhkaka.nguyen37@gamil.com>
+ * @@Create Date: 2017-05-5
+ * @@Modify Date: 2017-06-05
+ */
+-->
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
+    <update handle="1column"/>
+	<referenceContainer name="columns">
+        <container name="main" label="Main Content Container" htmlTag="div" htmlClass="main col-xs-12 col-sm-9 col-sm-push-3"/>
+		<container name="div.sidebar.main" htmlTag="div" htmlClass="sidebar col-xs-12 col-sm-3 col-sm-pull-9" after="main">
+            <container name="sidebar.main" as="sidebar_main" label="Sidebar Main"/>
+            <container name="sidebar.additional" as="sidebar_additional" label="Sidebar Additional" after="sidebar.main"/>
+        </container>
+    </referenceContainer>
+</layout>

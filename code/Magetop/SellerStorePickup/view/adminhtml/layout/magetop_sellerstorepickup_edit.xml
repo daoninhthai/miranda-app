@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author      Magetop Developer (Kien)
+ * @package     Magento Multi Vendor Marketplace_Seller_Store_Pickup
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etcpage_configuration.xsd">
+    <head>
+        <css src="jquery/fileUploader/css/jquery.fileupload-ui.css"/>
+    </head>
+    <update handle="editor"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Magetop\SellerStorePickup\Block\Adminhtml\SellerStorePickup\Edit" name="magetop.sellerstorepickup.edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Magetop\SellerStorePickup\Block\Adminhtml\SellerStorePickup\Edit\Tabs" name="magetop.sellerstorepickup.edit.tabs">
+                <block class="Magetop\SellerStorePickup\Block\Adminhtml\SellerStorePickup\Edit\Tab\Main" name="magetop.sellerstorepickup.edit.tab.main"/> 
+                <block class="Magetop\SellerStorePickup\Block\Adminhtml\SellerStorePickup\Edit\Tab\StoreAddress" name="magetop.sellerstorepickup.edit.tab.store_address"/>                          
+                <block class="Magetop\SellerStorePickup\Block\Adminhtml\SellerStorePickup\Edit\Tab\StoreTimes" name="magetop.sellerstorepickup.edit.tab.store_times"/> 
+                <block class="Magetop\SellerStorePickup\Block\Adminhtml\SellerStorePickup\Edit\Tab\StoreMap" name="magetop.sellerstorepickup.edit.tab.store_map"/> 
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">main_section</argument>
+                    <argument name="block" xsi:type="string">magetop.sellerstorepickup.edit.tab.main</argument>
+                </action>  
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">store_address_section</argument>
+                    <argument name="block" xsi:type="string">magetop.sellerstorepickup.edit.tab.store_address</argument>
+                </action> 
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">store_times_section</argument>
+                    <argument name="block" xsi:type="string">magetop.sellerstorepickup.edit.tab.store_times</argument>
+                </action>    
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">store_map_section</argument>
+                    <argument name="block" xsi:type="string">magetop.sellerstorepickup.edit.tab.store_map</argument>
+                </action>        			
+            </block>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,793 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <block>
+    <item>
+      <title><![CDATA[Menu6 - Courses - Animation]]></title>
+      <identifier><![CDATA[menu6-courses-animation]]></identifier>
+      <content><![CDATA[<div class="side-colum item-pos-r">
+	<div class="mb-row">
+		<div  class="grid-column4">
+			<h4>Popular</h4>
+			<ul class="topic-lists">
+				<li><a href="#">3D Studio Max</a></li>
+				<li><a href="#">After Effects</a></li>
+				<li><a href="#">Blender</a></li>
+				<li><a href="#">Cinema 4D</a></li>
+				<li><a href="#">Flash Professional</a></li>
+				<li><a href="#">Maya</a></li>
+				<li><a href="#">Mudbox</a></li>
+				<li><a href="#">Photoshop</a></li>
+				<li><a href="#">Unity</a></li>
+				<li><a href="#">ZBrush</a></li>
+				<li><span class="btn">More</span></li>
+			</ul>
+				
+		</div>
+		<div  class="grid-column4">
+				<h4>Topics</h4>
+				<ul class="topic-lists">
+					<li><a href="#">Character Animation</a></li>
+					<li><a href="#">Game Design</a></li>
+					<li><a href="#">Materials</a></li>
+					<li><a href="#">Modeling</a></li>
+					<li><a href="#">Particles</a></li>
+					<li><a href="#">Product Design</a></li>
+					<li><a href="#">Rendering</a></li>
+					<li><a href="#">Textures</a></li>
+					<li><a href="#">Visual Effects</a></li>
+					<li><span class="btn">More</span></li>
+				</ul>
+		</div>
+		<div  class="grid-column4">
+			<h4>Software</h4>
+			<ul class="topic-lists">
+				<li><a href="#">3D Studio Max</a></li>
+				<li><a href="#">After Effects</a></li>
+				<li><a href="#">Blender</a></li>
+				<li><a href="#">Cinema 4D</a></li>
+				<li><a href="#">Flash Professional</a></li>
+				<li><a href="#">Maya</a></li>
+				<li><a href="#">Mudbox</a></li>
+				<li><a href="#">Photoshop</a></li>
+				<li><a href="#">Unity</a></li>
+				<li><a href="#">ZBrush</a></li>
+				<li><span class="btn">More</span></li>
+			</ul>
+		</div>
+	</div>
+	<i class="fa fa-cube fa-watermark item-pos-a"></i>
+</div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu6 - Courses - Audio]]></title>
+      <identifier><![CDATA[menu6-courses-audio]]></identifier>
+      <content><![CDATA[<div class="side-colum item-pos-r">
+	<div class="mb-row">
+		<div  class="grid-column4">
+			<h4>Popular</h4>
+			<ul class="topic-lists">
+				<li><a href="#">Ableton Live</a></li>
+				<li><a href="#">Audacity</a></li>
+				<li><a href="#">Audition</a></li>
+				<li><a href="#">Cubase</a></li>
+				<li><a href="#">FL Studio</a></li>
+				<li><a href="#">GarageBand</a></li>
+				<li><a href="#">Logic Pro</a></li>
+				<li><a href="#">Pro Tools</a></li>
+				<li><a href="#">Reason</a></li>
+				<li><a href="#">Sibelius</a></li>
+				<li><span class="btn">More</span></li>
+			</ul>
+		</div>
+		<div  class="grid-column4">
+				<h4>Topics</h4>
+				<ul class="topic-lists">
+				<li><a href="#">Audio Foundations</a></li>
+				<li><a href="#">DAWs</a></li>
+				<li><a href="#">Live Performance</a></li>
+				<li><a href="#">Mastering</a></li>
+				<li><a href="#">Mixing</a></li>
+				<li><a href="#">Music Business</a></li>
+				<li><a href="#">Music Production</a></li>
+				<li><a href="#">Recording Techniques</a></li>
+				<li><a href="#">Studio Setup</a></li>
+				<li><span class="btn">More</span></li>
+			</ul>
+		</div>
+		<div  class="grid-column4">
+			<h4>Software</h4>
+			<ul class="topic-lists">
+				<li><a href="#">Ableton Live</a></li>
+				<li><a href="#">Audacity</a></li>
+				<li><a href="#">Audition</a></li>
+				<li><a href="#">Cubase</a></li>
+				<li><a href="#">FL Studio</a></li>
+				<li><a href="#">GarageBand</a></li>
+				<li><a href="#">Logic Pro</a></li>
+				<li><a href="#">Pro Tools</a></li>
+				<li><a href="#">Reason</a></li>
+				<li><a href="#">Sibelius</a></li>
+				<li><span class="btn">More</span></li>
+			</ul>
+		</div>
+	</div>
+	<i class="fa fa-sliders fa-watermark item-pos-a"></i>
+</div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu6 - Courses - Business]]></title>
+      <identifier><![CDATA[menu6-courses-business]]></identifier>
+      <content><![CDATA[<div class="side-colum item-pos-r">
+	<div class="mb-row">
+		<div  class="grid-column4">
+			<h4>Popular</h4>
+			<ul class="topic-lists">
+				<li><a href="#">Access</a></li>
+				<li><a href="#">Excel</a></li>
+				<li><a href="#">FileMaker</a></li>
+				<li><a href="#">Google AdWords</a></li>
+				<li><a href="#">Google Analytics</a></li>
+				<li><a href="#">Outlook</a></li>
+				<li><a href="#">PowerPoint</a></li>
+				<li><a href="#">QuickBooks</a></li>
+				<li><a href="#">SharePoint</a></li>
+				<li><a href="#">Word</a></li>
+				<li><span class="btn">More</span></li>
+			</ul>
+		</div>
+		<div  class="grid-column4">
+			<h4>Topics</h4>
+			<ul class="topic-lists">
+				<li><a href="#">Business Skills</a></li>
+				<li><a href="#">Communication</a></li>
+				<li><a href="#">Data Analysis</a></li>
+				<li><a href="#">Leadership</a></li>
+				<li><a href="#">Management</a></li>
+				<li><a href="#">Online Marketing</a></li>
+				<li><a href="#">Presentations</a></li>
+				<li><a href="#">Productivity</a></li>
+				<li><a href="#">Project Management</a></li>
+				<li><a href="#">Social Media Marketing</a></li>
+				<li><span class="btn">More</span></li>
+			</ul>
+		</div>
+		<div  class="grid-column4">
+			<h4>Software</h4>
+			<ul class="topic-lists">
+				<li><a href="#">Access</a></li>
+				<li><a href="#">Excel</a></li>
+				<li><a href="#">FileMaker</a></li>
+				<li><a href="#">Google AdWords</a></li>
+				<li><a href="#">Google Analytics</a></li>
+				<li><a href="#">Outlook</a></li>
+				<li><a href="#">PowerPoint</a></li>
+				<li><a href="#">QuickBooks</a></li>
+				<li><a href="#">SharePoint</a></li>
+				<li><a href="#">Word</a></li>
+				<li><span class="btn">More</span></li>
+			</ul>
+		</div>
+	</div>
+	<i class="fa fa-briefcase fa-watermark item-pos-a"></i>
+</div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu6 - Courses - CAD]]></title>
+      <identifier><![CDATA[menu6-courses-cad]]></identifier>
+      <content><![CDATA[<div class="side-colum item-pos-r">
+	<div class="mb-row">
+		<div  class="grid-column4">
+			<h4>Popular</h4>
+			<ul class="topic-lists">
+				<li><a href="#">Alias</a></li>
+				<li><a href="#">AutoCAD</a></li>
+				<li><a href="#">Civil 3D</a></li>
+				<li><a href="#">Inventor</a></li>
+				<li><a href="#">MODO</a></li>
+				<li><a href="#">Revit</a></li>
+				<li><a href="#">Rhino</a></li>
+				<li><a href="#">SketchUp</a></li>
+				<li><a href="#">SolidWorks</a></li>
+				<li><a href="#">V-Ray</a></li>
+				<li><span class="btn">More</span></li>
+			</ul>
+		</div>
+		<div  class="grid-column4">
+			<h4>Topics</h4>
+			<ul class="topic-lists">
+				<li><a href="#">3D Printing</a></li>
+				<li><a href="#">Architecture</a></li>
+				<li><a href="#">BIM</a></li>
+				<li><a href="#">CNC + CAM</a></li>
+				<li><a href="#">Interior Design</a></li>
+				<li><a href="#">Modeling</a></li>
+				<li><a href="#">Product Design</a></li>
+				<li><a href="#">Prototyping</a></li>
+				<li><a href="#">Rendering</a></li>
+				<li><a href="#">Structural</a></li>
+				<li><span class="btn">More</span></li>
+			</ul>
+		</div>
+		<div  class="grid-column4">
+			<h4>Software</h4>
+			<ul class="topic-lists">
+				<li><a href="#">Alias</a></li>
+				<li><a href="#">AutoCAD</a></li>
+				<li><a href="#">Civil 3D</a></li>
+				<li><a href="#">Inventor</a></li>
+				<li><a href="#">MODO</a></li>
+				<li><a href="#">Revit</a></li>
+				<li><a href="#">Rhino</a></li>
+				<li><a href="#">SketchUp</a></li>
+				<li><a href="#">SolidWorks</a></li>
+				<li><a href="#">V-Ray</a></li>
+				<li><span class="btn">More</span></li>	
+			</ul>
+		</div>
+	</div>
+	<i class="fa fa-gear fa-watermark item-pos-a"></i>
+</div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu6 - Courses - Design]]></title>
+      <identifier><![CDATA[menu6-courses-design]]></identifier>
+      <content><![CDATA[<div class="side-colum item-pos-r">
+	<div class="mb-row">
+		<div  class="grid-column4">
+			<h4>Popular</h4>
+			<ul class="topic-lists">
+				<li><a href="#">CorelDRAW</a></li>
+				<li><a href="#">GIMP</a></li>
+				<li><a href="#">iBooks Author</a></li>
+				<li><a href="#">Illustrator</a></li>
+				<li><a href="#">InDesign</a></li>
+				<li><a href="#">Muse</a></li>
+				<li><a href="#">Painter</a></li>
+				<li><a href="#">PhotoShop</a></li>
+				<li><a href="#">QuarkXPress</a></li>
+				<li><a href="#">SketchBook Pro</a></li>
+				<li><span class="btn">More</span></li>
+			</ul>
+		</div>
+		<div  class="grid-column4">
+			<h4>Topics</h4>
+			<ul class="topic-lists">
+				<li><a href="#">Color</a></li>
+				<li><a href="#">Design Techniques</a></li>
+				<li><a href="#">Digital Painting</a></li>
+				<li><a href="#">Digital Publishing</a></li>
+				<li><a href="#">Drawing</a></li>
+				<li><a href="#">Illustration</a></li>
+				<li><a href="#">Logo Design</a></li>
+				<li><a href="#">Page Layout</a></li>
+				<li><a href="#">Print Production</a></li>
+				<li><a href="#">Typography</a></li>
+				<li><span class="btn">More</span></li>
+			</ul>
+		</div>
+		<div  class="grid-column4">
+			<h4>Software</h4>
+			<ul class="topic-lists">
+				<li><a href="#">CorelDRAW</a></li>
+				<li><a href="#">GIMP</a></li>
+				<li><a href="#">iBooks Author</a></li>
+				<li><a href="#">Illustrator</a></li>
+				<li><a href="#">InDesign</a></li>
+				<li><a href="#">Muse</a></li>
+				<li><a href="#">Painter</a></li>
+				<li><a href="#">PhotoShop</a></li>
+				<li><a href="#">QuarkXPress</a></li>
+				<li><a href="#">SketchBook Pro</a></li>
+				<li><span class="btn">More</span></li>
+			</ul>
+		</div>
+	</div>
+	<i class="fa fa-paint-brush fa-watermark item-pos-a"></i>
+</div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu6 - Courses - Developer]]></title>
+      <identifier><![CDATA[menu6-courses-developer]]></identifier>
+      <content><![CDATA[<div class="side-colum item-pos-r">
+	<div class="mb-row">
+		<div  class="grid-column4">
+			<h4>Popular</h4>
+			<ul class="topic-lists">
+				<li><a href="#">Android</a></li>
+				<li><a href="#">C++</a></li>
+				<li><a href="#">Git</a></li>
+				<li><a href="#">iOS</a></li>
+				<li><a href="#">Java</a></li>
+				<li><a href="#">JavaScript</a></li>
+				<li><a href="#">MySQL</a></li>
+				<li><a href="#">PHP</a></li>
+				<li><a href="#">Phyton</a></li>
+				<li><a href="#">Ruby</a></li>
+				<li><a href="#">Swift</a></li>
+				<li><span class="btn">More</span></li>
+			</ul>
+		</div>
+		<div  class="grid-column4">
+			<h4>Topics</h4>
+			<ul class="topic-lists">
+				<li><a href="#">Databases</a></li>
+				<li><a href="#">Design Patterns</a></li>
+				<li><a href="#">Desktop Apps</a></li>
+				<li><a href="#">Game Design</a></li>
+				<li><a href="#">Games</a></li>
+				<li><a href="#">Mobile Apps</a></li>
+				<li><a href="#">Mobile Web</a></li>
+				<li><a href="#">Programming</a></li>
+				<li><a href="#">Scripting</a></li>
+				<li><a href="#">Servers</a></li>
+				<li><span class="btn">More</span></li>
+			</ul>
+		</div>
+		<div  class="grid-column4">
+			<h4>Software</h4>
+			<ul class="topic-lists">
+				<li><a href="#">Android</a></li>
+				<li><a href="#">C++</a></li>
+				<li><a href="#">Git</a></li>
+				<li><a href="#">iOS</a></li>
+				<li><a href="#">Java</a></li>
+				<li><a href="#">JavaScript</a></li>
+				<li><a href="#">MySQL</a></li>
+				<li><a href="#">PHP</a></li>
+				<li><a href="#">Phyton</a></li>
+				<li><a href="#">Ruby</a></li>
+				<li><a href="#">Swift</a></li>
+				<li><span class="btn">More</span></li>
+			</ul>
+		</div>
+	</div>
+	<i class="fa fa-code fa-watermark item-pos-a"></i>
+</div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu6 - Courses - Education]]></title>
+      <identifier><![CDATA[menu6-courses-education]]></identifier>
+      <content><![CDATA[<div class="side-colum item-pos-r">
+	<div class="mb-row">
+		<div  class="grid-column4">
+			<h4>Popular</h4>
+			<ul class="topic-lists">
+				<li><a href="#">BlackBoard</a></li>
+				<li><a href="#">Captivate</a></li>
+				<li><a href="#">Excel</a></li>
+				<li><a href="#">Google Apps</a></li>
+				<li><a href="#">iBooks Author</a></li>
+				<li><a href="#">Moodle</a></li>
+				<li><a href="#">Office</a></li>
+				<li><a href="#">Pages</a></li>
+				<li><a href="#">PowerPoint</a></li>
+				<li><a href="#">Prezi</a></li>
+				<li><span class="btn">More</span></li>
+			</ul>
+		</div>
+		<div  class="grid-column4">
+			<h4>Topics</h4>
+			<ul class="topic-lists">
+				<li><a href="#">Educational Technology</a></li>
+				<li><a href="#">E-Learning</a></li>
+				<li><a href="#">Higher Education</a></li>
+				<li><a href="#">Instructional Design</a></li>
+				<li><a href="#">K-12 Education</a></li>
+				<li><a href="#">LMS</a></li>
+				<li><a href="#">Student Tools</a></li>
+				<li><a href="#">Teacher Development</a></li>
+				<li><a href="#">Teacher Tools</a></li>
+				<li><a href="#">Teaching Techniques</a></li>
+				<li><span class="btn">More</span></li>
+			</ul>
+		</div>
+		<div  class="grid-column4">
+			<h4>Software</h4>
+			<ul class="topic-lists">
+				<li><a href="#">BlackBoard</a></li>
+				<li><a href="#">Captivate</a></li>
+				<li><a href="#">Excel</a></li>
+				<li><a href="#">Google Apps</a></li>
+				<li><a href="#">iBooks Author</a></li>
+				<li><a href="#">Moodle</a></li>
+				<li><a href="#">Office</a></li>
+				<li><a href="#">Pages</a></li>
+				<li><a href="#">PowerPoint</a></li>
+				<li><a href="#">Prezi</a></li>
+				<li><span class="btn">More</span></li>
+			</ul>
+		</div>
+	</div>
+	<i class="fa fa-graduation-cap fa-watermark item-pos-a"></i>
+</div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu6 - Courses - IT]]></title>
+      <identifier><![CDATA[menu6-courses-it]]></identifier>
+      <content><![CDATA[<div class="side-colum item-pos-r">
+	<div class="mb-row">
+		<div  class="grid-column4">
+			<h4>Popular</h4>
+			<ul class="topic-lists">
+				<li><a href="#">Excel</a></li>
+				<li><a href="#">Linux</a></li>
+				<li><a href="#">PowerShell</a></li>
+				<li><a href="#">R Miner</a></li>
+				<li><a href="#">SharePoint</a></li>
+				<li><a href="#">SQL Server</a></li>
+				<li><a href="#">Tableau</a></li>
+				<li><a href="#">Weka</a></li>
+				<li><a href="#">Windows</a></li>
+				<li><a href="#">Windows Server</a></li>
+				<li><span class="btn">More</span></li>
+			</ul>
+		</div>
+		<div  class="grid-column4">
+			<h4>Topics</h4>
+			<ul class="topic-lists">
+				<li><a href="#">Big Data</a></li>
+				<li><a href="#">Business Intelligence</a></li>
+				<li><a href="#">Cloud Computing</a></li>
+				<li><a href="#">Enterprise CMS</a></li>
+				<li><a href="#">GIS</a></li>
+				<li><a href="#">IT & Hardware</a></li>
+				<li><a href="#">IT Help Desk</a></li>
+				<li><a href="#">Network Administration</a></li>
+				<li><a href="#">Operating System</a></li>
+				<li><a href="#">Cyber Security</a></li>
+				<li><span class="btn">More</span></li>
+			</ul>
+		</div>
+		<div  class="grid-column4">
+			<h4>Software</h4>
+			<ul class="topic-lists">
+				<li><a href="#">Excel</a></li>
+				<li><a href="#">Linux</a></li>
+				<li><a href="#">PowerShell</a></li>
+				<li><a href="#">R Miner</a></li>
+				<li><a href="#">SharePoint</a></li>
+				<li><a href="#">SQL Server</a></li>
+				<li><a href="#">Tableau</a></li>
+				<li><a href="#">Weka</a></li>
+				<li><a href="#">Windows</a></li>
+				<li><a href="#">Windows Server</a></li>
+				<li><span class="btn">More</span></li>
+			</ul>
+		</div>
+	</div>
+	<i class="fa fa-desktop fa-watermark item-pos-a"></i>
+</div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu6 - Courses - Marketing]]></title>
+      <identifier><![CDATA[menu6-courses-marketing]]></identifier>
+      <content><![CDATA[<div class="side-colum item-pos-r">
+	<div class="mb-row">
+		<div  class="grid-column4">
+			<h4>Popular</h4>
+			<ul class="topic-lists">
+				<li><a href="#">Google AdWords</a></li>
+				<li><a href="#">Google Analytics</a></li>
+				<li><a href="#">Google+</a></li>
+				<li><a href="#">Instagram</a></li>
+				<li><a href="#">LinkedIn</a></li>
+				<li><a href="#">Twitter</a></li>
+				<li><a href="#">Vine</a></li>
+				<li><a href="#">YouTube</a></li>
+				<li><span class="btn">More</span></li>
+			</ul>
+		</div>
+		<div  class="grid-column4">
+			<h4>Topics</h4>
+			<ul class="topic-lists">
+				<li><a href="#">Analytics</a></li>
+				<li><a href="#">Content Marketing</a></li>
+				<li><a href="#">Email Marketing</a></li>
+				<li><a href="#">Enterprise Marketing</a></li>
+				<li><a href="#">Mobile Marketing</a></li>
+				<li><a href="#">Online Marketing</a></li>
+				<li><a href="#">PPC</a></li>
+				<li><a href="#">SEO</a></li>
+				<li><a href="#">SME Marketing</a></li>
+				<li><a href="#">Social Media Marketing</a></li>
+				<li><span class="btn">More</span></li>
+			</ul>
+		</div>
+		<div  class="grid-column4">
+			<h4>Software</h4>
+			<ul class="topic-lists">
+				<li><a href="#">Google AdWords</a></li>
+				<li><a href="#">Google Analytics</a></li>
+				<li><a href="#">Google+</a></li>
+				<li><a href="#">Instagram</a></li>
+				<li><a href="#">LinkedIn</a></li>
+				<li><a href="#">Twitter</a></li>
+				<li><a href="#">Vine</a></li>
+				<li><a href="#">YouTube</a></li>
+				<li><span class="btn">More</span></li>
+			</ul>
+		</div>
+	</div>
+	<i class="fa fa-line-chart fa-watermark item-pos-a"></i>
+</div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu6 - Courses - Photography]]></title>
+      <identifier><![CDATA[menu6-courses-photography]]></identifier>
+      <content><![CDATA[<div class="side-colum item-pos-r">
+	<div class="mb-row">
+		<div  class="grid-column4">
+			<h4>Popular</h4>
+			<ul class="topic-lists">
+				<li><a href="#">Bridge</a></li>
+				<li><a href="#">Camera Raw</a></li>
+				<li><a href="#">Flickr</a></li>
+				<li><a href="#">iPhoto</a></li>
+				<li><a href="#">Lenses</a></li>
+				<li><a href="#">Lightroom</a></li>
+				<li><a href="#">Nik Software, Inc.</a></li>
+				<li><a href="#">PhotoShop</a></li>
+				<li><a href="#">PhotoShop Elements</a></li>
+				<li><span class="btn">More</span></li>
+			</ul>
+		</div>
+		<div  class="grid-column4">
+			<h4>Topics</h4>
+			<ul class="topic-lists">
+				<li><a href="#">Cameras & Gears</a></li>
+				<li><a href="#">Color Correction</a></li>
+				<li><a href="#">HDR</a></li>
+				<li><a href="#">Lighting</a></li>
+				<li><a href="#">Masking</a></li>
+				<li><a href="#">Night & Low Light</a></li>
+				<li><a href="#">Photography Foundations</a></li>
+				<li><a href="#">Portraits</a></li>
+				<li><a href="#">Raw Processing</a></li>
+				<li><a href="#">Retouching</a></li>
+				<li><span class="btn">More</span></li>
+			</ul>
+		</div>
+		<div  class="grid-column4">
+			<h4>Software</h4>
+			<ul class="topic-lists">
+				<li><a href="#">Bridge</a></li>
+				<li><a href="#">Camera Raw</a></li>
+				<li><a href="#">Flickr</a></li>
+				<li><a href="#">iPhoto</a></li>
+				<li><a href="#">Lenses</a></li>
+				<li><a href="#">Lightroom</a></li>
+				<li><a href="#">Nik Software, Inc.</a></li>
+				<li><a href="#">PhotoShop</a></li>
+				<li><a href="#">PhotoShop Elements</a></li>
+				<li><span class="btn">More</span></li>
+			</ul>
+		</div>
+	</div>
+	<i class="fa fa-camera fa-watermark item-pos-a"></i>
+</div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu6 - Courses - Video]]></title>
+      <identifier><![CDATA[menu6-courses-video]]></identifier>
+      <content><![CDATA[<div class="side-colum item-pos-r">
+	<div class="mb-row">
+		<div  class="grid-column4">
+			<h4>Popular</h4>
+			<ul class="topic-lists">
+				<li><a href="#">After Effects</a></li>
+				<li><a href="#">Avid</a></li>
+				<li><a href="#">Final Cut Pro</a></li>
+				<li><a href="#">iMovie</a></li>
+				<li><a href="#">Motion</a></li>
+				<li><a href="#">Nuke</a></li>
+				<li><a href="#">Premiere Pro</a></li>
+				<li><a href="#">SpeedGrade</a></li>
+				<li><a href="#">Trapcode</a></li>
+				<li><a href="#">Vegas</a></li>
+				<li><a href="#">Vimeo</a></li>
+				<li><span class="btn">More</span></li>
+			</ul>
+		</div>
+		<div  class="grid-column4">
+			<h4>Topics</h4>
+			<ul class="topic-lists">
+				<li><a href="#">Audio for Video</a></li>
+				<li><a href="#">Color Correction</a></li>
+				<li><a href="#">DSLR Video</a></li>
+				<li><a href="#">Filmmaking</a></li>
+				<li><a href="#">Motion Graphics</a></li>
+				<li><a href="#">Projects</a></li>
+				<li><a href="#">Shooting Video</a></li>
+				<li><a href="#">Video Editing</a></li>
+				<li><a href="#">Video Pre-Production</a></li>
+				<li><a href="#">Visual Effects</a></li>
+				<li><span class="btn">More</span></li>
+			</ul>
+		</div>
+		<div  class="grid-column4">
+			<h4>Software</h4>
+			<ul class="topic-lists">
+				<li><a href="#">After Effects</a></li>
+				<li><a href="#">Avid</a></li>
+				<li><a href="#">Final Cut Pro</a></li>
+				<li><a href="#">iMovie</a></li>
+				<li><a href="#">Motion</a></li>
+				<li><a href="#">Nuke</a></li>
+				<li><a href="#">Premiere Pro</a></li>
+				<li><a href="#">SpeedGrade</a></li>
+				<li><a href="#">Trapcode</a></li>
+				<li><a href="#">Vegas</a></li>
+				<li><a href="#">Vimeo</a></li>
+				<li><span class="btn">More</span></li>
+			</ul>
+		</div>
+	</div>
+	<i class="fa fa-film fa-watermark item-pos-a"></i>
+</div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu6 - Courses - Web]]></title>
+      <identifier><![CDATA[menu6-courses-web]]></identifier>
+      <content><![CDATA[<div class="side-colum item-pos-r">
+<div class="mb-row">
+<div class="grid-column4">
+<h4>Popular</h4>
+<ul class="topic-lists">
+<li><a href="#">BootStrap</a></li>
+<li><a href="#">CSS</a></li>
+<li><a href="#">Dreamweaver</a></li>
+<li><a href="#">Edge Animate</a></li>
+<li><a href="#">Flash Professional</a></li>
+<li><a href="#">HTML</a></li>
+<li><a href="#">JavaScript</a></li>
+<li><a href="#">Joomla!</a></li>
+<li><a href="#">jQuery</a></li>
+<li><a href="#">WordPress</a></li>
+<li><span class="btn">More</span></li>
+</ul>
+</div>
+<div class="grid-column4">
+<h4>Topics</h4>
+<ul class="topic-lists">
+<li><a href="#">CMS</a></li>
+<li><a href="#">Interaction Design</a></li>
+<li><a href="#">Mobile Web</a></li>
+<li><a href="#">Projects</a></li>
+<li><a href="#">Responsive Desing</a></li>
+<li><a href="#">User Experience</a></li>
+<li><a href="#">Web Design</a></li>
+<li><a href="#">Web Development</a></li>
+<li><a href="#">Web Foundations</a></li>
+<li><a href="#">Web Graphics</a></li>
+<li><span class="btn">More</span></li>
+</ul>
+</div>
+<div class="grid-column4">
+<h4>Software</h4>
+<ul class="topic-lists">
+<li><a href="#">BootStrap</a></li>
+<li><a href="#">CSS</a></li>
+<li><a href="#">Dreamweaver</a></li>
+<li><a href="#">Edge Animate</a></li>
+<li><a href="#">Flash Professional</a></li>
+<li><a href="#">HTML</a></li>
+<li><a href="#">JavaScript</a></li>
+<li><a href="#">Joomla!</a></li>
+<li><a href="#">jQuery</a></li>
+<li><a href="#">WordPress</a></li>
+<li><span class="btn">More</span></li>
+</ul>
+</div>
+</div>
+<i class="fa fa-globe fa-watermark item-pos-a"></i></div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu6 - Pricing]]></title>
+      <identifier><![CDATA[menu6-pricing]]></identifier>
+      <content><![CDATA[<div class="mb-row">
+	<div  class="grid-column3">
+		<div class="pricing-container">
+			<h5>Free Trial</h5>
+			<div class="pricing-body">
+				<span class="pricing-primary">$0</span>
+				<span>10 day trial</span>
+			</div>
+			<ul class="small-list">
+				<li>Access to some courses</li>
+				<li>No advertising</li>
+				<li class="line-through">Downloadable videos</li>
+				<li class="line-through">Download eBooks</li>
+				<li class="line-through">Subcriber benefits</li>
+				<li class="line-through">Freebies</li>
+			</ul>
+			<div class="space-t2">
+				<a href="#" class="btn btn-small">Start Trial</a>
+			</div>
+		</div>
+	</div>
+	<div  class="grid-column3">
+		<div class="pricing-container">
+			<h5>Monthly</h5>
+			<div class="pricing-body">
+				<span class="pricing-primary">$15</span>
+				<span>per month</span>
+			</div>
+			<ul class="small-list">
+				<li>Access to all courses</li>
+				<li>No advertising</li>
+				<li>Downloadable videos</li>
+				<li>Download eBooks</li>
+				<li class="line-through">Subcriber benefits</li>
+				<li class="line-through">Freebies</li>
+			</ul>
+			<div class="space-t2">
+				<a href="#" class="btn btn-small">Subscribe</a>
+			</div>
+		</div>
+	</div>
+	<div  class="grid-column3">
+		<div class="pricing-container">
+			<h5>Yearly</h5>
+			<div class="pricing-body">
+				<span class="pricing-primary">$250</span>
+				<span>per year</span>
+			</div>
+			<ul class="small-list">
+				<li>Access to all courses</li>
+				<li>No advertising</li>
+				<li>Downloadable videos</li>
+				<li>10 eBooks/month</li>
+				<li>Subcriber benefits</li>
+				<li class="line-through">Freebies</li>
+			</ul>
+			<div class="space-t2">
+				<a href="#" class="btn btn-small">Subscribe</a>
+			</div>
+		</div>
+	</div>
+	<div  class="grid-column3">
+		<div class="pricing-container">
+			<h5>Lifetime</h5>
+			<div class="pricing-body">
+				<span class="pricing-primary">$30K</span>
+				<span>for life</span>
+			</div>
+			<ul class="small-list">
+				<li>Access to all courses</li>
+				<li>No advertising</li>
+				<li>Downloadable videos</li>
+				<li>Download all eBooks</li>
+				<li>VIP Subcriber benefits</li>
+				<li>Premium Freebies</li>
+			</ul>
+			<div class="space-t2">
+				<a href="#" class="btn btn-small">Subscribe</a>
+			</div>
+		</div>
+	</div>
+</div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu6 - form search]]></title>
+      <identifier><![CDATA[menu6-form-search]]></identifier>
+      <content><![CDATA[<div class="search-box item-pos-r">
+<input placeholder="Search Courses" type="text">
+<i class="fa fa-search item-pos-a">&nbsp;</i>
+</div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+  </block>
+</root>

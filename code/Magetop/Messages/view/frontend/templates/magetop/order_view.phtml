@@ -1,0 +1,147 @@
+<?php 
+    $order_id = $this->getRequest()->getParam('order_id');
+    $messages_id = $block->getMessagesId( $order_id );
+ 
+    // $_replyCollection = $block->getCollection();
+    $msg_detail = $block->getMessagesInformation( $order_id );
+    
+    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    $user_id = $objectManager->create('Magento\Customer\Model\Session')->getId();
+    $receiver_id = '';
+    // if ( $user_id ==  $msg_detail->getData('user_id') ) { 
+    //     $receiver_id = $msg_detail->getData('usercontact_id');
+    // } else {
+    //     $receiver_id = $msg_detail->getData('user_id');  
+    // }
+
+    // Update messages - Cong
+    $dataSaleOrder = $objectManager->create('Magetop\Marketplace\Model\Saleslist')->load($order_id,'orderid');
+    $messagesModel = $objectManager->create('Magetop\Messages\Model\Messages')->load($order_id,'order_id');
+    $_replyCollection = $objectManager->create('Magetop\Messages\Model\Reply')->getCollection()->addFieldToFilter('messages_id',$messagesModel->getMessagesId())->setOrder('reply_id', 'DESC');
+
+    // Delete messages error
+    // $dele = $objectManager->create('Magetop\Messages\Model\Reply')->getCollection()->addFieldToFilter('messages_id',0);
+    // $dele1 = $objectManager->create('Magetop\Messages\Model\Reply');
+    // foreach ($dele as $myModel) {
+    //     $dele1->load($myModel->getReplyId());
+    //     $dele1->delete();
+    // }
+?>
+<?php if($dataSaleOrder->getId()){ ?>
+<div class="content-messages block " id="order_messages">
+	<div class="block-title">
+        <strong><?php echo __('Order Messages') ?></strong>
+    </div>
+   <div class="reply-box">
+        <div class="reply-box-content">
+            <form accept-charset="UTF-8" action="<?php echo $this->getUrl('messages/index/saveordermes') ?> " class="reply_message_form clearfix" id="reply_message_form" method="post">
+                <input type="hidden" name="messages_id" value="<?php echo $messages_id ?>"/>
+                <input type="hidden" name="user_id" value="<?php echo \Magento\Framework\App\ObjectManager::getInstance()->create('Magento\Customer\Model\Session')->getId() ?>"/>
+                <input type="hidden" name="receiver_id" value="<?php echo $dataSaleOrder->getSellerid() ?>"/>
+                <input type="hidden" name="order_id" value="<?php echo $order_id ?>"/>
+                <input type="hidden" name="back_url" value="<?php echo $this->getUrl('sales/order/view').'order_id/'.$order_id ?>"/>
+                <textarea class="input-text" data-validate="{required:true}" id="message_inquiry" name="message" placeholder="<?php echo __('Add a personal message here.') ?>"></textarea>
+                <div class="send-messages">
+                    <input type="submit" class="btn btn-primary" value="<?php echo __('Send Message') ?>"/>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+    	require([
+            "jquery",
+            "mage/mage"
+    	], function($){
+            var dataForm = $('#reply_message_form');
+            dataForm.mage('validation', {});
+            var _action=dataForm.attr('action');
+    	});
+    </script> 
+    <div class="threads" id="inbox">
+        <div class="panel">
+            <ul id="threads" class="list-layout panel-body">
+                <!-- --------------- DATA ORG--------------------- -->
+                <?php if ($_replyCollection->count()): ?>
+                    <?php
+                    foreach($_replyCollection as $item){
+                        $createdat = date('M-d',strtotime( $item->getCreatedAt()??'' ));
+                        $message_createdat = str_replace('-',', ',preg_replace('/-/',' ',$createdat,1));	
+                    ?>
+                        <li id="thread_<?php echo $item->getId() ?>" class="panel-body thread js-thread thread--read">
+                            <div class="row">
+                                <div class="col-xs-12 col-md-3 thread-author">
+                                    <div class="row row-table">
+                                        <div class="thread-name">
+                                            <a href="#">
+                                                <?php 
+                                                    $checkAcc = $objectManager->create('Magetop\Marketplace\Model\Sellers')->load( $item->getData('user_id'), 'user_id' );
+                                                    if($checkAcc->getId()) {
+                                                        echo $checkAcc->getStoretitle();
+                                                    } else {
+                                                        $customer = $objectManager->create('Magento\Customer\Model\Customer')->load( $item->getData('user_id') );
+                                                        $customer_name = $customer->getData('firstname').' '.$customer->getData('lastname');
+                                                        echo "Me";
+                                                    }
+                                                ?>
+                                            </a>
+                                            <br/>
+                                            <span class="thread-date"><?php echo $message_createdat; ?></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--<a class="thread-link link-reset text-muted" href="<?php echo $this->getUrl('messages/index/view').'id/'.$item->getId() ?>">-->
+								<div class="col-xs-12 col-md-9 col-lg-8 thread-body">
+									<?php echo $item->getDescription() ?>
+								</div>
+                                <!--</a>-->
+                            </div>
+                        </li>
+                    <?php		
+                    }
+                    ?>
+                <?php endif; ?>
+				<!-- Detail Question -->
+				<?php 
+    				$createdate_msg = date('M-d',strtotime( $msg_detail->getCreatedAt()??'' ));
+    				$createdate_msg_0 = str_replace('-',', ',preg_replace('/-/',' ',$createdate_msg,1));
+				?>
+				<!-- <li id="thread_0" class="panel-body thread js-thread thread--read">
+					<div class="row">
+						<div class="col-xs-12 col-md-3 thread-author">
+							<div class="row row-table">
+								<div class="thread-name">
+									<a href="#">
+										<?php 
+											$customer = $objectManager->create('Magento\Customer\Model\Customer')->load( $msg_detail->getData('usercontact_id') );
+											$customer_name = $customer->getData('firstname').' '.$customer->getData('lastname');
+											echo $customer_name;
+										?>
+									</a>
+									<br/>
+									<span class="thread-date">
+									   <?php echo $createdate_msg_0; ?>
+									</span>
+								</div>
+							</div>
+						</div>						
+						<div class="col-xs-12 col-md-9 col-lg-8 thread-body">
+							<?php if ( $msg_detail->getProductId() > 0 ) { ?>
+    							<?php $currentproduct = $objectManager->create('Magento\Catalog\Model\Product')->load( $msg_detail->getProductId() ); ?>
+    							<div class="msg-product">
+                                    <strong><?php echo __('Product name:'); ?></strong> <a href="<?php echo $currentproduct->getProductUrl() ?>" title="<?php echo  $currentproduct->getName();  ?>"><?php echo  $currentproduct->getName();  ?></a>
+    							</div>
+							<?php } ?>
+							<div class="msg-des">
+                                <?php echo $msg_detail->getDescription(); ?>
+							</div>
+						</div>
+					</div>
+				</li> -->
+            </ul>
+        </div>
+    </div>
+    <?php if ($block->getPagerHtml()): ?>
+    	<div class="order-products-toolbar toolbar bottom"><?php echo $block->getPagerHtml(); ?></div>
+    <?php endif ?>
+</div>
+<?php } ?>

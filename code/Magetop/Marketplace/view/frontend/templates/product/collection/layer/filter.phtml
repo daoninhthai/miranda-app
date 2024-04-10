@@ -1,0 +1,32 @@
+<?php
+/**
+ * Magetop Development
+ *
+ * @category  Magetop Extension
+ * @package   Magetop_Marketplace
+ * @author    Magetop
+ * @copyright Copyright (c) Magetop (https://www.magetop.com)
+ * @license   https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<ol class="items">
+    <?php foreach ($filterItems as $filterItem) : ?>
+        <li class="item">
+            <?php if ($filterItem->getCount() > 0) : ?>
+                <a href="<?= $block->escapeUrl($filterItem->getUrl()) ?>">
+                    <?= /* @noEscape */ $filterItem->getLabel() ?>
+                    <?php if ($this->helper(\Magento\Catalog\Helper\Data::class)->shouldDisplayProductCountOnLayer()) : ?>
+                        <span class="count"><?= /* @noEscape */ $filterItem->getCount() ?><span class="filter-count-label">
+                            <?php if ($filterItem->getCount() == 1) :?> <?= /* @escapeNotVerified */ $block->escapeHtml(__('item')) ?><?php else :?> <?= /* @escapeNotVerified */ $block->escapeHtml(__('items')) ?><?php endif;?></span></span>
+                    <?php endif; ?>
+                </a>
+            <?php else :?>
+                <?= /* @noEscape */ $filterItem->getLabel() ?>
+                <?php if ($this->helper(\Magento\Catalog\Helper\Data::class)->shouldDisplayProductCountOnLayer()) : ?>
+                    <span class="count"><?= /* @noEscape */ $filterItem->getCount() ?><span class="filter-count-label">
+                        <?php if ($filterItem->getCount() == 1) :?><?= /* @noEscape */ __('item') ?><?php else :?><?= /* @noEscape */ __('items') ?><?php endif;?></span></span>
+                <?php endif; ?>
+            <?php endif; ?>
+        </li>
+    <?php endforeach ?>
+</ol>

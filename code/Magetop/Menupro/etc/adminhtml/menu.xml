@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- /**
+ * Magetop 
+ * @category    Magetop 
+ * @copyright   Copyright (c) 2017 Magetop (http://magetop.com/) 
+ * @Author: Hanh Nguyen<hanhkaka.nguyen37@gamil.com>
+ * @@Create Date: 2017-05-5
+ * @@Modify Date: 2017-06-05
+ */ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Backend/etc/menu.xsd">
+    <menu>        
+		<add id="Magetop_Menupro::menupro_menu" title="Mega Menu Pro" module="Magetop_Menupro" sortOrder="11" parent="bigmarket" resource="Magetop_Menupro::menupro_menu" />
+		<add id="Magetop_Menupro::add_new_group" title="Add Menu Group" module="Magetop_Menupro" sortOrder="1" parent="Magetop_Menupro::menupro_menu" action="menupro/groupmenu/new" resource="Magetop_Menupro::add_new_group" />
+		<add id="Magetop_Menupro::manage_menu_group" title="Manage Menu Groups" module="Magetop_Menupro" sortOrder="2" parent="Magetop_Menupro::menupro_menu" action="menupro/groupmenu/index" resource="Magetop_Menupro::manage_menu_group" />        
+		<add id="Magetop_Menupro::add_new_item" title="Add Menu Item" module="Magetop_Menupro" sortOrder="1" parent="Magetop_Menupro::menupro_menu" action="menupro/menu" resource="Magetop_Menupro::add_new_item" />
+		<add id="Magetop_Menupro::configuration_setting" title="Setting" module="Magetop_Menupro" sortOrder="10" parent="Magetop_Menupro::menupro_menu" action="adminhtml/system_config/edit/section/menupro" resource="Magetop_Menupro::configuration_setting" />
+		<add id="Magetop_Menupro::import_setting" title="Import sample data" module="Magetop_Menupro" sortOrder="1" parent="Magetop_Menupro::menupro_menu" action="menupro/import/index" resource="Magetop_Menupro::import_setting" />  
+	</menu>
+</config>

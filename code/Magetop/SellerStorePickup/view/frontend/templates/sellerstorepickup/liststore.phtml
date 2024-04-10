@@ -1,0 +1,175 @@
+<!--
+/**
+ * @author      Magetop Developer (Kien)
+ * @package     Magento Multi Vendor Marketplace_Seller_Store_Pickup
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<?php
+    use Magento\Framework\App\Action\Action;
+    $_sellerstorepickupCollection = $block->getCollection();
+    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    $storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+?>
+<div class=" block content-messages mgt-theme-div">
+    <legend class="legend">
+        <span><?php echo __('All Store Pickup'); ?></span>
+    </legend>
+    <div class="table-wrapper ">
+        <form method="post" id="newStorePickup" class="" action="<?php echo $block->getUrl('sellerstorepickup/index/add') ?>">
+            <button id="add-new-storepickup" style="float: left;padding: 5px;margin-right: 20px;" type="submit" title="<?php echo __('Add New Store Pickup') ?>" class="button">
+                <span><span><?php echo __('Add New Store Pickup') ?></span></span>
+            </button>
+        </form>
+
+        <form method="post" id="massDeleteStorePickup" class="" action="<?php echo $block->getUrl('sellerstorepickup/index/massDelete') ?>">
+            <button id="delete-allstorepickup" style="float: left;padding: 5px;" type="button" title="<?php echo __('Delete Store Pickup') ?>" class="button">
+                <span><span><?php echo __('Delete Store Pickup') ?></span></span>
+            </button>
+            <table id="my-orders-table" class="data table table-order-items history">
+                <caption class="table-caption"><?php echo __('Orders') ?></caption>
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" name="selecteallstorepickup" class="checkbox" /></th>
+                        <th class="col" scope="col"><?php echo __('ID'); ?>#</th>
+                        <th class="col" scope="col"><?php echo __('Store Image'); ?></th>
+                        <th class="col" scope="col"><?php echo __('Store Name'); ?></th>
+                        <th class="col" scope="col"><?php echo __('Store Location'); ?></th>
+                        <th class="col" scope="col"><?php echo __('Longitude'); ?></th>
+                        <th class="col" scope="col"><?php echo __('Latitude'); ?></th>
+                        <th class="col" scope="col"><?php echo __('Status'); ?></th>
+                        <th class="col" scope="col">&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if ($_sellerstorepickupCollection->count()) { ?>
+                        <?php foreach($_sellerstorepickupCollection as $item){ ?>
+                            <tr class="">
+                                <td>
+                                    <input type="checkbox" class="checkbox" name="storepickup_selected[]" value="<?php echo $item->getId(); ?>" />
+                                </td>
+                                <td class="col" data-th="#"><?php echo $item->getId() ?></td>
+                                <td class="col" data-th="#">
+                                    <?php if($item->getMapicon()){ ?>
+                                        <img src="<?php echo $storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA).$item->getMapicon() ?>" width="100px"/>
+                                    <?php } ?>
+                                </td>
+                                <td class="col" data-th="#"><?php echo $item->getTitle() ?></td>
+                                <td class="col" data-th="#"><?php echo $item->getShopLocation() ?></td>
+                                <td class="col" data-th="#"><?php echo $item->getLongitude(); ?></td>
+                                <td class="col" data-th="#"><?php echo $item->getLatitude(); ?></td>
+                                <td>
+                                    <span class="mst_label">
+                                        <style>
+                                            .grid-severity-notice {
+                                                background: #d0e5a9 none repeat scroll 0 0;
+                                                border: 1px solid #5b8116;
+                                                color: #185b00;
+                                                display: block;
+                                                font-weight: bold;
+                                                line-height: 17px;
+                                                padding: 0 3px;
+                                                text-align: center;
+                                                text-transform: uppercase;
+                                                float: left;
+                                            }
+                                            .grid-severity-critical {
+                                                background: #f9d4d4 none repeat scroll 0 0;
+                                                border: 1px solid #e22626;
+                                                color: #e22626;
+                                                display: block;
+                                                font-weight: bold;
+                                                line-height: 17px;
+                                                padding: 0 3px;
+                                                text-align: center;
+                                                text-transform: uppercase;
+                                                float: left;
+                                            }
+                                        </style>
+                                        <?php 
+                                            if ($item->getStatus()) {
+                                                echo '<span class="grid-severity-notice"><span>'.__('Enabled').'</span></span>';
+                                            } else {
+                                                echo '<span class="grid-severity-critical"><span>'.__('Disabled').'</span></span>';
+                                            }
+                                        ?>
+                                    </span>
+                                </td>
+                                <td class="col" data-th="Actions">
+                                    <a class="action view" href="<?php echo $this->getUrl('sellerstorepickup/index/view').'id/'.$item->getId() ?>">
+                                        <span><?php echo __('View'); ?></span>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    <?php } else { ?>
+                        <tr>
+                            <td colspan="7">
+                                <div class="message notice">
+                        			<div><?php echo __("You don't have any Store Pickup at this time."); ?></div>
+                        		</div>
+                            </td>
+                        </tr>
+            		<?php } ?>
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <?php if ($block->getPagerHtml()): ?>
+    	<div class="toolbar bottom"><?php echo $block->getPagerHtml();?></div>
+    <?php endif ?>
+</div>
+<script>
+    require([
+        "jquery",
+        'Magento_Ui/js/modal/confirm',
+        'Magento_Ui/js/modal/alert',
+        "mage/calendar"
+    ], function($,confirmation,alert){
+        $('input[type=checkbox][name=selecteallstorepickup]').on('click',function(){
+            if(this.checked==true){
+                $('input[type=checkbox][name^=storepickup_selected]').each(function(){
+                    this.checked=true;
+                });		
+            }else{
+                $('input[type=checkbox][name^=storepickup_selected]').each(function(){
+                    this.checked=false;
+                });			
+            }
+        });
+        $('button#delete-allstorepickup').on('click',function(){
+            var _flag=0;
+            $('input[type=checkbox][name^=storepickup_selected]').each(function(){
+                if(this.checked==true){
+                    _flag=1;
+                    return false;
+                }
+            });
+            if(!_flag){
+                alert({
+                    title:'<?php echo __('Attention') ?>',
+                    content:"<?php echo __("You haven't selected any items!") ?>",
+                    actions:{
+                        always: function(){}
+                    }
+                });
+            }else{
+                confirmation({
+                    title:'<?php echo __('Delete Store Pickup') ?>',
+                    content:'<?php echo __("Delete selected items?") ?>',
+                    actions:{
+                        confirm:function(){
+                            document.getElementById('massDeleteStorePickup').submit();                            
+                            //$('form#massDeleteStorePickup').submit();
+                        },
+                        cancel: function(){},
+                        always: function(){}
+                    }
+                });		
+            }	
+        });	
+        $('.multi_flat_rate_storepickup').addClass('current');
+    });
+</script>

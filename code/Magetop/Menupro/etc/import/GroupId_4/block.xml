@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <block>
+    <item>
+      <title><![CDATA[Menu4 - Women - Block]]></title>
+      <identifier><![CDATA[menu4-women-block]]></identifier>
+      <content><![CDATA[<div class="slider-wrapper">
+	<div class="slider-content">
+		<ul class="slider-5item">
+			<li class="mcp-item"><img src="{{media url='mcpDemo/women1.jpg'}}" alt=""/></li>
+			<li class="mcp-item"><img src="{{media url='mcpDemo/women2.jpg'}}" alt=""/></li>
+			<li class="mcp-item"><img src="{{media url='mcpDemo/women3.jpg'}}" alt=""/></li>
+			<li class="mcp-item"><img src="{{media url='mcpDemo/women4.jpg'}}" alt=""/></li>
+			<li class="mcp-item"><img src="{{media url='mcpDemo/women5.jpg'}}" alt=""/></li>
+		</ul>
+	</div>
+</div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu4 Men Block]]></title>
+      <identifier><![CDATA[menu4-men-block]]></identifier>
+      <content><![CDATA[<div class="slider-wrapper">
+<div class="slider-content">
+<ul class="slider-3item">
+<li class="mcp-item"><img src="{{media url='mcpDemo/men1.jpg'}}" alt="" /></li>
+<li class="mcp-item"><img src="{{media url='mcpDemo/men2.jpg'}}" alt="" /></li>
+<li class="mcp-item"><img src="{{media url='mcpDemo/men3.jpg'}}" alt="" /></li>
+</ul>
+</div>
+</div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu4 Underwear Block]]></title>
+      <identifier><![CDATA[menu4-underwear-block]]></identifier>
+      <content><![CDATA[<div class="slider-wrapper">
+<div class="slider-content">
+<ul class="slider-5item">
+<li class="mcp-item"><img src="{{media url='mcpDemo/underwear1.jpg'}}" alt="" /></li>
+<li class="mcp-item"><img src="{{media url='mcpDemo/underwear2.jpg'}}" alt="" /></li>
+<li class="mcp-item"><img src="{{media url='mcpDemo/underwear3.jpg'}}" alt="" /></li>
+<li class="mcp-item"><img src="{{media url='mcpDemo/underwear4.jpg'}}" alt="" /></li>
+<li class="mcp-item"><img src="{{media url='mcpDemo/underwear5.jpg'}}" alt="" /></li>
+</ul>
+</div>
+</div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu4 - Girl - Block]]></title>
+      <identifier><![CDATA[menu4-girl-block]]></identifier>
+      <content><![CDATA[<div class="slider-wrapper">
+<div class="slider-content">
+<ul class="slider-4item">
+<li class="mcp-item"><img src="{{media url='mcpDemo/girl1.jpg'}}" alt="" /></li>
+<li class="mcp-item"><img src="{{media url='mcpDemo/girl2.jpg'}}" alt="" /></li>
+<li class="mcp-item"><img src="{{media url='mcpDemo/girl3.jpg'}}" alt="" /></li>
+<li class="mcp-item"><img src="{{media url='mcpDemo/girl4.jpg'}}" alt="" /></li>
+</ul>
+</div>
+</div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu4 - Boy - Block]]></title>
+      <identifier><![CDATA[menu4-boy-block]]></identifier>
+      <content><![CDATA[<img src="{{media url="mcpDemo/SD_04_T88_0112Y_R0_X_EC_0.jpg"}}" alt="" />]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+  </block>
+</root>

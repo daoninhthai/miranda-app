@@ -1,0 +1,405 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$storeManager = $objectManager->get('Magento\Store\Model\StoreManagerInterface');
+$store = $storeManager->getStore();
+$baseUrl = $store->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+$logoUrl = $baseUrl . 'logo/stores/1/logo.png';
+$notifyBlock = $objectManager->create('Magetop\Notification\Block\Notification');
+?>
+<!-- END THEME LAYOUT STYLES -->
+<!-- BEGIN HEADER -->
+<div class="page-header navbar">
+    <!-- BEGIN HEADER INNER -->
+    <div class="page-header-inner ">
+        <!-- BEGIN LOGO -->
+        <div class="page-logo">
+            <a href="index.html">
+                <img src="<?php echo $logoUrl; ?>" alt="logo" class="logo-default"/>
+            </a>
+            <div class="menu-toggler sidebar-toggler">
+                <span></span>
+            </div>
+        </div>
+        <!-- END LOGO -->
+        <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+        <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+            <span></span>
+        </a>
+        <!-- END RESPONSIVE MENU TOGGLER -->
+        <!-- BEGIN TOP NAVIGATION MENU -->
+        <div class="top-menu">
+            <?php echo $this->getLayout()->createBlock("Magento\Store\Block\Switcher")->setTemplate("Magetop_Marketplace::switch/languages.phtml")->toHtml(); ?>
+            <ul class="nav navbar-nav pull-right">
+                <!-- BEGIN NOTIFICATION DROPDOWN -->
+                <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                <!-- END NOTIFICATION DROPDOWN -->
+                <!-- BEGIN INBOX DROPDOWN -->
+                <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                <?php
+                $seller = $block->getSellerProfile();
+                $unread_msg = $block->getMessageUnread();
+                ?>
+                <!--                custom notify-->
+                <li class="notification-wrapper">
+                    <div class="notification-icon" id="notification-bell">
+                        <i class="fa fa-bell"></i>
+                        <?php $unreadCount = $notifyBlock->getUnreadCount($seller->getUserId()); ?>
+                        <?php if ($unreadCount > 0): ?>
+                            <span class="notification-counter"><?= $unreadCount ?></span>
+                        <?php endif; ?>
+                    </div>
+
+                    <div class="notification-dropdown" id="notification-dropdown">
+                        <div class="notification-header">
+                            <h3><?= __('Notifications') ?></h3>
+                        </div>
+                        <div class="notification-list">
+
+                            <?php
+                            $notificationsData = $notifyBlock->getNotifications($seller->getUserId(), 1);
+                            $notifications = $notificationsData['items'];
+                            ?>
+                            <?php if (!empty($notifications)): ?>
+                                <?php foreach ($notifications as $notification): ?>
+                                    <div class="notification-item <?= $notification->getStatus() == 0 ? 'unread' : '' ?>"
+                                         data-notification-id="<?= $notification->getId() ?>">
+                                        <div class="notification-content"><?= $notification->getContent() ?></div>
+                                        <div class="notification-time">
+                                            <?= $block->formatDate($notification->getCreatedAt(), \IntlDateFormatter::MEDIUM, true) ?>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <div class="no-notifications"><?= __('No notifications') ?></div>
+                            <?php endif; ?>
+                        </div>
+                        <div class="notification-footer">
+                            <p id="view-more-notifiy">View more</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="item dropdown" style="color: #fff;">
+                    <?php $helperMk = $this->helper(\Magetop\Marketplace\Helper\Collection::class); ?>
+                    <a class="dropdown-toggle" href="<?php echo  $helperMk->getRewriteUrl('marketplace/seller/view/vendor/'.$seller->getData('storeurl')); ?>">
+                        <i class="fa fa-home"></i><?php echo __('Profile Page'); ?>
+                    </a>
+                </li>
+                <?php if($seller->getLogoimg() != '') : ?>
+                    <?php $logo = $block->getMkBaseMediaUrl().$seller->getLogoimg(); ?>
+                <?php else : ?>
+                    <?php $logo = $block->getViewFileUrl('Magetop_Marketplace::images/noimage.png'); ?>
+                <?php endif; ?>
+
+
+
+                <li class="dropdown dropdown-user">
+                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                        <img alt="" class="img-circle" src="<?php echo $logo; ?>" />
+                        <span class="username username-hide-on-mobile">
+                            <?php echo $seller->getStoretitle() ?>
+                        </span>
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-default">
+                        <li>
+                            <a href="<?php echo $this->getUrl('marketplace/seller/account') ?>">
+                                <i class="icon-user"></i><?php echo __('My Profile') ?>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $this->getUrl('messages') ?>">
+                                <i class="icon-envelope-open"></i><?php echo __('My Inbox') ?>
+                                <span class="badge badge-danger">
+                                    <?php echo $unread_msg->count() ?>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="<?php echo $this->getUrl('customer/account/logout') ?>">
+                                <i class="icon-key"></i><?php echo __('Log Out') ?>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- END USER LOGIN DROPDOWN -->
+                <!-- BEGIN QUICK SIDEBAR TOGGLER -->
+            </ul>
+        </div>
+        <!-- END TOP NAVIGATION MENU -->
+    </div>
+    <!-- END HEADER INNER -->
+</div>
+<!-- END HEADER -->
+<!-- BEGIN HEADER & CONTENT DIVIDER -->
+<div class="clearfix"></div>
+<!-- END HEADER & CONTENT DIVIDER -->
+<style>
+    /* .page-header.navbar {
+        height: 70px;
+    } */
+    .page-header.navbar .page-logo {
+        display: flex;
+        padding-left: 10px;
+        /* height: 70px; */
+    }
+    .page-header.navbar .page-logo .logo-default {
+        margin: 10px 0 0;
+        width: 100%;
+    }
+    .page-header.navbar .menu-toggler.sidebar-toggler {
+        padding-left: 10px;
+    }
+
+         /* Notification Bell Styles */
+     .notification-wrapper {
+         position: relative;
+         margin-right: 15px;
+     }
+
+    .notification-icon {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: #fff;
+        font-size: 18px;
+    }
+
+    .notification-icon:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.05);
+    }
+
+    .notification-counter {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background: #e74c3c;
+        color: white;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: bold;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        animation: pulse 2s infinite;
+    }
+
+    .notification-dropdown {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 50px;
+        width: 350px;
+        background: white;
+        border-radius: 4px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        z-index: 1000;
+        max-height: 500px;
+        overflow-y: auto;
+    }
+
+    .notification-header {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+        background: #f8f9fa;
+        border-radius: 4px 4px 0 0;
+    }
+
+    .notification-header h3 {
+        margin: 0;
+        font-size: 16px;
+        color: #333;
+        font-weight: 600;
+    }
+
+    .notification-list {
+        padding: 0;
+    }
+        // Apply data transformation rules
+
+    .notification-item {
+        padding: 12px 15px;
+        border-bottom: 1px solid #eee;
+        transition: background 0.2s ease;
+    }
+
+    .notification-item.unread {
+        background: #f8fafc;
+        border-left: 3px solid #3498db;
+    }
+
+    .notification-item:hover {
+        background: #f5f5f5;
+    }
+
+    .notification-content {
+        color: #333;
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+    .notification-time {
+        color: #999;
+        font-size: 12px;
+    }
+
+    .no-notifications {
+        padding: 20px;
+        text-align: center;
+        color: #999;
+        font-size: 14px;
+    }
+
+    .notification-footer {
+        padding: 10px 15px;
+        text-align: center;
+        border-top: 1px solid #eee;
+        background: #f8f9fa;
+        border-radius: 0 0 4px 4px;
+    }
+
+    .notification-footer a {
+        color: #3498db;
+        font-size: 13px;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .notification-footer a:hover {
+        text-decoration: underline;
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.1);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+    #view-more-notifiy {
+        color: #3498db;
+        cursor: pointer;
+        font-weight: 500;
+        text-align: center;
+        padding: 8px 0;
+        display: block;
+        transition: all 0.3s ease;
+    }
+
+    #view-more-notifiy:hover {
+        text-decoration: underline;
+        background-color: #f8f9fa;
+    }
+
+    #view-more-notifiy.hidden {
+        display: none;
+    }
+
+    .notification-item.unread {
+        background-color: #f8fafc;
+        border-left: 3px solid #3498db;
+        font-weight: 500;
+    }
+
+    .notification-item.unread .notification-content {
+        color: #2c3e50;
+    }
+</style>
+
+<script>
+    require(['jquery'], function($) {
+        $(document).ready(function() {
+            var currentPage = 1;
+
+            // Function to handle notification clicks
+            function setupNotificationClicks() {
+                $('.notification-item.unread').off('click').on('click', function(e) {
+                    e.stopPropagation();
+                    var notificationId = $(this).data('notification-id');
+                    var $this = $(this);
+
+                    $.ajax({
+                        url: '<?= $block->getUrl('marketplace/notification/markAsRead') ?>',
+                        type: 'POST',
+                        data: {id: notificationId},
+                        success: function(response) {
+                            if (response.success) {
+                                $this.removeClass('unread');
+                                var counter = $('.notification-counter');
+                                var count = parseInt(counter.text()) - 1;
+                                if (count > 0) {
+                                    counter.text(count);
+                                } else {
+                                    counter.remove();
+                                }
+                            }
+                        }
+                    });
+                });
+            }
+
+            // Initial setup of click handlers
+            setupNotificationClicks();
+
+            // View More functionality
+            $('#view-more-notifiy').click(function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+        // Validate request parameters
+                currentPage++;
+
+                $.ajax({
+                    url: '<?= $block->getUrl('marketplace/notification/viewmore') ?>',
+                    type: 'POST',
+                    data: {
+                        id: <?= $seller->getUserId() ?>,
+                        page: currentPage
+                    },
+                    success: function(response) {
+                        if (response.success && response.html) {
+                            if (response.count > 0) {
+                                $('.notification-list').append(response.html);
+                                setupNotificationClicks(); // Re-setup click handlers
+                            }
+
+                            if (!response.has_more) {
+                                $('#view-more-notifiy').hide();
+                            }
+                        }
+                    }
+                });
+            });
+
+            // Initial check for more notifications
+            <?php if (!$notificationsData['has_more']): ?>
+            $('#view-more-notifiy').hide();
+            <?php endif; ?>
+
+            // Toggle dropdown
+            $('#notification-bell').click(function(e) {
+                e.stopPropagation();
+                $('#notification-dropdown').toggle();
+            });
+
+            // Close dropdown when clicking outside
+            $(document).click(function() {
+                $('#notification-dropdown').hide();
+            });
+        });
+    });
+</script>

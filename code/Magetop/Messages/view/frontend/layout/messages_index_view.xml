@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="market-layout" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">    
+    <update handle="customer_account"/>
+	<update handle="mk_default"/>
+	<heads>
+		<css src="Magetop_Messages::css/messages.css"/>
+	</heads>
+    <body>
+        <referenceContainer name="market.content">
+            <block class="Magetop\Messages\Block\View" name="magetop_Messages_Messages_view" template="magetop/view.phtml" cacheable="false"/>
+        </referenceContainer>
+    </body>
+</page>

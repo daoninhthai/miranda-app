@@ -1,0 +1,250 @@
+<!--
+/**
+ * @author      Magetop Developer (Kien)
+ * @package     Magento Multi Vendor Marketplace_Seller_Membership
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<?php $membershipData = $block->getSellerMemberShip()->getData(); ?>
+<?php
+    use Magento\Framework\App\Action\Action;
+    $_productCollection = $block->getLoadedProductCollection();
+    $_helper = $this->helper('Magento\Catalog\Helper\Output');
+?>
+<div class="block content-membership mgt-theme-div">
+    <legend class="legend">
+        <span><?php echo __('Membership Information') ?> - <?php echo __('Your membership') ?> <?php echo strtotime(@$membershipData['experi_date']??'') < strtotime(date("Y-m-d")??'')?'expired':'activated' ?></span>
+    </legend>
+    <fieldset class="fieldset info">
+        <div id="vendors_form" class="fieldset field">
+            <?php if($membershipData){ ?>
+                <?php $memberShip = $block->getMemberShipById($membershipData['membership_id']) ?>
+                <div class="hor-scroll" style="border: 1px solid #00AEEF">
+                    <table cellspacing="0" class="form-list">
+                        <tbody>
+                            <tr style="background:#00AEEF">
+                                <td class="value">
+                                    <label class="label"><?php echo __('Title Plan:') ?></label>
+                                </td>
+                                <td class="value">
+                                    <label class="label" style="float: left;"><?php echo $memberShip->getTitle() ?></label>
+                                    <?php foreach ($_productCollection as $_product): ?>
+                                        <?php if($_product->getId() == $memberShip->getProductId()): ?>
+            								<?php if ($_product->isSaleable()): ?>
+            									<?php $postParams = $block->getAddToCartPostParams($_product); ?>
+            									<form data-role="tocart-form" action="<?php echo $postParams['action']; ?>" method="post" style="float: left;">
+                                                    <input type="hidden" name="product" value="<?php echo $postParams['data']['product']; ?>">
+                                                    <input type="hidden" name="<?php echo Action::PARAM_NAME_URL_ENCODED; ?>" value="<?php echo $postParams['data'][Action::PARAM_NAME_URL_ENCODED]; ?>">
+                                                    <?php echo $block->getBlockHtml('formkey')?>
+                                                    <button type="submit" title="<?php echo $block->escapeHtml(__('Renew')); ?>" class="action tocart primary" style="padding: 0px;">
+                                                        <span><?php echo __('Renew') ?></span>
+                                                    </button>
+            									</form>
+            								<?php else: ?>
+            									<?php if ($_product->getIsSalable()): ?>
+            										<div class="stock available"><span><?php echo __('In stock') ?></span></div>
+            									<?php else: ?>
+            										<div class="stock unavailable"><span><?php echo __('Out of stock') ?></span></div>
+            									<?php endif; ?>
+            								<?php endif; ?> 
+                                        <?php endif; ?>  
+                                    <?php endforeach; ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="value">
+                                    <label class="label"><?php echo __('Purchased Date:') ?></label>
+                                </td>
+                                <td class="value">
+                                    <label class="label"><?php echo date("Y-m-d", strtotime($membershipData['created_at'])) ?></label>      
+                                </td>
+                            </tr>
+                            <tr style="background:#00AEEF">
+                                <td class="value">
+                                    <label class="label"><?php echo __('Experi Date:') ?></label>
+                                </td>
+                                <td class="value">
+                                    <label class="label"><?php echo date("Y-m-d", strtotime($membershipData['experi_date'])) ?></label>    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="value">
+                                    <label class="label"><?php echo __('Number product upload each month:') ?></label>
+                                </td>
+                                <td class="value">
+                                    <label class="label"><?php echo $membershipData['total_number_product'] ?></label>    
+                                </td>
+                            </tr>
+                            <tr style="background:#00AEEF">
+                                <td class="value">
+                                    <label class="label"><?php echo __('Remaining Number Product:') ?></label>
+                                </td>
+                                <td class="value">
+                                    <label class="label"><?php echo $membershipData['remaining_number_product'] ?></label>    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="value">
+                                    <label class="label"><?php echo __('Paid Status:') ?></label>
+                                </td>
+                                <td class="value">
+                                    <label class="label"><?php echo $membershipData['paid_status']==1?__('Paid'):__('Not Pay') ?></label>    
+                                </td>
+                            </tr>
+                            <tr style="background:#00AEEF">
+                                <td class="value">
+                                    <label class="label"><?php echo __('Paid Total:') ?></label>
+                                </td>
+                                <td class="value">
+                                    <label class="label"><?php echo \Magento\Framework\App\ObjectManager::getInstance()->get('Magento\Framework\Pricing\Helper\Data')->currency(@number_format($membershipData['paid_total'],2),true,false) ?></label>    
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            <?php }else{ ?>
+                <div class="hor-scroll">
+                    <table cellspacing="0" class="form-list">
+                        <tbody>
+                            <tr>
+                                <td class="value">
+                                    <label class="label"><?php echo __('Please purchase the membership for use all future') ?></label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            <?php } ?>
+        </div>
+        <div class="membership_product">
+            <?php if (!$_productCollection->count()): ?>
+                <div class="message info empty"><div><?php echo __('We can\'t find products matching the selection.') ?></div></div>
+            <?php else: ?>
+            	<div class="mk-newest-products">
+            		<?php echo $block->getToolbarHtml() ?>
+            		<?php echo $block->getAdditionalHtml() ?>
+            		<?php
+                		if ($block->getMode() == 'grid') {
+                			$viewMode = 'grid';
+                			$image = 'category_page_grid';
+                			$showDescription = false;
+                			$templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+                		} else {
+                			$viewMode = 'list';
+                			$image = 'category_page_list';
+                			$showDescription = true;
+                			$templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::FULL_VIEW;
+                		}
+                		$pos = $block->getPositioned();
+            		?>
+            		<div class="products wrapper <?php echo $viewMode; ?> products-<?php echo $viewMode; ?>">
+            			<?php $iterator = 1; ?>
+            			<ol class="products list items product-items">
+            				<?php foreach ($_productCollection as $_product): ?>
+            					<?php echo($iterator++ == 1) ? '<li class="item product product-item" style="width: 24%">' : '</li><li class="item product product-item" style="width: 24%">' ?>
+            					<div class="product-item-info" data-container="product-grid" style="width: 80%;">
+            						<?php
+                						$productImage = $block->getImage($_product, $image);
+                						if ($pos != null) {
+                							$position = ' style="left:' . $productImage->getWidth() . 'px;' . 'top:' . $productImage->getHeight() . 'px;"';
+                						}
+            						?>
+            						<?php echo $productImage->toHtml(); ?>
+            						<div class="product details product-item-details">
+            							<?php $_productNameStripped = $block->stripTags($_product->getName(), null, true); ?>
+            							<strong class="product name product-item-name" style="font-size:23px">
+            								<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
+            							</strong>
+                                        <div class="detail_membership" style="font-size: 11px">
+                                            <div class="membership_time">
+                                                <?php echo 'Time: '.$_product->getTime().' Days'; ?>
+                                            </div>
+                                            <div class="membership_number">
+                                                <?php echo 'Number product upload each month: '.$_product->getNumber(); ?>
+                                            </div>
+                                            <div class="membership_commission">
+                                                <?php echo 'Commission: '.$_product->getCommission().'%'; ?>
+                                            </div>
+                                            <div class="membership_price">
+                                                <span>
+                                                    <strong>
+                                                        <?php echo 'Price: '.\Magento\Framework\App\ObjectManager::getInstance()->get('Magento\Framework\Pricing\Helper\Data')->currency(@number_format($_product->getPrice(),2),true,false); ?>
+                                                    </strong>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        
+            							<?php //echo $block->getProductPrice($_product) ?>
+            							<?php //echo $block->getProductDetailsHtml($_product); ?>
+                                        
+            							<div class="product-item-inner">
+            								<div class="product actions product-item-actions"<?php echo @strpos($pos, $viewMode . '-actions') ? $position : ''; ?>>
+            									<div class="actions-primary"<?php echo @strpos($pos, $viewMode . '-primary') ? $position : ''; ?>>
+            										<?php if ($_product->isSaleable()): ?>
+            											<?php $postParams = $block->getAddToCartPostParams($_product); ?>
+            											<form data-role="tocart-form" action="<?php echo $postParams['action']; ?>" method="post">
+                                                            <input type="hidden" name="product" value="<?php echo $postParams['data']['product']; ?>">
+                                                            <input type="hidden" name="<?php echo Action::PARAM_NAME_URL_ENCODED; ?>" value="<?php echo $postParams['data'][Action::PARAM_NAME_URL_ENCODED]; ?>">
+                                                            <?php echo $block->getBlockHtml('formkey')?>
+                                                            <button type="submit"
+                                                                title="<?php echo $block->escapeHtml(__('Add to Cart')); ?>"
+                                                                class="action tocart primary"
+                                                                style="margin-top: 20px">
+                                                                <span><?php echo __('Add to Cart') ?></span>
+                                                            </button>
+            											</form>
+            										<?php else: ?>
+            											<?php if ($_product->getIsSalable()): ?>
+            												<div class="stock available"><span><?php echo __('In stock') ?></span></div>
+            											<?php else: ?>
+            												<div class="stock unavailable"><span><?php echo __('Out of stock') ?></span></div>
+            											<?php endif; ?>
+            										<?php endif; ?>
+            									</div>
+            								</div>
+            								<?php if ($showDescription):?>
+            									<div class="product description product-item-description">
+            										<?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
+            										<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped ?>" class="action more">
+                                                        <?php echo __('Learn More') ?>
+                                                    </a>
+            									</div>
+            								<?php endif; ?>
+            							</div>
+            						</div>
+            					</div>
+            					<?php echo($iterator == count($_productCollection)+1) ? '</li>' : '' ?>
+            				<?php endforeach; ?>
+                        </ol>
+            		</div>
+            		<?php echo $block->getToolbarHtml() ?>
+            	</div>
+            <?php endif; ?>
+        </div>
+        <div class="actions-toolbar">
+            <div style="float: right;" class="primary">
+                <a href="javascript:;" onclick="javascript: window.history.back();" class="left"><?php echo __('Back') ?></a>
+            </div>
+        </div>
+    </fieldset>
+</div>
+<script>
+    require([
+        "jquery",
+        'Magento_Ui/js/modal/confirm',
+        'Magento_Ui/js/modal/alert',
+        "mage/calendar"
+    ], function($,confirmation,alert){
+        $('.seller_membership').addClass('current');
+    });
+    require([
+        "jquery",
+        "mage/mage"
+    ], function($){
+        var dataForm = $('#membership-form');
+        dataForm.mage('validation', {});
+        var _action = dataForm.attr('action');
+    });
+</script>

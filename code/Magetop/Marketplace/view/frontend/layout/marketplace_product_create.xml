@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author      Magetop Developer (Hau)
+ * @package     Magento Multi Vendor Marketplace
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="market-layout" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<update handle="customer_account"/>
+	<update handle="marketplace_product_grouped"/>
+	<update handle="mk_default"/>
+	<body>
+		<referenceContainer name="market.content">
+			<block class="Magetop\Marketplace\Block\Product\AddProduct" name="magetop_marketplace.seller_product_add_new" template="product/add/form.phtml" cacheable="false">
+				<block class="Magetop\Marketplace\Block\Product\Categories" name="categoriecollection" template="product/add/categorytree.phtml"/>
+				<block class="Magetop\Marketplace\Block\Product\Gallery" name="magetop_gallery" template="product/add/upload.phtml"/>
+				<block class="Magetop\Marketplace\Block\Product\Price\Tier" name="magetop_price_tier" template="product/price/tier.phtml"/>				
+				<block class="Magetop\Marketplace\Block\Product\CustomOpt\Options" name="magetop_custom_options" template="product/customoptions/options.phtml">
+					<block class="Magetop\Marketplace\Block\Product\CustomOpt\Options\Option" name="magetop_options_box" template="product/customoptions/options/option.phtml"/>
+				</block>
+				<block class="Magetop\Marketplace\Block\Product\Downloadable" name="marketplace_product_downloadable_item" template="product/downloadable.phtml">
+					<block class="Magetop\Marketplace\Block\Product\Downloadable\Links" name="marketplace_product_downloadable_links" template="product/downloadable/links.phtml"/>
+					<block class="Magetop\Marketplace\Block\Product\Downloadable\Samples" name="marketplace_product_downloadable_samples" template="product/downloadable/samples.phtml"/>
+				</block>
+				<block class="Magetop\Marketplace\Block\Product\Bundle" name="marketplace_product_bundle_container"/>
+				<block class="Magetop\Marketplace\Block\Product\Configurable\Config" name="magetop_product_config_container" template="product/configurable/config.phtml">
+					<block class="Magetop\Marketplace\Block\Product\Configurable\Config\Matrix" template="product/configurable/matrix.phtml" as="magematrix">
+						<block class="Magetop\Marketplace\Block\Product\Component\StepsWizard" name="variation-steps-wizard" template="Magetop_Marketplace::product/configurable/stepswizard.phtml">
+							<block class="Magetop\Marketplace\Block\Product\Configurable\Steps\SelectAttributes" name="step1" template="Magetop_Marketplace::product/configurable/attribute/steps/select_attributes.phtml">
+								<arguments>
+									<argument name="config" xsi:type="array">
+										<item name="multiselectName" xsi:type="string">magetopmarket_product_attributes_listing.magetopmarket_product_attributes_listing.product_attributes_columns.ids</item>
+										<item name="providerName" xsi:type="string">magetopmarket_product_attributes_listing.magetopmarket_product_attributes_listing_data_source</item>
+									</argument>
+								</arguments>
+								<uiComponent name="magetopmarket_product_attributes_listing"/>
+							</block>
+							<block class="Magetop\Marketplace\Block\Product\Configurable\Steps\AttributeValues" name="step2" template="Magetop_Marketplace::product/configurable/attribute/steps/attributes_values.phtml">
+								<arguments>
+									<argument name="config" xsi:type="array">
+										<item name="dataScope" xsi:type="string">productFormConfigurable</item>
+									</argument>
+								</arguments>
+							</block>
+							<block class="Magetop\Marketplace\Block\Product\Configurable\Steps\Bulk" name="step3" template="Magetop_Marketplace::product/configurable/attribute/steps/bulk.phtml"/>
+							<block class="Magetop\Marketplace\Block\Product\Configurable\Steps\Summary" name="step4" template="Magetop_Marketplace::product/configurable/attribute/steps/summary.phtml"/>
+						</block>
+					</block>
+				</block>
+			</block>
+		</referenceContainer>
+    </body>
+</page>

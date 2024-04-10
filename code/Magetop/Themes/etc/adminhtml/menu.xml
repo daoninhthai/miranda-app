@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- /**
+ * Magetop 
+ * @category    Magetop 
+ * @copyright   Copyright (c) 2017 Magetop (http://magetop.com/) 
+ * @Author: Hanh Nguyen<hanhkaka.nguyen37@gamil.com>
+ * @@Create Date: 2017-05-5
+ * @@Modify Date: 2017-06-05
+ */ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+    	<add id="bigmarket" title="Bigmarket" module="Magetop_Themes" sortOrder="15" resource="Magetop_Themes::magetop"/>
+	    <add id="Magetop_Themes::themes" title="Theme" module="Magetop_Themes" sortOrder="10" parent="bigmarket" resource="Magetop_Themes::themes"/>
+		<add id="Magetop_Themes::themes_config" title="Configurations" module="Magetop_Themes" sortOrder="10" parent="Magetop_Themes::themes" action="adminhtml/system_config/edit/section/themes" resource="Magetop_Themes::configuration"/>
+		<add id="Magetop_Themes::themes_import" title="Import" module="Magetop_Themes" sortOrder="10" parent="Magetop_Themes::themes" action="themes/import/index" resource="Magetop_Themes::themes_import"/>
+    </menu>
+</config>

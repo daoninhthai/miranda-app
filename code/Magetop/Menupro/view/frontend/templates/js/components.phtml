@@ -1,0 +1,31 @@
+<?php 
+/**
+ * Magetop 
+ * @category    Magetop 
+ * @copyright   Copyright (c) 2017 Magetop (http://magetop.com/) 
+ * @Author: Hanh Nguyen<hanhkaka.nguyen37@gamil.com>
+ * @@Create Date: 2013-05-5
+ * @@Modify Date: 2017-06-05
+ */
+/*--------------------*/
+$_helper = $this->helper('Magetop\Menupro\Helper\Data');
+$cfg = $_helper->getConfig('menupro/font');
+$html ='';
+
+/* google Font */
+if($cfg['google']) $html  = '<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family='.str_replace(' ', '+', $cfg['google']).':300,400,800,600,700" media="all" />';
+$html  .= "\n";
+/* Base Css */
+$html  .= '<style type="text/css">';
+if($cfg['google']) $html .= '.menu-creator-pro{font-family:'.$cfg['google'].'}';
+if($cfg['size']) $html .= '.menu-creator-pro li{font-size:'.$cfg['size'].'}';
+if($cfg['size1']) $html .= '.menu-creator-pro>li{font-size:'.$cfg['size1'].'}';
+if($cfg['padding']) $html .= '@media screen and (min-width: 1200px){.menu-creator-pro>li>a{padding:0 '.$cfg['padding'].'}}';
+if($cfg['line_height']) $html .= '.menu-creator-pro>li{line-height:'.$cfg['line_height'].'}.menu-creator-pro li.col_100 > span.fa-angle-down{margin-top:-'.$cfg['line_height'].'}';
+if($cfg['text_transform']) $html .= '.mcp-wrapper .menu-creator-pro>li>a{text-transform: uppercase}';
+$html  .= '</style>';
+echo $html;
+?>
+<script type="text/javascript">
+require(['jquery','mcp_responsive_menu']);
+</script>

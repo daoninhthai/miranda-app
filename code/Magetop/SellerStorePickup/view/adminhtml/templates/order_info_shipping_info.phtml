@@ -1,0 +1,23 @@
+<div id="store-pickup">
+    <?php 
+        $data = explode(',',$block->getStorePickup()??'');
+        foreach($data as $dt){
+            $value = explode('-',$dt??'');
+            $seller = \Magento\Framework\App\ObjectManager::getInstance()->create('Magetop\Marketplace\Model\Sellers')->getCollection()->addFieldToFilter('user_id',$value[0])->getFirstItem();
+            if($seller->getData('storetitle') && count($value)>1){
+    ?>
+                <span class=""><?php echo __('Seller : ').$seller->getData('storetitle') ?> - <?php echo $value[1] ?></span><br />
+    <?php
+            }
+        }
+    ?>
+</div>
+<script type="text/javascript">
+    require([
+        'jquery'
+    ],function($) {
+            var element = $('#store-pickup').detach();
+            $('.order-shipping-method').append(element);
+        }
+    );
+</script>

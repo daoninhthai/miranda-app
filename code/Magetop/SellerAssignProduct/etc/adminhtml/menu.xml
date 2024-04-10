@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author      Magetop Developer (Kien)
+ * @package     Magento Multi Vendor Marketplace_Seller_Assign_Product
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magetop_SellerAssignProduct::sellerassignproduct" title="Manage Seller's Assign Product" module="Magetop_SellerAssignProduct" parent="Magetop_Marketplace::catalog" sortOrder="20" action="magetop/sellerassignproduct/index" resource="Magetop_SellerAssignProduct::sellerassignproduct"/>
+    </menu>
+</config>

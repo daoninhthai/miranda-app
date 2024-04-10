@@ -1,0 +1,44 @@
+<?php
+/**
+ * Magetop 
+ * @category    Magetop 
+ * @copyright   Copyright (c) 2017 Magetop (http://magetop.com/) 
+ * @Author: Hanh Nguyen<hanhkaka.nguyen37@gamil.com>
+ * @@Create Date: 2013-05-5
+ * @@Modify Date: 2017-06-05
+ */
+$groupId = $block->getGroupmenuId ();
+$pushPath = $block->getViewFileUrl('Magetop_Menupro::pushnew/css');
+$responsiveStyle = explode("-", $block->getData('responsive_style'));
+?>
+<link rel="stylesheet" media="all" type="text/css" href="<?php echo $pushPath ?>/icons.css" />
+<link rel="stylesheet" media="all" type="text/css" href="<?php echo $pushPath ?>/component.css" />
+<div class="multi-level-push-menu">
+	<a href="#" id="trigger-<?php echo $groupId ?>" class="menu-trigger"><?php echo __('Menu') ?></a>
+</div>
+<div class="mcp-pushnew-menu">
+	<div class="mp-pusher" id="mp-pusher">
+		<div id="mp-menu-<?php echo $groupId ?>" class="mp-menu">
+			<div class="mp-level">
+				<h2 class="mb-icon mb-icon-world"><?php echo __('All Categories') ?></h2>
+				<?php if ($this->helper('Magetop\Menupro\Helper\Data')->isDevelopMode()) : ?>
+					<?php echo $block->getPushnewMenuHtml($groupId) ?>
+				<?php else : ?>
+					<?php echo $block->getStaticHtml($groupId); ?>
+				<?php endif; ?>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	require([
+		'jquery',
+		'mcp_modernizr',
+		'mcp_mlpushmenu'
+		
+	],function($){
+        new mlPushMenu( document.getElementById( 'mp-menu-<?php echo $groupId ?>' ), document.getElementById( 'trigger-<?php echo $groupId ?>' ), {
+			type : '<?php echo end($responsiveStyle) ?>'
+		} );
+    });
+</script>

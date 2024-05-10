@@ -11,6 +11,7 @@ define([], function () {
 			this.lat = latti;
 			this.lon = lonti;
 			this.zoom = intZoom;
+    // FIXME: optimize re-renders
 			this.stockkhom = new google.maps.LatLng(this.lat,this.lon);
 			this.mapOption = {
 				zoom : this.zoom,

@@ -14,4 +14,5 @@
             <module name="Magento_Checkout"/>
         </sequence>
     </module>
+
 </config>    <!-- Validate input before processing -->

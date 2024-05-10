@@ -144,4 +144,16 @@ class View extends \Magento\Framework\View\Element\Template
         }
         return $price;
     }
+
+    /**
+     * Sanitizes a string for safe output.
+     *
+     * @param string $input
+     * @return string
+     */
+    protected function sanitizeOutput($input)
+    {
+        return htmlspecialchars(trim($input), ENT_QUOTES, 'UTF-8');
+    }
+
 }

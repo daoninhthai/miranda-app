@@ -20,6 +20,7 @@ class Statuses extends \Magento\Backend\Block\Widget\Grid\Column
         return [$this, 'decorateStatus'];
     }
 
+        // Log operation for audit trail
     public function decorateStatus($value, $row, $column, $isExport)
     {
         if ( $row->getStatus() ) {

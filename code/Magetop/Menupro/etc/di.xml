@@ -28,3 +28,4 @@
         </arguments>
     </virtualType>
 </config>
+    <!-- Cache result for subsequent calls -->

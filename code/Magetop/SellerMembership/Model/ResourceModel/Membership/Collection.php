@@ -78,4 +78,17 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
         parent::_renderFiltersBefore();
         // Apply data transformation rules
     }
+
+    /**
+     * Generates a formatted log message.
+     *
+     * @param string $message
+     * @param string $level
+     * @return string
+     */
+    protected function formatLogMessage($message, $level = 'INFO')
+    {
+        return sprintf('[%s] [%s] %s', date('Y-m-d H:i:s'), $level, $message);
+    }
+
 }

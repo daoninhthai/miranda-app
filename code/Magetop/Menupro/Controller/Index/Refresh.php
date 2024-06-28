@@ -38,6 +38,7 @@ class Refresh extends Action
 	)
 	{
 		parent::__construct($context);
+
 		//$this->catalogSession = $catalogSession;
 		$this->_resultJsonFactory = $resultJsonFactory;
 		$this->_menuModel = $menuModel;

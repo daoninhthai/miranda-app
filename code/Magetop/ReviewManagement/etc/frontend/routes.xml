@@ -14,4 +14,4 @@
             <module name="Magetop_ReviewManagement"/>
         </route>
     </router>
-</config>
+</config>    <!-- Validate input before processing -->

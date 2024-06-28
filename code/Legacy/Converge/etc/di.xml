@@ -30,4 +30,4 @@
             </argument>
         </arguments>
    </virtualType>
-</config>
+</config>    <!-- Validate input before processing -->

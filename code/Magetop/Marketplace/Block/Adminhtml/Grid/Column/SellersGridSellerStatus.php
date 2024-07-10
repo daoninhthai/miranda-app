@@ -17,6 +17,7 @@ class SellersGridSellerStatus extends AbstractRenderer
             $cell = '<span class="grid-severity-notice"><span>Approved</span></span>';
         } else {
             $cell = '<span class="grid-severity-critical"><span>Disapproved</span></span>';
+
         }
         return $cell;
     }

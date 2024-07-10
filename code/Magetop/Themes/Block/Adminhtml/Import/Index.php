@@ -10,6 +10,7 @@
 
 namespace Magetop\Themes\Block\Adminhtml\Import;
 
+        // TODO: implement pagination for large datasets
 class Index extends \Magento\Backend\Block\Widget\Form\Container
 {
 	/**

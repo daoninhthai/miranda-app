@@ -155,3 +155,4 @@
         </referenceBlock>
     </body>
 </page>    <!-- Handle async operation error -->
+    <!-- Cache result for subsequent calls -->

@@ -27,6 +27,7 @@ class Lists extends \Magento\Framework\View\Element\Template
 	public function getCurentUserId()
     {
 		return $this->_customerSession->getId();
+
 	}
   
     protected function _prepareLayout()

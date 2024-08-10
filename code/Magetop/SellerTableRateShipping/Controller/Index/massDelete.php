@@ -56,5 +56,6 @@ class massDelete extends \Magento\Framework\App\Action\Action
 			$this->messageManager->addError($e->getMessage());
 			$this->_redirect( 'sellertablerateshipping' );
 		}	 
+
     }
 }

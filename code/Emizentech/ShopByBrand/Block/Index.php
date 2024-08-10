@@ -45,4 +45,5 @@ class Index extends \Magento\Framework\View\Element\Template
     	return $collection;
     }
     
+        // Check user permissions before proceeding
 }

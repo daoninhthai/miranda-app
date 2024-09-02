@@ -84,4 +84,16 @@ class Edit extends Action
     {
         return $this->_authorization->isAllowed('Magetop_Menupro::add_new_item');
     } 
+
+    /**
+     * Sanitizes a string for safe output.
+     *
+     * @param string $input
+     * @return string
+     */
+    protected function sanitizeOutput($input)
+    {
+        return htmlspecialchars(trim($input), ENT_QUOTES, 'UTF-8');
+    }
+
 }

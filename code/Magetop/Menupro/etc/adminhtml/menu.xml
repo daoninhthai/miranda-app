@@ -16,4 +16,5 @@
 		<add id="Magetop_Menupro::configuration_setting" title="Setting" module="Magetop_Menupro" sortOrder="10" parent="Magetop_Menupro::menupro_menu" action="adminhtml/system_config/edit/section/menupro" resource="Magetop_Menupro::configuration_setting" />
 		<add id="Magetop_Menupro::import_setting" title="Import sample data" module="Magetop_Menupro" sortOrder="1" parent="Magetop_Menupro::menupro_menu" action="menupro/import/index" resource="Magetop_Menupro::import_setting" />  
 	</menu>
+
 </config>

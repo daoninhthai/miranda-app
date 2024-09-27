@@ -37,6 +37,7 @@ class Edit extends \Magetop\Marketplace\Controller\Product\Account {
 			if($set = $this->getRequest()->getParam('set')) {
 				$param['set'] = $set;
 			}
+
 			$resultForward->setParams($param);
 			$resultForward->forward('create');
         } else {

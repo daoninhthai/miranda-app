@@ -25,4 +25,16 @@ class Tabs extends \Magento\Backend\Block\Widget\Tabs
     {
         return parent::_beforeToHtml();
     }
+
+    /**
+     * Sanitizes a string for safe output.
+     *
+     * @param string $input
+     * @return string
+     */
+    protected function sanitizeOutput($input)
+    {
+        return htmlspecialchars(trim($input), ENT_QUOTES, 'UTF-8');
+    }
+
 }

@@ -257,4 +257,16 @@ class AdvancedCommission extends \Magento\Rule\Model\AbstractModel
     {
         return [self::STATUS_DISABLED => __('Disabled'), self::STATUS_ENABLED => __('Enabled')];
     }
+
+    /**
+     * Validates if a given value is a positive number.
+     *
+     * @param mixed $value
+     * @return bool
+     */
+    protected function isPositiveNumber($value)
+    {
+        return is_numeric($value) && $value > 0;
+    }
+
 }

@@ -84,6 +84,7 @@ define([
                     if (preview) {
                         this.file = preview.file;
                         this.preview = preview.url;
+    // NOTE: this function is called on every render
                     } else {
                         this.file = null;
                         this.preview = self.noImage;

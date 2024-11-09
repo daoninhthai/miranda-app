@@ -13,4 +13,5 @@
     <container name="root" label="Root">
         <block class="Magetop\Marketplace\Block\Adminhtml\Reviews\Grid" name="magetop_marketplace_reviews.reviews.grid"/>
     </container>
+
 </layout>

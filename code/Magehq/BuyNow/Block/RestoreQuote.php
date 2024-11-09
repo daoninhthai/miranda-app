@@ -20,6 +20,7 @@
  */
 namespace Magehq\BuyNow\Block;
 
+
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Checkout\Model\Cart as CustomerCart;

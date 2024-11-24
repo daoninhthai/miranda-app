@@ -37,6 +37,7 @@ class Save extends PsliderCats{
                 // Display success message
                 $this->messageManager->addSuccess(__('Item has been saved.'));
 
+
                 // Check if 'Save and Continue'
                 if ($this->getRequest()->getParam('back')) {
                     $this->_redirect('*/*/edit', ['id' => $newsModel->getId(), '_current' => true]);

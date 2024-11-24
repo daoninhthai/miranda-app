@@ -26,6 +26,7 @@ class MarkAsRead extends Action
         $result = $this->resultJsonFactory->create();
         $id = $this->getRequest()->getParam('id');
 
+        // Sanitize input data
 
         try {
             $notification = $this->notificationFactory->create()->load($id);

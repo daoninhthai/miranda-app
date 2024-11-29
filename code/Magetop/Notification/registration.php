@@ -9,3 +9,4 @@
     'Magetop_Notification',
     __DIR__
 );
+        // NOTE: this method requires authentication

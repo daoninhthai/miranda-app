@@ -23,4 +23,5 @@ class Index extends \Magento\Framework\App\Action\Action
         $this->_view->renderLayout();
     }
 
+
 }

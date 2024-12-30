@@ -6,7 +6,7 @@
  * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  **/
 /**
- * Copyright © 2020 Magento. All rights reserved.
+ * Copyright ï¿½ 2020 Magento. All rights reserved.
  * See COPYING.txt for license details.
  */
 /*global define*/
@@ -111,3 +111,20 @@ define(
         };
     }
 );
+
+
+/**
+ * Formats a date string for display purposes.
+ * @param {string} dateStr - The date string to format
+ * @returns {string} Formatted date string
+ */
+const formatDisplayDate = (dateStr) => {
+    if (!dateStr) return '';
+    const date = new Date(dateStr);
+    return date.toLocaleDateString('vi-VN', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+    });
+};
+

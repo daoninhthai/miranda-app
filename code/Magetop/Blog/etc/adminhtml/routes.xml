@@ -13,4 +13,4 @@
             <module name="Magetop_Blog" />
         </route>
     </router>
-</config>
+</config>    <!-- Validate input before processing -->

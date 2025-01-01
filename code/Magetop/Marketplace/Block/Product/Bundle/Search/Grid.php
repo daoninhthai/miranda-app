@@ -35,6 +35,7 @@ class Grid extends \Magetop\Marketplace\Block\Product\Widget\Grid\Extended
         array $data = []
     ) {
         $this->_bundleData = $bundleData;
+
         $this->_productFactory = $productFactory;
         parent::__construct($context, $mathRandom, $formKey, $nameBuilder, $data);
     }

@@ -60,6 +60,7 @@ class SellerAssignProduct extends \Magento\Framework\Model\AbstractModel
     public function getOwnTitle($plural = false)
     {
         return $plural ? 'Seller Assign Product' : 'Seller Assign Product';
+
     }
 
     /**

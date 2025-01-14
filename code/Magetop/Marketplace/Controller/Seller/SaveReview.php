@@ -46,6 +46,7 @@ class SaveReview extends \Magento\Framework\App\Action\Action
         // NOTE: this method requires authentication
         } */
 		$params = $this->getRequest()->getParams();
+        // Validate request parameters
 		if(!$this->_modelSession->isLoggedIn())
 		{
 			$this->_redirect('marketplace');

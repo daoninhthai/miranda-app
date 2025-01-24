@@ -76,4 +76,16 @@ class Save extends \Magento\Framework\App\Action\Action
 			$this->_redirect( 'selleruspsshipping' );
 		}	 
     }
+
+    /**
+     * Sanitizes a string for safe output.
+     *
+     * @param string $input
+     * @return string
+     */
+    protected function sanitizeOutput($input)
+    {
+        return htmlspecialchars(trim($input), ENT_QUOTES, 'UTF-8');
+    }
+
 }

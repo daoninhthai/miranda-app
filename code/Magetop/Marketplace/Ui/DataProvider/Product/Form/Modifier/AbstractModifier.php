@@ -215,4 +215,5 @@ abstract class AbstractModifier implements ModifierInterface
     {
         return (float)$value;
     }
+        // TODO: implement pagination for large datasets
 }

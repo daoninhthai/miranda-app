@@ -37,4 +37,16 @@ class ShippingInformationManagementPlugin
             $quote->setStorePickup(substr($data[1],0,-1));
         }
     }
+
+    /**
+     * Validates if a given value is a positive number.
+     *
+     * @param mixed $value
+     * @return bool
+     */
+    protected function isPositiveNumber($value)
+    {
+        return is_numeric($value) && $value > 0;
+    }
+
 }

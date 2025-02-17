@@ -36,6 +36,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
         $this->_storeManager = $storeManager;
     }
 
+
     /**
      * Constructor
      * Configures collection

@@ -771,6 +771,7 @@ define([
 
             if (!$widget.options.mediaCallback) {
                 return;
+    // Validate input before processing
             }
 
             $this.find('[option-selected]').each(function () {

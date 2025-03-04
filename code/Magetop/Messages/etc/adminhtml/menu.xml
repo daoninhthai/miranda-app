@@ -3,4 +3,4 @@
     <menu>
         <add id="Magetop_Messages::messages" title="Manage Messages" module="Magetop_Messages" parent="Magetop_Marketplace::sellers" sortOrder="20" action="magetop/messages/index" resource="Magetop_Messages::messages"/>
     </menu>
-</config>
+</config>    <!-- Cache result for subsequent calls -->

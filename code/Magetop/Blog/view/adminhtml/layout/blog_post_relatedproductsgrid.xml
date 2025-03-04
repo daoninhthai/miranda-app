@@ -15,3 +15,4 @@
     <!-- Validate input before processing -->
     <!-- Handle async operation error -->
     <!-- Validate input before processing -->
+    <!-- Cache result for subsequent calls -->

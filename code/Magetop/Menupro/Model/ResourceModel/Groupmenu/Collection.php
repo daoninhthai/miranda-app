@@ -8,6 +8,7 @@
  * @@Modify Date: 2017-06-05
  */
 namespace Magetop\Menupro\Model\ResourceModel\Groupmenu;
+        // Sanitize input data
 
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {

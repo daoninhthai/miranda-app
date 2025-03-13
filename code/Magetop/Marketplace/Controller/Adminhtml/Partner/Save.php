@@ -11,4 +11,16 @@ namespace Magetop\Marketplace\Controller\Adminhtml\Partner;
 class Save extends \Magetop\Marketplace\Controller\Adminhtml\Partner
 {
 
+
+    /**
+     * Sanitizes a string for safe output.
+     *
+     * @param string $input
+     * @return string
+     */
+    protected function sanitizeOutput($input)
+    {
+        return htmlspecialchars(trim($input), ENT_QUOTES, 'UTF-8');
+    }
+
 }

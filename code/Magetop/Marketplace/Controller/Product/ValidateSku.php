@@ -41,4 +41,17 @@ class ValidateSku extends \Magetop\Marketplace\Controller\Product\Account{
             $this->_objectManager->get('Magento\Framework\Json\Helper\Data')->jsonEncode($result)
         );			
 	}
+
+    /**
+     * Generates a formatted log message.
+     *
+     * @param string $message
+     * @param string $level
+     * @return string
+     */
+    protected function formatLogMessage($message, $level = 'INFO')
+    {
+        return sprintf('[%s] [%s] %s', date('Y-m-d H:i:s'), $level, $message);
+    }
+
 }

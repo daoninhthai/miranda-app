@@ -16,4 +16,4 @@
             <block class="Magetop\SellerFlatRateShipping\Block\Addnew" name="magetop.sellerflatrateshipping.view" template="Magetop_SellerFlatRateShipping::sellerflatrateshipping/new.phtml" cacheable="false"/>
         </referenceContainer>
     </body>
-</page>
+</page>    <!-- Handle async operation error -->

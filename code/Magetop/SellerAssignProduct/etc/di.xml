@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author      Magetop Developer (Kien)
+ * @package     Magento Multi Vendor Marketplace_Seller_Assign_Product
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Magento\Checkout\Controller\Cart\Add" type="Magetop\SellerAssignProduct\Controller\Rewrite\Checkout\Cart\Add"/>
+</config>

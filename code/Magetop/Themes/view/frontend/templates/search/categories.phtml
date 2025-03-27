@@ -1,0 +1,11 @@
+<?php $columnsLimit = isset($_GET['cat']) ? $_GET['cat'] : 0; ?>
+<?php $_menu = $block->getHtml('level-top', 'mbSearch', $columnsLimit) ?>
+
+<div class="choose_category">
+	<div class="select-box">
+		<select id="choose_category" name="cat">
+			<option value="0"><?php echo __('All Categories'); ?></option>
+			<?php /* @escapeNotVerified */ echo $_menu; ?>
+		</select>
+	</div>
+</div>

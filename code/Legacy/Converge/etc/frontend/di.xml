@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Payment\Model\CcGenericConfigProvider">
+        <arguments>
+            <argument name="methodCodes" xsi:type="array">
+                <item name="legacy_converge" xsi:type="string">legacy_converge</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Enable Legacy Converge Payment Method for Guest Checkout -->
+    <type name="Magento\Payment\Model\Method\AbstractMethod">
+        <arguments>
+            <argument name="method" xsi:type="string">legacy_converge</argument>
+            <argument name="isAvailableForGuest" xsi:type="boolean">true</argument> <!-- Allow guest checkout -->
+        </arguments>
+    </type>
+</config>

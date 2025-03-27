@@ -1,0 +1,142 @@
+<!--
+/**
+ * @author      Magetop Developer (Kien)
+ * @package     Magento Multi Vendor Marketplace_Multiple_Usps_Shipping
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<?php
+    use Magento\Framework\App\Action\Action;
+    $om  = \Magento\Framework\App\ObjectManager::getInstance();
+    $_selleruspsshippingData = $block->getCollection()->getData();
+    if(!$_selleruspsshippingData){
+        $_selleruspsshippingData['id'] = '';
+        $_selleruspsshippingData['enable'] = 0;
+        $_selleruspsshippingData['userid'] = '';
+        $_selleruspsshippingData['password'] = '';
+        $_selleruspsshippingData['allowed_methods'] = '';
+        $_selleruspsshippingData['free_method'] = '';
+        $_selleruspsshippingData['free_shipping_enable'] = 0;
+        $_selleruspsshippingData['free_shipping_subtotal'] = '';
+        $_selleruspsshippingData['sallowspecific'] = '';
+        $_selleruspsshippingData['specificcountry'] = '';
+    }
+?>
+<form class="form mgt-theme-div" action="<?php /* @escapeNotVerified */ echo $block->getUrl('selleruspsshipping/index/save', ['_secure' => $this->getRequest()->isSecure()]) ?>" method="post" id="form-validate" data-mage-init='{"validation":{}}' enctype="multipart/form-data" data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>" autocomplete="off">
+	<legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Marketplace Usps Configuration') ?></span>
+    	<div class="primary" style="float: right;">
+            <button type="submit" class="action continue primary" title="<?php echo __('Continue') ?>"><span><?php echo __('Save') ?></span></button>
+        </div>
+    </legend>
+    <fieldset class="fieldset info">
+        <input type="hidden" value="<?php echo $_selleruspsshippingData['id'] ?>" name="id"/>
+		<?php echo $block->getBlockHtml('formkey')?>
+        <div class="field required">
+            <label class="label"><span><?php echo __("Enable"); ?>:</span></label>
+            <div class="control">
+                 <select class="input-select" name="enable">
+                    <option value="1" <?php echo $_selleruspsshippingData['enable']==1?'selected':'' ?>><?php echo __('Yes'); ?></option>
+                    <option value="0" <?php echo $_selleruspsshippingData['enable']==0?'selected':'' ?>><?php echo __('No'); ?></option>
+                 </select>
+            </div>
+        </div>
+		<div class="field required">
+        	<label class="label"><span><?php echo __("User ID"); ?>:</span></label>
+            <div class="control">
+                <input id="userid" class="required-entry" type="text" name="userid" data-validate="{required:true}" value="<?php echo $_selleruspsshippingData['userid'] ?>" />
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label"><span><?php echo __("Password"); ?>:</span></label>
+            <div class="control">
+                <input id="password" type="password" name="password" data-validate="{required:true}" value="<?php echo $_selleruspsshippingData['password'] ?>" />
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label"><span><?php echo __("Allowed Methods"); ?>:</span></label>
+            <div class="control">
+                <?php $data_allowed_methods = explode(',', $_selleruspsshippingData['allowed_methods']??'') ?>
+                <select class="input-select" name="allowed_methods[]" multiple="" style="height: 200px">
+                    <?php
+                        $allowed_methods = $om->create('Magento\Usps\Model\Source\Method')->toOptionArray();
+                        foreach($allowed_methods as $key => $val){
+                    ?>
+                        <option value="<?php echo $val['value']; ?>" <?php echo in_array($val['value'],$data_allowed_methods)?'selected':'' ?>><?php echo $val['label']; ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label"><span><?php echo __("Free Method"); ?>:</span></label>
+            <div class="control">
+                <select class="input-select" name="free_method">
+                    <?php
+                        $free_method = $om->create('Magento\Usps\Model\Source\Freemethod')->toOptionArray();
+                        foreach($free_method as $key => $val){
+                    ?>
+                        <option value="<?php echo $val['value']; ?>" <?php echo $_selleruspsshippingData['free_method']==$val['value']?'selected':'' ?>><?php echo $val['label']; ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label"><span><?php echo __("Free Shipping Amount Threshold"); ?>:</span></label>
+            <div class="control">
+                 <select class="input-select" name="free_shipping_enable">
+                    <option value="1" <?php echo $_selleruspsshippingData['free_shipping_enable']==1?'selected':'' ?>><?php echo __('Yes'); ?></option>
+                    <option value="0" <?php echo $_selleruspsshippingData['free_shipping_enable']==0?'selected':'' ?>><?php echo __('No'); ?></option>
+                 </select>
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label"><span><?php echo __("Free Shipping Amount Threshold"); ?>:</span></label>
+            <div class="control">
+                <input id="free_shipping_subtotal" type="text" name="free_shipping_subtotal" data-validate="{required:true}" value="<?php echo $_selleruspsshippingData['free_shipping_subtotal'] ?>" class="validate-number validate-zero-or-greater" />
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label"><span><?php echo __("Ship to Applicable Countries"); ?>:</span></label>
+            <div class="control">
+                <select class="input-select" id="sallowspecific" name="sallowspecific">
+                    <?php
+                        $sallowspecific = $om->create('Magento\Shipping\Model\Config\Source\Allspecificcountries')->toOptionArray();
+                        foreach($sallowspecific as $key => $val){
+                    ?>
+                        <option value="<?php echo $val['value']; ?>" <?php echo $_selleruspsshippingData['sallowspecific']==$val['value']?'selected':'' ?>><?php echo $val['label']; ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+        </div>
+        <div class="field required">
+            <label class="label"><span><?php echo __("Ship to Specific Countries"); ?>:</span></label>
+            <div class="control">
+                <?php $data_specificcountry = explode(',', $_selleruspsshippingData['specificcountry']??'') ?>            
+                <select class="input-select" id="specificcountry" name="specificcountry[]" multiple="" style="height: 200px" <?php echo $_selleruspsshippingData['sallowspecific']==0?'disabled':'' ?>>
+                    <?php
+                        $specificcountry = $om->create('Magento\Directory\Model\Config\Source\Country')->toOptionArray();
+                        foreach($specificcountry as $key => $val){
+                            if($key != 0){
+                    ?>
+                                <option value="<?php echo $val['value']; ?>" <?php echo in_array($val['value'],$data_specificcountry)?'selected':'' ?>><?php echo $val['label']; ?></option>
+                    <?php 
+                            }
+                        } 
+                    ?>
+                </select>
+            </div>
+        </div>
+        <script>
+    		require(['jquery','mage/mage'],function($){
+    			$('#sallowspecific').change(function(){
+                    if($(this).val() == 0){
+                        $('#specificcountry').attr('disabled','');
+                    }else{
+                        $('#specificcountry').removeAttr('disabled','');
+                    }
+    			});
+    		});
+    	</script>
+	</fieldset>
+</form>

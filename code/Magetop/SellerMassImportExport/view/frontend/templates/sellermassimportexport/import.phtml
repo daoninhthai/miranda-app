@@ -1,0 +1,241 @@
+<!--
+/**
+ * @author      Magetop Developer (Kien)
+ * @package     Magento Multi Vendor Marketplace_Seller_Mass_Import_Export
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<div class="block content-import-export mgt-theme-div">
+    <div id="messages">
+        <div class="messages">
+            <div class="message message-notice notice">
+                <div><?php echo __('Make sure your file isn\'t more than 2M.') ?></div>
+            </div>
+        </div>
+    </div>
+    <form enctype="multipart/form-data" method="post" action="<?php echo $block->getUrl('sellermassimportexport/index/validate') ?>" id="edit_form" novalidate="novalidate">
+        <legend class="admin__legend legend">
+            <span><?php echo __('Import Settings') ?></span>
+            <button class="action-default scalable save primary" type="button" title="<?php echo __('Check Data') ?>" id="upload_button" onclick="MST.validateImport()">
+                <span><?php echo __('Check Data') ?></span>
+            </button>
+        </legend>
+        <fieldset class="fieldset admin__fieldset fieldset_setting">
+            <div class="admin__field field required">
+                <label for="entity" class="label admin__field-label">
+                    <span><?php echo __('Entity Type') ?></span>
+                </label>
+                <div class="admin__field-control control">
+                    <div class="admin__field">
+                        <select title="<?php echo __('Entity Type') ?>" name="entity" id="entity" class="admin__control-select" data-validate="{required:true}">
+                            <option value=""><?php echo __('-- Please Select --') ?></option>
+                            <option value="catalog_product"><?php echo __('Products') ?></option>
+                        </select>
+                        <label for="entity" class="addafter">
+                            <span class="no-display" id="sample-file-span" style="display: inline;">
+                                <a href="<?php echo $block->getViewFileUrl('Magetop_SellerMassImportExport::files/catalog_product.csv')?>" id="sample-file-link">
+                                    <?php echo __('Download Sample File') ?>
+                                </a>
+                            </span>
+                        </label>
+                    </div>                            
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="fieldset admin__fieldset fieldset_behavior" style="display: none;">
+            <legend class="admin__legend legend">
+                <span><?php echo __('Import Behavior') ?></span>
+            </legend>
+            <div class="admin__field field required">
+                <label for="basic_behavior" class="label admin__field-label">
+                    <span><?php echo __('Import Behavior') ?></span>
+                </label>
+                <div class="admin__field-control control">
+                    <div class="admin__field">
+                        <select title="<?php echo __('Import Behavior') ?>" name="behavior" id="basic_behavior" class="admin__control-select" data-validate="{required:true}">
+                            <option value=""><?php echo __('-- Please Select --') ?></option>
+                            <option value="append"><?php echo __('Add/Update') ?></option>
+                            <option value="delete"><?php echo __('Delete') ?></option>
+                        </select>   
+                    </div>     
+                </div>
+            </div>
+            <div class="admin__field field required">
+                <label for="basic_behaviorvalidation_strategy" class="label admin__field-label">
+                    <span><?php echo __('Error Handling') ?></span>
+                </label>
+                <div class="admin__field-control control">
+                    <div class="admin__field">
+                        <select title="<?php echo __('Error Handling') ?>" name="validation_strategy" id="basic_behaviorvalidation_strategy" class="admin__control-select" data-validate="{required:true}">
+                            <option value="validation-stop-on-errors"><?php echo __('Stop on Error') ?></option>
+                            <option value="validation-skip-errors"><?php echo __('Skip error entries') ?></option>
+                        </select>
+                    </div>                            
+                </div>
+            </div>
+            <div class="admin__field field required">
+                <label for="basic_behavior_allowed_error_count" class="label admin__field-label">
+                    <span><?php echo __('Allowed Errors Count') ?></span>
+                </label>
+                <div class="admin__field-control control">
+                    <div class="admin__field">
+                        <input type="text" class="input-file" title="<?php echo __('Allowed Errors Count') ?>" value="10" name="allowed_error_count" id="basic_behavior_allowed_error_count" data-validate="{required:true}" />                
+                        <div id="basic_behavior_allowed_error_count-note" class="note"><?php echo __('Please specify number of errors to halt import process') ?></div>   
+                    </div>         
+                </div>
+            </div>
+            <div class="admin__field field required">
+                <label for="basic_behavior__import_field_separator" class="label admin__field-label">
+                    <span><?php echo __('Field separator') ?></span>
+                </label>
+                <div class="admin__field-control control">
+                    <div class="admin__field">
+                        <input type="text" class="input-file" title="<?php echo __('Field separator') ?>" value="," name="_import_field_separator" id="basic_behavior__import_field_separator" data-validate="{required:true}"/>                            
+                    </div> 
+                </div>
+            </div>
+            <div class="admin__field field required">
+                <label for="basic_behavior_import_multiple_value_separator" class="label admin__field-label">
+                    <span><?php echo __('Multiple value separator') ?></span>
+                </label>
+                <div class="admin__field-control control">
+                    <div class="admin__field">
+                        <input type="text" class="input-file" title="<?php echo __('Multiple value separator') ?>" value="," name="_import_multiple_value_separator" id="basic_behavior_import_multiple_value_separator" data-validate="{required:true}"/>                            
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="fieldset admin__fieldset fieldset_import" style="display: none;">
+            <legend class="admin__legend legend">
+                <span><?php echo __('File to Import') ?></span>
+            </legend>
+            <div class="admin__field field required">
+                <label for="import_file" class="label admin__field-label">
+                    <span><?php echo __('Select File to Import') ?></span>
+                </label>
+                <div class="admin__field-control control">
+                    <div class="admin__field">
+                        <input type="file" class="input-file" title="<?php echo __('Select File to Import') ?>" name="import_file" id="import_file" data-validate="{required:true}" />
+                    </div>
+                </div>
+            </div>
+            <div class="admin__field field">
+                <label for="import_images_file_dir" class="label admin__field-label">
+                    <span><?php echo __('Images File Directory') ?></span>
+                </label>
+                <div class="admin__field-control control">
+                    <input type="text" class="input-text" title="<?php echo __('Images File Directory') ?>" name="import_images_file_dir" id="import_images_file_dir" />                
+                    <div class="note admin__field-note" id="import_images_file_dir-note">
+                        <?php echo __('For Type "Local Server" use relative path to Magento installation,e.g. var/export, var/import, var/export/some/dir') ?>
+                    </div>            
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    <div class="messages_validate_import"></div>
+</div>
+<style>
+    .required > .admin__field-label > span::after{
+        content: "";
+    }
+    #upload_button{
+        float: right;
+    }
+</style>
+<script>
+    require([
+        "jquery",
+        "mage/mage"
+    ], function($){
+        var dataForm = $('#edit_form');
+        dataForm.mage('validation', {});
+        var _action = dataForm.attr('action');
+        $('#entity').change(function(){
+            if($(this).val() == 'catalog_product'){
+                $('.fieldset_behavior,.fieldset_import').show();
+            }else{
+                $('.fieldset_behavior,.fieldset_import').hide();
+            }
+        });
+        MST={
+            validateImport: function(){
+                if($('#edit_form').valid()){
+                    //grab all form data  
+                    var formData = new FormData($('#edit_form')[0]);                                
+                    $.ajax({
+                        type: "POST",
+                        url: "<?php echo $block->getUrl('sellermassimportexport/index/validate') ?>",
+                        data: formData,
+                        async: false,
+                        cache: false,
+                        contentType: false,
+                        enctype: 'multipart/form-data',
+                        processData: false,
+                        showLoader: true,
+                        beforeSend:  function() {
+                           
+                        },
+                        success: function(html){
+                            $('.messages_validate_import').html('<p><?php echo __('Validation Results') ?></p>');
+                            var returnedData = html;
+                            if(returnedData.success == true){
+                                var text = returnedData.message.split('Checked');
+                                if(text.length == 2){
+                                    $('.messages_validate_import').append('<div class="message message-notice notice"><div>'+'Checked'+text[1]+'</div></div>');
+                                    $('.messages_validate_import').append('<div class="message message-success success"><div>'+text[0]+'&nbsp; &nbsp; &nbsp;<button class="scalable save" type="button" onclick="MST.startImport()"><span><span><span>Import</span></span></span></button></div></div>');
+                                }else{
+                                    
+                                }
+                            }else{
+                                var text = returnedData.message.split('Checked');
+                                if(text.length == 2){
+                                    var error = text[0].split('mst');
+                                    if(error.length == 2){
+                                        $('.messages_validate_import').append('<div class="message message-error error"><div>'+error[0]+'</div></div>');
+                                        $('.messages_validate_import').append('<div class="message message-error error"><div>'+error[1]+'</div></div>');
+                                    }else{
+                                        $('.messages_validate_import').append('<div class="message message-error error"><div>'+text[0]+'</div></div>');
+                                    }
+                                    $('.messages_validate_import').append('<div class="message message-notice notice"><div>'+'Checked'+text[1]+'</div></div>');
+                                }else{
+                                    $('.messages_validate_import').append('<div class="message message-error error"><div>'+returnedData.message+'</div></div>');
+                                }
+                            }
+                        }
+                    }); 
+                }  
+            },
+            startImport: function(){
+                if($('#edit_form').valid()){
+                    //grab all form data  
+                    var formData = new FormData($('#edit_form')[0]);                                
+                    $.ajax({
+                        type: "POST",
+                        url: "<?php echo $block->getUrl('sellermassimportexport/index/start') ?>",
+                        data: formData,
+                        async: false,
+                        cache: false,
+                        contentType: false,
+                        enctype: 'multipart/form-data',
+                        processData: false,
+                        showLoader: true,
+                        beforeSend:  function() {
+                           
+                        },
+                        success: function(html){
+                            $('.messages_validate_import').html('<p><?php echo __('Status') ?></p>');
+                            var returnedData = html;
+                            if(returnedData.success == true){
+                                $('.messages_validate_import').append('<div class="message message-success success"><div>'+returnedData.message+'</div></div>');
+                            }else{
+                                $('.messages_validate_import').append('<div class="message message-error error"><div>'+returnedData.message+'</div></div>');
+                            }
+                        }
+                    }); 
+                } 
+            }
+        }         
+    });
+</script>

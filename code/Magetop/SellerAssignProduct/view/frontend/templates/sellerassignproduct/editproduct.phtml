@@ -1,0 +1,167 @@
+<!--
+/**
+ * @author      Magetop Developer (Kien)
+ * @package     Magento Multi Vendor Marketplace_Seller_Assign_Product
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<?php
+    $data = $this->getDataAssign($this->getRequest()->getParam('id'));
+    $product = $this->getLoadProduct($data->getProductId());
+    $image = $block->getUrl('media/catalog').'product'.$product->getImage();
+?>
+<div class="block content-assign-product">
+    <legend class="legend">
+        <span><?php echo __('Edit Assign Product - '); ?><?php echo $product->getName() ?></span>
+    </legend>
+    <div class="product_detail">
+        <div class="assign_product_image">
+            <img src="<?php echo $image ?>" style="width:150px" />
+        </div>
+        <div class="assign_product_detail">
+            <div class="assign_product_name">
+                <a href="<?php echo $product->getProductUrl() ?>" class="product photo product-item-photo" tabindex="-1" style="font-size: 30px;">
+                    <?php echo $product->getName() ?>
+                </a>
+            </div>
+            <div class="assign_product_price">
+                <?php echo \Magento\Framework\App\ObjectManager::getInstance()->get('Magento\Framework\Pricing\Helper\Data')->currency(@number_format($product->getPriceInfo()->getPrice('final_price')->getAmount()->getValue(),2),true,false); ?>
+            </div>
+            <div class="assign_product_description">
+                <?php echo $product->getShortDescription() ?>
+            </div>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    <form id="assign_product_edit_form" action="<?php echo $block->getUrl('sellerassignproduct/index/SaveEditProduct') ?>" method="post" novalidate="novalidate" enctype="multipart/form-data" autocomplete="off">
+        <input type="hidden" name="id" value="<?php echo $data->getId() ?>"/>
+        <input type="hidden" name="product_id" value="<?php echo $product->getId() ?>" />
+        <fieldset class="fieldset info assign-product">
+            <div class="field required">
+                <label class="label">
+                    <span><?php echo __('Product Condition') ?></span>
+                </label>
+                <div class="control">
+                    <select name="product_condition">
+                        <option value="new" <?php echo $data->getProductCondition()=='new'?"selected":"";  ?>><?php echo __('New') ?></option>
+                        <option value="used" <?php echo $data->getProductCondition()=='used'?"selected":"";  ?>><?php echo __('Used') ?></option>
+                    </select>
+                </div>
+            </div>  
+            <div class="field required">
+                <label class="label">
+                    <span><?php echo __('Product Price') ?></span>
+                </label>
+                <div class="control">
+                    <input type="number" value="<?php echo $data->getPrice() ?>" aria-required="true" name="price" class="input-text required-entry" data-validate="{required:true}"/>
+                </div>
+            </div>  
+            <div class="field required">
+                <label class="label">
+                    <span><?php echo __('Product QTY') ?></span>
+                </label>
+                <div class="control">
+                    <input type="number" value="<?php echo $data->getQty(); ?>" aria-required="true" name="qty" class="input-text required-entry" data-validate="{required:true}"/>
+                </div>
+            </div>  
+            <div class="field required">
+                <label class="label">
+                    <span><?php echo __('Product Description') ?></span>
+                </label>
+                <div class="control">
+                    <textarea class="input-text required-entry" aria-required="true" name="product_description" ata-validate="{required:true}"><?php echo $data->getProductDescription() ?></textarea>
+                </div>
+            </div> 
+            <div class="field">
+                <label class="label">
+                    <span><?php echo __('Product Image') ?></span>
+                </label>
+                <div class="control">
+                    <div class="assign_image_detail">
+                        <div class="delete_assign_image" title="Delete Image">X</div>
+                        <?php 
+                            if($data->getImage()){ 
+                                $_urlImage = $block->getUrlImage($data->getImage());
+                            }else{
+                                $_urlImage = $block->getViewFileUrl('Magetop_SellerAssignProduct::images/noimage.jpg');
+                            }
+    					?>
+                        <img src="<?php echo $_urlImage ?>"/>
+                    </div>
+                    <input type="file" name="image" class="input-text" accept="image/*"/>
+                </div>
+            </div>  
+        </fieldset>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button type="submit" class="action continue primary" title="<?php echo __('Continue') ?>"><span><?php echo __('Save Product') ?></span></button>
+            </div>
+            <div style="float: right;" class="primary">
+                <a href="javascript:;" onclick="javascript: window.history.back();" class="left"><?php echo __('Back') ?></a>
+            </div>
+        </div>
+    </form>
+</div>
+<style> 
+    .fieldset_assign_product {
+        border: 1px solid #c0c0c0;
+        margin-top: 20px;
+    }
+    .product_detail {
+        border: 1px solid #c0c0c0;
+        margin-top: 20px;
+        padding: 15px;
+        margin-bottom: 30px;
+    }
+    .assign_product_image{
+        float: left;
+    }
+    .assign_product_detail{
+        float: left;
+        margin-left: 50px;
+    }
+    .assign_product_price{
+        font-size: 30px;
+    }
+    .assign_product_description{
+        font-size: 15px;
+    }
+    .assign_image_detail{
+        width: 135px;
+        display: inline-block;
+        margin-right: 10px;
+        position: relative;
+        vertical-align: middle;
+    }
+    .delete_assign_image{
+        background-color: #fff;
+        cursor: pointer;
+        font-weight: bold;
+        height: 17px;
+        right: 0;
+        position: absolute;
+        text-align: center;
+        top: 0;
+        width: 17px;
+    }
+</style>
+<script>
+    require([
+        "jquery",
+        'Magento_Ui/js/modal/confirm',
+        'Magento_Ui/js/modal/alert',
+        "mage/calendar"
+    ], function($,confirmation,alert){
+        $('.seller_assign_product_list').addClass('current');
+    });
+    require([
+        "jquery",
+        "mage/mage"
+    ], function($){
+        var dataForm = $('#assign_product_edit_form');
+        dataForm.mage('validation', {});
+        var _action = dataForm.attr('action');
+    });
+</script>

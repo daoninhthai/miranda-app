@@ -1,0 +1,22 @@
+<?php 
+    $order = $block->getOrderById($block->getLastOrderId());
+    $payment = $order->getPayment();
+    if(($order->getStatus() == 'pending_payment') && ($payment->getMethodInstance()->getCode() == 'paypaladaptive')){    
+        $_SESSION['paypal_adaptive'] = 'true';
+?>
+        <?php echo __('You will be redirected to the PayPal website in a few seconds.') ?>
+        <form action="<?php echo $this->getUrl('paypaladaptive?act=processing&order_id='.$block->getLastOrderId().'&refesh=clear') ?>" id="paypal_adaptive_checkout" name="paypal_adaptive_checkout" method="POST">
+            <span class="field-row">
+                <input value="<?php echo __('Click here if you are not redirected within 10 seconds...') ?>" type="submit" class="submit"/>
+            </span>
+        </form>
+        <script type="text/javascript">document.getElementById("paypal_adaptive_checkout").submit();</script>
+<?php }else{ ?>
+        <h1><?php echo __('The Order has been expired, you will be redirected to the main website in a few seconds.') ?></h1>
+        <form action="<?php echo $this->getUrl() ?>" id="paypal_adaptive_checkout_false" name="paypal_adaptive_checkout_false" method="POST">
+            <span class="field-row">
+                <input value="<?php echo __('Click here if you are not redirected within 10 seconds...') ?>" type="submit" class=" submit"/>
+            </span>
+        </form>
+        <script type="text/javascript">document.getElementById("paypal_adaptive_checkout_false").submit();</script>
+<?php } ?>

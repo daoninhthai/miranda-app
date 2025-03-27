@@ -1,0 +1,608 @@
+<?php
+/**
+ * @author      Magetop Developer (Hau)
+ * @package     Magento Multi Vendor Marketplace
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+?>
+<?php
+    $helper=$this->helper('Magetop\Marketplace\Helper\Data');
+    $currencySymbol=$helper->getCurrencySymbol();
+    $taxcollection=$helper->getTaxConnection();
+    $visibility=$block->getOptionVisibility();
+    $group=$block->getOptionSetGroup();
+    $_productDetail=$block->getProduct();
+    $_helper=$this->helper('Magento\Catalog\Helper\Output');
+    $_hasweight=$_productDetail->getTypeInstance()->hasWeight();
+    $_quanlityArray=$block->getQtyProduct($_productDetail->getId(),$_productDetail->getStore()->getWebsiteId());
+    $_quanlity=@(int)$_quanlityArray[$_productDetail->getId()];
+    $stockStatus=$block->getStockStatus($_productDetail->getId(),$_productDetail->getStore()->getWebsiteId());
+    $attributeSetid=$_productDetail->getAttributeSetId();
+    if($set=$block->getParamSet()){
+    	$attributeSetid=$set;
+    }
+?>
+<div class="block block-formadd-newproduct">
+    <div class="block block-content">
+        <form method="post" action="<?php echo $block->getActionForm() ?>" class="form form-addnew-product" data-form="edit-product" id="form-seller-add-newproduct" enctype="multipart/form-data">
+            <input type="hidden" id="type_save" class="type_save" name="back"/>
+            <?php echo $block->getBlockHtml('formkey') ?>
+            <fieldset id="associate-product" class="fieldset info">
+                <div class="page-head-actions">
+                    <div class="row">
+                        <div class="col-sm-6">&nbsp;</div>
+                        <div class="col-sm-6">
+                            <div class="actions-buttons">
+                                <!--<button title="<?php echo __('Save') ?>" type="submit" class="btn btn-default btn-success" role="button"><span><span><?php echo __('Save') ?></span></span></button>-->
+                                <div class="btn-group mv-btn-group prod-button">
+                                    <button type="button" class="btn btn-primary btn-red save_product" redirect="submit" data-ui-id="save-button-item-default"><?php echo __('Save Product') ?></button>
+                                    <button type="button" class="btn btn-primary dropdown-toggle btn-red" data-toggle="dropdown">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" data-ui-id="save-button-dropdown-menu">
+                                        <li><a href="#"><span id="save_and_draft" class="item save_product" redirect="draft" data-ui-id="save-button-item-0"><?php echo __('Save & Draft') ?></span></a></li>
+                                        <li><a href="#"><span id="save_and_new" class="item save_product" redirect="new" data-ui-id="save-button-item-1"><?php echo __('Save & New') ?></span></a></li>
+                                        <li><a href="#"><span id="save_and_duplicate" class="item save_product" redirect="duplicate" data-ui-id="save-button-item-2"><?php echo __('Save & Duplicate') ?></span></a></li>
+                                        <li><a href="#"><span id="save_and_close" class="item save_product" redirect="close" data-ui-id="save-button-item-3"><?php echo __('Save & Close') ?></span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <ul class="nav nav-tabs">
+                    <li class="mgt-li mgt-li-tab-1 active"><a data-toggle="tab" href="#prod_tab1" tab=".mgt-li-tab-1" class="mgt-active-tab"><?php echo __('Product Information') ?></a></li>
+                    <?php if($block->getChildHtml('customattribute_attribute_add')){ ?>
+                        <li class="mgt-li mgt-li-tab-2"><a data-toggle="tab" href="#prod_tab2" tab=".mgt-li-tab-2" class="mgt-active-tab"><?php echo __('Product Attributes') ?></a></li>
+                    <?php } ?>
+                    <li class="mgt-li mgt-li-tab-3"><a data-toggle="tab" href="#prod_tab3" tab=".mgt-li-tab-3" class="mgt-active-tab"><?php echo __('Advanced Price & Options') ?></a></li>
+                    <li class="mgt-li mgt-li-tab-4"><a data-toggle="tab" href="#prod_tab4" tab=".mgt-li-tab-4" class="mgt-active-tab"><?php echo __('Product Type') ?></a></li>
+                    <li class="mgt-li mgt-li-tab-5"><a data-toggle="tab" href="#prod_tab5" tab=".mgt-li-tab-5" class="mgt-active-tab"><?php echo __('Meta Information') ?></a></li>
+                </ul>
+                <script>
+                    require(['jquery', 'jquery/ui'], function($){
+                        $('.mgt-active-tab').click(function(){
+                            $('.tab-pane').removeClass('active');
+                            $($(this).attr('href')).addClass('active');
+                            $('.mgt-li').removeClass('active');
+                            $($(this).attr('tab')).addClass('active');
+                        });
+                    });
+                </script>
+                <input type="hidden" id="product_type_id" value="<?php /* @escapeNotVerified */ echo $block->getProductTypeId() ?>" />
+                <div class="fieldset form-list">
+                    <div class="tab-content">
+                        <!-- tab1 -->
+                        <div id="prod_tab1" class="tab-pane fade in active">
+                            <div class="field row group required">
+                                <label class="label col-sm-3"><span><?php echo __('Attribute Set') ?></span></label>
+                                <div class="control col-sm-9">
+                                    <?php if(count($group)){ ?>
+                                        <select name="set" class="required-entry">
+                                        <?php foreach($group as $k=>$v){ ?>
+                                            <?php if(($v['value'] == $this->getRequest()->getParam('set')) || ($attributeSetid==$v['value'])){ ?>
+                                                <option value="<?php echo $v['value']?>" <?php echo $attributeSetid==$v['value']?'selected':'' ?>><?php echo $v['label']?></option>
+                                            <?php } ?>
+                                        <?php } ?>
+                                        </select>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                            <div class="field row categorycollection">
+                                <?php echo $block->getChildHtml('categoriecollection') ?>
+                            </div>
+                            <div class="field row required">
+                                <label class="label col-sm-3"><span><?php echo __('Product Name') ?></span></label>
+                                <div class="control col-sm-9">
+                                    <input type="text" title="<?php echo $block->stripTags($_productDetail->getName(), null, true) ?>" value="<?php echo $_helper->productAttribute($_productDetail, $_productDetail->getName(), 'name') ?>" class="validate-length maximum-length-255 required-entry input-text required-entry _required" name="product[name]" aria-required="true" />
+                                </div>
+                            </div>
+                            <style>
+                                #mb-ajaxloading {
+                                    display: none;
+                                    float: right;
+                                    margin: 0 10px;
+                                    top: 1px;
+                                    position: unset;
+                                }
+                            </style>
+                            <div class="field row required">
+                                <label class="label col-sm-3">
+                                    <span><?php echo __('Sku') ?></span>
+                                    <div id="mb-ajaxloading">
+                                        <img width="20px" height="20px" src="<?php echo $block->getViewFileUrl('images/loader-1.gif') ?>"/>
+                                    </div>
+                                </label>
+                                <div class="control col-sm-9">
+                                    <?php if($block->productIsBundle()){ ?>
+                                        <div class="bundle-sku bundle-block">
+                                            <input type="text" value="<?php echo $_helper->productAttribute($_productDetail, $_productDetail->getSku(), 'sku') ?>" class="validate-length maximum-length-64 required-entry input-text required-entry _required" id="sku" name="product[sku]" aria-required="true" />
+                                        </div>
+                                        <select id="sku_type" name="product[sku_type]" class="bundle-sku-type bundle-type">
+                                            <option value=""><?php echo __('-- Select --') ?></option>
+                                            <option value="0" <?php echo $_productDetail->getSkuType()? '': 'selected'?> ><?php echo __('Dynamic') ?></option>
+                                            <option value="1" <?php echo $_productDetail->getSkuType()? 'selected': ''?>><?php echo __('Fixed') ?></option>
+                                        </select>
+                                    <?php }else{ ?>
+                                        <input type="text" value="<?php echo $_helper->productAttribute($_productDetail, $_productDetail->getSku(), 'sku') ?>" class="validate-length maximum-length-64 required-entry input-text required-entry _required" id="sku" name="product[sku]" aria-required="true" />
+                                    <?php } ?>
+                                    <div class="messages">
+                                        <div class="message-notice notice message sku_false" data-ui-id="message-notice" style="display: none;">
+                                            <div><?php echo __('This SKU is not available.') ?></div>
+                                        </div>
+                                        <div class="message-success success message sku_true" data-ui-id="message-success" style="display: none;">
+                                            <div><?php echo __('This SKU is available.') ?></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php if(!$block->productIsGroup() && !$block->productIsBundle()){ ?>
+                                <div class="field row required">
+                                    <label class="label col-sm-3"><span><?php echo __('Price') ?> <?php echo __('('.$currencySymbol.')') ?></span></label>
+                                    <div class="control col-sm-9">
+                                        <input type="text" id="price" name="product[price]" value="<?php if($block->getPriceProduct($_productDetail)) echo $block->getPriceProduct($_productDetail) ?>" class="required-entry validate-zero-or-greater input-text required-entry _required" aria-required="true" />
+                                    </div>
+                                </div>
+                            <?php }else if($block->productIsBundle()){ ?>
+                                <div class="field row required">
+                                    <label class="label col-sm-3"><span><?php echo __('Price') ?> <?php echo __('('.$currencySymbol.')') ?></span></label>
+                                    <div class="control col-sm-9">
+                                        <div class="bundle-price bundle-block">
+                                            <input type="text" id="price" name="product[price]" <?php if($block->checkDisablePrice($_productDetail)) echo 'disabled' ?> value="<?php if($block->getBundlePrice($_productDetail)) echo $block->getBundlePrice($_productDetail) ?>" class="required-entry validate-zero-or-greater input-text required-entry _required" aria-required="true" />
+                                        </div>
+                                        <select id="price_type" name="product[price_type]" <?php if($_productDetail->getPriceType() ==0 && $_productDetail->getId()) echo 'disabled'?> class="bundle-price-type bundle-type">
+                                            <option value=""><?php echo __('-- Select --') ?></option>
+                                            <option value="0" <?php echo $_productDetail->getPriceType()? '': 'selected'?>><?php echo __('Dynamic') ?></option>
+                                            <option value="1" <?php echo $_productDetail->getPriceType()? 'selected': ''?>><?php echo __('Fixed') ?></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                            <div class="field row">
+                                <label class="label col-sm-3"><span><?php echo __('Quantity') ?></span></label>
+                                <div class="control col-sm-9">
+                                    <input type="text" name="product[quantity_and_stock_status][qty]" <?php if($block->productIsGroup() || $block->productIsBundle()) echo 'disabled' ?> value="<?php if($_quanlity) echo $_quanlity; ?>" <?php echo $block->checkShowChildHtmlDownload()?'':'disabled' ?> class="input-text validate-number" />
+                                </div>
+                            </div>
+                            <div class="field row">
+                                <label class="label col-sm-3"><span><?php echo __('Stock Availability') ?></span></label>
+                                <div class="control col-sm-9">
+                                    <?php
+                                        $selected=$notselected='';
+                                        if($stockStatus){
+                                            $selected='selected';
+                                        }else{
+                                            $notselected='selected';
+                                        }
+                                    ?>
+                                    <select name="product[quantity_and_stock_status][is_in_stock]" class="select">
+                                        <option value="1" <?php echo $selected ?> ><?php echo __('In Stock') ?></option>
+                                        <option value="0" <?php echo $notselected ?> ><?php echo __('Out of Stock') ?></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="field row">
+                                <label class="label col-sm-3"><span><?php echo __('Visibility') ?></span></label>
+                                <div class="control col-sm-9">
+                                    <select class="select" name="product[visibility]" aria-required="true">
+                                        <?php foreach($visibility as $keyvi => $valuevi){ ?>
+                                            <option value="<?php echo $keyvi?>" <?php echo $keyvi==$_productDetail->getVisibility()?'selected':'' ?> <?php if( $keyvi==4 and $_productDetail->getVisibility() == '' ) { echo 'selected'; } ?> ><?php echo $valuevi ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <?php if(count($taxcollection) && !$block->productIsGroup() && !$block->productIsBundle()){ ?>
+                                <div class="field row">
+                                    <label class="label col-sm-3"><span><?php echo __('Tax Class') ?></span></label>
+                                    <div class="control col-sm-9">
+                                        <select class="required-entry select" name="product[tax_class_id]">
+                                            <option value="0"><?php echo __('None') ?></option>
+                                            <?php foreach($taxcollection as $taxkey => $taxvalue){ ?>
+                                                <option value="<?php echo $taxvalue['value'] ?>" <?php echo $_productDetail->getData('tax_class_id')==$taxvalue['value']?'selected':''?>><?php echo $taxvalue['label'] ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                            <?php if(!$block->productIsGroup() && !$block->productIsBundle()){ ?>
+                                <div class="field row weight">
+                                    <label class="label col-sm-3"><span><?php echo __('Weight') ?></span></label>
+                                    <div class="control col-sm-9" data-role="weight-switcher">
+                                        <div class="item">
+                                            <input type="text" id="weight" name="product[weight]" value="<?php echo @number_format($_productDetail->getWeight(), 2) ?>" class="input-text validate-zero-or-greater" />
+                                        </div>
+                                        <?php if($_productDetail->getId()){ ?>
+                                        <div class="item">
+                                            <input type="radio" id="has_weight_yes" name="product[product_has_weight]" value="1" <?php echo $_hasweight?'checked':''?> />
+                                            <label for="has_weight_yes"><?php echo __('Yes') ?></label>
+                                        </div>
+                                        <div class="item">
+                                            <input type="radio" id="has_weight_no" name="product[product_has_weight]" value="0" <?php echo !($_hasweight)?'checked':''?> />
+                                            <label for="has_weight_no"><?php echo __('No') ?></label>
+                                        </div>
+                                        <?php }else{ ?>
+                                            <div class="item">
+                                                <input type="radio" id="has_weight_yes" name="product[product_has_weight]" value="1" checked="" />
+                                                <label for="has_weight_yes"><?php echo __('Yes') ?></label>
+                                            </div>
+                                            <div class="item">
+                                                <input type="radio" id="has_weight_no" name="product[product_has_weight]" value="0" />
+                                                <label for="has_weight_no"><?php echo __('No') ?></label>
+                                            </div>
+                                        <?php } ?>
+                                    </div>
+                                </div>
+                            <?php }else if($block->productIsBundle()){ ?>
+                                <div class="field row">
+                                    <label class="label col-sm-3"><span><?php echo __('Weight') ?></span></label>
+                                    <div class="control col-sm-9">
+                                        <div class="bundle-weight bundle-block">
+                                            <input type="text" id="weight" name="product[weight]" <?php if($block->checkDisableWeight($_productDetail)) echo 'disabled' ?> value="<?php echo @number_format($_productDetail->getWeight(), 2) ?>" class="input-text validate-zero-or-greater" />
+                                        </div>
+                                        <select id="weight_type" name="product[weight_type]" class="bundle-price-type bundle-type">
+                                            <option value=""><?php echo __('-- Select --') ?></option>
+                                            <option value="0" <?php echo $_productDetail->getWeightType()? '': 'selected'?>><?php echo __('Dynamic') ?></option>
+                                            <option value="1" <?php echo $_productDetail->getWeightType()? 'selected': ''?>><?php echo __('Fixed') ?></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                            <?php echo $block->getChildHtml('magetop_gallery') ?>
+                            <div class="field row required">
+                                <label class="label col-sm-3"><span><?php echo __('Description') ?></span></label>
+                                <div class="control col-sm-9">
+                                    <textarea cols="15" rows="2" class="textarea" name="product[description]" id="description"><?php echo $_helper->productAttribute($_productDetail, $_productDetail->getDescription(), 'description') ?></textarea>
+                                    <script>
+                                        /* tinymce4 */
+
+                                        // require([
+                                        //     'jquery',
+                                        //     'mage/translate',
+                                        //     'mage/adminhtml/events',
+                                        //     'mage/adminhtml/wysiwyg/tiny_mce/setup'
+                                        // ], function(jQuery){
+                                        //     wysiwyg_description = new wysiwygSetup('description', {
+                                        //         'width':'99%',
+                                        //         'height':'200px',
+                                        //         'plugins':[{'name':'image'}],
+                                        //         'tinymce4':{'toolbar':'formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist | link table charmap','plugins':'advlist autolink lists link charmap media noneditable table contextmenu paste code help table'}
+                                        //     });
+                                        //     wysiwyg_description.setup('exact');
+                                        // });
+
+                                        /* tinymce5 */
+                                        require([
+                                            'jquery',
+                                            'mage/translate',
+                                            'tinymce',
+                                            'mage/adminhtml/events'
+                                        ], function(jQuery) {
+                                            tinymce.init({
+                                                selector: '#description',
+                                                plugins: 'advlist autolink lists link image charmap media noneditable table paste code help',
+                                                toolbar: 'formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist | link image table | code',
+                                                width: '99%',
+                                                height: '200px',
+                                                menubar: false,
+                                                statusbar: false
+                                            });
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end tab1 -->
+                        <!-- tab2 -->
+                        <?php if($block->getChildHtml('customattribute_attribute_add')){ ?>
+                            <div id="prod_tab2" class="tab-pane fade in">
+                                <?php echo $block->getChildHtml('customattribute_attribute_add') ?>
+                            </div>
+                        <?php } ?>
+                        <!-- end tab2 -->
+                        <!-- tab3 -->
+                        <div id="prod_tab3" class="tab-pane fade in">
+                            <?php if(!$block->productIsGroup() && !$block->productIsBundle()){ ?>
+                            <div class="field row">
+                                <label class="label col-sm-3"><span><?php echo __('Special Price') ?> <?php echo __('('.$currencySymbol.')') ?></span></label>
+                                <div class="control col-sm-9">
+                                    <input type="text" name="product[special_price]" value="<?php if($block->getFinalPriceProduct($_productDetail)) echo $block->getFinalPriceProduct($_productDetail) ?>" class="input-text" />
+                                </div>
+                            </div>
+                            <?php }else if($block->productIsBundle()){ ?>
+                                <div class="field row">
+                                    <label class="label col-sm-3"><span><?php echo __('Special Price(%): ') ?></span></label>
+                                    <div class="control col-sm-9">
+                                        <input type="text" name="product[special_price]" value="<?php if($block->getBundleFinalPrice($_productDetail)) echo $block->getBundleFinalPrice($_productDetail) ?>" class="input-text" />
+                                    </div>
+                                </div>
+                                <div class="field row required">
+                                    <label class="label col-sm-3"><span><?php echo __('Price View') ?></span></label>
+                                    <div class="control col-sm-9">
+                                        <select id="price_view" name="product[price_view]">
+                                            <option value="1" <?php echo $_productDetail->getPriceView()? 'selected': ''?> ><?php echo __('As Low as') ?></option>
+                                            <option value="0" <?php echo $_productDetail->getPriceView()? '': 'selected'?> ><?php echo __('Price Range') ?></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                            <div class="field row">
+                                <label class="label col-sm-3"><span><?php echo __('Special Price Dates') ?></span></label>
+                                <div class="control col-sm-9">
+                                    <input type="text" id="special_from_date" name="product[special_from_date]" value="<?php echo $block->formatDateTime($_productDetail->getSpecialFromDate()) ?>" class="input-text " placeholder="<?php echo __('From Date') ?>" />
+                                    <br/><br/>
+                                    <input type="text" id="special_to_date" name="product[special_to_date]" value="<?php echo $block->formatDateTime($_productDetail->getSpecialToDate()) ?>" class="input-text " placeholder="<?php echo __('To Date') ?>"  />
+                                </div>
+                            </div>
+                            <?php
+                                if(!$block->productIsGroup()){
+                                    echo $block->getChildHtml('magetop_price_tier');
+                                }
+                            ?>
+                            <?php if(!$block->productIsGroup() && !$block->productIsBundle()){ ?>
+                                <div class="field row product_cost">
+                                    <label class="label col-sm-3"><span><?php echo __('Cost('.$currencySymbol.'): ') ?></span></label>
+                                    <div class="control col-sm-9">
+                                        <input type="text" class="text input-text" name="product[cost]" <?php echo $block->checkShowChildHtmlDownload()?'':'disabled' ?> value="<?php echo @number_format($_productDetail->getData('cost'), 2) ?>" />
+                                    </div>
+                                </div>
+                                <?php echo $block->getChildHtml('magetop_custom_options') ?>
+                            <?php } ?>
+                        </div>
+                        <!-- end tab3 -->
+                        <!-- tab4 -->
+                        <div id="prod_tab4" class="tab-pane fade in">
+                            <?php if($block->productIsGroup()){ ?>
+                                <div class="section-entry active">	
+                                    <div class="section-head">
+                                        <strong><?php  echo __('Grouped Product') ?></strong>
+                                    </div>
+                                    <div class="section-content">
+                                        <div class="section-fieldset">
+                                            <?php echo $block->getChildHtml('marketplace_product_grouped_container') ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                            <?php if($block->productIsBundle()){ ?>
+                                <div class="section-entry active">
+                                    <div class="section-head">
+                                        <strong><?php  echo __('Bundle Product') ?></strong>
+                                    </div>
+                                    <div class="section-content">
+                                        <div class="section-fieldset">
+                                            <?php echo $block->getChildHtml('marketplace_product_bundle_container') ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                            <?php if(($this->getRequest()->getParam('type') == 'downloadable') || ($_productDetail->getTypeId() == 'downloadable')){ ?>
+                                <?php if ($block->checkShowChildHtmlDownload() && !$block->productIsGroup() && !$block->productIsBundle()){ ?>
+                                    <div class="section-entry active">
+                                        <div class="section-head">
+                                            <strong><?php  echo __('Downloadable Product') ?></strong>
+                                        </div>
+                                        <div class="section-content">
+                                            <div class="section-fieldset">
+                                                <?php echo $block->getChildHtml('marketplace_product_downloadable_item') ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php } ?>
+                            <?php } ?>
+                            <?php if(($this->getRequest()->getParam('type') == 'configurable') || ($_productDetail->getTypeId() == 'configurable')){ ?>
+                                <?php if($block->checkShowChildHtmlConfig() && !$block->productIsGroup() && !$block->productIsBundle()){ ?>
+                                    <div class="section-entry active" >
+                                        <div class="section-head" >
+                                            <strong><?php  echo __('Configurable Product') ?></strong>
+                                        </div>
+                                        <div class="section-content">
+                                            <div class="section-fieldset">
+                                                <div class="field configurable-product">
+                                                    <?php echo $block->getChildHtml('magetop_product_config_container') ?>
+                                                    <div style="clear:both"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php } ?>
+                            <?php } ?>
+                        </div>
+                        <!-- end tab4 -->
+                        <!-- tab5 -->
+                        <div id="prod_tab5" class="tab-pane fade in">
+                            <div class="field row">
+                                <label class="label col-sm-3"><span><?php echo __('URL Key') ?></span></label>
+                                <div class="control col-sm-9">
+                                    <input type="text" name="product[url_key]"  value="<?php echo $_productDetail->getUrlKey() ?>" class="input-text" />
+                                </div>
+                            </div>
+                            <div class="field row">
+                                <label class="label col-sm-3"><span><?php echo __('Meta Title') ?></span></label>
+                                <div class="control col-sm-9">
+                                    <input type="text" name="product[meta_title]"  value="<?php echo $_productDetail->getMetaTitle() ?>" class="input-text" />
+                                </div>
+                            </div>
+                            <div class="field row">
+                                <label class="label col-sm-3"><span><?php echo __('Meta Keywords') ?></span></label>
+                                <div class="control col-sm-9">
+                                    <input type="text" name="product[meta_keyword]"  value="<?php echo $_productDetail->getMetaKeyword() ?>" class="input-text" />
+                                </div>
+                            </div>
+                            <div class="field row">
+                                <label class="label col-sm-3"><span><?php echo __('Meta Description') ?></span></label>
+                                <div class="control col-sm-9">
+                                    <textarea  name="product[meta_description]" class="textarea"><?php echo $_productDetail->getMetaDescription() ?></textarea>
+                                    <div class="field-note">
+                                        <span><?php echo __('Maximum 255 chars. Meta Description should optimally be between 150-160 characters') ?></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end tab5 -->
+                    </div>
+                </div>
+                <!--<div class="field block-button">
+                    <button type="submit" class="button" title="<?php echo __('Save') ?>">
+                        <span><span><?php echo __('Save') ?></span></span>
+                    </button>
+                </div>-->
+            </fieldset>
+        </form>
+        <script>
+            require([
+                "jquery",
+                'Magento_Ui/js/modal/alert',
+                "mage/mage",
+                'mage/calendar',
+            ], function($,alert){
+                var dataForm = $('#form-seller-add-newproduct');
+                dataForm.mage('validation', {});
+                $("#special_from_date").calendar({'dateFormat':'mm/dd/yy'});
+                $("#special_to_date" ).calendar({'dateFormat':'mm/dd/yy'});
+                var i=2;
+                $('.input-text').change(function(){
+                    var vl1 = $(this).val();
+                    var regex = /(<([^>]+)>)/ig;
+                    var vl2 = vl1 .replace(regex, "");
+                    $(this).val(vl2);
+                });
+                $('input#sku').change(function(){
+                    $('.sku_false,.sku_true').hide();
+                    var vallen=$('input#sku').val();
+                    if(vallen==0){
+                        alert({
+                            title: '<?php echo __('Sku Product') ?>',
+                            content: "<?php echo __('Sku not empty') ?>",
+                            actions: {
+                                always: function(){}
+                            }
+                        });
+                    }else{
+                        $.ajax({
+                            url: "<?php echo $block->getUrl('marketplace/product/validateSku') ?>",
+                            type: "POST",
+                            data: {sku:$('input#sku').val()},
+                            dataType: 'text',
+                            beforeSend:function(){
+                                $('#mb-ajaxloading').show();
+                            },
+                            error:function(){
+                            
+                            },
+                            success:function($data){
+                                $('#mb-ajaxloading').hide();
+                                data=$.parseJSON($data);
+                                if(!data.status){
+                                    $('.sku_true').show();
+                                }else{
+                                    $('.sku_false').show();
+                                    $("input#sku").val('');
+                                }
+                            }
+                        });
+                    }
+                });
+                $('.categorycollection').delegate('.mst-push,.mst-pull','click',function(){
+                    if($(this).hasClass('mst-push')){
+                        $(this).removeClass('mst-push').addClass('mst-pull');
+                        var self=this;
+                        var _htmlbefore_load='<span class="mst-beforeload"></span>';
+                        if($(this).siblings('.category-block').length){
+                            $(this).siblings('.category-block').slideToggle();
+                        }else{
+                            $.ajax({
+                                url:'<?php echo $block->getUrl('marketplace/product/ajaxCategory') ?>',
+                                type:'POST',
+                                data:{categoryid:$(this).siblings('input[type=checkbox].mst-checkbox').val(),level:parseInt($(this).data('level')),id:<?php echo $_productDetail->getId()?$_productDetail->getId():0 ?>},
+                                dataType:'text',
+                                beforeSend:function(){
+                                    $(self).prepend(_htmlbefore_load);
+                                },
+                                error:function(xhr, textStatus, error){
+                                
+                                },
+                                success:function(data){
+                                    $('span.mst-beforeload').remove();
+                                    var html=$.parseJSON(data);
+                                    $(self).parent().append(html.content);
+                                }
+                            });
+                        }
+                    }else if($(this).hasClass('mst-pull')){
+                        $(this).removeClass('mst-pull').addClass('mst-push');
+                        $(this).siblings('.category-block').slideToggle();
+                    }
+                });
+                $('.save_product').click(function(event){
+                    $('.type_save').val($(this).attr('redirect'));
+                    dataForm.submit();
+                    event.preventDefault();
+                });
+            });
+        </script>
+        <script>
+            require([
+                "jquery",
+                "Magetop_Marketplace/catalog/type-events"
+            ], function($, TypeSwitcher){
+                var $form = $('[data-form=edit-product]');
+                $form.data('typeSwitcher', TypeSwitcher.init());
+            });
+        </script>
+        <script type="text/x-magento-init">
+            {
+                "*": {
+                    "Magetop_Marketplace/js/product/weight-handler": {},
+                    "Magetop_Marketplace/catalog/apply-to-type-switcher": {}
+                }
+            }
+        </script>
+        <?php if($block->productIsBundle()){ ?>
+            <script>
+                require(['prototype'], function () {
+                    <?php
+                        $switchAttributeCodes = array('price', 'weight');
+                        foreach($switchAttributeCodes as $attributeCode) {
+                            $switchAttributeCode = $attributeCode.'_type';
+                    ?>
+                            function <?= /* @escapeNotVerified */ $switchAttributeCode?>_change() {
+                                var $attribute = $('<?= /* @escapeNotVerified */ $attributeCode?>');
+                                if ($('<?= /* @escapeNotVerified */ $switchAttributeCode?>').value == '0') {
+                                    if ($attribute) {
+                                        $attribute.disabled = true;
+                                        $attribute.value = '';
+                                        $attribute.removeClassName('required-entry');
+                                    }
+                                    if ($('dynamic-price-warning')) {
+                                        $('dynamic-price-warning').show();
+                                    }
+                                } else {
+                                    if ($attribute) {
+                                        $attribute.disabled = false;
+                                        $attribute.addClassName('required-entry');
+                                    }
+                                    if ($('dynamic-price-warning')) {
+                                        $('dynamic-price-warning').hide();
+                                    }
+                                }
+                            }
+                            $('<?= /* @escapeNotVerified */ $switchAttributeCode?>').observe('change', <?= /* @escapeNotVerified */ $switchAttributeCode?>_change);
+                            Event.observe(window, 'load', function(){
+                                <?= /* @escapeNotVerified */ $switchAttributeCode?>_change();
+                            });
+                    <?php } ?>
+                });
+            </script>
+        <?php } ?>
+    </div>
+</div>
+
+<!-- custom button -->
+<style>
+    button.action-save, button.action-remove {
+        color: unset;
+    }
+</style>

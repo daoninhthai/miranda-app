@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="multivendor_saleslist" resource="default" engine="innodb">
+        <column xsi:type="decimal" name="proprice" nullable="false" scale="2" precision="10"/>
+        <column xsi:type="decimal" name="totalamount" nullable="false" scale="2" precision="10"/>
+        <column xsi:type="decimal" name="totalcommision" nullable="false" scale="2" precision="10" comment="Total Commision"/>
+        <column xsi:type="decimal" name="actualparterprocost" nullable="false" scale="2" precision="10"/>
+        <column xsi:type="decimal" name="totaltax" nullable="false" scale="2" precision="10"/>
+    </table>
+    <table name="multivendor_saleperpartner" resource="default" engine="innodb">
+        <column xsi:type="decimal" name="totalsale" nullable="false" scale="2" precision="10"/>
+        <column xsi:type="decimal" name="amountreceived" nullable="false" scale="2" precision="10"/>
+        <column xsi:type="decimal" name="amountpaid" nullable="false" scale="2" precision="10"/>
+        <column xsi:type="decimal" name="amountremain" nullable="false" scale="2" precision="10"/>
+        <column xsi:type="decimal" name="commission" nullable="false" scale="2" precision="10"/>
+        <column xsi:type="decimal" name="discount" nullable="false" scale="2" precision="10"/>
+    </table>
+    <table name="multivendor_sellertransaction" resource="default" engine="innodb">
+        <column xsi:type="decimal" name="transaction_amount" nullable="false" scale="2" precision="10"/>
+        <column xsi:type="decimal" name="amount_paid" nullable="false" scale="2" precision="10"/>
+        <column xsi:type="decimal" name="amount_fee" nullable="false" scale="2" precision="10"/>
+        <column xsi:type="decimal" name="commision" nullable="false" scale="2" precision="10"/>
+    </table>
+    <table name="multivendor_payment" resource="default" engine="innodb">
+        <column xsi:type="decimal" name="fee" nullable="false" scale="2" precision="10"/>
+        <column xsi:type="decimal" name="minamount" nullable="false" scale="2" precision="10"/>
+        <column xsi:type="decimal" name="maxamount" nullable="false" scale="2" precision="10"/>
+    </table>
+</schema>

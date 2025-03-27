@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magetop Development
+ *
+ * @category  Magetop Extension
+ * @package   Magetop_Marketplace
+ * @author    Magetop
+ * @copyright Copyright (c) Magetop (https://www.magetop.com)
+ * @license   https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="mk1c-column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+		<css src="Magetop_Marketplace::assets/global/plugins/font-awesome/css/font-awesome.min.css"/>
+		<css src="Magetop_Marketplace::css/style.css"/>
+		<css src="Magetop_Marketplace::css/mst_block.css"/>
+	</head>
+	<body>
+        <referenceContainer name="content">
+            <block class="Magetop\Marketplace\Block\Collection" name="marketplace_sellercollection" template="Magetop_Marketplace::product/collectionview.phtml" after="-">
+                <block class="Magento\Catalog\Block\Product\ProductList\Toolbar" name="product_list_toolbar" template="Magento_Catalog::product/list/toolbar.phtml">
+                    <block class="Magento\Theme\Block\Html\Pager" name="product_list_toolbar_pager"/>
+                </block>
+                <action method="setToolbarBlockName">
+                    <argument name="name" xsi:type="string">product_list_toolbar</argument>
+                </action>
+            </block>
+        </referenceContainer>
+		<referenceContainer name="marketplace_sellercollection">
+            <block class="Magetop\Marketplace\Block\Sellercategory" name="marketplace_sellercollectionleft" template="Magetop_Marketplace::product/collectionleft.phtml" before="-"/>
+        </referenceContainer>
+        <referenceContainer name="marketplace_sellercollectionleft">
+            <block class="Magetop\Marketplace\Block\Collection\Navigation\Category" name="marketplace_sellercollection_layered_navigation" before="-" template="Magetop_Marketplace::product/collection/layer/view.phtml">
+                <block class="Magento\LayeredNavigation\Block\Navigation\State" name="marketplace.catalog.navigation.state" as="state" template="Magetop_Marketplace::product/collection/layer/state.phtml"/>
+                <block class="Magento\LayeredNavigation\Block\Navigation\FilterRenderer" name="marketplace.catalog.navigation.renderer" as="renderer" template="Magetop_Marketplace::product/collection/layer/filter.phtml"/>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

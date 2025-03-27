@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author      Magetop Developer (Kien)
+ * @package     Magento Multi Vendor Marketplace_Seller_Coupon
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magetop_SellerCoupon::sellercoupon" title="Manage Seller Coupon" module="Magetop_SellerCoupon" parent="Magetop_Marketplace::sellers" sortOrder="90" action="magetop/sellercoupon/index" resource="Magetop_SellerCoupon::sellercoupon"/>
+    </menu>
+</config>

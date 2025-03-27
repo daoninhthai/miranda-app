@@ -1,0 +1,47 @@
+<?php
+/**
+ * Copyright © 2015  (magetop99@gmail.com). All rights reserved.
+ * See LICENSE.txt for license details (http://opensource.org/licenses/osl-3.0.php).
+ *
+ * 
+ */
+?>
+<?php
+/**
+ * Blog post list item template
+ *
+ * @var $block \Magetop\Blog\Block\Post\AbstractPost
+ */
+?>
+<?php
+    $_post = $this->getPost();
+    $_postUrl = $_post->getPostUrl();
+    $_postName = $block->escapeHtml($_post->getTitle(), null, true);
+?>
+<li class="post-holder post-holder-<?php echo $_post->getId() ?>">
+    <div class="post-header i-hover">
+		<?php if ($featuredImage = $_post->getFeaturedImage()) { ?>
+            <a href="<?php echo $_postUrl ?>" title="<?php echo $_postName ?>">
+                <img class="hover-z" src="<?php echo $featuredImage ?>" alt="<?php echo $_postName ?>" />
+            </a>
+        <?php } ?>		
+    </div>
+    <div class="post-content">
+		<div class="post-title-holder clearfix">
+            <h4 class="post-title">
+                <a class="text-darken"
+                   href="<?php echo $_postUrl ?>">
+                    <?php echo $_postName; ?>
+                </a>
+            </h4> 
+        </div>
+        <?php echo $this->getInfoHtml() ?>
+        <div class="post-description clearfix">
+            
+            <div class="post-text-hld">
+                <?php echo $block->getShorContent() ?>
+                <a class="btn btn-primary mt10" style="color:#fff;" href="<?php echo $_postUrl ?>" title="<?php echo $_postName ?>"><?php echo __('Read More') ?></a>
+            </div>
+        </div>
+    </div>
+</li>

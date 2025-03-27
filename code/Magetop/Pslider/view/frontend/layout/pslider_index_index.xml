@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Magetop 
+ * @category    Magetop 
+ * @copyright   Copyright (c) 2017 Magetop (http://magetop.com/) 
+ * @Author: Hanh Nguyen<hanhkaka.nguyen37@gamil.com>
+ * @@Create Date: 2017-05-5
+ * @@Modify Date: 2017-06-05
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Magetop_Pslider::owl-carousel/owl.carousel.css" />
+        <css src="Magetop_Pslider::owl-carousel/owl.theme.css" />
+        <css src="Magetop_Pslider::owl-carousel/owl.transitions.css" />
+        <css src="Magetop_Pslider::css/pslider.css" />
+        <script src="Magetop_Pslider::js/jquery-1.7.2.js" />
+        <script src="Magetop_Pslider::owl-carousel/owl.carousel.min.js" />
+        <script src="Magetop_Pslider::js/jquery.easytabs.min.js" />
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Magetop\Pslider\Block\IndexBlock" name="pslider.index" template="index.phtml">
+            </block>
+        </referenceContainer>
+    </body>
+</page>

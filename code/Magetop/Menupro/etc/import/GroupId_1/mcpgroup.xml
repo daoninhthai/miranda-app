@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <magetop_groupmenu>
+    <item>
+      <title><![CDATA[Demo - Computer Store]]></title>
+      <description><![CDATA[1, Insert into Static block or CMS page for developing: <br/><br/>{{block class="Magetop\Menupro\Block\Menu" name="menupro_group_1" groupmenu_id="1" template="Magetop_Menupro::menupro/menupro.phtml" }}<br/><br/>2, Reference via XML layout file( to replace the default menu or other purpose):<br/><br/><block class="Magetop\Menupro\Block\Menu" name="menupro_group_1" ifconfig="menupro/setting/enable" template="Magetop_Menupro::menupro/menupro.phtml"><br/>    <action method="setData"><name>groupmenu_id</name><value>1</value></action><br/></block><br/><br/>3, Call via frontend template file: <br/><br/><?php echo $this->getLayout()->createBlock("Magetop\Menupro\Block\Menu")->setGroupmenu_id(1)->setTemplate("Magetop_Menupro::menupro/menupro.phtml")->toHtml(); ?>]]></description>
+      <position><![CDATA[menu-creator-pro]]></position>
+      <animation><![CDATA[animation-hingeTop]]></animation>
+      <responsive><![CDATA[mcp-push-cover]]></responsive>
+      <color><![CDATA[#2B00E6]]></color>
+    </item>
+  </magetop_groupmenu>
+</root>

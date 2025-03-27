@@ -1,0 +1,25 @@
+<?php 
+$membershipData = $block->getSellerMemberShip()->getData();
+$memberShip = $block->getMemberShipById($membershipData['membership_id']);
+$product_id = $memberShip->getProductId();
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$product = $objectManager->create('Magento\Catalog\Model\Product')->load($product_id);
+$categories = $product->getCategoryIds(); /*will return category ids array*/
+$_categoryArray = $block->getCids();
+$elementName = 'product[category_ids][]';
+?>
+<label class="label col-sm-3"><span><?php echo __('Categories') ?></span></label>
+<div class="controll categories-tree col-sm-9">
+<?php 
+	foreach($categories as $category){
+		$cat = $objectManager->create('Magento\Catalog\Model\Category')->load($category);
+?>
+	<div class="category-block">
+		<span class="mst-folder"></span>
+		<span class="category-name"><?php echo $cat->getName(); ?></span>
+		<input type="checkbox" name="<?php /* @escapeNotVerified */ echo $elementName ?>" value="<?php echo $cat->getId() ?>" <?php if(in_array($cat->getId(),$_categoryArray)) echo 'checked' ?> class="checkbox mst-checkbox" />
+	</div>
+<?php		
+    }
+?>
+</div>

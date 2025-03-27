@@ -1,0 +1,100 @@
+<!--
+/**
+ * @author      Magetop Developer (Kien)
+ * @package     Magento Multi Vendor Marketplace_Seller_Attribute_Management
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<?php
+    if($block->getOptionData()){
+        $data = $block->getOptionData();
+        $option = @unserialize($data['option_label']);
+    }else{
+        $option = null;
+    }
+?>
+<table class="admin__control-table">
+    <thead>
+        <tr id="attribute-options-table">
+            <th class="col-draggable"></th>
+            <th class="_required">
+                <span><?php echo __('Option Label') ?></span>
+            </th>
+            <th class="col-delete">&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody class="ignore-validate ui-sortable" id="main_seller_attribute_options">
+        <?php 
+            $i = 1;
+            if($option){
+                foreach($option as $op){
+        ?>
+                    <tr class="tr_option_<?php echo $i ?>">
+                        <td></td>
+                        <td class="col-option"><input type="text" class="input-text" name="option_label[]" value="<?php echo $op ?>" style="width: 100%"/></td>
+                        <td class="col-delete">
+                            <button class="action- scalable delete delete-option" type="button" title="<?php echo __('Delete') ?>" onclick="MST.remmoveRowOption(<?php echo $i ?>);return false;">
+                                <span><?php echo __('Delete') ?></span>
+                            </button>
+                        </td>
+                    </tr>
+        <?php
+                    $i ++;
+                }
+            }
+        ?>
+    </tbody>
+    <tfoot>
+        <tr>
+            <th class="validation" colspan="5"></th>
+        </tr>
+        <tr>
+            <th class="col-actions-add" colspan="5">
+                <button class="action- scalable add" type="button" title="<?php echo __('Add Option') ?>" id="add_new_option_button">
+                    <span><?php echo __('Add Option') ?></span>
+                </button>
+            </th>
+        </tr>
+    </tfoot>
+</table>
+<input type="hidden" class="row_option_add" value="<?php echo $i ?>" />
+<script type="text/javascript">
+	require([
+		'jquery'
+	],
+	function($) {
+        function checkfirst(){
+            if($('#sellerattributemanagement_input_type').val() == 'multiselect' || $('#sellerattributemanagement_input_type').val() == 'select'){
+                $('#sellerattributemanagement_base_fieldset_options').show();
+            }else{
+                $('#sellerattributemanagement_base_fieldset_options').hide();
+            }
+        }
+        checkfirst();
+        $('#sellerattributemanagement_input_type').change(function(){
+            checkfirst();
+        });
+        
+        $('#add_new_option_button').click(function(){
+            row = parseInt($('.row_option_add').val());
+            $('#main_seller_attribute_options').append('<tr class="tr_option_'+row+'">'+
+                '<td></td>'+
+                '<td class="col-option"><input type="text" class="input-text" name="option_label[]" style="width: 100%"/></td>'+
+                '<td class="col-delete">'+
+                    '<button class="action- scalable delete delete-option" type="button" title="<?php echo __('Delete') ?>" onclick="MST.remmoveRowOption('+row+');return false;">'+
+                        '<span>Delete</span>'+
+                    '</button>'+
+                '</td>'+
+            '</tr>');
+            row_append = parseInt($('.row_option_add').val())+1;
+            $('.row_option_add').val(row_append);
+        });
+        MST={
+            remmoveRowOption: function(row){
+                $('.tr_option_'+row).remove();
+            }
+        }
+    });
+</script> 

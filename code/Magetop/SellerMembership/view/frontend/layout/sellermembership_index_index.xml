@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author      Magetop Developer (Kien)
+ * @package     Magento Multi Vendor Marketplace_Seller_Membership
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">    
+    <head>
+		<css src="Magetop_Marketplace::css/style.css"/>
+	</head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Magetop\SellerMembership\Block\Lists" name="magetop.sellermembership.lists" template="Magetop_SellerMembership::sellermembership/list.phtml" cacheable="false">
+                <block class="Magento\Catalog\Block\Product\ProductList\Toolbar" name="product_list_toolbar" template="Magento_Catalog::product/list/toolbar.phtml">
+					<block class="Magento\Theme\Block\Html\Pager" name="product_list_toolbar_pager"/>
+				</block>
+				<action method="setToolbarBlockName">
+					<argument name="name" xsi:type="string">product_list_toolbar</argument>
+				</action>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

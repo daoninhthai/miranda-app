@@ -1,0 +1,19 @@
+<script type="text/javascript">
+    require([
+        'jquery',
+        'prototype'
+    ], function(jQuery){
+        jQuery('#refresh_button').click(function () {
+            jQuery.ajax({
+				showLoader: true,
+				type : "POST",
+				url : '<?php echo $block->getAjaxUrl() ?>',
+				dataType: 'json'
+			}).done(function (data) {				
+				alert(data.message);
+			});
+        });
+
+    });
+</script>
+<?php echo $block->getButtonHtml() ?>

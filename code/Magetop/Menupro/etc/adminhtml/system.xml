@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!-- /**
+ * Magetop 
+ * @category    Magetop 
+ * @copyright   Copyright (c) 2017 Magetop (http://magetop.com/) 
+ * @Author: Hanh Nguyen<hanhkaka.nguyen37@gamil.com>
+ * @@Create Date: 2017-05-5
+ * @@Modify Date: 2017-06-05
+ */ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Backend/etc/system_file.xsd">
+    <system>
+        <tab id="magetop" translate="label" sortOrder="1">
+            <label>Magetop.com</label>
+        </tab>
+        <section id="menupro" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Menu Creator Pro - Setting</label>
+            <tab>magetop</tab>
+            <resource>Magetop_Menupro::system_config</resource>
+			<group id="setting" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <field id="enable" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable in frontend</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+			<group id="font" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Font</label>
+                <field id="google" translate="label comment" type="select" sortOrder="0"  showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Base Font Family - Google Fonts: </label>
+                     <source_model>Magetop\Menupro\Model\System\Config\Google</source_model>
+                </field>
+				<field id="size" translate="label comment" type="select" sortOrder="1"  showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Basic Font Size : </label>
+                    <source_model>Magetop\Menupro\Model\System\Config\Size</source_model>
+                </field>
+				<field id="size1" translate="label comment" type="select" sortOrder="2"  showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Leve0 Font Size: </label>
+                    <source_model>Magetop\Menupro\Model\System\Config\Size</source_model>
+                </field>
+				<field id="padding" translate="label comment" type="text" sortOrder="3"  showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Leve0 padding</label>
+                    <comment><![CDATA[Leve0 padding left-right]]></comment>
+                </field>
+				<field id="line_height" translate="label comment" type="text" sortOrder="4"  showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Leve0 line-height:</label>
+                </field>
+				<field id="text_transform" translate="label comment" type="select" sortOrder="5"  showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Leve0 text-transform: </label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+			<group id="performance" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Optimization Performance</label>
+				<field id="refresh" translate="label comment" type="button" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Refresh to update</label>
+                    <frontend_model>Magetop\Menupro\Block\System\Config\Form\Button</frontend_model>
+					<comment>Press REFRESH to update if you have do some changes on any menu item or group(such as rename, delete, add or edit, translate, re-order position ..etc) but it does not showing the new changes on frontend.</comment>
+                </field>
+				<field id="develop_mode" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>DEVELOPER MODE</label>
+                    <comment>Select NO when you have done the menus and ready to publish, then MCP will process to generate menu items as static HTML codes to speed up loading time. It will be very fast. This is very helpful option when you have enabled the "Auto show sub category".</comment>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+			</group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,202 @@
+<?php if($product_id=$this->getRequest()->getParam('id')){ ?>
+<?php 
+	$product = $block->getProductCollection($product_id);
+	if($this->getRequest()->getParam('set')) {
+		$attributeSetId=$this->getRequest()->getParam('set');
+	} else {
+		$attributeSetId = $product['attribute_set_id'];
+	}
+	$readresult=$block->getFrontShowAttributes($attributeSetId);
+	foreach($readresult as $attr) {
+		$attribute = $block->getCatalogResourceEavAttribute($attr['attribute_name']);
+		$attributeCode = $attribute['attribute_code'];
+		$defaultvalues = $product->getResource()->getAttribute($attribute['attribute_code'])->getDefaultValue();
+		
+		if ($attribute['frontend_input'] == 'media_image') {
+			continue;
+		}
+		?>
+		<?php  if($attribute['is_user_defined']  == 1){
+			$isRequired = '';
+			if ($attribute['is_required']) {
+				$isRequired = 'required-entry';
+			}
+			$attributeLabel = $attribute['frontend_label'];
+			if ($attribute->getStoreLabel() != '') {
+				$attributeLabel = $attribute->getStoreLabel();
+			}
+			?>
+			<div class="field row group <?php if ($attribute['is_required']) { echo 'required'; } ?>">
+				<label class="label col-sm-3" id="<?php echo $attributeCode ?>">
+					<?php echo $attributeLabel; ?>:
+				</label>
+				<div class="control col-sm-9 <?= $attribute['is_wysiwyg_enabled'] ? 'mt-border-box-sizing' : '' ?>">
+					<?php if ($attribute['frontend_input'] == 'select' || $attribute['frontend_input']=='multiselect' || $attribute['frontend_input']=='boolean'){ 
+						$fix="";
+						$multiselect="";
+						if ($attribute['frontend_input']=='multiselect') {
+							$fix = "[]";	
+							$multiselect = "multiple='multiple'";
+						} ?>
+						<div class="mt-selectbox">
+							<select class="<?php if($attribute['is_required']) {echo 'required-entry'; } ?> input-text" name="<?php echo "product[".$attributeCode."]".$fix;?>" <?php echo $multiselect;?>>
+							<?php $attributeOptions = $attribute->getSource()->getAllOptions();
+								  foreach ($attributeOptions as $each) {  
+									$values = explode(',', $product[$attributeCode]??'');
+									if ($values[0] == 0) {
+										$values = explode(',', $defaultvalues??'');
+									}
+									$selected="";					
+									if (in_array($each["value"], $values)) {
+										$selected = "selected='selected'";
+									}
+									?>
+								  <option <?php echo $selected; ?> value="<?php echo $each["value"]; ?>"><?php echo $each["label"]; ?>
+								  </option>
+							
+								<?php } ?>
+							</select>
+						</div>
+					<?php } ?>
+					<?php if ($attribute['frontend_input'] == 'text') { ?>
+						<input class="<?php echo $isRequired.' '.$attribute['frontend_class']; ?> input-text" type="text" name="<?php echo "product[$attributeCode]";?>" value="<?php echo $product[$attributeCode]==''?$defaultvalues:$product[$attributeCode]; ?>" />
+					<?php } ?>
+					<?php if ($attribute['frontend_input'] == 'price') { 
+						$product[$attributeCode] = $product[$attributeCode] == '' ? $defaultvalues:$product[$attributeCode];
+						?>
+						<input class="<?php if($attribute['is_required']) {echo 'required-entry'; } ?> input-text <?php echo $attribute['frontend_class']; ?>" type="number" name="<?php echo "product[$attributeCode]";?>" value="<?php
+							echo $this->helper('Magento\Framework\Pricing\Helper\Data')->currency($product[$attributeCode], false, false);
+						  ?>" />
+					<?php } ?>
+					<?php if($attribute['frontend_input'] == 'weight'){ ?>
+						<input class="<?php echo $isRequired.' '.$attribute['frontend_class']; ?> input-text" type="text" name="<?php echo "product[$attributeCode]";?>" value="<?php echo $product[$attributeCode]==''?$defaultvalues:$product[$attributeCode]; ?>" />
+					<?php } ?>
+					<?php if($attribute['frontend_input'] == 'date'){ 
+						$product[$attributeCode] = $product[$attributeCode] == '' ? $defaultvalues:$product[$attributeCode];
+						?>
+						<input class="<?php echo $isRequired.' '.$attribute['frontend_class']; ?> input-text datetype" type="text" name="<?php echo "product[$attributeCode]";?>" value="<?php echo $block->formatDate($product[$attributeCode]); ?>" />
+					<?php } ?>
+					<?php if($attribute['frontend_input'] == 'textarea'){ ?>
+						<textarea class="<?php echo $isRequired.' '.$attribute['frontend_class']; ?> input-text" rows="5" cols="75" id="textar_<?= $attributeCode ?>" name="<?php echo "product[$attributeCode]";?>" /><?php echo $product[$attributeCode]==''?$defaultvalues:$product[$attributeCode]; ?></textarea>
+						<?php if ($attribute['is_wysiwyg_enabled'] == 1) { ?>
+							<script>
+							require([
+								"jquery", 
+								"mage/translate", 
+								"mage/adminhtml/events", 
+								"mage/adminhtml/wysiwyg/tiny_mce/setup"
+								], function(jQuery){
+									wysiwygShortDescription = new wysiwygSetup("textar_<?= $attributeCode ?>", {
+										"width":"100%",
+										"height":"200px",
+										"plugins":[{"name":"image"}],
+										"tinymce4":{"toolbar":"formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist | link table charmap","plugins":"advlist autolink lists link charmap media noneditable table contextmenu paste code help table",
+										}
+									});
+									wysiwygShortDescription.setup("exact");
+								});
+							</script>
+						<?php } ?>
+					<?php } ?>
+					<?php if($attribute['frontend_input'] == 'gallery'){ ?>
+						<input class="<?php if($attribute['is_required']) {echo 'required-entry'; } ?> input-text <?php echo $attribute['frontend_class']; ?>" type="file" name="<?php echo "product[$attributeCode]";?>" />
+					<?php } ?>
+				</div>
+			</div>
+		<?php  } 
+	}	?>
+
+<?php }else{ ?>
+<?php 
+	$attributeSetId=$this->getRequest()->getParam('set');
+	$readresult=$block->getFrontShowAttributes($attributeSetId);
+
+	foreach ($readresult as $attr) {
+		$attribute = $block->getCatalogResourceEavAttribute($attr['attribute_name']);
+		$attributeCode = $attribute['attribute_code'];
+		$defaultvalues = $attribute->getDefaultValue();
+
+		if ($attribute['frontend_input'] == 'media_image') {
+			continue;
+		}
+		?>
+		<?php  if($attribute['is_user_defined']  == 1) {
+			$isRequired = '';
+			if ($attribute['is_required']) {
+				$isRequired = 'required-entry';
+			}
+			$attributeLabel = $attribute['frontend_label'];
+			if ($attribute->getStoreLabel() != '') {
+				$attributeLabel = $attribute->getStoreLabel();
+			}
+			?>
+			<div class="field row group <?php if($attribute['is_required']) {echo 'required'; } ?>">
+				<label class="label col-sm-3" id="<?php echo $attribute['attribute_code']?>"><?php echo $attributeLabel ?><?php if($attribute['frontend_input'] == 'price'){ ?><?php }?>:</label>
+				<div class="control col-sm-9 <?= $attribute['is_wysiwyg_enabled'] ? 'mt-border-box-sizing' : '' ?>">
+					<?php if($attribute['frontend_input'] == 'select' ||$attribute['frontend_input']=='multiselect' || $attribute['frontend_input']=='boolean'){ 
+						$fix="";
+						$multiselect="";
+						if($attribute['frontend_input']=='multiselect'){
+							$fix="[]";	
+							$multiselect="multiple='multiple'";
+						} ?>
+						<div class="mt-selectbox">
+						<select class="<?php if($attribute['is_required']) {echo 'required-entry'; } ?> input-text" name="<?php echo "product[$attributeCode]".$fix;?>" <?php echo $multiselect;?>>
+						<?php $attributeOptions = $attribute->getSource()->getAllOptions();
+							  foreach($attributeOptions as $each){ 
+							  	$values= explode(',',$defaultvalues??'');
+								$selected="";					
+								if(in_array($each["value"], $values)){
+									$selected= "selected='selected'";
+								}
+							  	?>
+							  <option <?php echo $selected; ?> value="<?php echo $each["value"]; ?>"><?php echo $each["label"]; ?>
+							  </option>
+						
+							<?php } ?>
+						</select>
+						</div>
+					<?php } ?>
+					<?php if($attribute['frontend_input'] == 'text'){ ?>
+						<input class="<?php echo $isRequired.' '.$attribute['frontend_class']; ?> input-text" type="text" name="<?php echo "product[$attributeCode]";?>" value="<?php echo $defaultvalues; ?>" />
+					<?php } ?>
+					<?php if($attribute['frontend_input'] == 'price'){ ?>
+						<input class="<?php echo $isRequired.' '.$attribute['frontend_class']; ?> input-text" type="number" name="<?php echo "product[$attributeCode]";?>" value="<?php echo $this->helper('Magento\Framework\Pricing\Helper\Data')->currency($defaultvalues, false, false); ?>" />
+					<?php } ?>
+					<?php if($attribute['frontend_input'] == 'weight'){ ?>
+						<input class="<?php echo $isRequired.' '.$attribute['frontend_class']; ?> input-text" type="text" name="<?php echo "product[$attributeCode]";?>" value="<?php echo $defaultvalues; ?>" />
+					<?php } ?>
+					<?php if($attribute['frontend_input'] == 'date'){ ?>
+						<input class="<?php echo $isRequired.' '.$attribute['frontend_class']; ?> input-text datetype" type="text" name="<?php echo "product[$attributeCode]";?>" value="<?php $block->formatDate($defaultvalues); ?>" />
+					<?php } ?>
+					<?php if($attribute['frontend_input'] == 'textarea'){
+						?>
+						<textarea class="<?php echo $isRequired.' '.$attribute['frontend_class']; ?> input-text" rows="5" cols="75" id="textar_<?= $attributeCode ?>" name="<?php echo "product[$attributeCode]";?>" /><?php echo $defaultvalues; ?></textarea>
+						<?php if ($attribute['is_wysiwyg_enabled'] == 1) { ?>
+							<script>
+							require([
+								"jquery", 
+								"mage/translate", 
+								"mage/adminhtml/events", 
+								"mage/adminhtml/wysiwyg/tiny_mce/setup"
+								], function(jQuery){
+									wysiwygShortDescription = new wysiwygSetup("textar_<?= $attributeCode ?>", {
+										"width":"100%",
+										"height":"200px",
+										"plugins":[{"name":"image"}],
+										"tinymce4":{"toolbar":"formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist | link table charmap","plugins":"advlist autolink lists link charmap media noneditable table contextmenu paste code help table",
+										}
+									});
+									wysiwygShortDescription.setup("exact");
+								});
+							</script>
+						<?php } ?>
+					<?php } ?>
+					<?php if($attribute['frontend_input'] == 'gallery'){ ?>
+						<input class="input-text" type="file" name="<?php echo "product[$attributeCode]";?>" />
+					<?php } ?>
+				</div>
+			</div>
+		<?php } 
+	}	?>
+<?php } ?>

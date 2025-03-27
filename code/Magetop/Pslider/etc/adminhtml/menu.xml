@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Magetop 
+ * @category    Magetop 
+ * @copyright   Copyright (c) 2017 Magetop (http://magetop.com/) 
+ * @Author: Hanh Nguyen<hanhkaka.nguyen37@gamil.com>
+ * @@Create Date: 2017-05-5
+ * @@Modify Date: 2017-06-05
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <update id="bigmarket" title="Bigmarket" module="Magetop_Pslider" sortOrder="15" resource="Magetop_Pslider::elements"/>
+		<add id="Magetop_Pslider::elements" title="Product Slider Pro" module="Magetop_Pslider" parent="bigmarket" sortOrder="15" resource="Magetop_Pslider::elements" />
+        <add id="Magetop_Pslider::cats" title="Manage Groups" module="Magetop_Pslider" sortOrder="1" parent="Magetop_Pslider::elements" action="pslider/cats" resource="Magetop_Pslider::cats"/>
+        <add id="Magetop_Pslider::pslider" title="Manage Items" module="Magetop_Pslider" sortOrder="2" parent="Magetop_Pslider::elements" action="pslider/slider" resource="Magetop_Pslider::pslider"/>
+        <add id="Magetop_Pslider::config" title="Setting" module="Magetop_Pslider" sortOrder="3" parent="Magetop_Pslider::elements" action="adminhtml/system_config/edit/section/magetop_pslider" resource="Magetop_Pslider::config"/>
+    </menu>
+</config>

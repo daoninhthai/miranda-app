@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magetop_SellerDHLShipping::configuration" title="DHL Configuration" module="Magetop_SellerDHLShipping" parent="Magetop_Marketplace::shippings" sortOrder="10" action="adminhtml/system_config/edit/section/carriers" resource="Magetop_SellerUpsShipping::configuration"/>
+    </menu>
+</config>

@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author      Magetop Developer (David)
+ * @package     Magento Multi Vendor Marketplace
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etcpage_configuration.xsd">
+    <head>
+        <css src="jquery/fileUploader/css/jquery.fileupload-ui.css"/>
+    </head>
+    <update handle="editor"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Magetop\Marketplace\Block\Adminhtml\Sellers\Edit" name="magetop.sellers.edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Magetop\Marketplace\Block\Adminhtml\Sellers\Edit\Tabs" name="magetop.sellers.edit.tabs">
+                <block class="Magetop\Marketplace\Block\Adminhtml\Sellers\Edit\Tab\Main" name="magetop.sellers.edit.tab.main"/>                
+                <block class="Magetop\Marketplace\Block\Adminhtml\Sellers\Edit\Tab\Payment" name="magetop.sellers.edit.tab.payment"/>
+				<block class="Magetop\Marketplace\Block\Adminhtml\Sellers\Edit\Tab\Commission" name="magetop.sellers.edit.tab.commission"/>				
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">main_section</argument>
+                    <argument name="block" xsi:type="string">magetop.sellers.edit.tab.main</argument>
+                </action>
+				<!--
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">meta_section</argument>
+                    <argument name="block" xsi:type="string">magetop.sellers.edit.tab.payment</argument>
+                </action>
+                -->
+				<action method="addTab">
+                    <argument name="name" xsi:type="string">commission_section</argument>
+                    <argument name="block" xsi:type="string">magetop.sellers.edit.tab.commission</argument>
+                </action>
+
+            </block>
+        </referenceContainer>
+    </body>
+</page>

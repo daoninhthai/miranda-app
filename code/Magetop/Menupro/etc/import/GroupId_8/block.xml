@@ -1,0 +1,1175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <block>
+    <item>
+      <title><![CDATA[Menu8 - Bestseller]]></title>
+      <identifier><![CDATA[menu8_bestseller]]></identifier>
+      <content><![CDATA[<h5 class="bordered-1 space-2">Best Sellers</h5>
+<div class="mb-row a-center">
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/book1.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">The Name of God Is Mercy</h6>
+<span class="book-author l-block lh-125"><small>Pope Francis et. al</small></span><br/> <strong class="l-block large-font text-danger">$16.87</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/book2.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">When Breath Becomes Air</h6>
+<span class="book-author l-block lh-125"><small>Paul Kalanithi</small></span><br/> <strong class="l-block large-font text-danger">$15.24</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/book3.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">Between the World and Me</h6>
+<span class="book-author l-block lh-125"><small>Ta-Nehisi Coates</small></span><br/> <strong class="l-block large-font text-danger">$14.24</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/book4.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">10-Day Green Cleanse</h6>
+<span class="book-author l-block lh-125"><small>J.J. Smith</small></span><br/> <strong class="l-block large-font text-danger">$14.24</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+</div>
+<hr />
+<div class="grid-column grid-column12 two-cols ">
+<ul class="space-2">
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Trump: The Art of the Deal <em class="text-muted">(Donald Trump)</em> - <span class="text-danger medium-font">$4.83</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> All the Light We Cannot See <em class="text-muted">(Anthony Doerr)</em> - <span class="text-danger medium-font">$15.29</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Laugh-Out-Loud Jokes for Kids <em class="text-muted">(Rob Elliott)</em> - <span class="text-danger medium-font">$2.67</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> StrengthsFinder 2.0 <em class="text-muted">(Tom Rath)</em> - <span class="text-danger medium-font">$17.99</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> My Name Is Lucy Barton: A Novel <em class="text-muted">(Elizabeth Strout)</em> - <span class="text-danger medium-font">$15.60</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> The Very Hungry Caterpillar <em class="text-muted">(Eric Carle)</em> - <span class="text-danger medium-font">$5.52</span></a></li>
+</ul>
+<a class="mcp-btn btn mcp-red" style="color: white;" href="#">More Best Sellers <i class="fa fa-caret-right margin-right-0"></i></a></div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu8 - Architecture]]></title>
+      <identifier><![CDATA[menu8_architecture]]></identifier>
+      <content><![CDATA[<h5 class="bordered-1 space-2">Architecture</h5>
+<div class="mb-row a-center">
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/book-ar1.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">101 Things I Learned in Architecture</h6>
+<span class="book-author l-block lh-125"><small>Matthew Frederick</small></span><br/> <strong class="l-block large-font text-danger">$10.87</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/book-ar2.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">Archidoodle: The Architect's Activity Book</h6>
+<span class="book-author l-block lh-125"><small>Steve Bowkett</small></span><br/> <strong class="l-block large-font text-danger">$14.24</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/book-ar3.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">The LEGO Architect Hand Book</h6>
+<span class="book-author l-block lh-125"><small>Tom Alphin</small></span><br/> <strong class="l-block large-font text-danger">$16.24</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/book-ar4.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">Archi-Graphic: An Look at Architecture</h6>
+<span class="book-author l-block lh-125"><small>Frank Jacobus</small></span><br/> <strong class="l-block large-font text-danger">$14.24</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+</div>
+<hr />
+<div class="grid-column grid-column12 two-cols ">
+<ul class="space-2">
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Detail in Contemporary Architecture <em class="text-muted">(Virginia McLeod)</em> - <span class="text-danger medium-font">$4.83</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Modern Architecture Since 1900 <em class="text-muted">(William J.R. Curtis)</em> - <span class="text-danger medium-font">$15.29</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Architecture: A World History <em class="text-muted">(Borden &amp; Elzanowski)</em> - <span class="text-danger medium-font">$2.67</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Sketching for Architecture <em class="text-muted">(Stephanie Travis)</em> - <span class="text-danger medium-font">$17.99</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Field Guide to American Houses <em class="text-muted">(Elizabeth Strout)</em> - <span class="text-danger medium-font">$15.60</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> A Visual Dictionary of Architecture<em class="text-muted">(Francis Ching)</em> - <span class="text-danger medium-font">$5.52</span></a></li>
+</ul>
+<a class="mcp-btn btn mcp-red" style="color: white;" href="#">More Architecture <i class="fa fa-caret-right margin-right-0"></i></a></div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu8 - Arts]]></title>
+      <identifier><![CDATA[menu8_arts]]></identifier>
+      <content><![CDATA[<h5 class="bordered-1 space-2">Arts</h5>
+<div class="mb-row a-center">
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/art1.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">Understanding the Visual Arts</h6>
+<span class="book-author l-block lh-125"><small>DeWitte &amp; Larmann</small></span><br/> <strong class="l-block large-font text-danger">$16.87</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/art2.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">Living With Art, Tenth Edition</h6>
+<span class="book-author l-block lh-125"><small>Mark Getlein</small></span><br/> <strong class="l-block large-font text-danger">$15.24</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/art3.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">Art Page-A-Day Gallery Calendary 2016</h6>
+<span class="book-author l-block lh-125"><small>Workman Publishing</small></span><br/> <strong class="l-block large-font text-danger">$14.24</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/art4.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">Gardner's Art Through the Ages</h6>
+<span class="book-author l-block lh-125"><small>Fred S. Kleiner</small></span><br/> <strong class="l-block large-font text-danger">$14.24</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+</div>
+<hr />
+<div class="grid-column grid-column12 two-cols ">
+<ul class="space-2">
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Art Across Time, Vol. 2: 14th Century <em class="text-muted">(Donald Trump)</em> - <span class="text-danger medium-font">$4.83</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Art Fundamentals: Theory and Practice <em class="text-muted">(Anthony Doerr)</em> - <span class="text-danger medium-font">$15.29</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> The Art Masters Sticker Book <em class="text-muted">(Rob Elliott)</em> - <span class="text-danger medium-font">$2.67</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Art History Portable Book 1 <em class="text-muted">(Tom Rath)</em> - <span class="text-danger medium-font">$17.99</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> The Art of Acting <em class="text-muted">(Elizabeth Strout)</em> - <span class="text-danger medium-font">$15.60</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> The Art of Theatre: An Introduction <em class="text-muted">(Eric Carle)</em> - <span class="text-danger medium-font">$5.52</span></a></li>
+</ul>
+<a class="mcp-btn btn mcp-red" style="color: white;" href="#">More Arts <i class="fa fa-caret-right margin-right-0"></i></a></div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu8 - Film]]></title>
+      <identifier><![CDATA[menu8_film]]></identifier>
+      <content><![CDATA[<h5 class="bordered-1 space-2">Film/Photography</h5>
+<div class="mb-row a-center">
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/film1.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">A Short Course in Photography</h6>
+<span class="book-author l-block lh-125"><small>Pope Francis et. al</small></span><br/> <strong class="l-block large-font text-danger">$16.87</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/film2.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">The Film Photography Handbook</h6>
+<span class="book-author l-block lh-125"><small>Paul Kalanithi</small></span><br/> <strong class="l-block large-font text-danger">$15.24</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/film3.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">Exploring Color Photography: Film to Pixels</h6>
+<span class="book-author l-block lh-125"><small>Ta-Nehisi Coates</small></span><br/> <strong class="l-block large-font text-danger">$14.24</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/film4.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">Film is Un-Dead: Get Back to Filming</h6>
+<span class="book-author l-block lh-125"><small>J.J. Smith</small></span><br/> <strong class="l-block large-font text-danger">$14.24</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+</div>
+<hr />
+<div class="grid-column grid-column12 two-cols ">
+<ul class="space-2">
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Exploring Color Photography <em class="text-muted">(Donald Trump)</em> - <span class="text-danger medium-font">$4.83</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> The Power of Pictures <em class="text-muted">(Anthony Doerr)</em> - <span class="text-danger medium-font">$15.29</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> The Film Developing CookBook <em class="text-muted">(Rob Elliott)</em> - <span class="text-danger medium-font">$2.67</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Fundamentals of Photography <em class="text-muted">(Tom Rath)</em> - <span class="text-danger medium-font">$17.99</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Black and White Photography <em class="text-muted">(Elizabeth Strout)</em> - <span class="text-danger medium-font">$15.60</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Light and Film <em class="text-muted">(Eric Carle)</em> - <span class="text-danger medium-font">$5.52</span></a></li>
+</ul>
+<a class="mcp-btn btn mcp-red" style="color: white;" href="#">More Film/Photography <i class="fa fa-caret-right margin-right-0"></i></a></div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu8 - Business]]></title>
+      <identifier><![CDATA[menu8_business]]></identifier>
+      <content><![CDATA[<h5 class="bordered-1 space-2">Business &amp; Marketing</h5>
+<div class="mb-row a-center">
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/business1.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">Master the Art of Business</h6>
+<span class="book-author l-block lh-125"><small>Josh Kaufman</small></span><br /> <strong class="l-block large-font text-danger">$16.87</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/business2.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">The Little Big Small Business Book</h6>
+<span class="book-author l-block lh-125"><small>Micah Fraim</small></span><br /> <strong class="l-block large-font text-danger">$15.24</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/business3.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">Start Your Own Business, Sixth Edition</h6>
+<span class="book-author l-block lh-125"><small>Entreprenuer Media</small></span><br /> <strong class="l-block large-font text-danger">$14.24</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/business4.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">How to Win at the Sport of Business</h6>
+<span class="book-author l-block lh-125"><small>Mark Cuban</small></span><br /> <strong class="l-block large-font text-danger">$14.24</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+</div>
+<hr />
+<div class="grid-column grid-column12 two-cols ">
+<ul class="space-2">
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> #GIRLBOSS <em class="text-muted">(Sophia Amoruso)</em> - <span class="text-danger medium-font">$4.83</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Small Business Management <em class="text-muted">(Meir Liraz)</em> - <span class="text-danger medium-font">$15.29</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> The $100 Startup: Reinvent Your Living <em class="text-muted">(C. Guillebeau)</em> - <span class="text-danger medium-font">$2.67</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> The Side Hustle Path <em class="text-muted">(Nick Loper)</em> - <span class="text-danger medium-font">$17.99</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> EntreLeadership: Business Wisdom <em class="text-muted">(D. Ramsey)</em> - <span class="text-danger medium-font">$15.60</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Shark Tank Jump Start Your Business <em class="text-muted">(DuDell &amp; Cuban)</em> - <span class="text-danger medium-font">$5.52</span></a></li>
+</ul>
+<a class="mcp-btn btn mcp-red" style="color: white;" href="#">More Business &amp; Marketing <i class="fa fa-caret-right margin-right-0"></i></a></div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu8 - Crafts]]></title>
+      <identifier><![CDATA[menu8_crafts]]></identifier>
+      <content><![CDATA[<h5 class="bordered-1 space-2">Crafts &amp; Hobbies</h5>
+<div class="mb-row a-center">
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/craft1.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">17 Flower Craft Ideas</h6>
+<span class="book-author l-block lh-125"><small>Prime Publishing</small></span><br /> <strong class="l-block large-font text-danger">$16.87</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/craft2.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">Paper Craft: Master the Art of Paper</h6>
+<span class="book-author l-block lh-125"><small>Sylvia Will</small></span><br /> <strong class="l-block large-font text-danger">$15.24</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/craft3.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">Homemade Christmas Gifts</h6>
+<span class="book-author l-block lh-125"><small>FaveCrafts</small></span><br /> <strong class="l-block large-font text-danger">$14.24</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/craft4.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">Woodworking Guide for Beginners</h6>
+<span class="book-author l-block lh-125"><small>Ted Woodrow</small></span><br /> <strong class="l-block large-font text-danger">$14.24</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+</div>
+<hr />
+<div class="grid-column grid-column12 two-cols ">
+<ul class="space-2">
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Slouchy Beanie Hat <em class="text-muted">(Sarah Taylor)</em> - <span class="text-danger medium-font">$4.83</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> DIY Christmas Decors <em class="text-muted">(Helen Green)</em> - <span class="text-danger medium-font">$15.29</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Craft with Recycling <em class="text-muted">(Christiane Nagy)</em> - <span class="text-danger medium-font">$2.67</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Quick Crochet Projects <em class="text-muted">(Carol O'Connor)</em> - <span class="text-danger medium-font">$17.99</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Organic Lotion Recipes <em class="text-muted">(Angeline Kit)</em> - <span class="text-danger medium-font">$15.60</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Feng Shui For Beginners <em class="text-muted">(Jenna Martins)</em> - <span class="text-danger medium-font">$5.52</span></a></li>
+</ul>
+<a class="mcp-btn btn mcp-red" style="color: white;" href="#">More Crafts &amp; Hobbies <i class="fa fa-caret-right margin-right-0"></i></a></div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu8 - Family]]></title>
+      <identifier><![CDATA[menu8_family]]></identifier>
+      <content><![CDATA[<h5 class="bordered-1 space-2">Family/Relationships</h5>
+<div class="mb-row a-center">
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/family1.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">How to Be an Adult in Relationships</h6>
+<span class="book-author l-block lh-125"><small>David Richo</small></span> <br /> <strong class="l-block large-font text-danger">$16.87</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/family2.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">Understanding Men's Behavior</h6>
+<span class="book-author l-block lh-125"><small>Alex Altman</small></span><br /> <strong class="l-block large-font text-danger">$15.24</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/family3.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">The 5 Love Languages</h6>
+<span class="book-author l-block lh-125"><small>Gary Chapman</small></span> <br /> <strong class="l-block large-font text-danger">$14.24</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/family4.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">Couple Skills: Make Relationship Work</h6>
+<span class="book-author l-block lh-125"><small>Matthew McKay</small></span> <br /> <strong class="l-block large-font text-danger">$14.24</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+</div>
+<hr />
+<div class="grid-column grid-column12 two-cols ">
+<ul class="space-2">
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Deal Breakers <em class="text-muted">(Bethamy Marshall)</em> - <span class="text-danger medium-font">$4.83</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Relationships - A Mess Worth Making <em class="text-muted">(S. Lane &amp; P. Tripp)</em> - <span class="text-danger medium-font">$15.29</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> The Soulmate Experience <em class="text-muted">(M. Apple &amp; J. Dunn)</em> - <span class="text-danger medium-font">$2.67</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> 47 Little Love Boosters <em class="text-muted">(Marko Petkovic)</em> - <span class="text-danger medium-font">$17.99</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Stress Management for Teenagers <em class="text-muted">(Sarfraz Zaidi)</em> - <span class="text-danger medium-font">$15.60</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Emotional Fitness for Couples <em class="text-muted">(Barton Goldsmith)</em> - <span class="text-danger medium-font">$5.52</span></a></li>
+</ul>
+<a class="mcp-btn btn mcp-red" style="color: white;" href="#">More Family/Relationships <i class="fa fa-caret-right margin-right-0"></i></a></div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu8 - Health]]></title>
+      <identifier><![CDATA[menu8_health]]></identifier>
+      <content><![CDATA[<h5 class="bordered-1 space-2">Health &amp; Well Being</h5>
+<div class="mb-row a-center">
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/health1.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">The New Health Rules: Whole Body Wellness</h6>
+<span class="book-author l-block lh-125"><small>F. Lipman &amp; D. Claro</small></span> <br /> <strong class="l-block large-font text-danger">$16.87</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/health2.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">Concepts in Health and Wellness</h6>
+<span class="book-author l-block lh-125"><small>James Robinson</small></span><br /> <strong class="l-block large-font text-danger">$15.24</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/health3.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">How to Be a Health Coach: A Wellness Approach</h6>
+<span class="book-author l-block lh-125"><small>S. Jordan</small></span> <br /> <strong class="l-block large-font text-danger">$14.24</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/health4.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">It Starts with Food: Change Your Life</h6>
+<span class="book-author l-block lh-125"><small>Dallas Hartwig</small></span> <br /> <strong class="l-block large-font text-danger">$14.24</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+</div>
+<hr />
+<div class="grid-column grid-column12 two-cols ">
+<ul class="space-2">
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> The Wellness Workbook <em class="text-muted">(J. Travis)</em> - <span class="text-danger medium-font">$4.83</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Natural Health, Natural Medicine <em class="text-muted">(Andew Well)</em> - <span class="text-danger medium-font">$15.29</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Super Genes: Unlock the Power of DNA <em class="text-muted">(D. Chopra)</em> - <span class="text-danger medium-font">$2.67</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> A Meditation for Relaxation &amp; Wellness <em class="text-muted">(B. Naparstek)</em> - <span class="text-danger medium-font">$17.99</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> TIME 100 New Health Discoveries <em class="text-muted">(Editors of TIME)</em> - <span class="text-danger medium-font">$15.60</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Strategic Grocery Shopping Guide <em class="text-muted">(Jamie Logie)</em> - <span class="text-danger medium-font">$5.52</span></a></li>
+</ul>
+<a class="mcp-btn btn mcp-red" style="color: white;" href="#">More Health &amp; Well Being <i class="fa fa-caret-right margin-right-0"></i></a></div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu8 - Travel]]></title>
+      <identifier><![CDATA[menu8_travel]]></identifier>
+      <content><![CDATA[<h5 class="bordered-1 space-2">Travel</h5>
+<div class="mb-row a-center">
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/travel1.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">Rick Steves Italy 2016</h6>
+<span class="book-author l-block lh-125"><small>Rick Steves</small></span> <br /> <strong class="l-block large-font text-danger">$16.87</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/travel2.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">Lonely Planet (Iceland)</h6>
+<span class="book-author l-block lh-125"><small>Carolyn Bain</small></span><br /> <strong class="l-block large-font text-danger">$15.24</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/travel3.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">Maui Revealed: Ultimate Guide Book</h6>
+<span class="book-author l-block lh-125"><small>Leona Boyd</small></span> <br /> <strong class="l-block large-font text-danger">$14.24</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+<div class="grid-column3">
+<div class="mb-row">
+<div class="grid-column6"><img style="height: 120px;" src="{{media url="mcpDemo/book/travel4.jpg"}}" alt="" /></div>
+<div class="grid-column6">
+<h6 class="padding-top-0 text-info">The Guide to Walt Disney World</h6>
+<span class="book-author l-block lh-125"><small>Bob Sehlinger</small></span> <br /> <strong class="l-block large-font text-danger">$14.24</strong></div>
+<span class="grid-column12 btn btn-small">LEARN MORE</span></div>
+</div>
+</div>
+<hr />
+<div class="grid-column grid-column12 two-cols ">
+<ul class="space-2">
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Parisian Chic City Guide <em class="text-muted">(S. Gachet)</em> - <span class="text-danger medium-font">$4.83</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Fodor's Scotland <em class="text-muted">(Fodor's)</em> - <span class="text-danger medium-font">$15.29</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Hawaii The Big Island Revealed <em class="text-muted">(Andrew Doughty)</em> - <span class="text-danger medium-font">$2.67</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Destinations of a Lifetime <em class="text-muted">(National Geographic)</em> - <span class="text-danger medium-font">$17.99</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> A Walk in the Woods: America <em class="text-muted">(Bill Bryson)</em> - <span class="text-danger medium-font">$15.60</span></a></li>
+<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> The Next EXIT 2016 <em class="text-muted">(Mark Watson)</em> - <span class="text-danger medium-font">$5.52</span></a></li>
+</ul>
+<a class="mcp-btn btn mcp-red" style="color: white;" href="#">More Travel <i class="fa fa-caret-right margin-right-0"></i></a></div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu8 - History]]></title>
+      <identifier><![CDATA[menu8_history]]></identifier>
+      <content><![CDATA[
+	<h5 class="bordered-1 space-2">History & Politics</h5>
+	<div class="mb-row a-center">
+		<div class="grid-column3">
+			<div class="mb-row">
+				<div class="grid-column6"><img src="{{media url="mcpDemo/book/history1.jpg"}}" style="height: 120px;" alt="" /></div>
+				<div class="grid-column6">
+					<h6 class="padding-top-0 text-info">A Brief History of Ancient Greece</h6>
+					<span class="book-author l-block lh-125"><small>Sarah Pomeroy</small></span> <br/>
+					<strong class="l-block large-font text-danger">$16.87</strong></div>
+				<span class="grid-column12 btn btn-small">LEARN MORE</span>
+			</div>
+			
+		</div>
+		<div class="grid-column3">
+				<div class="mb-row">
+					<div class="grid-column6"><img src="{{media url="mcpDemo/book/history2.jpg"}}" style="height: 120px;" alt="" /></div>
+					<div class="grid-column6">
+						<h6 class="padding-top-0 text-info">On the Rule of Law: History and Politics</h6>
+						<span class="book-author l-block lh-125"><small>Brian Tamanaha</small></span><br/> 
+						<strong class="l-block large-font text-danger">$15.24</strong></div>
+					<span class="grid-column12 btn btn-small">LEARN MORE</span>	
+				</div>
+		</div>
+		<div class="grid-column3">
+				<div class="mb-row">
+					<div class="grid-column6"><img src="{{media url="mcpDemo/book/history3.jpg"}}" style="height: 120px;" alt="" /></div>
+					<div class="grid-column6">
+						<h6 class="padding-top-0 text-info">The Cuba Reader: History, Culture & Politics</h6>
+						<span class="book-author l-block lh-125"><small>Aviva Chomsky</small></span> <br/>
+						<strong class="l-block large-font text-danger">$14.24</strong></div>
+					<span class="grid-column12 btn btn-small">LEARN MORE</span>
+				</div>
+			
+		</div>
+		<div class="grid-column3">
+				<div class="mb-row">
+					<div class="grid-column6"><img src="{{media url="mcpDemo/book/history4.jpg"}}" style="height: 120px;" alt="" /></div>
+					<div class="grid-column6">
+						<h6 class="padding-top-0 text-info">The Atlas of African-American History</h6>
+						<span class="book-author l-block lh-125"><small>Arwin Smallwood</small></span> <br/>
+						<strong class="l-block large-font text-danger">$14.24</strong></div>
+					<span class="grid-column12 btn btn-small">LEARN MORE</span>
+				</div>
+
+		</div>
+
+	</div><hr>
+	<div class="grid-column grid-column12 two-cols ">
+		<ul class="space-2">
+					<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> The Sagebrush State: Nevada History <em class="text-muted">(Michael Bowers)</em> - <span class="text-danger medium-font">$4.83</span></a></li>
+					<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> The Cold War Consumer Politics: A History <em class="text-muted">(S. Philips)</em> - <span class="text-danger medium-font">$15.29</span></a></li>
+					<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Case Histories in Int'l Politics <em class="text-muted">(K. Stiles)</em> - <span class="text-danger medium-font">$2.67</span></a></li>
+
+
+					<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> The Brazil Reader: History and Culture <em class="text-muted">(Robert Levine)</em> - <span class="text-danger medium-font">$17.99</span></a></li>
+					<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> The South Africa Reader: History <em class="text-muted">(Clifton Crais)</em> - <span class="text-danger medium-font">$15.60</span></a></li>
+					<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> History of Contemporary Italy <em class="text-muted">(Paul Ginsborg)</em> - <span class="text-danger medium-font">$5.52</span></a></li>
+		</ul>
+		<a href="#" class="mcp-btn btn mcp-red" style="color:white">More History & Politics <i class="fa fa-caret-right margin-right-0"></i></a>
+	</div>
+	
+]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu8 - Humor]]></title>
+      <identifier><![CDATA[menu8_humor]]></identifier>
+      <content><![CDATA[
+	<h5 class="bordered-1 space-2">Humor</h5>
+	<div class="mb-row a-center">
+		<div class="grid-column3">
+			<div class="mb-row">
+				<div class="grid-column6"><img src="{{media url="mcpDemo/book/humor1.jpg"}}" style="height: 120px;" alt="" /></div>
+				<div class="grid-column6">
+					<h6 class="padding-top-0 text-info">Let's Pretend This Never Happened</h6>
+					<span class="book-author l-block lh-125"><small>Jenny Lawson</small></span> <br/>
+					<strong class="l-block large-font text-danger">$16.87</strong></div>
+				<span class="grid-column12 btn btn-small">LEARN MORE</span>
+			</div>
+			
+		</div>
+		<div class="grid-column3">
+				<div class="mb-row">
+					<div class="grid-column6"><img src="{{media url="mcpDemo/book/humor2.jpg"}}" style="height: 120px;" alt="" /></div>
+					<div class="grid-column6">
+						<h6 class="padding-top-0 text-info">50 Funniest American Writers</h6>
+						<span class="book-author l-block lh-125"><small>Andy Borowitz</small></span><br/> 
+						<strong class="l-block large-font text-danger">$15.24</strong></div>
+					<span class="grid-column12 btn btn-small">LEARN MORE</span>	
+				</div>
+		</div>
+		<div class="grid-column3">
+				<div class="mb-row">
+					<div class="grid-column6"><img src="{{media url="mcpDemo/book/humor3.jpg"}}" style="height: 120px;" alt="" /></div>
+					<div class="grid-column6">
+						<h6 class="padding-top-0 text-info">F in Exams: The Best Wrong Test Answers</h6>
+						<span class="book-author l-block lh-125"><small>Richard Benson</small></span> <br/>
+						<strong class="l-block large-font text-danger">$14.24</strong></div>
+					<span class="grid-column12 btn btn-small">LEARN MORE</span>
+				</div>
+			
+		</div>
+		<div class="grid-column3">
+				<div class="mb-row">
+					<div class="grid-column6"><img src="{{media url="mcpDemo/book/humor4.jpg"}}" style="height: 120px;" alt="" /></div>
+					<div class="grid-column6">
+						<h6 class="padding-top-0 text-info">The Atlas of African-American History</h6>
+						<span class="book-author l-block lh-125"><small>Arwin Smallwood</small></span> <br/>
+						<strong class="l-block large-font text-danger">$14.24</strong></div>
+					<span class="grid-column12 btn btn-small">LEARN MORE</span>
+				</div>
+
+		</div>
+	</div><hr>
+	<div class="grid-column grid-column12 two-cols ">
+		<ul class="space-2">
+					<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> The Book of Useless Information <em class="text-muted">(D. Voorhes)</em> - <span class="text-danger medium-font">$4.83</span></a></li>
+					<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> How to Tell if Your Cars is Plotting to Kill You <em class="text-muted">(S. Philips)</em> - <span class="text-danger medium-font">$15.29</span></a></li>
+					<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> An X-Ray Affair: Modern Comedy Errors <em class="text-muted">(Chris Malone)</em> - <span class="text-danger medium-font">$2.67</span></a></li>
+
+
+					<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Healing Through Humor <em class="text-muted">(Charles Hunter)</em> - <span class="text-danger medium-font">$17.99</span></a></li>
+					<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Twenty-Eight & a Half Wishes <em class="text-muted">(Dennis Swank)</em> - <span class="text-danger medium-font">$15.60</span></a></li>
+					<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> The Official Dictionary of Sarcasm <em class="text-muted">(James Napoli)</em> - <span class="text-danger medium-font">$5.52</span></a></li>
+		</ul>
+		<a href="#" class="mcp-btn btn mcp-red" style="color:white">More Humor <i class="fa fa-caret-right margin-right-0"></i></a>
+	</div>
+	
+]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu8 - Languages]]></title>
+      <identifier><![CDATA[menu8-languages]]></identifier>
+      <content><![CDATA[<h5 class="bordered-1 space-2">Languages</h5>
+<div class="mb-row a-center">
+	<div class="grid-column3">
+		<div class="mb-row">
+			<div class="grid-column6">
+				<img src="{{media url='mcpDemo/book/book.jpg'}}" alt="book">
+			</div>	
+			<div class="grid-column6">
+				<h6 class="padding-top-0 text-info">Fluent Forever: How to Learn Any Language</h6>
+				<small>Gabriel Wyner</small>
+				<strong class="d-block text-danger">$12.88</strong>
+			</div>
+			<span class="grid-column10 btn btn-small">LEARN MORE</span>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="mb-row">
+			<div class="grid-column6">
+				<img src="{{media url='mcpDemo/book/book.jpg'}}" alt="book">
+			</div>	
+			<div class="grid-column6">
+				<h6 class="padding-top-0 text-info">Learn French - Word Power 101</h6>
+				<small>Innovative Language</small>
+				<strong class="d-block text-danger">$35.36</strong>
+			</div>	
+			<span class="grid-column10 btn btn-small">LEARN MORE</span>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="mb-row">
+			<div class="grid-column6">
+				<img src="{{media url='mcpDemo/book/book.jpg'}}" alt="book">
+			</div>	
+			<div class="grid-column6">
+				<h6 class="padding-top-0 text-info">The Power of Babel: A Natural History Language</h6>
+				<small>John McWhorter</small>
+				<strong class="d-block text-danger">$9.20</strong>
+			</div>						
+			<span class="grid-column10 btn btn-small">LEARN MORE</span>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="mb-row">
+			<div class="grid-column6">
+				<img src="{{media url='mcpDemo/book/book.jpg'}}" alt="book">
+			</div>						
+			<div class="grid-column6">
+				<h6 class="padding-top-0 text-info">Languages of the World: An Introduction</h6>
+				<small>Asya Pereltsvaig</small>
+				<strong class="d-block text-danger">$35.56</strong>
+			</div>	
+			<span class="grid-column10 btn btn-small">LEARN MORE</span>
+		</div>
+	</div>
+</div>
+<hr>
+<div class="two-cols space-2">
+	<ul>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> The Book of Languages: Talk Your Way -<em class="text-muted">(Mick Webb)</em> - <span class="text-danger md-font">$12.77</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Learn Spanish - Word Power 101 <em class="text-muted">Innovative Learning</em> <span class="text-danger medium-font">$38.95</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> The Cambridge Encyclopedia of Language <em class="text-muted">(David Crystal)</em> - <span class="text-danger medium-font">$9.95</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> The Language Instinct <em class="text-muted">(Steven Pinker)</em> - <span class="text-danger medium-font">$9.85</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Italian Conversation (QuickStudy) <em class="text-muted">(Inc. BarCharts)</em> - <span class="text-danger medium-font">$4.95</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> The 5 Love Languages <em class="text-muted">(Gary Chapman)</em> - <span class="text-danger medium-font">$9.46</span></a></li>
+	</ul>
+</div>
+<a href="#" class="btn" style="color:white">More Languages <i class="fa fa-caret-right"></i></a>						]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu8 - Management & Leadership]]></title>
+      <identifier><![CDATA[menu8-management-leadership]]></identifier>
+      <content><![CDATA[<h5 class="bordered-1 space-2">Management & Leadership</h5>
+<div class="mb-row a-center">
+	<div class="grid-column3">
+		<div class="mb-row">
+			<div class="grid-column6">
+				<img src="{{media url='mcpDemo/book/book.jpg'}}" alt="book">
+			</div>
+			<div class="grid-column6">
+				<h6 class="padding-top-0 text-info">Improve Your Leadership & Management Skills</h6>
+				<small>Meir Liraz</small>
+				<strong class="d-block text-danger">$21.88</strong>
+			</div>
+			<span class="grid-column10 btn btn-small">LEARN MORE</span>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="mb-row">
+			<div class="grid-column6">
+				<img src="{{media url='mcpDemo/book/book.jpg'}}" alt="book">
+			</div>
+			<div class="grid-column6">
+				<h6 class="padding-top-0 text-info">The 5 Levels of Leadership: Proven Steps</h6>
+				<small>John Maxwell</small>
+				<strong class="l-block large-font text-danger">$9.55</strong>
+			</div>
+			<span class="grid-column10 btn btn-small">LEARN MORE</span>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="mb-row">
+			<div class="grid-column6">
+				<img src="{{media url='mcpDemo/book/book.jpg'}}" alt="book">
+			</div>
+			<div class="grid-column6">
+				<h6 class="padding-top-0 text-info">Leadership Roles and Management in Nursing</h6>
+				<small>Bessie Marquis</small>
+				<strong class="l-block large-font text-danger">$14.99</strong>
+			</div>	
+			<span class="grid-column10 btn btn-small">LEARN MORE</span>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="mb-row">
+			<div class="grid-column6">
+				<img src="{{media url='mcpDemo/book/book.jpg'}}" alt="book">
+			</div>
+			<div class="grid-column6">
+				<h6 class="padding-top-0 text-info">The 30-Day Leadership Management Course</h6>
+				<small>Mark Miller</small>
+				<strong class="l-block large-font text-danger">$2.99</strong>
+				<span class="grid-column10 btn btn-small">LEARN MORE</span>
+			</div>
+		</div>
+	</div>
+</div>
+<hr>
+<div class="two-cols space-2">
+	<ul>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Leadership and Self-Deception <em class="text-muted">(Arbinger Institute)</em> - <span class="text-danger md-font">$10.17</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Leaders Don't Command <em class="text-muted">(Cuervo, Dominquez, Sergio) -</em><span class="text-danger md-font">$15.90</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> New Supervisor Training <em class="text-muted">(Elaine Biech)</em> - <span class="text-danger md-font">$69.95</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> 10 Management Models <em class="text-muted">(F. Trompenaars)</em> - <span class="text-danger md-font">$21.10</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> 21 Irrefutable Laws of Leadeship <em class="text-muted">(John Maxwell)</em> - <span class="text-danger md-font">$15.49</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> The First Time Manager <em class="text-muted">(Loren Belker)</em> - <span class="text-danger md-font">$9.80</span></a></li>
+	</ul>
+</div>
+<a href="#" class="btn" style="color:white">More Leadership & Management<i class="fa fa-caret-right margin-right-0"></i></a>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu8 - New Age/Occult]]></title>
+      <identifier><![CDATA[menu8-newage-occoult]]></identifier>
+      <content><![CDATA[<h5 class="bordered-1 space-2">New Age/Occult</h5>
+<div class="mb-row a-center">
+	<div class="grid-column3">
+		<div class="mb-row">
+			<div class="grid-column6">
+				<img src="{{media url='mcpDemo/book/book.jpg'}}" alt="book">
+			</div>
+			<div class="grid-column6">
+				<h6 class="padding-top-0 text-info">Dreams: Dreams and Astral Projection</h6>
+				<small>Sam Siv</small>
+				<strong class="d-block text-danger">$2.99</strong>
+			</div>
+			<span class="grid-column10 btn btn-small">LEARN MORE</span>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="mb-row">
+			<div class="grid-column6">
+				<img src="{{media url='mcpDemo/book/book.jpg'}}" alt="book">
+			</div>
+			<div class="grid-column6">
+				<h6 class="padding-top-0 text-info">The Soul Searcher's Handbook</h6>
+				<small>Emma Mildon</small>
+				<strong class="l-block large-font text-danger">$13.27</strong>
+			</div>
+				<span class="grid-column10 btn btn-small">LEARN MORE</span>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="mb-row">
+			<div class="grid-column6">
+				<img src="{{media url='mcpDemo/book/book.jpg'}}" alt="book">
+			</div>
+			<div class="grid-column6">
+				<h6 class="padding-top-0 text-info">Occult Preparations for a New Age</h6>
+				<small>Dane Rudhyar</small>
+				<strong class="l-block large-font text-danger">$1.25</strong>
+			</div>
+			<span class="grid-column10 btn btn-small">LEARN MORE</span>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="mb-row">
+			<div class="grid-column6">
+				<img src="{{media url='mcpDemo/book/book.jpg'}}" alt="book">
+			</div>
+			<div class="grid-column6">
+				<h6 class="padding-top-0 text-info">The Lycan Society (Flux Age)</h6>
+				<small>Steven Shelley</small>
+				<strong class="l-block large-font text-danger">$3.99</strong>
+			</div>
+			<span class="grid-column10 btn btn-small">LEARN MORE</span>
+		</div>
+	</div>
+</div>
+<hr>
+<div class="two-cols space-2">
+	<ul>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Gems of the Seven Color Rays <em class="text-muted">(William Stuber)</em> - <span class="text-danger md-font">$3.99</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Practical Magic: Book of Transformations <em class="text-muted">(Marion Green)</em> - <span class="text-danger md-font">$4.02</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Magical Aromatherapy: Scents <em class="text-muted">(Scott Cunningham)</em> - <span class="text-danger md-font">$8.99</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> The Conscious Interlude <em class="text-muted">(Ralph Lewis)</em> - <span class="text-danger md-font">$12.95</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Mental Poisoning <em class="text-muted">(Spencer Lewis)</em> - <span class="text-danger md-font">$43.99</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Occult America <em class="text-muted">(Mitch Horowitz)</em> - <span class="text-danger md-font">$14.84</span></a></li>
+	</ul>
+</div>
+<a href="#" class="btn" style="color:white">More New Age/Occult <i class="fa fa-caret-right"></i></a>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu8 - Text Books]]></title>
+      <identifier><![CDATA[menu8-textbook]]></identifier>
+      <content><![CDATA[<h5 class="bordered-1 space-2">Text Books</h5>
+<div class="mb-row a-center">
+	<div class="grid-column3">
+		<div class="mb-row">
+			<div class="grid-column6">
+				<img src="{{media url='mcpDemo/book/book.jpg'}}" alt="book">
+			</div>
+			<div class="grid-column6">
+				<h6 class="padding-top-0 text-info">MyMathLab: Student Access Kit</h6>
+				<small>Pearson Education</small>
+				<strong class="d-block text-danger">$73.99</strong>
+			</div>
+			<span class="btn grid-column10">LEARN MORE</span>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="mb-row">
+			<div class="grid-column6">
+				<img src="{{media url='mcpDemo/book/book.jpg'}}" alt="book">
+			</div>
+			<div class="grid-column6">
+				<h6 class="padding-top-0 text-info">Learning Biochemistry Free & Easy</h6>
+				<small>Innovative Language</small>
+				<strong class="l-block large-font text-danger">$0.00</strong>
+			</div>
+			<span class="btn grid-column10">LEARN MORE</span>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="mb-row">
+			<div class="grid-column6">
+				<img src="{{media url='mcpDemo/book/book.jpg'}}" alt="book">
+			</div>
+			<div class="grid-column6">
+				<h6 class="padding-top-0 text-info">Psychology, The Tenth Edition</h6>
+				<small>David Myers</small>
+				<strong class="l-block large-font text-danger">$19.98</strong>
+			</div>
+			<span class="btn grid-column10">LEARN MORE</span>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="mb-row">
+			<div class="grid-column6">
+				<img src="{{media url='mcpDemo/book/book.jpg'}}" alt="book">
+			</div>
+			<div class="grid-column6">
+				<h6 class="padding-top-0 text-info">Microbiology: An Introduction, 11th Edition</h6>
+				<small>Gerard Tortora</small>
+				<strong class="l-block large-font text-danger">$62.80</strong>
+			</div>
+			<span class="btn grid-column10">LEARN MORE</span>
+		</div>
+	</div>
+</div>
+<hr>
+<div class="two-cols space-2">
+	<ul>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Textbook of Mediacl Physiology <em class="text-muted">(John Hall)</em> - <span class="text-danger md-font">$18.48</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Textbook on Classroom Management <em class="text-muted">(Nivaldo Tro)</em><span class="text-danger md-font">$0.00</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Human Anatomy & Physiology <em class="text-muted">(Elaine Marieb)</em> - <span class="text-danger md-font">$26.65</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> A Textbook on Nuclear Physics <em class="text-muted">(S. Devanarayanan)</em> - <span class="text-danger md-font">$29.99</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Textbook of Medical Physiology <em class="text-muted">(Arthur Guyton)</em> - <span class="text-danger md-font">$3.17</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Principles of Microeconomics <em class="text-muted">(Gregory Mankiw)</em> - <span class="text-danger md-font">$25.70</span></a></li>
+	</ul>
+</div>						
+<a href="#" class="btn" style="color:white">More Textbooks <i class="fa fa-caret-right"></i></a>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu8 - Fiction]]></title>
+      <identifier><![CDATA[menu8-fiction]]></identifier>
+      <content><![CDATA[<h5 class="bordered-1 space-2">Fiction</h5>
+<div class="mb-row a-center">
+	<div class="grid-column3">
+		<div class="mb-row">
+			<div class="grid-column6">
+				<img src="{{media url='mcpDemo/book/book.jpg'}}" alt="book">
+			</div>
+			<div class="grid-column6">
+				<h6 class="padding-top-0 text-info text-info">The Life We Bury</h6>
+				<small>Allen Eskens</small>
+				<strong class="l-block large-font text-danger text-danger">$8.95</strong>
+			</div>
+			<span class="grid-column10 btn btn-small">LEARN MORE</span>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="mb-row">
+			<div class="grid-column6">
+				<img src="{{media url='mcpDemo/book/book.jpg'}}" alt="book">
+			</div>
+			<div class="grid-column6">
+				<h6 class="padding-top-0 text-info">Take Me With You</h6>
+				<small>Catherine Hyde</small>
+				<strong class="d-block text-danger">$8.41</strong>
+			</div>
+			<span class="grid-column10 btn btn-small">LEARN MORE</span>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="mb-row">
+			<div class="grid-column6">
+				<img src="{{media url='mcpDemo/book/book.jpg'}}" alt="book">
+			</div>	
+			<div class="grid-column6">
+				<h6 class="padding-top-0 text-info">When I Found You</h6>
+				<small>Catherine Hyde</small>
+				<strong class="d-block text-danger">$8.36</strong>
+			</div>
+			<span class="grid-column10 btn btn-small">LEARN MORE</span>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="mb-row">
+			<div class="grid-column6">
+				<img src="{{media url='mcpDemo/book/book.jpg'}}" alt="book">
+			</div>
+			<div class="grid-column3">
+				<h6 class="padding-top-0 text-info">What She Left Behind</h6>
+				<small>Ellen Wiseman</small>
+				<strong class="d-block text-danger">$8.92</strong>
+			</div>							
+			<span class="grid-column10 btn btn-small">LEARN MORE</span>
+		</div>
+	</div>
+</div>
+<hr>
+<div class="two-cols space-2">
+	<ul>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> All the Light We Cannot See <em class="text-muted">(Anthony Doerr)</em> - <span class="text-danger md-font">$15.29</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> The Winter Sea <em class="text-muted">(Susanna Kearsley)</em><span class="text-danger md-font">$10.51</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> The Alchemist <em class="text-muted">(Paulo Coelho)</em> - <span class="text-danger md-font">$9.87</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> The Girl on the Train <em class="text-muted">(Paula Hawkins)</em> - <span class="text-danger md-font">$13.47</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> The Pecan Man <em class="text-muted">(Cassie Selleck)</em> - <span class="text-danger md-font">$9.99</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> The Light Between Oceans <em class="text-muted">(M.L. Stedman)</em> - <span class="text-danger md-font">$9.07</span></a></li>
+	</ul>
+</div>	
+<a href="#" class="btn small-font" style="color:white">More Fiction <i class="fa fa-caret-right"></i></a>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu8 - Religion & Spirituality]]></title>
+      <identifier><![CDATA[menu8-religion -spirituality]]></identifier>
+      <content><![CDATA[<h5 class="bordered-1 space-2">Religion & Spirituality</h5>
+<div class="mb-row a-center">
+	<div class="grid-column3">
+		<div class="mb-row">
+			<div class="grid-column6">
+				<img src="{{media url='mcpDemo/book/book.jpg'}}" alt="book">
+			</div>
+			<div class="grid-column6">
+				<h6 class="padding-top-0 text-info">Breaking Busy: How to Find Peace</h6>
+				<small>A. Worthington</small>
+				<strong class="d-block text-danger">$9.40</strong>
+			</div>
+			<span class="grid-column10 btn btn-small">LEARN MORE</span>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="mb-row">
+			<div class="grid-column6">
+				<img src="{{media url='mcpDemo/book/book.jpg'}}" alt="book">
+			</div>
+			<div class="grid-column6">
+				<h6 class="padding-top-0 text-info">God Is With You Every Day</h6>
+				<small>Max Lucado</small>
+				<strong class="d-block text-danger">$9.41</strong>
+			</div>
+			<span class="grid-column10 btn btn-small">LEARN MORE</span>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="mb-row">
+			<div class="grid-column6">
+				<img src="{{media url='mcpDemo/book/book.jpg'}}" alt="book">
+			</div>
+			<div class="grid-column6">
+				<h6 class="padding-top-0 text-info">I am Strong: Finding God's Peace</h6>
+				<small>John Dickerson</small>
+				<strong class="d-block text-danger">$9.89</strong>
+			</div>
+			<span class="grid-column10 btn btn-small">LEARN MORE</span>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="mb-row">
+			<div class="grid-column6">
+				<img src="{{media url='mcpDemo/book/book.jpg'}}" alt="book">
+			</div>
+			<div class="grid-column6">
+				<h6 class="padding-top-0 text-info">100 Bible Verses Everyone Must Know</h6>
+				<small>Robert J. Morgan</small>
+				<strong class="d-block text-danger">$10.61</strong>
+			</div>
+			<span class="grid-column10 btn btn-small">LEARN MORE</span>
+		</div>
+	</div>
+</div>
+<hr>
+<div class="two-cols space-2">
+	<ul>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Steadfast Love: The Response of Gode <em class="text-muted">(L. Chandler)</em> - <span class="text-danger md-font">$13.10</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> God Dreams: 12 Vision Templates <em class="text-muted">(Susanna Kearsley)</em><span class="text-danger md-font">$14.59</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> The Battle Plan Prayer Journal <em class="text-muted">(Stephen Kendrick)</em> - <span class="text-danger md-font">$7.54</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Reshaping It All: Spiritual Fitness <em class="text-muted">(C. Cameron)</em> - <span class="text-danger md-font">$10.80</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> I Will: Traits of a Focused Christian <em class="text-muted">(Thom Rainer)</em> - <span class="text-danger md-font">$8.99</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> The Prayer Warrior <em class="text-muted">(J.C. Stubbs)</em> - <span class="text-danger md-font">$19.27</span></a></li>
+	</ul>
+</div>
+<a href="#" class="btn" style="color:white">More Religion & Spirituality <i class="fa fa-caret-right"></i></a>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu8 - Science & Psychology]]></title>
+      <identifier><![CDATA[menu8-science-pPsychology]]></identifier>
+      <content><![CDATA[<h5 class="bordered-1 space-2">Science & Psychology</h5>
+<div class="mb-row a-center">
+	<div class="grid-column3">
+		<div class="mb-row">
+			<div class="grid-column6">
+				<img src="{{media url='mcpDemo/book/book.jpg'}}" alt="book">
+			</div>
+			<div class="grid-column6">
+				<h6 class="padding-top-0 text-info">The Science of Psychology</h6>
+				<small>Laura A. King</small>
+				<strong class="d-block text-danger">$15.59</strong>
+			</div>
+			<span class="grid-column10 btn btn-small">LEARN MORE</span>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="mb-row">
+			<div class="grid-column6">
+				<img src="{{media url='mcpDemo/book/book.jpg'}}" alt="book">
+			</div>	
+			<div class="grid-column6">
+				<h6 class="padding-top-0 text-info">Forensic and Legal Psychology</h6>
+				<small>Mark Costanzo</small>
+				<strong class="l-block large-font text-danger">$40.21</strong>
+			</div>
+			<span class="grid-column10 btn btn-small">LEARN MORE</span>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="mb-row">
+			<div class="grid-column6">
+				<img src="{{media url='mcpDemo/book/book.jpg'}}" alt="book">
+			</div>
+			<div class="grid-column6">
+				<h6 class="padding-top-0 text-info">Discovering Psychology: The Science of Mind</h6>
+				<small>John Cacioppo</small>
+				<strong class="l-block large-font text-danger">$37.43</strong>
+			</div>
+			<span class="grid-column10 btn btn-small">LEARN MORE</span>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="mb-row">
+			<div class="grid-column6">
+				<img src="{{media url='mcpDemo/book/book.jpg'}}" alt="book">
+			</div>
+			<div class="grid-column6">
+				<h6 class="padding-top-0 text-info">Clinical Psychology: Science Prac..</h6>
+				<small>A. Pomerantz</small>
+				<strong class="l-block large-font text-danger">$114.99</strong>
+			</div>
+			<span class="grid-column10 btn btn-small">LEARN MORE</span>
+		</div>
+	</div>
+</div>
+<hr>
+<div class="two-cols space-2">
+	<ul>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Evolutionary Psychology <em class="text-muted">(David Buss)</em> - <span class="text-danger md-font">$15.26</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Cognitive Psychology: Science of the Mind <em class="text-muted">(B. Riegler)</em><span class="text-danger md-font">$111.99</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Advanced Social Psychology <em class="text-muted">(Roy Baumeister)</em> - <span class="text-danger md-font">$37.34</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Psychology and Social Sanity <em class="text-muted">(H. Munsterberg)</em> - <span class="text-danger md-font">$19.99</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Pseudoscience in Clinical Psychology <em class="text-muted">(S. Lilienfeld)</em> - <span class="text-danger md-font">$36.76</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Psychology Statistics for Dummies <em class="text-muted">(Donncha Hanna)</em> - <span class="text-danger md-font">$14.56</span></a></li>
+	</ul>
+</div>
+<a href="#" class="btn" style="color:white">More Science & Psychology <i class="fa fa-caret-right"></i></a>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu8 - Sports]]></title>
+      <identifier><![CDATA[menu8-sports]]></identifier>
+      <content><![CDATA[<h5 class="bordered-bottom">Sports</h5>
+<div class="mb-row a-center">
+	<div class="grid-column3">
+		<div class="mb-row">
+			<div class="grid-column6">
+				<img src="{{media url='mcpDemo/book/book.jpg'}}" alt="book">
+			</div>
+			<div class="grid-column6">
+				<h6 class="padding-top-0 text-info">The Champion's Mind: How Great Athletes...</h6>
+				<small>Laura A. King</small>
+				<strong class="d-block text-danger">$15.59</strong>
+			</div>
+			<span class="grid-column10 btn btn-small">LEARN MORE</span>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="mb-row">
+			<div class="grid-column6">
+				<img src="{{media url='mcpDemo/book/book.jpg'}}" alt="book">
+			</div>
+			<div class="grid-column6">
+				<h6 class="padding-top-0 text-info">The World's Wackiest True Sports Stories</h6>
+				<small>Len Berman</small>
+				<strong class="d-block text-danger">$7.00</strong>
+			</div>
+			<span class="grid-column10 btn btn-small">LEARN MORE</span>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="mb-row">
+			<div class="grid-column6">
+				<img src="{{media url='mcpDemo/book/book.jpg'}}" alt="book">
+			</div>
+			<div class="grid-column6">
+				<h6 class="padding-top-0 text-info">Concussion</h6>
+				<small>Jeanne Marie Laskas</small>
+				<strong class="d-block text-danger">$10.00</strong>
+			</div>
+			<span class="grid-column10 btn btn-small">LEARN MORE</span>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="mb-row">
+			<div class="grid-column6">
+				<img src="{{media url='mcpDemo/book/book.jpg'}}" alt="book">
+			</div>
+			<div class="grid-column6">
+				<h6 class="padding-top-0 text-info">Every Day I Fight</h6>
+				<small>Stuart Scott</small>
+				<strong class="d-block text-danger">$9.60</strong>
+			</div>
+			<span class="grid-column10 btn btn-small">LEARN MORE</span>
+		</div>
+	</div>
+</div>
+<hr>
+<div class="two-cols space-2">
+	<ul>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> The Most Unforgettable Plays in Super Bowl... <em class="text-muted">(J. Rice)</em> - <span class="text-danger medium-font">$18.66</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> The Best American Sports Writing <em class="text-muted">(Sports Illustrated)</em> - <span class="text-danger medium-font">$22.61</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Brady vs Manning: The Untold Story... <em class="text-muted">(Gary Myers)</em> - <span class="text-danger medium-font">$14.30</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> The Final Four <em class="text-muted">(Paul Volponi)</em> - <span class="text-danger medium-font">$19.99</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> This Is Your Brain on Sports <em class="text-muted">(Sam Sommers)</em> - <span class="text-danger medium-font">$16.34</span></a></li>
+		<li><a href="#"><i class="fa fa-bookmark fa-fw"></i> Touchdown (Extended Edition) <em class="text-muted">(Jerry Cole)</em> - <span class="text-danger medium-font">$2.99</span></a></li>
+	</ul>
+</div>
+<a href="#" class="btn" style="color:white">More Sports <i class="fa fa-caret-right"></i></a>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+  </block>
+</root>

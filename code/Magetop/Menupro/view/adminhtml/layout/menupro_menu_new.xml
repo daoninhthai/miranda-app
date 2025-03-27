@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!-- /**
+ * Magetop 
+ * @category    Magetop 
+ * @copyright   Copyright (c) 2017 Magetop (http://magetop.com/) 
+ * @Author: Hanh Nguyen<hanhkaka.nguyen37@gamil.com>
+ * @@Create Date: 2017-05-5
+ * @@Modify Date: 2017-06-05
+ */ -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+		<css src="Magetop_Menupro::css/bootstrap.css" />
+		<css src="Magetop_Menupro::css/custom.css" />
+		<css src="Magetop_Menupro::css/menupro.css" />
+		<css src="Magetop_Menupro::css/menu-creator-pro.css"/>
+        <css src="Magetop_Menupro::css/jquery.sidr.light.css"/>
+		<css src="Magetop_Menupro::pushnew/css/icons.css" />
+		<css src="Magetop_Menupro::pushnew/css/component.css" />
+	</head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Magetop\Menupro\Block\Adminhtml\Menu\Edit" name="menupro_form" template="menupro/grid.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

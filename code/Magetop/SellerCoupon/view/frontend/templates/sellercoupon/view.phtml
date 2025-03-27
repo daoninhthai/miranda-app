@@ -1,0 +1,121 @@
+<!--
+/**
+ * @author      Magetop Developer (Kien)
+ * @package     Magento Multi Vendor Marketplace_Seller_Coupon
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<?php 
+    $_couponData = $block->getCollection();
+?>
+<div class="block content-coupon mgt-theme-div">
+    <form id="coupon-form" action="<?php echo $block->getUrl('sellercoupon/index/save') ?>" method="post" novalidate="novalidate">
+        <legend class="legend">
+            <span><?php echo __('Edit Coupon ID : ').$_couponData->getId(); ?></span>
+        </legend>
+        <fieldset class="fieldset info coupon">
+            <input type="hidden" value="<?php echo $_couponData->getId() ?>" name="coupon_id"/>
+            <div class="field field-seller_coupon_code required">
+                <label class="label" for="seller_coupon_code">
+                    <span><?php echo __('Coupon Code') ?></span>
+                </label>
+                <div class="control">
+                    <input id="seller_coupon_code" value="<?php echo $_couponData->getSellerCouponCode() ?>" type="text" aria-required="true" name="seller_coupon_code" class="input-text required-entry" data-validate="{required:true}" readonly="" disabled=""/>
+                </div>
+            </div>
+            <div class="field field-seller_coupon_type required">
+                <label class="label" for="seller_coupon_type">
+                    <span><?php echo __('Coupon Type') ?></span>
+                </label>
+                <div class="control">
+                    <select id="seller_coupon_type" name="seller_coupon_type">
+                        <option <?php echo $_couponData->getSellerCouponType()==1?'selected="selected"':'' ?> value="1"><?php echo __('Price') ?></option>
+                        <option <?php echo $_couponData->getSellerCouponType()==2?'selected="selected"':'' ?> value="2"><?php echo __('Percent') ?></option>
+                    </select>
+                </div>
+            </div>
+            <div class="field field-seller_coupon_price required">
+                <label class="label" for="seller_coupon_price">
+                    <span><?php echo $_couponData->getSellerCouponType()==1 ? __('Coupon Price') : __('Coupon Percent') ?></span>
+                </label>
+                <div class="control">
+                    <input id="seller_coupon_price" value="<?php echo $_couponData->getSellerCouponPrice() ?>" type="text" aria-required="true" name="seller_coupon_price" class="input-text required-entry validate-number" data-validate="{required:true}"/>
+                </div>
+            </div>
+            <div class="field field-created_at required">
+                <label class="label" for="created_at">
+                    <span><?php echo __('From Date') ?></span>
+                </label>
+                <div class="control">
+                    <input id="created_at" value="<?php echo $_couponData->getCreatedAt() ?>" type="text" aria-required="true" name="created_at" class="input-text required-entry" data-validate="{required:true}"/>
+                </div>
+            </div>
+            <div class="field field-expire_date required">
+                <label class="label" for="expire_date">
+                    <span><?php echo __('Expire Date') ?></span>
+                </label>
+                <div class="control">
+                    <input id="expire_date" value="<?php echo $_couponData->getExpireDate() ?>" type="text" aria-required="true" name="expire_date" class="input-text required-entry" data-validate="{required:true}"/>
+                </div>
+            </div> 
+            <div class="field field-status required">
+                <label class="label" for="status">
+                    <span><?php echo __('Status') ?></span>
+                </label>
+                <div class="control">
+                    <select name="status">
+                        <option <?php echo $_couponData->getStatus()==1?'selected="selected"':'' ?> value="1"><?php echo __('Enable') ?></option>
+                        <option <?php echo $_couponData->getStatus()==0?'selected="selected"':'' ?> value="0"><?php echo __('Disable') ?></option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button type="submit" class="action continue primary" title="Continue"><span><?php echo __('Save') ?></span></button>
+            </div>
+            <div style="float: right;" class="primary">
+                <a href="javascript:;" onclick="javascript: window.history.back();" class="left"><?php echo __('« Back') ?></a>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    require([
+        "jquery",
+        'Magento_Ui/js/modal/confirm',
+        'Magento_Ui/js/modal/alert',
+        "mage/calendar"
+    ], function($,confirmation,alert){
+        $('.seller_coupon').addClass('current');
+        
+        var currentDate = '<?php echo date("Y-m-d") ?>';
+        var dateFrom = '<?php echo date("Y-m-d") ?>';
+        $("#created_at" ).calendar({'dateFormat':'Y-m-d','minDate':currentDate});
+        $("#expire_date" ).calendar({'dateFormat':'Y-m-d','minDate':currentDate});
+        if(dateFrom){
+            $("#expire_date").datepicker('option','minDate',dateFrom);
+        }
+        $("#created_at" ).on('change',function(){
+            $("#expire_date").datepicker('option','minDate',$(this).val());
+        });
+        
+        $('#seller_coupon_type').change(function(){
+            if($(this).val() == 1){
+                $('.field-seller_coupon_price .label span').html('<?php echo __('Coupon Price') ?>'); 
+            }else{
+                $('.field-seller_coupon_price .label span').html('<?php echo __('Coupon Percent') ?>'); 
+            }
+        });   
+    });
+    require([
+        "jquery",
+        "mage/mage"
+    ], function($){
+        var dataForm = $('#coupon-form');
+        dataForm.mage('validation', {});
+        var _action = dataForm.attr('action');
+    });
+</script>

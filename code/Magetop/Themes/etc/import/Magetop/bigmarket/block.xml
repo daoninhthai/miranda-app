@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <block>
+    <item>
+      <title><![CDATA[Home slide]]></title>
+      <identifier><![CDATA[home-slide]]></identifier>
+      <content><![CDATA[<div class="home-main-slide owl-carousel owl-theme full-slide">
+    <div class="item">
+		<img class="owl-lazy"data-src="{{media url='bigmarket/slide/home1.jpg'}}" alt=""/>
+		<div class="container">
+			<div class="slide-caption start-a">
+				<h3 class="title a-zoomIn">Fashion</h3>
+				<p class="a-fadeInUp">Lorem ipsum dolor sit amet</p>
+				<a class="a-fadeInDown mb-bt bnt-style1" href="#">shopping now</a>
+			</div>
+		</div>	
+	</div>
+	<div class="item">
+		<img class="owl-lazy" data-src="{{media url='bigmarket/slide/home2.jpg'}}" alt=""/>
+		<div class="container">
+			<div class="slide-caption">
+				<h3 class="title a-zoomOut">Digital & Electronic</h3>
+				<p class="a-fadeInLeft">Lorem ipsum dolor sit amet</p>
+				<a class="a-fadeInRight mb-bt bnt-style1" href="#">shopping now</a>
+			</div>
+		</div>
+	</div>
+	<div class="item">
+		<img class="owl-lazy" data-src="{{media url='bigmarket/slide/home3.jpg'}}" alt=""/>
+		<div class="container">
+			<div class="slide-caption">
+				<h3 class="title a-zoomIn">Electronics</h3>
+				<p class="a-fadeInRight">Lorem ipsum dolor sit amet</p>
+				<a class="a-fadeInLeft mb-bt bnt-style1" href="#">shopping now</a>
+			</div>
+		</div>	
+	</div>
+	<div class="item">
+		<img class="owl-lazy" data-src="{{media url='bigmarket/slide/home4.jpg'}}" alt=""/>
+		<div class="container">
+			<div class="slide-caption">
+				<h3 class="title a-zoomIn">Electronics</h3>
+				<p class="a-fadeInRight">Lorem ipsum dolor sit amet</p>
+				<a class="a-fadeInLeft mb-bt bnt-style1" href="#">shopping now</a>
+			</div>
+		</div>	
+	</div>
+	<div class="item">
+		<img class="owl-lazy" data-src="{{media url='bigmarket/slide/home5.jpg'}}" alt=""/>
+		<div class="container">
+			<div class="slide-caption">
+				<h3 class="title a-zoomIn">Electronics</h3>
+				<p class="a-fadeInRight">Lorem ipsum dolor sit amet</p>
+				<a class="a-fadeInLeft mb-bt bnt-style1" href="#">shopping now</a>
+			</div>
+		</div>	
+	</div>
+	<div class="item">
+		<img class="owl-lazy" data-src="{{media url='bigmarket/slide/home6.jpg'}}" alt=""/>
+		<div class="container">
+			<div class="slide-caption">
+				<h3 class="title a-zoomIn">Electronics</h3>
+				<p class="a-fadeInRight">Lorem ipsum dolor sit amet</p>
+				<a class="a-fadeInLeft mb-bt bnt-style1" href="#">shopping now</a>
+			</div>
+		</div>	
+	</div>
+	<div class="item">
+		<img class="owl-lazy" data-src="{{media url='bigmarket/slide/home7.jpg'}}" alt=""/>
+		<div class="container">
+			<div class="slide-caption">
+				<h3 class="title a-zoomIn">Electronics</h3>
+				<p class="a-fadeInRight">Lorem ipsum dolor sit amet</p>
+				<a class="a-fadeInLeft mb-bt bnt-style1" href="#">shopping now</a>
+			</div>
+		</div>	
+	</div>
+	<div class="item">
+		<img class="owl-lazy" data-src="{{media url='bigmarket/slide/home8.jpg'}}" alt=""/>
+		<div class="container">
+			<div class="slide-caption">
+				<h3 class="title a-zoomIn">Electronics</h3>
+				<p class="a-fadeInRight">Lorem ipsum dolor sit amet</p>
+				<a class="a-fadeInLeft mb-bt bnt-style1" href="#">shopping now</a>
+			</div>
+		</div>	
+	</div>
+	<div class="item">
+		<img class="owl-lazy" data-src="{{media url='bigmarket/slide/home9.png'}}" alt=""/>
+		<div class="container">
+			<div class="slide-caption">
+				<h3 class="title a-zoomIn">Electronics</h3>
+				<p class="a-fadeInRight">Lorem ipsum dolor sit amet</p>
+				<a class="a-fadeInLeft mb-bt bnt-style1" href="#">shopping now</a>
+			</div>
+		</div>	
+	</div>
+</div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Home bottom content]]></title>
+      <identifier><![CDATA[home-bottom-content]]></identifier>
+      <content><![CDATA[<div class="home-brand-list">
+	{{block class="Emizentech\ShopByBrand\Block\Index" name="home.brand.list" template="Emizentech_ShopByBrand::emizen_brand/home_list.phtml"}}
+</div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Footer main content]]></title>
+      <identifier><![CDATA[footer-main-content]]></identifier>
+      <content><![CDATA[<div class="container">
+	<div class="row">
+		<div class="footer-links col-xs-12 col-sm-12 col-md-8 col-md-push-4">
+			<div class="row">
+				<div class="col-sm-4 col-xs-12">
+					<h3 class="heading">Information<span class="a-mobile"><i class="fa fa-angle-down"><span class="only-screen">Magetop.com</span></i></span></h3>					
+					<div class="xs-toggle-content">
+						<ul class="bullet">
+							<li><a href="{{store url=""}}about-magento-demo-store/">About Us</a></li>
+							<li><a href="{{store url=""}}contacts/">Contact</a></li>
+							<li><a href="{{store url=""}}blog/">Blog</a></li>
+							<li><a href="#">Delivery Information</a></li>
+							<li><a href="#">Privacy Policy</a></li>
+							<li><a href="#">Terms &amp; Conditions</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-sm-4 col-xs-12">
+					<h3 class="heading">My Account<span class="a-mobile"><i class="fa fa-angle-down"><span class="only-screen">Magetop.com</span></i></span></h3>
+					<div class="xs-toggle-content">
+						<ul class="bullet">
+							<li><a href="#">Track your Order</a></li>
+							<li><a href="#">Wishlist</a></li>
+							<li><a href="#">My Account</a></li>
+							<li><a href="#">Affiliates</a></li>
+							
+						</ul>
+					</div>
+				</div>
+				<div class="col-sm-4 col-xs-12">
+					<h3 class="heading">Support<span class="a-mobile"><i class="fa fa-angle-down"><span class="only-screen">Magetop.com</span></i></span></h3>
+					<div class="xs-toggle-content">
+						<ul class="bullet">
+							<li><a href="#">Security</a></li>
+							<li><a href="#">Privacy</a></li>
+							<li><a href="#">Returns &amp; Exchanges</a></li>
+							<li><a href="#">Help</a></li>
+							<li><a href="#">Gift Cards</a></li>
+							<li><a href="#">International</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer-contact col-xs-12 col-sm-12 col-md-4 col-md-pull-8">
+			<a class="footer-logo" href="#"> <img class="img-responsive" src="{{media url='bigmarket/footer-logo.png'}}"/></a>
+			<h3>Have Questions?</h3>
+			<h4 class="c-active">+1-202-555-0173</h4>
+			<h4><a class="c-active" href="#">support@bigmarket.com</a></h4>
+			<p>24/7 Dedicated Customer Support</p>
+			{{block class="Magento\Cms\Block\Block" block_id="footer_socail"}}
+		</div>
+	</div>
+</div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Footer bottom right]]></title>
+      <identifier><![CDATA[footer-bottom-right]]></identifier>
+      <content><![CDATA[<div class="paypal-card">
+	<ul class="list-inline">
+		<li><a href="#"><i class="fa fa-cc-amex"><span class="only-screen">Magetop.com</span></i></a></li>
+		<li><a href="#"><i class="fa fa-cc-mastercard"><span class="only-screen">Magetop.com</span></i></a></li>
+		<li><a href="#"><i class="fa fa-credit-card"><span class="only-screen">Magetop.com</span></i></a></li>
+		<li><a href="#"><i class="fa fa-cc-diners-club"><span class="only-screen">Magetop.com</span></i></a></li>
+		<li><a href="#"><i class="fa fa-cc-discover"><span class="only-screen">Magetop.com</span></i></a></li>
+		<li><a href="#"><i class="fa fa-paypal"><span class="only-screen">Magetop.com</span></i></a></li>
+		<li><a href="#"><i class="fa fa-cc-visa"><span class="only-screen">Magetop.com</span></i></a></li>
+	</ul>
+</div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Footer socail]]></title>
+      <identifier><![CDATA[footer_socail]]></identifier>
+      <content><![CDATA[<div class="footer-soail">
+	<ul class="join-us list-inline">
+		<li><a href="#"><i class="fa fa-facebook"><span class="only-screen">Magetop.com</span></i></a></li>
+		<li><a href="#"><i class="fa fa-google-plus"><span class="only-screen">Magetop.com</span></i></a></li>
+		<li><a href="#"><i class="fa fa-twitter"><span class="only-screen">Magetop.com</span></i></a></li>
+		<li><a href="#"><i class="fa fa-linkedin"><span class="only-screen">Magetop.com</span></i></a></li>
+		<li><a href="#"><i class="fa fa-pinterest"><span class="only-screen">Magetop.com</span></i></a></li>
+		<li><a href="#"><i class="fa fa-youtube"><span class="only-screen">Magetop.com</span></i></a></li>
+		<li><a href="#"><i class="fa fa-instagram"><span class="only-screen">Magetop.com</span></i></a></li>
+	</ul>
+</div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Fashion right dropdown]]></title>
+      <identifier><![CDATA[fashion-right-dropdown]]></identifier>
+      <content><![CDATA[<div class="featured-links">
+	<div class="row-c5">
+		<div class="col-xs-4">
+			<a href="#"><img class="img-responsive" src="{{media url='bigmarket/mcp/fashion-links-1.jpg'}}"/></a>
+		</div>
+		<div class="col-xs-4">
+			<a href="#"><img class="img-responsive" src="{{media url='bigmarket/mcp/fashion-links-2.jpg'}}"/></a>
+		</div>
+		<div class="col-xs-4">
+			<a href="#"><img class="img-responsive" src="{{media url='bigmarket/mcp/fashion-links-3.jpg'}}"/></a>
+		</div>
+	</div>
+</div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Home top page]]></title>
+      <identifier><![CDATA[home-top-page]]></identifier>
+      <content><![CDATA[<div class="top-service">
+	<div class="row">
+		<div class="col-xs-4 item">
+			<span class="fa fa-truck"><span class="only-screen">truck</span></span>
+			<div class="info"><strong>Free shipping</strong>On orders over $99</div>
+		</div>
+		<div class="col-xs-4 item">
+			<span class="fa fa-refresh"><span class="only-screen">refresh</span></span>
+			<div class="info"><strong>30 days return</strong>money back</div>
+		</div>
+		<div class="col-xs-4 item"> 
+			<span class="fa fa-dollar"><span class="only-screen">dollar</span></span>
+			<div class="info"><strong>Save 15%</strong>On orders over $399</div>
+		</div>
+	</div>
+</div>
+<div class="marketplace-session">
+	<div class="a-center main-title">
+		<h2>Sell on our marketplace</h2>
+	</div>
+	<div class="a-center signup-p">
+		<div class="row">
+			<div class="col-xs-4">
+				<div class="img">
+					<a href="#"><img src="{{media url='marketplace/home/sign-up.png'}}" alt=""/></a>
+				</div>
+				<span class="i-text">Sign up</span>
+			</div>
+			<div class="col-xs-4">
+				<div class="img">
+					<a href="#"><img src="{{media url='marketplace/home/create-icon.png'}}" alt=""/></a>
+				</div>
+				<span class="i-text">Create</span>
+			</div>
+			<div class="col-xs-4">
+				<div class="img">
+					<a href="#"><img src="{{media url='marketplace/home/sell-icon.png'}}" alt=""/></a>
+				</div>
+				<span class="i-text">Sell</span>
+			</div>
+			<div class="col-xs-12">
+				<a class="btn bnt-bg btn-star" href="#">Star now</a>
+			</div>
+		</div>
+	</div>
+	<div class="a-center how-it-work">
+		<h4>How It Work</h4>
+		<div class="wrapper-icon">
+			<div class="inner">
+				<div class="item">
+					<div class="icon">
+						<img src="{{media url='marketplace/home/sign-up-free.png'}}" alt=""/>
+					</div>
+					<span class="i-text">1. Sing Up-Free</span>
+				</div>
+				<div class="item">
+					<div class="icon">
+						<img src="{{media url='marketplace/home/create-product.png'}}" alt=""/>
+					</div>
+					<span class="i-text">2. Create Product</span>
+				</div>
+				<div class="item">
+					<div class="icon">
+						<img src="{{media url='marketplace/home/share-it.png'}}" alt=""/>
+					</div>
+					<span class="i-text">3. Share it</span>
+				</div>
+				<div class="item">
+					<div class="icon">
+						<img src="{{media url='marketplace/home/make-sale.png'}}" alt=""/>
+					</div>
+					<span class="i-text">4. Make A Sale</span>
+				</div>
+				<div class="item">
+					<div class="icon">
+						<img src="{{media url='marketplace/home/you-profit.png'}}" alt=""/>
+					</div>
+					<span class="i-text">5. You Profit</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+  </block>
+</root>

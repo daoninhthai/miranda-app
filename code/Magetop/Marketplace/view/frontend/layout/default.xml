@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+		<css src="Magetop_Marketplace::css/custom.css"/>
+		<css src="Magetop_Marketplace::css/d-custom.css"/>
+		<!--<css src="Magetop_Marketplace::css/dashboard-theme.css"/>-->
+	</head>
+    <body>
+        <referenceBlock name="top.links">
+			<block class="Magetop\Marketplace\Block\SellerBecome" name="seller-link" template="Magetop_Marketplace::form/top-links.phtml"/>
+        </referenceBlock>
+		<referenceBlock name="header.links">
+			<block class="Magento\Framework\View\Element\Html\Link" name="marketplace.toplink" before="customer" >
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">Marketplace</argument>
+                    <argument name="path" xsi:type="string" translate="true">marketplace</argument>
+                </arguments>
+            </block>
+		</referenceBlock>
+    </body>
+</page>

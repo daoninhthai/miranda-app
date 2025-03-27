@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <block>
+    <item>
+      <title><![CDATA[Menu3 - Search  - Form]]></title>
+      <identifier><![CDATA[menu3-search-form]]></identifier>
+      <content><![CDATA[<div class="mcp-search">{{block class="Magento\Framework\View\Element\Template" template="Magetop_Menupro::form/form.mini.phtml"}}</div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+  </block>
+</root>

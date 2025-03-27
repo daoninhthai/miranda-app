@@ -1,0 +1,66 @@
+<?php
+/**
+ * Magetop 
+ * @category    Magetop 
+ * @copyright   Copyright (c) 2017 Magetop (http://magetop.com/) 
+ * @Author: Hanh Nguyen<hanhkaka.nguyen37@gamil.com>
+ * @@Create Date: 2013-05-5
+ * @@Modify Date: 2017-06-05
+ */
+/*--------------------*/
+$groupId = $this->getGroupmenuId ();
+$groupInfo = $block->getGroupInfo();
+$MCPHTML = $MCPRHTML = "";
+$_mcpColor = '#980202';
+if($groupInfo['color']){
+	$_mcpColor = $groupInfo['color'];
+}
+?>
+<style>
+#menu-group-<?php echo $groupId; ?> .menu-creator-pro, #menu-group-<?php echo $groupId; ?> .menu-creator-pro > li { background: <?php echo $_mcpColor; ?>; }
+#menu-group-<?php echo $groupId; ?> .menu-creator-pro li.is-active, #menu-group-<?php echo $groupId; ?> .menu-creator-pro .autosub li:hover, .no-header > ul > li:not(.nav-header):hover { background: <?php echo $_mcpColor; ?>; }
+#menu-group-<?php echo $groupId; ?> .table-layout > ul > li > a:after { border-left: .75em solid <?php echo $_mcpColor; ?>; }
+#menu-group-<?php echo $groupId; ?> .bg-design, #menu-group-<?php echo $groupId; ?> .tab-layout > ul > li.is-active > a { background: <?php echo $_mcpColor; ?>; }
+#menu-group-<?php echo $groupId; ?> .btn { background: linear-gradient(to right,<?php echo $_mcpColor; ?> 50%,#111 50%);background-size: auto auto;background-size: 200% 100%; }
+#menu-group-<?php echo $groupId; ?> .btn:hover { background-position: right bottom; }
+#menu-group-<?php echo $groupId; ?> .flipY-caption, #menu-group-<?php echo $groupId; ?> .slideDown-caption { background: rgba(152,2,2,.85); }
+#menu-group-<?php echo $groupId; ?> .tab-layout > ul > li > a { background: #555; }
+#menu-group-<?php echo $groupId; ?> input[type="text"].linear, .mcp-wrapper input[type="email"].linear, #menu-group-<?php echo $groupId; ?> input[type="password"].linear { background: #aaaaaa80;background: linear-gradient(to right,<?php echo $_mcpColor; ?> 50px,#fff 0);}
+</style>
+<?php
+if ($this->helper('Magetop\Menupro\Helper\Data')->isDevelopMode()) {
+	if ($block->isGroupResponsive($groupInfo['responsive'])) {
+		$MCPRHTML = $this->getPushnewResponsiveHtml($groupId, $groupInfo['responsive']);
+		// $note = __("<h5 style='padding: 10px; font-size: 12px; font-weight: normal; margin: 5px 0px; line-height: 15px; text-transform: none; font-style: italic; color: rgb(248, 153, 56); background: none repeat scroll 0% 0% rgb(255, 255, 255);'>Enable Developer Mode for showing both status for customizing CSS. Turn off Developer Mode when you have done.</h5>");
+		// $MCPHTML = $note;
+		$MCPHTML .= $MCPRHTML;
+		// $MCPHTML .= "<br>";
+		$MCPHTML .= $this->getMenuHtml($groupId);
+	} else {
+		if($groupInfo['responsive']=='menu-creator-pro-rp-switcher'){
+			$MCPHTML .= '<div id="mobile-menu">' . $groupInfo['title'] . '<i class="fa fa-bars"></i></div>';
+		}			
+		$MCPHTML .= $block->getMenuHtml($groupId);
+	}
+} else {
+	if ($this->isGroupResponsive($groupInfo['responsive'])) { 
+		if ($this->detectDevice() != "desktop") {
+			$MCPHTML = $this->getPushnewResponsiveHtml($groupId, $groupInfo['responsive']);
+		} else {
+			$MCPHTML = $this->getStaticHtml($groupId);
+		}
+	} else {
+		if($groupInfo['responsive']=='menu-creator-pro-rp-switcher'){
+			$MCPHTML .= '<div id="mobile-menu">' . $groupInfo['title'] . '<i class="fa fa-bars"></i></div>';
+		}
+		$MCPHTML = $this->getStaticHtml($groupId);
+	}
+}
+$enableSticky ='';
+if($groupInfo['enable_sticky']){
+	$enableSticky .=' enable-fixed-top';
+}
+echo "<div id='menu-group-".$groupId."' class='mst mcp-wrapper" . $enableSticky . "'>";
+echo $MCPHTML;
+echo "</div>";
+?>

@@ -1,0 +1,55 @@
+<?php 
+$brands = $this->getBrands();
+$featured = $this->getFeaturedBrands();
+$media = $this->getImageMediaPath();
+?>
+<?php if(count($featured) > 0): ?>
+<div class="home-featured-brands owl-carousel owl-theme">
+<?php foreach($featured as $_fbrand):?>
+	<div class="item">
+		<div class="i-hover">
+		<?php if($_fbrand->getUrlKey()):?>
+			<a href="<?php echo $this->getUrl('brand').$_fbrand->getUrlKey()?>">
+		<?php else:?>
+			<a href="<?php echo $this->getUrl('brand/view/',array('id'=>$_fbrand->getId()));?>">
+		<?php endif;?>
+		<?php if($_fbrand->getLogo()):?>
+			<img class="hover-z" src="<?php echo $media.$_fbrand->getLogo() ?>" title="<?php echo $_fbrand->getName();?>" alt="<?php echo $_fbrand->getName();?>"/>
+		<?php else:?>
+			<span class="hover-z">
+				<?php echo $_fbrand->getName();?>
+			</span>
+		<?php endif;?>
+			</a>
+		</div>	
+	</div>
+<?php endforeach;?>
+</div>
+<script type="text/javascript">
+    require(["jquery","magetop/owlcarousel"], function($){
+        jQuery(document).ready(function($){
+			$('.home-featured-brands').owlCarousel({
+				slideSpeed:  300,						
+				nav:true,
+				dots: false,
+				loop:true,
+				responsiveClass:true,				
+				responsive:{
+					0:{
+						margin:10,
+						items:3
+					},
+					600:{
+						margin:10,
+						items:5
+					},
+					1000:{
+						margin:10,
+						items:7
+					}
+				}
+			});
+		});
+    });
+</script>
+<?php endif;?>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @author      Magetop Developer (Kien)
+ * @package     Magento Multi Vendor Marketplace_Seller_Mass_Import_Export
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="catalog_product_import_bunch_save_after">
+        <observer name="magetop.import.success" instance="Magetop\SellerMassImportExport\Observer\importSuccess"/>
+    </event>	
+    <event name="catalog_product_import_bunch_delete_after">
+        <observer name="magetop.import.success" instance="Magetop\SellerMassImportExport\Observer\deleteSuccess"/>
+    </event>
+</config>

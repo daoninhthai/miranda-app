@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016  (magetop99@gmail.com). All rights reserved.
+ * See LICENSE.txt for license details (http://opensource.org/licenses/osl-3.0.php).
+ *
+ * 
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <update id="bigmarket" title="Bigmarket" module="Magetop_Blog" sortOrder="12" resource="Magetop_Blog::elements"/>
+		<add id="Magetop_Blog::elements" title="Blog" module="Magetop_Blog" parent="bigmarket" sortOrder="12"  resource="Magetop_Blog::elements"/>
+        <add id="Magetop_Blog::category" title="Manage Categories" module="Magetop_Blog" parent="Magetop_Blog::elements" sortOrder="1" action="blog/category/" resource="Magetop_Blog::category"/>
+        <add id="Magetop_Blog::post" title="Manage Posts" module="Magetop_Blog" parent="Magetop_Blog::elements" sortOrder="2" action="blog/post/" resource="Magetop_Blog::post"/>
+        <add id="Magetop_Blog::import" title="Import" module="Magetop_Blog" parent="Magetop_Blog::elements" sortOrder="3" action="blog/import/" resource="Magetop_Blog::import"/>
+    </menu>
+</config>

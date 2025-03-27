@@ -1,0 +1,2 @@
+seller_id,title,price,country_code,region_id,zip_from,zip_to,weight_from,weight_to
+"1","test shipping","200","US","90","900","9000","100","1000"

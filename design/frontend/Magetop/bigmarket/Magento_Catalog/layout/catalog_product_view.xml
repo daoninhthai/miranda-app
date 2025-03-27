@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magetop 
+ * @category    Magetop 
+ * @copyright   Copyright (c) 2017 Magetop (http://magetop.com/) 
+ * @Author: Hanh Nguyen<hanhkaka.nguyen37@gamil.com>
+ * @@Create Date: 2017-05-5
+ * @@Modify Date: 2017-06-05
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<referenceContainer name="content">
+		<container htmlTag="div" htmlClass="main-info" before="-">
+			<container htmlTag="div" htmlClass="row">
+				<container name="media.col" htmlTag="div" htmlClass="col-sm-5 col-xs-12"/>
+				<container name="info.col" htmlTag="div" htmlClass="col-sm-7 col-xs-12"/>
+			</container>
+		</container>
+	</referenceContainer>
+	<move element="product.info.media" destination="media.col" before="-" />
+	<move element="product.info.main" destination="info.col" before="-" />
+	<move element="page.main.title" destination="product.info.main" before="-" />
+	<move element="product.info.overview" destination="product.info.main" before="product.info" />
+	<move element="product.info.review" destination="product.info.main" before="product.info.price" />
+	<move element="product.info.sku" destination="product.info.main" after="product.info.price" />	
+	<move element="product.info.mailto" destination="product.info.addto" after="view.addto.compare" />
+	<move element="catalog.product.brand" destination="product.info.main" before="product.info" />
+	<move element="product.info.social" destination="product.info.addtocart" after="-" />
+	<move element="product.info.social" destination="product.info.addtocart.additional" after="-" />
+</page>

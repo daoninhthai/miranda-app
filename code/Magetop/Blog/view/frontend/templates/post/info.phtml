@@ -1,0 +1,41 @@
+<?php
+/**
+ * Copyright © 2015  (magetop99@gmail.com). All rights reserved.
+ * See LICENSE.txt for license details (http://opensource.org/licenses/osl-3.0.php).
+ *
+ * 
+ */
+?>
+<?php
+/**
+ * Blog post info template
+ *
+ * @var $block \Magetop\Blog\Block\Post\Info
+ */
+?>
+
+<?php
+    $_post = $this->getPost();
+    $_postUrl = $_post->getPostUrl();
+?>
+
+<div class="post-info clear">
+    <ul class="post-meta pull-left">
+		<li><i class="fa fa-calendar"></i><?php echo $block->getPostedOn('F d, Y') ?></li>
+		<?php if ($_categoriesCount = $_post->getCategoriesCount()) { ?>
+			<li>
+				<i class="fa fa-tags"></i>
+				<?php $n = 0; foreach($_post->getParentCategories() as $ct) { $n++; ?>
+					<a title="<?php echo $block->escapeHtml($ct->getTitle()) ?>" href="<?php echo $ct->getCategoryUrl() ?>"><?php echo $block->escapeHtml($ct->getTitle()) ?></a>
+					<?php if ($n != $_categoriesCount) { ?>, <?php } ?>
+				<?php } ?>
+			</li>
+		<?php } ?>	
+	</ul>
+	<div class="addthis_toolbox addthis_default_style pull-right" addthis:url="<?php echo $_postUrl ?>">
+        <a class="addthis_button_facebook"></a>
+        <a class="addthis_button_twitter"></a>
+        <a class="addthis_button_email"></a>
+        <a class="addthis_button_compact"></a>
+    </div>
+</div>

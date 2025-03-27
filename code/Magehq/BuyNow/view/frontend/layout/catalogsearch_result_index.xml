@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magehq
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the Magehq.com license that is
+ * available through the world-wide-web at this URL:
+ * https://magehq.com/license.html
+ * 
+ * DISCLAIMER
+ * 
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ * 
+ * @category   Magehq
+ * @package    Magehq_BuyNow
+ * @copyright  Magehq\Copyright (c) 2022 Magehq (https://magehq.com/)
+ * @license    https://magehq.com/license.html
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+     <head>
+        <css src="Magehq_BuyNow::css/buynow.css"/>
+    </head>
+    <body>
+        <referenceBlock name="search_result_list">
+             <action method="setTemplate">
+                <argument name="template" xsi:type="helper" helper="Magehq\BuyNow\Helper\Data::getSearchTemplate"></argument>
+            </action>
+        </referenceBlock>
+    </body>
+</page>

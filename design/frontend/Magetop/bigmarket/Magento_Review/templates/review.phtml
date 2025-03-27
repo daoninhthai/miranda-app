@@ -1,0 +1,18 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var \Magento\Review\Block\Product\Review $block */
+?>
+<div id="product-review-container" data-role="product-review">
+    <?php echo $this->getLayout()
+        ->createBlock("Magento\Review\Block\Product\View\ListView")
+        ->setTemplate("Magento_Review::product/view/list.phtml")
+        ->toHtml();
+    ?>
+</div>
+
+<?= $block->getChildHtml() ?>
+

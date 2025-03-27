@@ -1,0 +1,73 @@
+<?php
+/**
+ * Magetop 
+ * @category    Magetop 
+ * @copyright   Copyright (c) 2017 Magetop (http://Magetop.com/) 
+ * @Author: Hanh Nguyen<hanhkaka.nguyen37@gamil.com>
+ * @@Create Date: 2017-05-5
+ * @@Modify Date: 2017-06-05
+ */
+	$cfg = $this->_themeCfg;
+	$html ='';
+	$font 	= $cfg['font'];
+	$menu = $cfg['menu'];
+	$design = $this->_scopeConfig->getValue( 'mbdesign', \Magento\Store\Model\ScopeInterface::SCOPE_STORE );
+	$buttonColor = $design['main']['button_color'] ? $design['main']['button_color'] : '#2cc067';
+	$buttonHoverColor = $design['main']['button_hover_color'] ? $design['main']['button_hover_color'] : '#e9001d';
+	$bodyColor = $design['main']['body_color'];
+	if($bodyColor=='')$bodyColor=='#747474';
+	$baseColor = $design['main']['main_color'];
+	if($baseColor=='')$baseColor=='#2cc067';
+	$baseBackgroundSelector = '.mst .menu-trigger,h4.subtitle:after,.home-featured-brands .owl-nav [class*=owl-]:hover,h3.subtitle,.product.data.items > .active.title:after,.block-cart-failed .action.continue,.block-cart-failed .action.continue:hover,.cart.actions button.action,.pages .item.current,.modes-mode.active, .footer-top,.list-tab-vertcal li.active span,.products-grid .product-top .actions-secondary > a:hover,.products-list .product-des .actions-secondary > a:hover,.products-grid .action.tocart:hover,.products-list .action.tocart:hover,.tabslide-content .owl-nav > div:before,.block-search .action.search,.block-search .action.search:hover,.nav-drop-menu ul li:hover,.mini-cart-wrapper .showcart:before,.nav-session,.mb-bt,.full-slide.owl-theme .owl-dots .owl-dot.active span';
+	$baseColorSelector = '.menu-creator-pro li li:hover > a,.menu-creator-pro a.nav-header:hover, .block-minicart .items-total,.mini-cart-price .price,.product-info-main .product-addto-links a:hover, .product-options-bottom .product-addto-links a:hover,.Magetop-menu li.active > a,.c-active,.footer-links a:hover,a:hover,a:focus,.price-box .price,.top-service .item .fa';
+	$baseBorderSelector = '.pro-list-block .title strong,.block-cart-failed .action.continue,.cart.actions button.action,.sidebar .block-title strong,.modes-mode.active,.list-tab-vertcal li a.active,.products-grid .action.tocart:hover,.products-list .action.tocart:hover,.products-list .product-des .actions-secondary > a:hover,.pslider ul.list-tab li.active span,.pslider ul.list-tab li.active span:after';	
+	/* google Font */
+	if($font['google']) $html  = '<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family='.str_replace(' ', '+', $font['google']).':300,400,800,600,700" media="all" />';
+	$html  .= "\n";
+	/* Base Css */
+	$html  .= '<style type="text/css">';
+	$html  .= '*, body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{ font-family: '.$font['google'].';}';
+	$html  .= 'body,h5,h6,.h5, .h6{ font-size: '.$font['size'].';}';
+	$html  .= 'body{color:'.$bodyColor.';}';
+	$html  .= '.action.primary,.cart.table-wrapper .actions-toolbar > .action,.cart-container .form-cart .action.continue,.cart.actions button.action {border-color:'.$buttonColor.';background-color:'.$buttonColor.';}';
+	$html  .= '.action.primary:active,.action.primary:hover,.cart.table-wrapper .actions-toolbar > .action:hover, .cart-container .form-cart .action.continue:hover,.cart.actions button.action:hover {border-color:'.$buttonHoverColor.';background-color:'.$buttonHoverColor.';}';
+	$html  .= '._keyfocus *:focus,input:not([disabled]):focus,textarea:not([disabled]):focus,select:not([disabled]):focus {box-shadow:0 0 2px 1px '.$baseColor.';}';
+	if($baseBackgroundSelector!='')$html  .= $baseBackgroundSelector.'{ background-color:'.$baseColor.'}';
+	if($baseColorSelector!='')$html  .= $baseColorSelector.'{ color:'.$baseColor.'}';
+	if($baseBorderSelector!='')$html  .= $baseBorderSelector.'{ border-color:'.$baseColor.'}';
+	foreach ($design as $group => $options) 
+	{
+		foreach ($options as $property => $values) {
+			$values = @unserialize($values);
+			if(!$values) continue;
+			foreach ($values as $value) {
+				if(!$value) continue;
+				$html .= htmlspecialchars_decode($value['selector']) .'{';
+					$html .= $value['color'] 		? 'color:' .$value['color']. ';' 					: '';
+					$html .= $value['background'] 	? ' background-color:' .$value['background']. ';' 	: '';
+					$html .= $value['border'] 		? ' border-color:' .$value['border']. ';' 			: '';
+				$html .= '}';
+			}
+		}
+	}
+	$html  .= '</style>';
+	echo $html;
+?>
+<script type="text/javascript">
+require(['jquery', 'mcp_responsive_menu']);
+</script>
+<?php if($menu['menu_sticky']):?>
+<script type="text/javascript">
+require(['jquery'], function($) {
+    if ($('.header-content').length > 0) {
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 300) {
+                $('.header-content').addClass('sticky');
+            } else {
+                $('.header-content').removeClass('sticky');
+            }
+        });
+    }
+});
+</script>
+<?php endif; ?>

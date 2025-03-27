@@ -1,0 +1,48 @@
+<?php if($block->getConfigData('active') && $block->getConfigData('allow_seller')): ?>
+	<form class="form mgt-theme-div" action="<?php /* @escapeNotVerified */ echo $block->getUrl('sellerdhlshipping/shipping', ['_secure' => $this->getRequest()->isSecure()]) ?>" method="post" id="form-validate" data-mage-init='{"validation":{}}' enctype="multipart/form-data" data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>" autocomplete="off">
+		<legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Marketplace DHL Configuration') ?></span>
+        	<div class="primary" style="float: right;">
+                <button type="submit" class="action continue primary" title="<?php echo __('Continue') ?>"><span><?php echo __('Save') ?></span></button>
+            </div>
+        </legend>
+        <fieldset class="fieldset info">
+			<?php echo $block->getBlockHtml('formkey')?>
+			<div class="field required">
+            	<label class="label"><span><?php echo __("Access ID"); ?>:</span></label>
+                <div class="control">
+                    <input id="dhl_access_id" class="required-entry select" type="password" name="dhl_access_id" data-validate="{required:true}" value="<?php echo $block->_getCustomerData()->getDhlAccessId(); ?>" />
+                </div>
+            </div>
+            <div class="field required">
+                <label class="label"><span><?php echo __("Account Number"); ?>:</span></label>
+                <div class="control">
+                    <input id="dhl_account_number" type="password" name="dhl_account_number" data-validate="{required:true}" value="<?php echo $block->_getCustomerData()->getDhlAccountNumber(); ?>" />
+                </div>
+            </div>
+            <div class="field required">
+                <label class="label"><span><?php echo __("Password"); ?>:</span></label>
+                <div class="control">
+                    <input id="dhl_password" type="password" name="dhl_password" data-validate="{required:true}" value="<?php echo $block->_getCustomerData()->getDhlPassword(); ?>" />
+                </div>
+            </div>
+            <div class="field required">
+                <label class="label"><span><?php echo __("Ready Time"); ?>:</span></label>
+                <div class="control">
+                     <input id="dhl_ready_time" type="text" name="dhl_ready_time" data-validate="{required:true}" value="<?php echo $block->_getCustomerData()->getDhlReadyTime(); ?>" />
+                     <span class="note"><span><?php echo __("Package ready time after order submission (in hours)."); ?></span></span>
+                </div>
+            </div>
+            <?php if($block->getConfigData('allow_seller_logo')): ?>
+                <div class="field required">
+                    <label class="label"><span><?php echo __("Display Company Logo on DHL Label"); ?>:</span></label>
+                    <div class="control">
+                         <select class="input-select" name="dhl_logo">
+                            <option value="0"><?php echo __('No'); ?></option>
+                            <option value="1" <?php echo $block->_getCustomerData()->getDhlLogo()==1?'selected':''; ?>><?php echo __('Yes'); ?></option>
+                         </select>
+                    </div>
+                </div>
+            <?php endif; ?>
+		</fieldset>
+	</form>
+<?php endif; ?>

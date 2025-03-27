@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author      Magetop Developer (Kien)
+ * @package     Magento Multi Vendor Marketplace_Seller_Store_Pickup
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="market-layout" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">    
+    <update handle="customer_account"/>
+    <update handle="mk_default"/>
+    <body>
+        <referenceContainer name="market.content">
+            <block class="Magetop\SellerStorePickup\Block\Add" name="magetop.sellerstorepickup.add" template="Magetop_SellerStorePickup::sellerstorepickup/add.phtml" cacheable="false"/>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- /**
+ * Magetop 
+ * @category    Magetop 
+ * @copyright   Copyright (c) 2017 Magetop (http://magetop.com/) 
+ * @Author: Hanh Nguyen<hanhkaka.nguyen37@gamil.com>
+ * @@Create Date: 2017-05-5
+ * @@Modify Date: 2017-06-05
+ */ -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">    
+    <update handle="editor"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Magetop\Menupro\Block\Adminhtml\Groupmenu\Edit" name="groupmenu_edit"/>
+        </referenceContainer>
+		<referenceContainer name="before.body.end">
+			<block class="Magento\Framework\View\Element\Template" name="groupmenu_js" template="Magetop_Menupro::menupro/form_js.phtml"/>
+		</referenceContainer>
+    </body>
+</page>

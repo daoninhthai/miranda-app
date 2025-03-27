@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magetop\Marketplace\Controller\Product\Builder">
+        <plugin name="configurable" type="Magetop\Marketplace\Controller\Product\Builder\Plugin" sortOrder="50"/>
+    </type>
+    <type name="Magento\Catalog\Model\Product\CopyConstructor\Composite">
+        <arguments>
+            <argument name="constructors" xsi:type="array">
+                <item name="crossSell" xsi:type="string">Magento\Catalog\Model\Product\CopyConstructor\CrossSell</item>
+                <item name="upSell" xsi:type="string">Magento\Catalog\Model\Product\CopyConstructor\UpSell</item>
+                <item name="related" xsi:type="string">Magento\Catalog\Model\Product\CopyConstructor\Related</item>
+				<item name="catalog_inventory" xsi:type="string">Magento\CatalogInventory\Model\Product\CopyConstructor\CatalogInventory</item>
+				<item name="downloadable" xsi:type="string">Magento\Downloadable\Model\Product\CopyConstructor\Downloadable</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Catalog\Model\Product\Copier">
+        <arguments>
+            <argument name="copyConstructor" xsi:type="object">Magento\Catalog\Model\Product\CopyConstructor\Composite</argument>
+        </arguments>
+    </type>
+	<virtualType name="Magetop\Marketplace\Block\Collection\Navigation\Category" type="Magetop\Marketplace\Block\Collection\Navigation">
+        <arguments>
+            <argument name="filterList" xsi:type="object">categoryFilterList</argument>
+        </arguments>
+    </virtualType>
+	<type name="Magento\Catalog\Model\Layer\FilterList">
+        <plugin name="Magetop_Marketplace::filterList" type="Magetop\Marketplace\Plugin\Catalog\Model\Layer\FilterList"/>
+    </type>
+	<type name="\Magento\Framework\Search\Adapter\Mysql\Adapter">
+        <plugin name="Magetop_Marketplace::aroundQuery"
+                type="Magetop\Marketplace\Plugin\Framework\Search\Adapter\Mysql\Adapter"
+                sortOrder="1"/>
+    </type>
+	<type name="\Magento\CatalogSearch\Model\Adapter\Aggregation\Checker\Query\CatalogView">
+        <plugin name="Magetop_Marketplace::aroundQuery"
+                type="Magetop\Marketplace\Plugin\CatalogSearch\Model\Adapter\Aggregation\Checker\Query\CatalogView"
+                sortOrder="1"/>
+    </type>
+</config>

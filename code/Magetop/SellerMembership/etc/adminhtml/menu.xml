@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author      Magetop Developer (Kien)
+ * @package     Magento Multi Vendor Marketplace_Seller_Membership
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magetop_SellerMembership::membership" title="Manage Membership" module="Magetop_SellerMembership" parent="Magetop_Marketplace::sellers" sortOrder="50" action="magetop/membership/index" resource="Magetop_SellerMembership::membership"/>
+        <add id="Magetop_SellerMembership::sellermembership" title="Manage Seller Membership" module="Magetop_SellerMembership" parent="Magetop_Marketplace::sellers" sortOrder="60" action="magetop/sellermembership/index" resource="Magetop_SellerMembership::sellermembership"/>
+    </menu>
+</config>

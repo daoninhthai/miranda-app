@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author      Magetop Developer (Kien)
+ * @package     Magento Multi Vendor Marketplace_Seller_Coupon
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etcpage_configuration.xsd">
+    <head>
+        <css src="jquery/fileUploader/css/jquery.fileupload-ui.css"/>
+    </head>
+    <update handle="editor"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Magetop\SellerCoupon\Block\Adminhtml\SellerCoupon\Edit" name="magetop.sellercoupon.edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Magetop\SellerCoupon\Block\Adminhtml\SellerCoupon\Edit\Tabs" name="magetop.sellercoupon.edit.tabs">
+                <block class="Magetop\SellerCoupon\Block\Adminhtml\SellerCoupon\Edit\Tab\Main" name="magetop.sellercoupon.edit.tab.main"/>
+                <block class="Magetop\SellerCoupon\Block\Adminhtml\SellerCoupon\Edit\Tab\Conditions" name="magetop.sellercoupon.edit.tab.conditions"/>	                
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">main_section</argument>
+                    <argument name="block" xsi:type="string">magetop.sellercoupon.edit.tab.main</argument>
+                </action>     
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">conditions_section</argument>
+                    <argument name="block" xsi:type="string">magetop.sellercoupon.edit.tab.conditions</argument>
+                </action>           
+            </block>
+        </referenceContainer>
+    </body>
+</page>

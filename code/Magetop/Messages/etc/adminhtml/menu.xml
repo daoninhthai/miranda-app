@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magetop_Messages::messages" title="Manage Messages" module="Magetop_Messages" parent="Magetop_Marketplace::sellers" sortOrder="20" action="magetop/messages/index" resource="Magetop_Messages::messages"/>
+    </menu>
+</config>

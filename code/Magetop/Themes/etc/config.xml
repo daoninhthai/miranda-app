@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!-- /**
+ * Magetop 
+ * @category    Magetop 
+ * @copyright   Copyright (c) 2017 Magetop (http://Magetop.com/) 
+ * @Author: Hanh Nguyen<hanhkaka.nguyen37@gamil.com>
+ * @@Create Date: 2017-05-5
+ * @@Modify Date: 2017-06-05
+ */ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+	    <themes>
+            <menu>
+				<menu_sticky>1</menu_sticky>
+			</menu>
+			<home_blog>
+				<enabled>0</enabled>
+				<slide>1</slide>
+            </home_blog>
+            <home_instagram>
+				<enabled>0</enabled>
+			</home_instagram>
+            <grid>
+                <smallmobile>2</smallmobile>
+                <tablet>3</tablet>
+                <notebook>3</notebook>
+                <desktop>3</desktop>
+                <visible>4</visible>
+            </grid>
+            <labels>
+            	<newText>New</newText>
+            	<saleText>Sale</saleText>
+            </labels>
+            <newsletter>
+                <enabled>1</enabled>
+                <overlayColor>#353535</overlayColor>
+                <background_color>#ffffff</background_color>
+            </newsletter>
+            <font>
+            	<size>14px</size>
+            	<google>Open Sans</google>
+            </font>
+	    </themes>
+	    <mbdesign>
+			<main>
+				<main_color>#bada55</main_color>
+				<body_color>#747474</body_color>
+				<button_color>#2cc067</button_color>
+				<button_hover_color>#3b3b3b</button_hover_color>
+			</main>		
+	    </mbdesign>
+	</default>
+</config>

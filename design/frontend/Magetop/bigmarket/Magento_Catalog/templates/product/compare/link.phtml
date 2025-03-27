@@ -1,0 +1,16 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+?>
+<li class="item link compare" data-bind="scope: 'compareProducts'" data-role="compare-products-link">
+	<a class="compare" data-bind="attr: {'href': compareProducts().listUrl}">
+        <?php /* @escapeNotVerified */ echo __('Compare') ?>
+    </a>
+</li>
+<script type="text/x-magento-init">
+{"[data-role=compare-products-link]": {"Magento_Ui/js/core/app": <?php /* @escapeNotVerified */ echo $block->getJsLayout();?>}}
+</script>

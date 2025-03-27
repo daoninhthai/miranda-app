@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magetop_Marketplace::marketplace" title="Magetop Marketplace" sortOrder="100">
+                    <resource id="Magetop_Marketplace::others" title="Others" sortOrder="60">
+                        <resource id="Magetop_AdvancedCommission::advancedcommission" title="Advanced Commission" sortOrder="20"/>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

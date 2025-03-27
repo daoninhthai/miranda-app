@@ -1,0 +1,307 @@
+<!--
+/**
+ * @author      Magetop Developer (Kien)
+ * @package     Magento Multi Vendor Marketplace_Seller_Store_Pickup
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<?php 
+    $id = $this->getRequest()->getParam('id'); 
+    if($id){
+        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    	$storepickup = $objectManager->create('Magetop\SellerStorePickup\Model\SellerStorePickup')->load($id);
+        $storepickupData = $storepickup->getData();
+    }else{
+        $storepickupData = null;
+    }
+    if($storepickupData){
+?>
+        <?php $store_time = json_decode($storepickupData['store_time']) ?>
+        <?php for($day = 2;$day<=8;$day++){ ?>
+            <div class="field required">
+                <label class="label">
+                    <span>
+                        <?php 
+                            switch($day){
+                                case 2 : 
+                                    echo __('Monday');
+                                    $text_day = 'mon';
+                                    $open_day = $store_time->mon_in_time;
+                                    $close_day = $store_time->mon_out_time;
+                                break;
+                                case 3 : 
+                                    echo __('Tuesday');
+                                    $text_day = 'tue';
+                                    $open_day = $store_time->tue_in_time;
+                                    $close_day = $store_time->tue_out_time;
+                                break;
+                                case 4 : 
+                                    echo __('Wednesday');
+                                    $text_day = 'web';
+                                    $open_day = $store_time->web_in_time;
+                                    $close_day = $store_time->web_out_time;
+                                break;
+                                case 5 : 
+                                    echo __('Thursday');
+                                    $text_day = 'thu';
+                                    $open_day = $store_time->thu_in_time;
+                                    $close_day = $store_time->thu_out_time;
+                                break;
+                                case 6 : 
+                                    echo __('Friday');
+                                    $text_day = 'fri';
+                                    $open_day = $store_time->fri_in_time;
+                                    $close_day = $store_time->fri_out_time;
+                                break;
+                                case 7 : 
+                                    echo __('Saturday');
+                                    $text_day = 'sat';
+                                    $open_day = $store_time->sat_in_time;
+                                    $close_day = $store_time->sat_out_time;
+                                break;
+                                case 8 : 
+                                    echo __('Sunday');
+                                    $text_day = 'sun';
+                                    $open_day = $store_time->sun_in_time;
+                                    $close_day = $store_time->sun_out_time;
+                                break;
+                            }
+                        ?>
+                    </span>
+                </label>
+                <div class="admin__field-control control">
+                    <div class="control">
+            			<select name="store_time[<?php echo $text_day ?>_in_time][]" style="width: 10%">
+                            <?php 
+                                for($i=0;$i<24;$i++){
+                                    if($i<10){
+                            ?>
+                                        <option <?php echo $open_day['0']=='0'.$i?'selected':'' ?> value='0<?php echo $i ?>'>0<?php echo $i ?></option>
+                            <?php
+                                    }else{
+                            ?>
+                                        <option <?php echo $open_day['0']==$i?'selected':'' ?> value='<?php echo $i ?>'><?php echo $i ?></option>
+                            <?php
+                                    }
+                                } 
+                            ?>
+                        </select> :
+            			<select name="store_time[<?php echo $text_day ?>_in_time][]" style="width: 10%">
+                            <?php 
+                                for($i=0;$i<60;$i++){
+                                    if($i<10){
+                            ?>
+                                        <option <?php echo $open_day['1']=='0'.$i?'selected':'' ?> value='0<?php echo $i ?>'>0<?php echo $i ?></option>
+                            <?php
+                                    }else{
+                            ?>
+                                        <option <?php echo $open_day['1']==$i?'selected':'' ?> value='<?php echo $i ?>'><?php echo $i ?></option>
+                            <?php
+                                    }
+                                } 
+                            ?>
+                        </select> :
+            			<select name="store_time[<?php echo $text_day ?>_in_time][]" style="width: 10%">
+                            <?php 
+                                for($i=0;$i<60;$i++){
+                                    if($i<10){
+                            ?>
+                                        <option <?php echo $open_day['2']=='0'.$i?'selected':'' ?> value='0<?php echo $i ?>'>0<?php echo $i ?></option>
+                            <?php
+                                    }else{
+                            ?>
+                                        <option <?php echo $open_day['2']==$i?'selected':'' ?> value='<?php echo $i ?>'><?php echo $i ?></option>
+                            <?php
+                                    }
+                                } 
+                            ?>
+                        </select>
+                        <span style="margin: 0px 20px;"><?php echo __('To') ?></span>
+                        <select name="store_time[<?php echo $text_day ?>_out_time][]" style="width: 10%">
+                            <?php 
+                                for($i=0;$i<24;$i++){
+                                    if($i<10){
+                            ?>
+                                        <option <?php echo $close_day['0']=='0'.$i?'selected':'' ?> value='0<?php echo $i ?>'>0<?php echo $i ?></option>
+                            <?php
+                                    }else{
+                            ?>
+                                        <option <?php echo $close_day['0']==$i?'selected':'' ?> value='<?php echo $i ?>'><?php echo $i ?></option>
+                            <?php
+                                    }
+                                } 
+                            ?>
+                        </select> :
+            			<select name="store_time[<?php echo $text_day ?>_out_time][]" style="width: 10%">
+                            <?php 
+                                for($i=0;$i<60;$i++){
+                                    if($i<10){
+                            ?>
+                                        <option <?php echo $close_day['1']=='0'.$i?'selected':'' ?> value='0<?php echo $i ?>'>0<?php echo $i ?></option>
+                            <?php
+                                    }else{
+                            ?>
+                                        <option <?php echo $close_day['1']==$i?'selected':'' ?> value='<?php echo $i ?>'><?php echo $i ?></option>
+                            <?php
+                                    }
+                                } 
+                            ?>
+                        </select> :
+            			<select name="store_time[<?php echo $text_day ?>_out_time][]" style="width: 10%">
+                            <?php 
+                                for($i=0;$i<60;$i++){
+                                    if($i<10){
+                            ?>
+                                        <option <?php echo $close_day['2']=='0'.$i?'selected':'' ?> value='0<?php echo $i ?>'>0<?php echo $i ?></option>
+                            <?php
+                                    }else{
+                            ?>
+                                        <option <?php echo $close_day['2']==$i?'selected':'' ?> value='<?php echo $i ?>'><?php echo $i ?></option>
+                            <?php
+                                    }
+                                } 
+                            ?>
+                        </select>                                        
+            		</div>
+                </div>
+            </div>
+        <?php } ?>
+<?php }else{ ?>
+    <?php for($day = 2;$day<=8;$day++){ ?>
+        <div class="field required">
+            <label class="label">
+                <span>
+                    <?php 
+                        switch($day){
+                            case 2 : 
+                                echo __('Monday');
+                                $text_day = 'mon';
+                            break;
+                            case 3 : 
+                                echo __('Tuesday');
+                                $text_day = 'tue';
+                            break;
+                            case 4 : 
+                                echo __('Wednesday');
+                                $text_day = 'web';
+                            break;
+                            case 5 : 
+                                echo __('Thursday');
+                                $text_day = 'thu';
+                            break;
+                            case 6 : 
+                                echo __('Friday');
+                                $text_day = 'fri';
+                            break;
+                            case 7 : 
+                                echo __('Saturday');
+                                $text_day = 'sat';
+                            break;
+                            case 8 : 
+                                echo __('Sunday');
+                                $text_day = 'sun';
+                            break;
+                        }
+                    ?>
+                </span>
+            </label>
+            <div class="admin__field-control control">
+                <div class="control">
+    				<select name="store_time[<?php echo $text_day ?>_in_time][]" style="width: 10%">
+                        <?php 
+                            for($i=0;$i<24;$i++){
+                                if($i<10){
+                        ?>
+                                    <option value='0<?php echo $i ?>'>0<?php echo $i ?></option>
+                        <?php
+                                }else{
+                        ?>
+                                    <option value='<?php echo $i ?>'><?php echo $i ?></option>
+                        <?php
+                                }
+                            } 
+                        ?>
+                    </select> :
+    				<select name="store_time[<?php echo $text_day ?>_in_time][]" style="width: 10%">
+                        <?php 
+                            for($i=0;$i<60;$i++){
+                                if($i<10){
+                        ?>
+                                    <option value='0<?php echo $i ?>'>0<?php echo $i ?></option>
+                        <?php
+                                }else{
+                        ?>
+                                    <option value='<?php echo $i ?>'><?php echo $i ?></option>
+                        <?php
+                                }
+                            } 
+                        ?>
+                    </select> :
+    				<select name="store_time[<?php echo $text_day ?>_in_time][]" style="width: 10%">
+                        <?php 
+                            for($i=0;$i<60;$i++){
+                                if($i<10){
+                        ?>
+                                    <option value='0<?php echo $i ?>'>0<?php echo $i ?></option>
+                        <?php
+                                }else{
+                        ?>
+                                    <option value='<?php echo $i ?>'><?php echo $i ?></option>
+                        <?php
+                                }
+                            } 
+                        ?>
+                    </select>
+                    <span style="margin: 0px 20px;"><?php echo __('To') ?></span>
+                    <select name="store_time[<?php echo $text_day ?>_out_time][]" style="width: 10%">
+                        <?php 
+                            for($i=0;$i<24;$i++){
+                                if($i<10){
+                        ?>
+                                    <option value='0<?php echo $i ?>'>0<?php echo $i ?></option>
+                        <?php
+                                }else{
+                        ?>
+                                    <option value='<?php echo $i ?>'><?php echo $i ?></option>
+                        <?php
+                                }
+                            } 
+                        ?>
+                    </select> :
+    				<select name="store_time[<?php echo $text_day ?>_out_time][]" style="width: 10%">
+                        <?php 
+                            for($i=0;$i<60;$i++){
+                                if($i<10){
+                        ?>
+                                    <option value='0<?php echo $i ?>'>0<?php echo $i ?></option>
+                        <?php
+                                }else{
+                        ?>
+                                    <option value='<?php echo $i ?>'><?php echo $i ?></option>
+                        <?php
+                                }
+                            } 
+                        ?>
+                    </select> :
+    				<select name="store_time[<?php echo $text_day ?>_out_time][]" style="width: 10%">
+                        <?php 
+                            for($i=0;$i<60;$i++){
+                                if($i<10){
+                        ?>
+                                    <option value='0<?php echo $i ?>'>0<?php echo $i ?></option>
+                        <?php
+                                }else{
+                        ?>
+                                    <option value='<?php echo $i ?>'><?php echo $i ?></option>
+                        <?php
+                                }
+                            } 
+                        ?>
+                    </select>                                        
+    			</div>
+            </div>
+        </div>
+    <?php } ?>
+<?php } ?>

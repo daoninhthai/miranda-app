@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <head>
+        <link src="Magetop_Themes::owlcarousel/owl.carousel.min.css"/>
+        <link src="Magetop_Themes::owlcarousel/owl.theme.default.min.css"/>
+        <link src="Magetop_Themes::css/animate.css"/>
+    </head>
+	<body>
+	   <referenceBlock name="head.additional">
+	       <block class="Magetop\Themes\Block\Themecfg" name="mb.themecfg" template="themecfg.phtml" />
+	   </referenceBlock>
+	   <referenceBlock name="before.body.end">
+	       <block class="Magetop\Themes\Block\Themecfg" name="mb.themejs" template="themejs.phtml" />
+	       <block class="Magetop\Themes\Block\Themecfg" name="mb.bottom" template="bottom.phtml" />
+	   </referenceBlock>
+	</body>
+</page>

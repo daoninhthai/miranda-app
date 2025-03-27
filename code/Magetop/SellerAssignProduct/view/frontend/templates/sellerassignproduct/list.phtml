@@ -1,0 +1,209 @@
+<?php 
+/**
+* @author      Magetop Developer (Kien)
+* @package     Magento Multi Vendor Marketplace_Seller_Assign_Product
+* @copyright   Copyright (c) Magetop (https://www.magetop.com)
+* @terms       https://www.magetop.com/terms
+* @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+**/
+?>
+<?php $collection = $block->getCollection(); ?>
+<div class="mst_mv_wrapper block mgt-theme-div">
+    <legend class="legend">
+        <span><?php echo __('Assign Product List'); ?></span>
+    </legend>
+    <div class="fieldset mst_mv_fieldset">
+        <div class="grid">
+            <div class="wrap-mv-content">
+                <form method="post" id="massDeleteProduct" class="" action="<?php echo $block->getUrl('sellerassignproduct/index/massDelete') ?>">
+                    <input type="hidden" name="form_key" value="<?php echo $block->getFormKey() ?>" />
+                    <button id="delete-all-product" style="float: left;padding: 5px 5px 5px 0;margin:10px 0;" type="button" title="<?php echo __('Delete Products') ?>" class="button">
+                        <span><span><?php echo __('Delete Products') ?></span></span>
+                    </button>
+                    <table cellspacing="0" class="border mst-table-style mst-wrap-table products-table">
+                        <thead>
+                            <tr class="mst_content">
+                                <th><input type="checkbox" name="selectallproduct" class="checkbox" /></th>
+                                <th><?php echo __('Image'); ?></th>
+                                <th><?php echo __('Name'); ?></th>
+                                <th><?php echo __('Description'); ?></th>
+                                <th><?php echo __('Price'); ?></th>
+                                <th><?php echo __('QTY'); ?></th>
+                                <th><?php echo __('Status'); ?></th>
+                                <th><?php echo __('Action'); ?></th>                       
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if(count($collection)){ ?>
+                                <?php foreach($collection as $product) : ?>
+                                    <?php $productDetail = $block->getLoadProduct($product->getProductId()) ?>
+                                    <tr class="item">
+                                        <td>
+                                            <input type="checkbox" class="checkbox" name="product_selected[]" value="<?php echo $product->getId(); ?>" />
+                                        </td>
+                                        <td>
+                                            <span class="mst_label">
+                                                <div style="">
+                                                    <?php 
+                                                        if($product->getImage()){ 
+                                                            $_urlImage = $block->getUrlImage($product->getImage());
+                                                        }else{
+                                                            $_urlImage = $block->getViewFileUrl('Magetop_SellerAssignProduct::images/noimage.jpg');
+                                                        }
+                                					?>
+                                                    <img src="<?php echo $_urlImage ?>" title="<?php echo $productDetail->getName(); ?>" style="width: 100px" />
+                                                </div>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="mst_label">
+                                                <a href="<?php echo $productDetail->getProductUrl() ?>" tabindex="-1" target="_blank">
+                                                    <?php echo $productDetail->getName(); ?>
+                                                </a>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="mst_label">
+                                                <?php echo $product->getProductDescription(); ?>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="mst_label">
+                                                <?php echo \Magento\Framework\App\ObjectManager::getInstance()->get('Magento\Framework\Pricing\Helper\Data')->currency(@number_format($product->getPrice(),2),true,false); ?>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="mst_label">
+                                                <?php echo $product->getQty(); ?>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="mst_label">
+                                                <?php 
+                                                    if ($product->getStatus()) {
+                                                        echo '<span class="grid-severity-notice"><span>Approved</span></span>';
+                                                    } else {
+                                                        echo '<span class="grid-severity-critical"><span>Disapproved</span></span>';
+                                                    }
+                                                ?>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="mst_label"><a href="<?php echo $block->getUrl('sellerassignproduct/index/EditProduct',array('id'=>$product->getId())) ?>"><?php echo __('Edit') ?></a></span>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php }else{ ?>
+                                <tr>
+                                    <td colspan="8">
+                                        <div class="message info empty">
+                                            <div><?php /* @escapeNotVerified */ echo __('We can\'t find products matching the selection.') ?></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <?php if ($block->getPagerHtml()): ?>
+            <div class="toolbar bottom" style="margin-top: 20px">
+                <?php echo $block->getPagerHtml(); ?>
+            </div>
+        <?php endif ?>
+        <div class="clear"></div>
+    </div>
+    <div class="buttons-set">
+        <p class="back-link">
+            <a class="left" onclick="javascript: window.history.back();" href="javascript:;"><?php echo __('Back'); ?></a>
+        </p>
+    </div>
+</div>
+<script>
+    require([
+        "jquery",
+        'Magento_Ui/js/modal/confirm',
+        'Magento_Ui/js/modal/alert',
+        "mage/calendar"
+    ], function($,confirmation,alert){
+        $('input[type=checkbox][name=selectallproduct]').on('click',function(){
+            if(this.checked==true){
+                $('input[type=checkbox][name^=product_selected]').each(function(){
+                    this.checked=true;
+                });		
+            }else{
+                $('input[type=checkbox][name^=product_selected]').each(function(){
+                    this.checked=false;
+                });			
+            }
+        });
+        $('button#delete-all-product').on('click',function(){
+            var _flag=0;
+            $('input[type=checkbox][name^=product_selected]').each(function(){
+                if(this.checked==true){
+                    _flag=1;
+                    return false;
+                }
+            });
+            if(!_flag){
+                alert({
+                    title:'<?php echo __('Attention') ?>',
+                    content:"<?php echo __("You haven't selected any items!") ?>",
+                    actions:{
+                        always: function(){}
+                    }
+                });
+            }else{
+                confirmation({
+                    title:'<?php echo __('Delete Product') ?>',
+                    content:'<?php echo __("Delete selected items?") ?>',
+                    actions:{
+                        confirm:function(){
+                            document.getElementById('massDeleteProduct').submit();  
+                            //$('form#massDeleteProduct').submit();
+                        },
+                        cancel: function(){},
+                        always: function(){}
+                    }
+                });		
+            }	
+        });	
+    });
+</script>
+<script>
+    require([
+        "jquery",
+        'Magento_Ui/js/modal/confirm',
+        'Magento_Ui/js/modal/alert',
+        "mage/calendar"
+    ], function($,confirmation,alert){
+        $('.seller_assign_product_list').addClass('current');
+    });
+</script>
+<style>
+	.grid-severity-notice {
+		background: #d0e5a9 none repeat scroll 0 0;
+		border: 1px solid #5b8116;
+		color: #185b00;
+		display: block;
+		font-weight: bold;
+		line-height: 17px;
+		padding: 0 3px;
+		text-align: center;
+		text-transform: uppercase;
+		float: left;
+	}
+	.grid-severity-critical {
+		background: #f9d4d4 none repeat scroll 0 0;
+		border: 1px solid #e22626;
+		color: #e22626;
+		display: block;
+		font-weight: bold;
+		line-height: 17px;
+		padding: 0 3px;
+		text-align: center;
+		text-transform: uppercase;
+		float: left;
+	}
+</style>

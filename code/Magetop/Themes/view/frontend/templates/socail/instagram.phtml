@@ -1,0 +1,42 @@
+<?php
+	$cfg = $this->helper('Magetop\Themes\Helper\Data')->getThemeCfg();
+	$user_id = $cfg['home_instagram']['user_id'];
+	$access_token = $cfg['home_instagram']['access_token']; 
+	$number = $cfg['home_instagram']['number'] ? $cfg['home_instagram']['number'] : 6;
+	$width = $cfg['home_instagram']['width'];
+	$height = $cfg['home_instagram']['height'];
+?>
+<?php if($cfg['home_instagram']['enabled'] && $user_id && $access_token && $number): ?>
+<div class="instagram">
+	<h4 class="subtitle a-center"><span><?php echo __('Instagram Feed')?></span></h4>
+	<div class="instagram-carousel owl-carousel owl-theme">
+		<?php $block->getInstagramData($user_id, $access_token, $number, $width, $height); ?>
+	</div>
+</div>
+<script type="text/javascript">
+    require(["jquery","Magetop/owlcarousel"], function($){
+        jQuery(document).ready(function($){
+			$('.instagram-carousel').owlCarousel({
+				slideSpeed:  300,						
+				nav:true,
+				dots: false,
+				loop:true,
+				responsiveClass:true,				
+				responsive:{
+					0:{
+						items:3
+					},
+					600:{
+						items:4
+					},
+					1000:{
+						items:6
+					}
+				}
+			});
+		});
+    });
+</script>
+<?php else: ?>
+	<p><?php echo __('The instagram extension had disabled or no "User Name" or no "Client ID" or no "Number of Images want to show" ') ?></p>
+<?php endif; ?>

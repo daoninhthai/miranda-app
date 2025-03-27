@@ -1,0 +1,17 @@
+<?php
+/**
+ * Magetop Development
+ *
+ * @category  Magetop Extension
+ * @package   Magetop_Marketplace
+ * @author    Magetop
+ * @copyright Copyright (c) Magetop (https://www.magetop.com)
+ * @license   https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+    $partner = $block->getProfileDetail();
+?>
+<?php if (!empty($partner['storeurl'])) : ?>
+    <?= $this->getChildHtml();?>
+<?php endif; ?>

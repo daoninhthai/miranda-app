@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <block>
+    <item>
+      <title><![CDATA[Menu7 - Home]]></title>
+      <identifier><![CDATA[menu7-home]]></identifier>
+      <content><![CDATA[<div class="mb-row">
+<div class="grid-column3">
+<div class="item"><img src="{{media url='mcpDemo/news/blizzard.jpg'}}" />
+<h6 class="lh-125">Snow Piles Up Along the East Coast</h6>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+<a class="btn" href="#">Read More</a></div>
+</div>
+<div class="grid-column3">
+<div class="item"><img src="{{media url='mcpDemo/news/oil_pump.jpg'}}" />
+<h6 class="lh-125">Oil Crash has Hidden Consequenses</h6>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+<a class="btn" href="#">Read More</a></div>
+</div>
+<div class="grid-column3">
+<div class="item"><img src="{{media url='mcpDemo/news/school.jpg'}}" />
+<h6>At Least 4 Dead in Canadian School Shooting</h6>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+<a class="btn" href="#">Read More</a></div>
+</div>
+<div class="grid-column3">
+<div class="item"><img src="{{media url='mcpDemo/news/north_korea.jpg'}}" />
+<h6 class="lh-125">U.S. student detained by North Korea</h6>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+<a class="btn" href="#">Read More</a></div>
+</div>
+</div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu7 - U.S.]]></title>
+      <identifier><![CDATA[menu7-us]]></identifier>
+      <content><![CDATA[<div class="mb-row">
+	<div class="grid-column3">
+		<div class="item">
+			<img src="{{media url='mcpDemo/news/visa.jpg'}}">
+			<h6>Over 500 Visitors to US overstayed</h6>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+			<a href="#" class="btn">Read More</a>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="item">
+			<img src="{{media url='mcpDemo/news/alcohol.jpg'}}">
+			<h6>Legal blood alcohol limits may be lowered</h6>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+			<a href="#" class="btn">Read More</a>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="item">
+			<img src="{{media url='mcpDemo/news/tower.jpg'}}">
+			<h6>Thousands lose power in New Jersey</h6>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+			<a href="#" class="btn">Read More</a>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="item">
+			<img src="{{media url='mcpDemo/news/blizzard2.jpg'}}">
+			<h6>NY Governor imposes travel ban due to blizzard</h6>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+			<a href="#" class="btn">Read More</a>
+		</div>				
+	</div>				
+</div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu7 - Politics]]></title>
+      <identifier><![CDATA[menu7-politics]]></identifier>
+      <content><![CDATA[<div class="mb-row">
+	<div class="grid-column3">
+		<div class="item">
+			<img src="{{media url='mcpDemo/news/reservoir.jpg'}}">
+			<h6>EPA official offers to resign over water crisis</h6>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+			<a href="#" class="btn">Read More</a>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="item">
+			<img src="{{media url='mcpDemo/news/car.jpg'}}">
+			<h6>White House proposes $3.9B budget for driverless cars</h6>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+			<a href="#" class="btn">Read More</a>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="item">
+			<img src="{{media url='mcpDemo/news/guns.jpg'}}">
+			<h6>NRA chief challenges Obama to debate of guns</h6>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+			<a href="#" class="btn">Read More</a>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="item">
+			<img src="{{media url='mcpDemo/news/sanctions.jpg'}}">
+			<h6>New Iran sanctions fight looms in 2016</h6>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+			<a href="#" class="btn">Read More</a>
+		</div>
+	</div>
+</div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu7 - Business]]></title>
+      <identifier><![CDATA[menu7-business]]></identifier>
+      <content><![CDATA[<div class="mb-row">
+	<div class="grid-column3">
+		<div class="item">
+			<img src="{{media url='mcpDemo/news/house.jpg'}}">
+			<h6>Home Resales rallied in December</h6>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+			<a href="#" class="btn">Read More</a>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="item">
+			<img src="{{media url='mcpDemo/news/employment.jpg'}}">
+			<h6>Labor Department Clarrifies Employment</h6>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+			<a href="#" class="btn">Read More</a>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="item">
+			<img src="{{media url='mcpDemo/news/deficit.jpg'}}">
+			<h6>Falling Deficit to Reverse Course in 2016</h6>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+			<a href="#" class="btn">Read More</a>
+			</div>
+	</div>
+	<div class="grid-column3">
+		<div class="item">
+			<img src="{{media url='mcpDemo/news/inequality.jpg'}}">
+			<h6>Wealth Inequality Rising Fast, Oxfam says</h6>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+			<a href="#" class="btn">Read More</a>
+		</div>
+	</div>
+</div>
+]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu7 - Technology]]></title>
+      <identifier><![CDATA[menu7-technology]]></identifier>
+      <content><![CDATA[<div class="mb-row">
+	<div class="grid-column3">
+		<div class="item">
+			<img src="{{media url='mcpDemo/news/hacker.jpg'}}">
+			<h6>Why Doesn't Silicon Valley Hire Black Coders?</h6>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+			<a href="#" class="btn">Read More</a>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="item">
+			<img src="{{media url='mcpDemo/news/teacher.jpg'}}">
+			<h6>Ap App Helps Teachers Track Student Attendance</h6>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+			<a href="#" class="btn">Read More</a>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="item">
+			<img src="{{media url='mcpDemo/news/search_bar.jpg'}}">
+			<h6>Google Paid Apple $1B to Keep Search Bar on iPhone</h6>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+			<a href="#" class="btn">Read More</a>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="item">
+			<img src="{{media url='mcpDemo/news/apps.jpg'}}">
+			<h6>Quantified Self Apps to Help Track Habits</h6>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+			<a href="#" class="btn">Read More</a>
+		</div>
+	</div>
+</div>
+]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu7 - Health]]></title>
+      <identifier><![CDATA[menu7-health]]></identifier>
+      <content><![CDATA[<div class="mb-row">
+	<div class="grid-column3">
+		<div class="item">
+			<img src="{{media url='mcpDemo/news/high_rise.jpg'}}">
+			<h6>High-Rise Living Linked to Heart Diseases</h6>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+			<a href="#" class="btn">Read More</a>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="item">
+			<img src="{{media url='mcpDemo/news/exercise.jpg'}}">
+			<h6>How Exercise May Help Us Fight Off Colds</h6>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+			<a href="#" class="btn">Read More</a>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="item">
+			<img src="{{media url='mcpDemo/news/drugs.jpg'}}">
+			<h6>5 Accused of Stealing Drug Secrets From GlaxoSmithKline</h6>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+			<a href="#" class="btn">Read More</a>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="item">
+			<img src="{{media url='mcpDemo/news/mosquito.jpg'}}">
+			<h6>C.D.C Urges Zika Testing for Some Who are Pregant</h6>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+			<a href="#" class="btn">Read More</a>
+		</div>
+	</div>
+</div>
+]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu7 - Lifestyle]]></title>
+      <identifier><![CDATA[menu7-lifestyle]]></identifier>
+      <content><![CDATA[<div class="mb-row">
+	<div class="grid-column3">
+		<div class="item">
+			<img src="{{media url='mcpDemo/news/etiquette.jpg'}}">
+			<h6>7 Unwritten Etiquette Rules Every Home Buyer Should Know</h6>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+			<a href="#" class="btn">Read More</a>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="item">
+			<img src="{{media url='mcpDemo/news/pork.jpg'}}">
+			<h6>Danish City Makes Pork Mandatory but Allows other Food</h6>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+			<a href="#" class="btn">Read More</a>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="item">
+			<img src="{{media url='mcpDemo/news/restaurant.jpg'}}">
+			<h6>35 Restaurants in China Found Adding Opium Poppies to their Food</h6>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+			<a href="#" class="btn">Read More</a>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="item">
+			<img src="{{media url='mcpDemo/news/aspen.jpg'}}">
+			<h6>The Life of High-altitude Living in Aspen</h6>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+			<a href="#" class="btn">Read More</a>
+		</div>
+	</div>
+</div>
+]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu7 - World]]></title>
+      <identifier><![CDATA[menu7-world]]></identifier>
+      <content><![CDATA[<div class="mb-row">
+	<div class="grid-column3">
+		<div class="item">
+			<img src="{{media url='mcpDemo/news/'}}pyramid.jpg">
+			<h6>Egypt Urges Calm ahead of Uprising Anniversary</h6>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+			<a href="#" class="btn">Read More</a>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="item">
+			<img src="{{media url='mcpDemo/news/unrest.jpg'}}">
+			<h6>Tunisia Imposes Nationwide Curfew Amid Spreading Unrest</h6>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+			<a href="#" class="btn">Read More</a>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="item">
+			<img src="{{media url='mcpDemo/news/zoo.jpg'}}">
+			<h6>Animals at Gaza's Zoos Dying of Hunger and Diseases</h6>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+			<a href="#" class="btn">Read More</a>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="item">
+			<img src="{{media url='mcpDemo/news/venice.jpg'}}">
+			<h6>Venice Carnival Celebrations Open Amid Heightened Security</h6>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+			<a href="#" class="btn">Read More</a>
+		</div>
+	</div>
+</div>
+]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[Menu7 - Sports]]></title>
+      <identifier><![CDATA[menu7-sports]]></identifier>
+      <content><![CDATA[<div class="mb-row">
+	<div class="grid-column3">
+		<div class="item">
+			<img src="{{media url='mcpDemo/news/'}}baseball.jpg">
+			<h6>In Surprise, Mets Agree to a Deal With Cespedes</h6>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+			<a href="#" class="btn">Read More</a>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="item">
+			<img src="{{media url='mcpDemo/news/'}}scrimmage.jpg">
+			<h6>N.F.L Playoffs: How the Four Conference Championship Team Stacked</h6>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+			<a href="#" class="btn">Read More</a>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="item">
+			<img src="{{media url='mcpDemo/news/'}}tennis.jpg">
+			<h6>Federer is Aging Gracefully, but Ken Rosewall set the Standard</h6>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+			<a href="#" class="btn">Read More</a>
+		</div>
+	</div>
+	<div class="grid-column3">
+		<div class="item">
+			<img src="{{media url='mcpDemo/news/'}}basketball.jpg">
+			<h6>Lebron James and Tyronn Lue Agree on Need to Improve</h6>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam veniam fuga minus, ducimus...</p>
+			<a href="#" class="btn">Read More</a>
+		</div>
+	</div>
+</div>
+]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+  </block>
+</root>

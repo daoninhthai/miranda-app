@@ -1,0 +1,160 @@
+/*== C-option01 =======*/
+.mcp-wrapper.c-option01 .menu-creator-pro, .mcp-wrapper.c-option01 .menu-creator-pro > li { background: #980202; }
+.menu-creator-pro li.is-active, .menu-creator-pro .autosub li:hover, .no-header > ul > li:not(.nav-header):hover { background: #980202; }
+.mcp-wrapper.c-option01 .table-layout > ul > li > a:after { border-left: .75em solid #980202; }
+.mcp-wrapper .bg-design, .mcp-wrapper.c-option01 .tab-layout > ul > li.is-active > a { background: #980202; }
+.mcp-wrapper.c-option01 .btn { background: linear-gradient(to right,#980202 50%,#111 50%);background-size: auto auto;background-size: 200% 100%; }
+.mcp-wrapper.c-option01 .btn:hover { background-position: right bottom; }
+.mcp-wrapper.c-option01 .flipY-caption, .mcp-wrapper.c-option01 .slideDown-caption { background: rgba(152,2,2,.85); }
+.mcp-wrapper.c-option01 .tab-layout > ul > li > a { background: #555; }
+.mcp-wrapper.c-option01 input[type="text"].linear, .mcp-wrapper.c-option01 input[type="email"].linear, .mcp-wrapper.c-option01 input[type="password"].linear { background: #aaaaaa80;background: linear-gradient(to right,#980202 50px,#fff 0);}
+/*== C-option02 =======*/
+.mcp-wrapper.c-option02 .menu-creator-pro, .mcp-wrapper.c-option02 .menu-creator-pro > li { background: #7f0101; }
+.mcp-wrapper.c-option02 .menu-creator-pro li.is-active, .mcp-wrapper.c-option02 .menu-creator-pro .autosub li:hover, .mcp-wrapper.c-option02 .menu-creator-pro .no-header > ul > li:not(.nav-header):hover { background: #7f0101; }
+.mcp-wrapper.c-option02 .table-layout > ul > li > a:after { border-left: .75em solid #7f0101; }
+.mcp-wrapper.c-option02 .menu-creator-pro .bg-design, .mcp-wrapper.c-option02 .tab-layout > ul > li.is-active > a { background: #7f0101; }
+.mcp-wrapper.c-option02 .btn { background: linear-gradient(to right,#7f0101 50%,#111 50%);background-size: auto auto;background-size: 200% 100%; }
+.mcp-wrapper.c-option02 .btn:hover { background-position: right bottom; }
+.mcp-wrapper.c-option02 .flipY-caption, .mcp-wrapper.c-option02 .slideDown-caption { background: rgba(152,2,2,.85); }
+.mcp-wrapper.c-option02 .tab-layout > ul > li > a { background: #555; }
+.mcp-wrapper.c-option02 input[type="text"].linear, .mcp-wrapper.c-option02 input[type="email"].linear, .mcp-wrapper.c-option02 input[type="password"].linear { background: #aaaaaa80;background: linear-gradient(to right,#7f0101 50px,#fff 0);}
+/*== C-option03 =======*/
+.mcp-wrapper.c-option03 .menu-creator-pro, .mcp-wrapper.c-option03 .menu-creator-pro > li { background: #824d06; }
+.mcp-wrapper.c-option03 .menu-creator-pro li.is-active, .mcp-wrapper.c-option03 .menu-creator-pro .autosub li:hover, .mcp-wrapper.c-option03 .menu-creator-pro .no-header > ul > li:not(.nav-header):hover { background: #824d06; }
+.mcp-wrapper.c-option03 .table-layout > ul > li > a:after { border-left: .75em solid #824d06; }
+.mcp-wrapper.c-option03 .menu-creator-pro .bg-design, .mcp-wrapper.c-option03 .tab-layout > ul > li.is-active > a { background: #824d06; }
+.mcp-wrapper.c-option03 .btn { background: linear-gradient(to right,#824d06 50%,#111 50%);background-size: auto auto;background-size: 200% 100%; }
+.mcp-wrapper.c-option03 .btn:hover { background-position: right bottom; }
+.mcp-wrapper.c-option03 .flipY-caption, .mcp-wrapper.c-option03 .slideDown-caption { background: rgba(152,2,2,.85); }
+.mcp-wrapper.c-option03 .tab-layout > ul > li > a { background: #555; }
+.mcp-wrapper.c-option03 input[type="text"].linear, .mcp-wrapper.c-option03 input[type="email"].linear, .mcp-wrapper.c-option03 input[type="password"].linear { background: #aaaaaa80;background: linear-gradient(to right,#824d06 50px,#fff 0);}
+/*== C-option04 =======*/
+.mcp-wrapper.c-option04 .menu-creator-pro, .mcp-wrapper.c-option04 .menu-creator-pro > li { background: #6a3f05; }
+.mcp-wrapper.c-option04 .menu-creator-pro li.is-active, .mcp-wrapper.c-option04 .menu-creator-pro .autosub li:hover, .mcp-wrapper.c-option04 .menu-creator-pro .no-header > ul > li:not(.nav-header):hover { background: #6a3f05; }
+.mcp-wrapper.c-option04 .table-layout > ul > li > a:after { border-left: .75em solid #6a3f05; }
+.mcp-wrapper.c-option04 .menu-creator-pro .bg-design, .mcp-wrapper.c-option04 .tab-layout > ul > li.is-active > a { background: #6a3f05; }
+.mcp-wrapper.c-option04 .btn { background: linear-gradient(to right,#6a3f05 50%,#111 50%);background-size: auto auto;background-size: 200% 100%; }
+.mcp-wrapper.c-option04 .btn:hover { background-position: right bottom; }
+.mcp-wrapper.c-option04 .flipY-caption, .mcp-wrapper.c-option04 .slideDown-caption { background: rgba(152,2,2,.85); }
+.mcp-wrapper.c-option04 .tab-layout > ul > li > a { background: #555; }
+.mcp-wrapper.c-option04 input[type="text"].linear, .mcp-wrapper.c-option04 input[type="email"].linear, .mcp-wrapper.c-option04 input[type="password"].linear { background: #aaaaaa80;background: linear-gradient(to right,#6a3f05 50px,#fff 0);}
+/*== C-option05 =======*/
+.mcp-wrapper.c-option05 .menu-creator-pro, .mcp-wrapper.c-option05 .menu-creator-pro > li { background: #07850d; }
+.mcp-wrapper.c-option05 .menu-creator-pro li.is-active, .mcp-wrapper.c-option05 .menu-creator-pro .autosub li:hover, .mcp-wrapper.c-option05 .menu-creator-pro .no-header > ul > li:not(.nav-header):hover { background: #07850d; }
+.mcp-wrapper.c-option05 .table-layout > ul > li > a:after { border-left: .75em solid #07850d; }
+.mcp-wrapper.c-option05 .menu-creator-pro .bg-design, .mcp-wrapper.c-option05 .tab-layout > ul > li.is-active > a { background: #07850d; }
+.mcp-wrapper.c-option05 .btn { background: linear-gradient(to right,#07850d 50%,#111 50%);background-size: auto auto;background-size: 200% 100%; }
+.mcp-wrapper.c-option05 .btn:hover { background-position: right bottom; }
+.mcp-wrapper.c-option05 .flipY-caption, .mcp-wrapper.c-option05 .slideDown-caption { background: rgba(152,2,2,.85); }
+.mcp-wrapper.c-option05 .tab-layout > ul > li > a { background: #555; }
+.mcp-wrapper.c-option05 input[type="text"].linear, .mcp-wrapper.c-option05 input[type="email"].linear, .mcp-wrapper.c-option05 input[type="password"].linear { background: #aaaaaa80;background: linear-gradient(to right,#07850d 50px,#fff 0);}
+/*== C-option06 =======*/
+.mcp-wrapper.c-option06 .menu-creator-pro, .mcp-wrapper.c-option06 .menu-creator-pro > li { background: #056d0b; }
+.mcp-wrapper.c-option06 .menu-creator-pro li.is-active, .mcp-wrapper.c-option06 .menu-creator-pro .autosub li:hover, .mcp-wrapper.c-option06 .menu-creator-pro .no-header > ul > li:not(.nav-header):hover { background: #056d0b; }
+.mcp-wrapper.c-option06 .table-layout > ul > li > a:after { border-left: .75em solid #056d0b; }
+.mcp-wrapper.c-option06 .menu-creator-pro .bg-design, .mcp-wrapper.c-option06 .tab-layout > ul > li.is-active > a { background: #056d0b; }
+.mcp-wrapper.c-option06 .btn { background: linear-gradient(to right,#056d0b 50%,#111 50%);background-size: auto auto;background-size: 200% 100%; }
+.mcp-wrapper.c-option06 .btn:hover { background-position: right bottom; }
+.mcp-wrapper.c-option06 .flipY-caption, .mcp-wrapper.c-option06 .slideDown-caption { background: rgba(152,2,2,.85); }
+.mcp-wrapper.c-option06 .tab-layout > ul > li > a { background: #555; }
+.mcp-wrapper.c-option06 input[type="text"].linear, .mcp-wrapper.c-option06 input[type="email"].linear, .mcp-wrapper.c-option06 input[type="password"].linear { background: #aaaaaa80;background: linear-gradient(to right,#056d0b 50px,#fff 0);}
+/*== C-option07 =======*/
+.mcp-wrapper.c-option07 .menu-creator-pro, .mcp-wrapper.c-option07 .menu-creator-pro > li { background: #0a818b; }
+.mcp-wrapper.c-option07 .menu-creator-pro li.is-active, .mcp-wrapper.c-option07 .menu-creator-pro .autosub li:hover, .mcp-wrapper.c-option07 .menu-creator-pro .no-header > ul > li:not(.nav-header):hover { background: #0a818b; }
+.mcp-wrapper.c-option07 .table-layout > ul > li > a:after { border-left: .75em solid #0a818b; }
+.mcp-wrapper.c-option07 .menu-creator-pro .bg-design, .mcp-wrapper.c-option07 .tab-layout > ul > li.is-active > a { background: #0a818b; }
+.mcp-wrapper.c-option07 .btn { background: linear-gradient(to right,#0a818b 50%,#111 50%);background-size: auto auto;background-size: 200% 100%; }
+.mcp-wrapper.c-option07 .btn:hover { background-position: right bottom; }
+.mcp-wrapper.c-option07 .flipY-caption, .mcp-wrapper.c-option07 .slideDown-caption { background: rgba(152,2,2,.85); }
+.mcp-wrapper.c-option07 .tab-layout > ul > li > a { background: #555; }
+.mcp-wrapper.c-option07 input[type="text"].linear, .mcp-wrapper.c-option07 input[type="email"].linear, .mcp-wrapper.c-option07 input[type="password"].linear { background: #aaaaaa80;background: linear-gradient(to right,#0a818b 50px,#fff 0);}
+/*== C-option08 =======*/
+.mcp-wrapper.c-option08 .menu-creator-pro, .mcp-wrapper.c-option08 .menu-creator-pro > li { background: #096b73; }
+.mcp-wrapper.c-option08 .menu-creator-pro li.is-active, .mcp-wrapper.c-option08 .menu-creator-pro .autosub li:hover, .mcp-wrapper.c-option08 .menu-creator-pro .no-header > ul > li:not(.nav-header):hover { background: #096b73; }
+.mcp-wrapper.c-option08 .table-layout > ul > li > a:after { border-left: .75em solid #096b73; }
+.mcp-wrapper.c-option08 .menu-creator-pro .bg-design, .mcp-wrapper.c-option08 .tab-layout > ul > li.is-active > a { background: #096b73; }
+.mcp-wrapper.c-option08 .btn { background: linear-gradient(to right,#096b73 50%,#111 50%);background-size: auto auto;background-size: 200% 100%; }
+.mcp-wrapper.c-option08 .btn:hover { background-position: right bottom; }
+.mcp-wrapper.c-option08 .flipY-caption, .mcp-wrapper.c-option08 .slideDown-caption { background: rgba(152,2,2,.85); }
+.mcp-wrapper.c-option08 .tab-layout > ul > li > a { background: #555; }
+.mcp-wrapper.c-option08 input[type="text"].linear, .mcp-wrapper.c-option08 input[type="email"].linear, .mcp-wrapper.c-option08 input[type="password"].linear { background: #aaaaaa80;background: linear-gradient(to right,#096b73 50px,#fff 0);}
+/*== C-option09 =======*/
+.mcp-wrapper.c-option09 .menu-creator-pro, .mcp-wrapper.c-option09 .menu-creator-pro > li { background: #17529f; }
+.mcp-wrapper.c-option09 .menu-creator-pro li.is-active, .mcp-wrapper.c-option09 .menu-creator-pro .autosub li:hover, .mcp-wrapper.c-option09 .menu-creator-pro .no-header > ul > li:not(.nav-header):hover { background: #17529f; }
+.mcp-wrapper.c-option09 .table-layout > ul > li > a:after { border-left: .75em solid #17529f; }
+.mcp-wrapper.c-option09 .menu-creator-pro .bg-design, .mcp-wrapper.c-option09 .tab-layout > ul > li.is-active > a { background: #17529f; }
+.mcp-wrapper.c-option09 .btn { background: linear-gradient(to right,#17529f 50%,#111 50%);background-size: auto auto;background-size: 200% 100%; }
+.mcp-wrapper.c-option09 .btn:hover { background-position: right bottom; }
+.mcp-wrapper.c-option09 .flipY-caption, .mcp-wrapper.c-option09 .slideDown-caption { background: rgba(152,2,2,.85); }
+.mcp-wrapper.c-option09 .tab-layout > ul > li > a { background: #555; }
+.mcp-wrapper.c-option09 input[type="text"].linear, .mcp-wrapper.c-option09 input[type="email"].linear, .mcp-wrapper.c-option09 input[type="password"].linear { background: #aaaaaa80;background: linear-gradient(to right,#17529f 50px,#fff 0);}
+/*== C-option10 =======*/
+.mcp-wrapper.c-option10 .menu-creator-pro, .mcp-wrapper.c-option10 .menu-creator-pro > li { background: #144788; }
+.mcp-wrapper.c-option10 .menu-creator-pro li.is-active, .mcp-wrapper.c-option10 .menu-creator-pro .autosub li:hover, .mcp-wrapper.c-option10 .menu-creator-pro .no-header > ul > li:not(.nav-header):hover { background: #144788; }
+.mcp-wrapper.c-option10 .table-layout > ul > li > a:after { border-left: .75em solid #144788; }
+.mcp-wrapper.c-option10 .menu-creator-pro .bg-design, .mcp-wrapper.c-option10 .tab-layout > ul > li.is-active > a { background: #144788; }
+.mcp-wrapper.c-option10 .btn { background: linear-gradient(to right,#144788 50%,#111 50%);background-size: auto auto;background-size: 200% 100%; }
+.mcp-wrapper.c-option10 .btn:hover { background-position: right bottom; }
+.mcp-wrapper.c-option10 .flipY-caption, .mcp-wrapper.c-option10 .slideDown-caption { background: rgba(152,2,2,.85); }
+.mcp-wrapper.c-option10 .tab-layout > ul > li > a { background: #555; }
+.mcp-wrapper.c-option10 input[type="text"].linear, .mcp-wrapper.c-option10 input[type="email"].linear, .mcp-wrapper.c-option10 input[type="password"].linear { background: #aaaaaa80;background: linear-gradient(to right,#144788 50px,#fff 0);}
+/*== C-option11 =======*/
+.mcp-wrapper.c-option11 .menu-creator-pro, .mcp-wrapper.c-option11 .menu-creator-pro > li { background: #3a0882; }
+.mcp-wrapper.c-option11 .menu-creator-pro li.is-active, .mcp-wrapper.c-option11 .menu-creator-pro .autosub li:hover, .mcp-wrapper.c-option11 .menu-creator-pro .no-header > ul > li:not(.nav-header):hover { background: #3a0882; }
+.mcp-wrapper.c-option11 .table-layout > ul > li > a:after { border-left: .75em solid #3a0882; }
+.mcp-wrapper.c-option11 .menu-creator-pro .bg-design, .mcp-wrapper.c-option11 .tab-layout > ul > li.is-active > a { background: #3a0882; }
+.mcp-wrapper.c-option11 .btn { background: linear-gradient(to right,#3a0882 50%,#111 50%);background-size: auto auto;background-size: 200% 100%; }
+.mcp-wrapper.c-option11 .btn:hover { background-position: right bottom; }
+.mcp-wrapper.c-option11 .flipY-caption, .mcp-wrapper.c-option11 .slideDown-caption { background: rgba(152,2,2,.85); }
+.mcp-wrapper.c-option11 .tab-layout > ul > li > a { background: #555; }
+.mcp-wrapper.c-option11 input[type="text"].linear, .mcp-wrapper.c-option11 input[type="email"].linear, .mcp-wrapper.c-option11 input[type="password"].linear { background: #aaaaaa80;background: linear-gradient(to right,#3a0882 50px,#fff 0);}
+/*== C-option12 =======*/
+.mcp-wrapper.c-option12 .menu-creator-pro, .mcp-wrapper.c-option12 .menu-creator-pro > li { background: #2f076a; }
+.mcp-wrapper.c-option12 .menu-creator-pro li.is-active, .mcp-wrapper.c-option12 .menu-creator-pro .autosub li:hover, .mcp-wrapper.c-option12 .menu-creator-pro .no-header > ul > li:not(.nav-header):hover { background: #2f076a; }
+.mcp-wrapper.c-option12 .table-layout > ul > li > a:after { border-left: .75em solid #2f076a; }
+.mcp-wrapper.c-option12 .menu-creator-pro .bg-design, .mcp-wrapper.c-option12 .tab-layout > ul > li.is-active > a { background: #2f076a; }
+.mcp-wrapper.c-option12 .btn { background: linear-gradient(to right,#2f076a 50%,#111 50%);background-size: auto auto;background-size: 200% 100%; }
+.mcp-wrapper.c-option12 .btn:hover { background-position: right bottom; }
+.mcp-wrapper.c-option12 .flipY-caption, .mcp-wrapper.c-option12 .slideDown-caption { background: rgba(152,2,2,.85); }
+.mcp-wrapper.c-option12 .tab-layout > ul > li > a { background: #555; }
+.mcp-wrapper.c-option12 input[type="text"].linear, .mcp-wrapper.c-option12 input[type="email"].linear, .mcp-wrapper.c-option12 input[type="password"].linear { background: #aaaaaa80;background: linear-gradient(to right,#2f076a 50px,#fff 0);}
+/*== C-option13 =======*/
+.mcp-wrapper.c-option13 .menu-creator-pro, .mcp-wrapper.c-option13 .menu-creator-pro > li { background: #830760; }
+.mcp-wrapper.c-option13 .menu-creator-pro li.is-active, .mcp-wrapper.c-option13 .menu-creator-pro .autosub li:hover, .mcp-wrapper.c-option13 .menu-creator-pro .no-header > ul > li:not(.nav-header):hover { background: #830760; }
+.mcp-wrapper.c-option13 .table-layout > ul > li > a:after { border-left: .75em solid #830760; }
+.mcp-wrapper.c-option13 .menu-creator-pro .bg-design, .mcp-wrapper.c-option13 .tab-layout > ul > li.is-active > a { background: #830760; }
+.mcp-wrapper.c-option13 .btn { background: linear-gradient(to right,#830760 50%,#111 50%);background-size: auto auto;background-size: 200% 100%; }
+.mcp-wrapper.c-option13 .btn:hover { background-position: right bottom; }
+.mcp-wrapper.c-option13 .flipY-caption, .mcp-wrapper.c-option13 .slideDown-caption { background: rgba(152,2,2,.85); }
+.mcp-wrapper.c-option13 .tab-layout > ul > li > a { background: #555; }
+.mcp-wrapper.c-option13 input[type="text"].linear, .mcp-wrapper.c-option13 input[type="email"].linear, .mcp-wrapper.c-option13 input[type="password"].linear { background: #aaaaaa80;background: linear-gradient(to right,#830760 50px,#fff 0);}
+/*== C-option14 =======*/
+.mcp-wrapper.c-option14 .menu-creator-pro, .mcp-wrapper.c-option14 .menu-creator-pro > li { background: #6b064f; }
+.mcp-wrapper.c-option14 .menu-creator-pro li.is-active, .mcp-wrapper.c-option14 .menu-creator-pro .autosub li:hover, .mcp-wrapper.c-option14 .menu-creator-pro .no-header > ul > li:not(.nav-header):hover { background: #6b064f; }
+.mcp-wrapper.c-option14 .table-layout > ul > li > a:after { border-left: .75em solid #6b064f; }
+.mcp-wrapper.c-option14 .menu-creator-pro .bg-design, .mcp-wrapper.c-option14 .tab-layout > ul > li.is-active > a { background: #6b064f; }
+.mcp-wrapper.c-option14 .btn { background: linear-gradient(to right,#6b064f 50%,#111 50%);background-size: auto auto;background-size: 200% 100%; }
+.mcp-wrapper.c-option14 .btn:hover { background-position: right bottom; }
+.mcp-wrapper.c-option14 .flipY-caption, .mcp-wrapper.c-option14 .slideDown-caption { background: rgba(152,2,2,.85); }
+.mcp-wrapper.c-option14 .tab-layout > ul > li > a { background: #555; }
+.mcp-wrapper.c-option14 input[type="text"].linear, .mcp-wrapper.c-option14 input[type="email"].linear, .mcp-wrapper.c-option14 input[type="password"].linear { background: #aaaaaa80;background: linear-gradient(to right,#6b064f 50px,#fff 0);}
+/*== C-option15 =======*/
+.mcp-wrapper.c-option15 .menu-creator-pro, .mcp-wrapper.c-option15 .menu-creator-pro > li { background: #625409; }
+.mcp-wrapper.c-option15 .menu-creator-pro li.is-active, .mcp-wrapper.c-option15 .menu-creator-pro .autosub li:hover, .mcp-wrapper.c-option15 .menu-creator-pro .no-header > ul > li:not(.nav-header):hover { background: #625409; }
+.mcp-wrapper.c-option15 .table-layout > ul > li > a:after { border-left: .75em solid #625409; }
+.mcp-wrapper.c-option15 .menu-creator-pro .bg-design, .mcp-wrapper.c-option15 .tab-layout > ul > li.is-active > a { background: #625409; }
+.mcp-wrapper.c-option15 .btn { background: linear-gradient(to right,#625409 50%,#111 50%);background-size: auto auto;background-size: 200% 100%; }
+.mcp-wrapper.c-option15 .btn:hover { background-position: right bottom; }
+.mcp-wrapper.c-option15 .flipY-caption, .mcp-wrapper.c-option15 .slideDown-caption { background: rgba(152,2,2,.85); }
+.mcp-wrapper.c-option15 .tab-layout > ul > li > a { background: #555; }
+.mcp-wrapper.c-option15 input[type="text"].linear, .mcp-wrapper.c-option15 input[type="email"].linear, .mcp-wrapper.c-option15 input[type="password"].linear { background: #aaaaaa80;background: linear-gradient(to right,#625409 50px,#fff 0);}
+/*== C-option16 =======*/
+.mcp-wrapper.c-option16 .menu-creator-pro, .mcp-wrapper.c-option16 .menu-creator-pro > li { background: #4b4007; }
+.mcp-wrapper.c-option16 .menu-creator-pro li.is-active, .mcp-wrapper.c-option16 .menu-creator-pro .autosub li:hover, .mcp-wrapper.c-option16 .menu-creator-pro .no-header > ul > li:not(.nav-header):hover { background: #4b4007; }
+.mcp-wrapper.c-option16 .table-layout > ul > li > a:after { border-left: .75em solid #4b4007; }
+.mcp-wrapper.c-option16 .menu-creator-pro .bg-design, .mcp-wrapper.c-option16 .tab-layout > ul > li.is-active > a { background:#4b4007 }
+.mcp-wrapper.c-option16 .btn { background: linear-gradient(to right,#4b4007 50%,#111 50%);background-size: auto auto;background-size: 200% 100%; }
+.mcp-wrapper.c-option16 .btn:hover { background-position: right bottom; }
+.mcp-wrapper.c-option16 .flipY-caption, .mcp-wrapper.c-option16 .slideDown-caption { background: rgba(152,2,2,.85); }
+.mcp-wrapper.c-option16 .tab-layout > ul > li > a { background: #555; }
+.mcp-wrapper.c-option16 input[type="text"].linear, .mcp-wrapper.c-option16 input[type="email"].linear, .mcp-wrapper.c-option16 input[type="password"].linear { background: #aaaaaa80;background: linear-gradient(to right,#4b4007 50px,#fff 0);}

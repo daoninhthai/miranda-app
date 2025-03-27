@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author      Magetop Developer (Kien)
+ * @package     Magento Multi Vendor Marketplace_Seller_Attribute_Management
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etcpage_configuration.xsd">
+    <head>
+        <css src="jquery/fileUploader/css/jquery.fileupload-ui.css"/>
+    </head>
+    <update handle="editor"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Magetop\SellerAttributeManagement\Block\Adminhtml\SellerAttributeManagement\Edit" name="magetop.sellerattributemanagement.edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Magetop\SellerAttributeManagement\Block\Adminhtml\SellerAttributeManagement\Edit\Tabs" name="magetop.sellerattributemanagement.edit.tabs">
+                <block class="Magetop\SellerAttributeManagement\Block\Adminhtml\SellerAttributeManagement\Edit\Tab\Main" name="magetop.sellerattributemanagement.edit.tab.main"/>    
+                <block class="Magetop\SellerAttributeManagement\Block\Adminhtml\SellerAttributeManagement\Edit\Tab\Label" name="magetop.sellerattributemanagement.edit.tab.label"/>            
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">main_section</argument>
+                    <argument name="block" xsi:type="string">magetop.sellerattributemanagement.edit.tab.main</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">label_section</argument>
+                    <argument name="block" xsi:type="string">magetop.sellerattributemanagement.edit.tab.label</argument>
+                </action>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

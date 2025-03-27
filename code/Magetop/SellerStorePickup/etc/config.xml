@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author      Magetop Developer (Kien)
+ * @package     Magento Multi Vendor Marketplace_Seller_Store_Pickup
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <carriers>
+            <sellerstorepickup>
+                <active>0</active>
+                <sallowspecific>0</sallowspecific>
+                <price>0</price>
+                <model>Magetop\SellerStorePickup\Model\Carrier\SellerStorePickup</model>
+                <name>Store Pickup Shipping</name>
+                <title>Marketplace Shipping</title>
+                <specificerrmsg>This shipping method is not available. To use this shipping method, please contact us.</specificerrmsg>
+                <sort_order>99</sort_order>
+            </sellerstorepickup>
+        </carriers>
+    </default>
+</config>

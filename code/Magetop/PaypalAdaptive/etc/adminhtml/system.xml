@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Config/etc/system_file.xsd">
+    <system>
+        <section id="payment">
+            <resource>Magetop_PaypalAdaptive::configuration</resource>                          
+            <group id="paypaladaptive" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Magetop Marketplace Paypal Adaptive Payment</label>
+                <field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enable this Payment</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="title" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Payment Title</label>
+                </field>
+                <field id="order_status" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>New Order Status</label>
+                    <source_model>Magetop\PaypalAdaptive\Model\Config\Source\Order\Status\Pendingpayment</source_model>
+                </field>
+                <field id="payment_mode" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Payment Mode</label>
+                    <source_model>Magetop\PaypalAdaptive\Model\Config\Source\Order\Payment\TypeMode</source_model>   
+                </field>
+                <field id="payment_type" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Payment Type</label>
+                    <source_model>Magetop\PaypalAdaptive\Model\Config\Source\Order\Payment\TypePayment</source_model>                    
+                </field>
+                <field id="who_will_pay_fee" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Who Will Pay Fee</label>
+                    <source_model>Magetop\PaypalAdaptive\Model\Config\Source\Order\Payment\TypeFee</source_model>                    
+                </field>
+                <field id="merchant_paypal_id" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Merchant PayPal ID</label>
+                </field>
+                <field id="paypal_application_id" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>PayPal Application ID</label>
+                    <comment><![CDATA[
+                        You can set empty or APP-80W284485P519543T this field for mode sandbox</br>
+                    ]]></comment>
+                </field>
+                <field id="paypal_api_user_name" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>PayPal API User Name</label>
+                </field>
+                <field id="paypal_api_password" translate="label" type="obscure" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>PayPal API Password</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                </field>
+                <field id="paypal_api_signature" translate="label" type="obscure" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>PayPal API Signature</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <comment><![CDATA[
+                        <div class="pp-buttons-container">
+                            <button id="payment_wpp_and_express_checkout_api_wizard" type="button" class="scalable" onclick="javascript:window.open('https://www.paypal.com/us/cgi-bin/webscr?cmd=_login-api-run', 'apiwizard','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, ,left=100, top=100, width=380, height=470'); return false;">
+                                <span><span><span style="font-size: 10px">Get Credentials from PayPal</span></span></span>
+                            </button>
+                            <button id="sandbox_payment_wpp_and_express_checkout_api_wizard" type="button" class="scalable" onclick="javascript:window.open('https://www.sandbox.paypal.com/us/cgi-bin/webscr?cmd=_login-api-run', 'apiwizard','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, ,left=100, top=100, width=380, height=470'); return false;">
+                                <span><span><span style="font-size: 10px">Sandbox Credentials</span></span></span>
+                            </button>
+                        </div>
+                    ]]></comment>
+                </field>
+                <field id="allowed_carrier" translate="label" type="multiselect" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Allowed Shipping Methods</label>
+                    <source_model>Magento\Shipping\Model\Config\Source\Allmethods</source_model>
+                </field>
+                <field id="allowspecific" translate="label" type="allowspecific" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Payment from Applicable Countries</label>
+                    <source_model>Magento\Payment\Model\Config\Source\Allspecificcountries</source_model>
+                </field>
+                <field id="specificcountry" translate="label" type="multiselect" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Payment from Specific Countries</label>
+                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                    <can_be_empty>1</can_be_empty>
+                </field>
+                <field id="instructions" translate="label" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Instructions</label>
+                </field>
+                <field id="sort_order" translate="label" type="text" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Sort Order</label>
+                    <frontend_class>validate-number</frontend_class>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,133 @@
+<?php
+/**
+ * Copyright © 2015  (magetop99@gmail.com). All rights reserved.
+ * See LICENSE.txt for license details (http://opensource.org/licenses/osl-3.0.php).
+ *
+ * 
+ */
+?>
+<?php
+/**
+ * Blog sidebar recent posts template
+ *
+ * @var $block \Magetop\Blog\Block\Sidebar\Recent
+ */
+?>
+
+<?php
+	$_postCollection = $block->getPostCollection();
+?>
+<?php if ($_postCollection->count()==2) { ?>
+<div class="home-blog-list mb-content">
+    <h3 class="subtitle"><?php echo __('Last News') ?></h3>
+    <div class="row">
+		<?php foreach ($_postCollection as $_post) { ?>
+            <?php $_postName = $block->escapeHtml($_post->getTitle()) ?>
+			<div class="col-xs-6">
+				<div class="row">
+					<?php if ($featuredImage = $_post->getFeaturedImage()) { ?>
+						<div class="i-hover col-sm-6 col-xs-12">
+							<a class="hover-l" href="<?php echo $_post->getPostUrl() ?>" title="<?php echo $_postName ?>">
+								<img src="<?php echo $featuredImage ?>" alt="<?php echo $_postName ?>" />
+							</a>
+						</div>
+					<?php } ?>
+						<div class="info col-sm-6 col-xs-12">
+							<a class="tex-color i-title"
+								href="<?php echo $_post->getPostUrl() ?>">
+								<?php echo $_postName ?>
+							</a>
+							<div class="post-info clear">
+								<ul class="list-inline tex-color">
+									<li><i class="fa fa-calendar"></i><?php echo date('F d, Y',strtotime($_post->getData('publish_time'))) ?></li>
+									<?php if ($_categoriesCount = $_post->getCategoriesCount()) { ?>
+										<li>
+											<i class="fa fa-tags"></i>
+											<?php $n = 0; foreach($_post->getParentCategories() as $ct) { $n++; ?>
+												<a class="tex-color" title="<?php echo $block->escapeHtml($ct->getTitle()) ?>" href="<?php echo $ct->getCategoryUrl() ?>"><?php echo $block->escapeHtml($ct->getTitle()) ?></a>
+												<?php if ($n != $_categoriesCount) { ?>, <?php } ?>
+											<?php } ?>
+										</li>
+									<?php } ?>	
+								</ul>
+							</div>
+							<div class="i-description clearfix">            
+								<?php 
+									$_postContent = $block->escapeHtml($_post->getContent()); 
+									echo $_postContent = (strlen($_postContent) > 79) ? substr($_postContent,0,82).'...' : $_postContent;
+								?>
+								
+							</div>
+						</div>	
+				</div>
+			</div>
+		<?php } ?>
+	</div>
+</div>
+<?php } elseif ($_postCollection->count()>2) { ?>
+<div class="home-blog mb-content">
+    <h3 class="subtitle"><?php echo __('Last News') ?></h3>
+    <div class="home-blog-list owl-carousel">
+		<?php foreach ($_postCollection as $_post) { ?>
+            <?php $_postName = $block->escapeHtml($_post->getTitle()) ?>
+			<div class="item">
+				<div class="row">
+					<?php if ($featuredImage = $_post->getFeaturedImage()) { ?>
+						<div class="i-hover col-xs-6">
+							<a class="hover-l" href="<?php echo $_post->getPostUrl() ?>" title="<?php echo $_postName ?>">
+								<img src="<?php echo $featuredImage ?>" alt="<?php echo $_postName ?>" />
+							</a>
+						</div>
+					<?php } ?>
+						<div class="info col-xs-6">
+							<a class="tex-color i-title"
+								href="<?php echo $_post->getPostUrl() ?>">
+								<?php echo $_postName ?>
+							</a>
+							<div class="post-info clear">
+								<ul class="list-inline tex-color">
+									<li><i class="fa fa-calendar"></i><?php echo date('F d, Y',strtotime($_post->getData('publish_time'))) ?></li>
+									<?php if ($_categoriesCount = $_post->getCategoriesCount()) { ?>
+										<li>
+											<i class="fa fa-tags"></i>
+											<?php $n = 0; foreach($_post->getParentCategories() as $ct) { $n++; ?>
+												<a class="tex-color" title="<?php echo $block->escapeHtml($ct->getTitle()) ?>" href="<?php echo $ct->getCategoryUrl() ?>"><?php echo $block->escapeHtml($ct->getTitle()) ?></a>
+												<?php if ($n != $_categoriesCount) { ?>, <?php } ?>
+											<?php } ?>
+										</li>
+									<?php } ?>	
+								</ul>
+							</div>
+							<div class="i-description clearfix">            
+								<?php 
+									$_postContent = $block->escapeHtml($_post->getContent()); 
+									echo $_postContent = (strlen($_postContent) > 79) ? substr($_postContent,0,82).'...' : $_postContent;
+								?>
+								
+							</div>
+						</div>	
+				</div>
+			</div>
+		<?php } ?>
+	</div>
+</div>
+<script type="text/javascript">
+    require(["jquery","magetop/owlcarousel"], function($){
+        $('.home-blog-list').owlCarousel({					
+			nav:true,
+			dots: false,
+			responsiveClass:true,
+			responsive:{
+				0:{
+					margin:10,
+					items:1	
+					},
+				992:{
+					margin:20,
+					items:2
+					}
+			}
+        });
+    });
+</script>
+<?php } ?>

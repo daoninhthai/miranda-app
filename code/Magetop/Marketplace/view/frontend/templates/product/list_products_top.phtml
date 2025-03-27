@@ -1,0 +1,70 @@
+<?php 
+/**
+* @author      Magetop Developer (Kien)
+* @package     Magento Multi Vendor Marketplace
+* @copyright   Copyright (c) Magetop (https://www.magetop.com)
+* @terms       https://www.magetop.com/terms
+* @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+**/
+?>
+<div class="page-head-actions" style="margin-bottom: 10px;">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="actions-buttons">
+                <div class="btn-group mv-btn-group prod-button">
+                    <button type="button" class="btn btn-primary btn-red btn-add-products redirect_add_product" redirect="<?php echo $this->getUrl('marketplace/product/set') ?>"><?php echo __('Add Product') ?></button>
+                    <button type="button" class="btn btn-primary dropdown-toggle btn-red" data-toggle="dropdown">
+                        <span class="caret"></span>
+                    </button>				  
+                    <ul class="dropdown-menu" data-ui-id="save-button-dropdown-menu">
+                        <?php 
+                            $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+                            $product_type = explode(',',$objectManager->create('Magetop\Marketplace\Helper\Data')->getProductType()??'');
+                            foreach($product_type as $pt){
+                                if($pt == 'simple'){
+                                ?>
+                                    <li><a href="#"><span id="" class="item redirect_add_product" redirect="<?php echo $this->getUrl('marketplace/product/create',array('set'=>'4','type'=>'simple')) ?>" data-ui-id="save-button-item-0"><?php echo __('Simple Product') ?></span></a></li>
+                                <?php
+                                }
+                                if($pt == 'download'){
+                                ?>
+                                    <li><a href="#"><span id="" class="item redirect_add_product" redirect="<?php echo $this->getUrl('marketplace/product/create',array('set'=>'4','type'=>'downloadable')) ?>" data-ui-id="save-button-item-1"><?php echo __('Downloadable Product') ?></span></a></li>
+                                <?php
+                                }
+                                if($pt == 'virtual'){
+                                ?>
+                                    <li><a href="#"><span id="" class="item redirect_add_product" redirect="<?php echo $this->getUrl('marketplace/product/create',array('set'=>'4','type'=>'virtual')) ?>" data-ui-id="save-button-item-2"><?php echo __('Virtual Product') ?></span></a></li>
+                                <?php
+                                }
+                                if($pt == 'configurable'){
+                                ?>
+                                    <li><a href="#"><span id="" class="item redirect_add_product" redirect="<?php echo $this->getUrl('marketplace/product/create',array('set'=>'4','type'=>'configurable')) ?>" data-ui-id="save-button-item-3"><?php echo __('Configurable Product') ?></span></a></li>
+                                <?php
+                                }
+                                if($pt == 'grouped'){
+                                ?>
+                                    <li><a href="#"><span id="" class="item redirect_add_product" redirect="<?php echo $this->getUrl('marketplace/product/create',array('set'=>'4','type'=>'grouped')) ?>" data-ui-id="save-button-item-4"><?php echo __('Grouped Product') ?></span></a></li>
+                                <?php
+                                }
+                                if($pt == 'bundle'){
+                                ?>
+                                    <li><a href="#"><span id="" class="item redirect_add_product" redirect="<?php echo $this->getUrl('marketplace/product/create',array('set'=>'4','type'=>'bundle')) ?>" data-ui-id="save-button-item-5"><?php echo __('Bundle Product') ?></span></a></li>
+                                <?php
+                                }
+                            } 
+                        ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    require([
+        "jquery",
+    ], function($){
+        $('.redirect_add_product').click(function(event){
+            window.location = $(this).attr('redirect');
+        });
+    });
+</script>

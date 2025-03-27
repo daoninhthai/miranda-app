@@ -1,0 +1,242 @@
+.mt-container:after {
+    clear: both;
+    content: ".";
+    display: block;
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+}
+
+.unavailable,
+.available {
+    background-color: rgba(0, 0, 0, 0);
+    background-position: 10px 0 !important;
+    border: medium none !important;
+    float: left;
+    min-height: 11px !important;
+    padding: 0 3px 0 30px !important;
+    text-transform: capitalize;
+}
+
+.mst_mv_detail .row {
+    display: block;
+    margin-bottom: 15px;
+}
+
+#mst_load {
+    float: left;
+    padding-left: 6px;
+    display: none;
+}
+
+#storeurl {
+    float: left;
+}
+
+.mst_empty_msg {
+    color: #DF2111;
+    padding: 12px;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.logo_img {
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+}
+
+a {
+    color: #333333;
+    text-decoration: none;
+}
+
+.storename {
+    font: bold 16px Helvetica Neue, Arial, Sans Serif;
+    padding-top: 5px;
+}
+
+.mst_seller a {
+    display: inline-block;
+}
+
+.mst_icon {
+    background-image: url("../images/Sprite-Profile-Collection.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    height: 18px;
+    width: 22px;
+    float: left;
+}
+
+.mst_storename_icon {
+    background-position: -1px -2px;
+    height: 16px;
+}
+
+#info .mv-row {
+    padding-bottom: 5px;
+}
+
+.mst_seller .feedback {
+    color: #333333;
+    text-decoration: none;
+}
+
+.feedback {
+    float: left;
+    width: 200px;
+}
+
+.mst_feedback strong {
+    float: none;
+    color: #333;
+}
+
+.connect ul {
+    padding-left: 15px;
+}
+
+.connect .icon {
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 15px;
+    vertical-align: middle;
+    width: 20px;
+}
+
+.feedback {
+    float: left;
+    width: 200px;
+}
+
+.feedback .price,
+.feedback .quality,
+.feedback .value {
+    width: 200px;
+}
+
+.feedback h2 {
+    float: left;
+    width: 70px;
+}
+
+.wrapp-rating {
+    background: url("../images/bkg_rating.gif") repeat-x scroll 0 7px transparent;
+    float: left;
+    height: 20px;
+    margin-right: 10px;
+    width: 70px;
+}
+
+.wrapp-rating .rating {
+    background: url("../images/bkg_rating.gif") repeat-x scroll 0 100% transparent;
+    height: 20px;
+}
+
+.seller-banner {
+    margin: 0 0 10px;
+}
+
+.seller-banner>img {
+    width: 100%;
+}
+
+.mst_clear {
+    clear: both;
+}
+
+.contact-seller .label {
+    padding-left: 0;
+}
+
+.reviews-actions .view,
+.reviews-actions .add {
+    float: left;
+}
+
+.selectmenu-items li {
+    margin: 0;
+}
+
+.seller-dashboard .selectmenu-value input[type="text"] {
+    text-align: left;
+}
+
+#quickrfq_form fieldset.fieldset {
+    margin: 0;
+}
+
+#quickrfq_form .actions-toolbar {
+    margin: 0 0 20px;
+}
+
+.seller-detail .filter-options-item .filter-options-content {
+    -webkit-transition: all 0.5s ease 0s;
+    transition: all 0.5s ease 0s;
+    height: auto;
+    overflow: hidden;
+}
+
+.seller-detail .filter-options-item:not(.active) .filter-options-content {
+    height: 0;
+    padding: 0;
+}
+
+.seller-detail .product-items .item:hover {
+    z-index: 1;
+}
+
+.seller-detail .product-items .item:hover .product-item-info {
+    position: absolute;
+}
+
+.page-products .products-grid.list-3 .product-items {
+    margin-left: -20px;
+}
+
+.page-products .products-grid.list-3 .product-item {
+    width: 33.3333%;
+    box-sizing: border-box;
+    margin-left: 0;
+    padding: 0 0 0 20px;
+}
+
+td.col,
+th.col {
+    float: none;
+}
+
+.page-layout-market-layout button.button {
+    box-shadow: 0 0 0;
+}
+
+.field table.mceLayout {
+    width: 100% !important;
+}
+
+@media only screen and (min-width: 768px) {
+    .mt-container {
+        padding-top: 0;
+        position: relative;
+        z-index: 1;
+    }
+
+    .mt-col-left {
+        width: 22%;
+        float: left;
+    }
+
+    .mt-col-main {
+        width: 72%;
+        float: right;
+    }
+}
+
+#tab-label-product .page-products .products-grid .product-item:nth-child(3n+1) {
+    margin-left: 2%;
+}
+
+.product-item:nth-child(2n+1) {
+    margin-left: 2%;
+}

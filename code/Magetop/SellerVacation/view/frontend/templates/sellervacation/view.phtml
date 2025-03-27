@@ -1,0 +1,115 @@
+<!--
+/**
+ * @author      Magetop Developer (Kien)
+ * @package     Magento Multi Vendor Marketplace_Seller_Vacation
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<?php 
+    $vacationData = $block->getCollection()->getData(); 
+    if(!$vacationData){
+        $vacationData['id'] = ''; 
+        $vacationData['vacation_message'] = ''; 
+        $vacationData['date_from'] = ''; 
+        $vacationData['date_to'] = ''; 
+        $vacationData['text_add_cart'] = ''; 
+        $vacationData['status'] = 0; 
+    }else{
+        $date1 = new DateTime($vacationData["date_from"]);
+        $vacationData['date_from'] = $date1->format('Y-m-d');
+        $date2 = new DateTime($vacationData["date_to"]);
+        $vacationData['date_to'] = $date2->format('Y-m-d');
+    }
+?>
+<div class="block content-vacation mgt-theme-div">
+    <legend class="legend">
+        <span><?php echo __('Store Vacation Setting') ?> <?php // if(!$vacationData['id']) echo " - You don't have vacation, settup and save to save your vacation" ?></span>
+    </legend>
+    <fieldset class="fieldset info">
+        <form id="vacation-form" action="<?php echo $block->getUrl('sellervacation/index/save') ?>" method="post" novalidate="novalidate">
+            <fieldset class="fieldset info vacation">
+                <input type="hidden" value="<?php echo $vacationData['id'] ?>" name="id"/>
+                <div class="field field-status required">
+                    <label class="label" for="status">
+                        <span><?php echo __('Vacation Status') ?></span>
+                    </label>
+                    <div class="control">				
+    					<input type="radio" name="status" id="turn-on" value="1" <?php echo $vacationData['status']==1?'checked':'' ?> > <label for="turn-on"><?php echo __('Turn ON') ?></label><br>
+    					<input type="radio" name="status" id="turn-off" value="0" <?php echo $vacationData['status']!=1?'checked':'' ?> > <label for="turn-off"><?php echo __('Turn OFF') ?></label><br>
+                    </div>
+                </div>  
+                <div class="field field-vacation_message required">
+                    <label class="label" for="vacation_message">
+                        <span><?php echo __('Vacation Message') ?></span>
+                    </label>
+                    <div class="control">
+                        <textarea class="input-text required-entry" title="<?php echo __('Vacation Message') ?>" name="vacation_message" id="vacation_message" aria-required="true" data-validate="{required:true}"><?php echo $vacationData['vacation_message'] ?></textarea>
+                    </div>
+                </div>
+                <div class="field field-date_from required">
+                    <label class="label" for="date_from">
+                        <span><?php echo __('Vacation Date From') ?></span>
+                    </label>
+                    <div class="control">
+                        <input id="sellervacation_date_from" readonly="" value="<?php echo $vacationData['date_from'] ?>" type="text" aria-required="true" name="date_from" class="input-text required-entry" data-validate="{required:true}"/>
+                    </div>
+                </div>
+                <div class="field field-date_to required">
+                    <label class="label" for="date_to">
+                        <span><?php echo __('Vacation Date To') ?></span>
+                    </label>
+                    <div class="control">
+                        <input id="sellervacation_date_to" readonly="" value="<?php echo $vacationData['date_to'] ?>" type="text" aria-required="true" name="date_to" class="input-text required-entry" data-validate="{required:true}"/>
+                    </div>
+                </div>  
+                <div class="field field-text_add_cart required">
+                    <label class="label" for="text_add_cart">
+                        <span><?php echo __('Vacation add to cart button text') ?></span>
+                    </label>
+                    <div class="control">
+                        <input id="sellervacation_text_add_cart" value="<?php echo $vacationData['text_add_cart'] ?>" placeholder="<?php echo __('Store is closed') ?>" type="text" aria-required="true" name="text_add_cart" class="input-text required-entry" data-validate="{required:true}"/>
+                    </div>
+                </div> 
+            </fieldset>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button type="submit" class="action continue primary" title="<?php echo __('Continue') ?>"><span><?php echo __('Save') ?></span></button>
+                </div>
+                <div style="float: right;" class="primary">
+                    <a href="javascript:;" onclick="javascript: window.history.back();" class="left"><?php echo __('Back') ?></a>
+                </div>
+            </div>
+        </form>
+    </fieldset>
+</div>
+<script>
+    require([
+        "jquery",
+        'Magento_Ui/js/modal/confirm',
+        'Magento_Ui/js/modal/alert',
+        "mage/calendar"
+    ], function($,confirmation,alert){
+        $('.seller_vacation').addClass('current');
+        
+        var currentDate = '<?php echo date("Y-m-d") ?>';
+        var dateFrom = '<?php echo date("Y-m-d") ?>';
+        $("#sellervacation_date_from" ).calendar({'dateFormat':'Y-m-d','minDate':currentDate});
+        $("#sellervacation_date_to" ).calendar({'dateFormat':'Y-m-d','minDate':currentDate});
+        if(dateFrom){
+            $("#sellervacation_date_to").datepicker('option','minDate',dateFrom);
+        }
+        $("#sellervacation_date_from" ).on('change',function(){
+            $("#sellervacation_date_to").datepicker('option','minDate',$(this).val());
+        });     
+    });
+    require([
+        "jquery",
+        "mage/mage"
+    ], function($){
+        var dataForm = $('#vacation-form');
+        dataForm.mage('validation', {});
+        var _action = dataForm.attr('action');
+    });
+</script>

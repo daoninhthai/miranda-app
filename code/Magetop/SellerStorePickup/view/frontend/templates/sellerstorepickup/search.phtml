@@ -1,0 +1,66 @@
+<!--
+/**
+ * @author      Magetop Developer (Kien)
+ * @package     Magento Multi Vendor Marketplace_Seller_Store_Pickup
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<script type="text/javascript">
+	//<![CDATA[       
+    	var arrayHtml = [];
+    	var arrayInfo = [];
+    	var storeloactor = new sellerStorePickupMap();  
+        storeloactor.initialize(0, 0, 2, 'googleMap');
+    	var infoWindow = new google.maps.InfoWindow();
+    	var htmlInput = '';
+	//]]>
+</script> 
+<?php $collection = $block->getCollection(); ?>
+<?php $helperMk = $this->helper(\Magetop\Marketplace\Helper\Collection::class); ?>
+<?php if ( count($collection) > 0 ) { ?>
+	<?php foreach ($collection as $store) { ?>
+        <?php
+            $seller = $block->getSellerInfoById($store->getSellerId());
+            if($store->getMapicon() != ''){
+                $logo = $block->getMkBaseMediaUrl().$store->getMapicon();
+            }else{
+                $logo = $block->getViewFileUrl('Magetop_SellerStorePickup::images/noimage.png');
+            }  
+        ?>
+    	<script type="text/javascript">
+    		//<![CDATA[       
+        		var latitude = <?php echo $store->getLatitude(); ?>;
+        		var longtitude = <?php echo $store->getLongitude(); ?>;
+        		var store_id = <?php echo $store->getId(); ?>;
+                var image = '<?php echo $block->getViewFileUrl('Magetop_SellerStorePickup::images/magetop_big_icon.png'); ?>';
+        		var zoom_level = <?php echo $store->getZoomLevel(); ?>;
+                var base_image = '<?php echo $logo; ?>';
+        		var html_image = '';
+        		if(base_image != ''){
+                    html_image = '<div class="base-image" style="width: 70px; float: left; margin: 5px;">'
+                                    +'<img width="70px" src="'+base_image+'" alt="" />'
+            					+'</div>';
+        		}
+        		var info_store = '<div class="info-store" style="width: 150px; float: left;margin: 5px;">'
+            						+'<div class="title-store" style="font-size: 15px"><strong><?php echo $seller[0]['storetitle']; ?></strong></div>'
+            						+'<div class="adress-store" style="font-size: 12px"><?php echo $store->getShopLocation(); ?></div>'
+            						+'<div class="detail-store"><a href="<?php echo  $helperMk->getRewriteUrl("marketplace/seller/view/vendor/".$seller[0]['storeurl']); ?>"><?php echo __('View collections')?></a></div>'
+                                    +'<div class="detail-store"><a href="<?php echo  $this->getUrl()."sellerstorepickup/index/viewstore/id/".$store->getId(); ?>"><?php echo __('View store')?></a></div>'
+        						+'</div>'
+                                + html_image;
+        		marker_point = new google.maps.LatLng(latitude, longtitude);
+        		storeloactor.extendStoreBound(marker_point);
+        	   	//info
+        		var info_popup = {};
+                info_popup.store_id = store_id;
+                info_popup.html = info_store;
+                info_popup.zoom = <?php echo $store->getZoomLevel(); ?>;
+                info_popup.point = marker_point;
+        		arrayInfo.push(info_popup);					
+        		storeloactor.placeStoreMarker(marker_point, info_store, store_id, image, zoom_level, infoWindow, 0);                                     				 
+            //]]>
+    	</script>
+	<?php } ?>
+<?php } ?>

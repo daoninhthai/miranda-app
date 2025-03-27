@@ -1,0 +1,136 @@
+<?php
+/**
+ * Magetop 
+ * @category    Magetop 
+ * @copyright   Copyright (c) 2017 Magetop (http://magetop.com/) 
+ * @Author: Hanh Nguyen<hanhkaka.nguyen37@gamil.com>
+ * @@Create Date: 2013-05-5
+ * @@Modify Date: 2017-06-05
+ */
+$groupId = $this->getGroupmenuId ();
+$groupInfo = $block->getGroupInfo();
+$MCPHTML = $MCPRHTML = "";
+if ($this->detectDevice() != "desktop") {
+	$MCPHTML .= $this->getMenuHtml($groupId);
+} else {
+	$MCPHTML .= $this->getStaticHtml($groupId);
+}	
+$_mcpColor = '#980202';
+if($groupInfo['color']){
+	$_mcpColor = $groupInfo['color'];
+}
+?>
+<div class="color-style">
+<style>
+#view-content, #menu-group-<?php echo $groupId; ?> .menu-creator-pro, #menu-group-<?php echo $groupId; ?> .menu-creator-pro > li { background: <?php echo $_mcpColor; ?>; }
+#menu-group-<?php echo $groupId; ?> .menu-creator-pro li.is-active, #menu-group-<?php echo $groupId; ?> .menu-creator-pro .autosub li:hover, .no-header > ul > li:not(.nav-header):hover { background: <?php echo $_mcpColor; ?>; }
+#menu-group-<?php echo $groupId; ?> .table-layout > ul > li > a:after { border-left: .75em solid <?php echo $_mcpColor; ?>; }
+#menu-group-<?php echo $groupId; ?> .bg-design, #menu-group-<?php echo $groupId; ?> .tab-layout > ul > li.is-active > a { background: <?php echo $_mcpColor; ?>; }
+#menu-group-<?php echo $groupId; ?> .btn { background: linear-gradient(to right,<?php echo $_mcpColor; ?> 50%,#111 50%);background-size: auto auto;background-size: 200% 100%; }
+#menu-group-<?php echo $groupId; ?> .btn:hover { background-position: right bottom; }
+#menu-group-<?php echo $groupId; ?> .flipY-caption, #menu-group-<?php echo $groupId; ?> .slideDown-caption { background: rgba(152,2,2,.85); }
+#menu-group-<?php echo $groupId; ?> .tab-layout > ul > li > a { background: #555; }
+#menu-group-<?php echo $groupId; ?> input[type="text"].linear, .mcp-wrapper input[type="email"].linear, #menu-group-<?php echo $groupId; ?> input[type="password"].linear { background: #aaaaaa80;background: linear-gradient(to right,<?php echo $_mcpColor; ?> 50px,#fff 0);}
+</style>
+</div>
+<section id="view-content-wrapper">
+	<div id="view-content">
+		<?php
+			echo "<div id='menu-group-".$groupId."' class='mst mcp-wrapper'>";
+			echo $MCPHTML;
+			echo "</div>";
+		?>
+	</div>
+</section>	
+<section id="controll">
+	<form id="mega-menu-changer" enctype="multipart/form-data" method="post">
+		<div Class="hide">
+			<input name="groupmenu_id" value="<?php echo $groupInfo['groupmenu_id']; ?>" ></input>
+		</div>
+		<div id="design-menu-changer">
+			<div id="mb_design_color">
+				<label><?php echo __('Custom color'); ?></label>
+				<div id="design-color">
+					<ul class="c-option">
+						<li id="c-option01" data-color="#980202" style="background: #980202"><span class="a-center d-block">01</span></li>
+						<li id="c-option05" data-color="#07850d" style="background: #07850d"><span class="a-center d-block">02</span></li>
+						<li id="c-option09" data-color="#17529f" style="background: #17529f"><span class="a-center d-block">03</span></li>
+						<li id="c-option13" data-color="#830760" style="background: #830760"><span class="a-center d-block">04</span></li>
+						<li id="c-option15" data-color="#625409" style="background: #625409"><span class="a-center d-block">05</span></li>
+					</ul>
+					<input id="mbdesign_main_main_color" class="mb-color" value="<?php echo $groupInfo['color']; ?>" name="color">
+				</div>
+			</div>
+			<div>
+				<label><?php echo __('Dropdown Animation'); ?></label>
+				<select id="groupmenu_animation" name="animation">
+					<option value="animation-hingeTop"<?php if($groupInfo['animation']=='animation-hingeTop'): ?> selected="selected"<?php endif;?>><?php echo __('Hinge Top'); ?></option>
+					<option value="animation-hingeLeft"<?php if($groupInfo['animation']=='animation-hingeLeft'): ?> selected="selected"<?php endif;?>><?php echo __('Hinge Left'); ?></option>
+					<option value="animation-fadeIn"<?php if($groupInfo['animation']=='animation-fadeIn'): ?> selected="selected"<?php endif;?>><?php echo __('FadeIn'); ?></option>
+					<option value="animation-slideUp"<?php if($groupInfo['animation']=='animation-slideUp'): ?> selected="selected"<?php endif;?>><?php echo __('Slide Up'); ?></option>
+					<option value="animation-slideDown"<?php if($groupInfo['animation']=='animation-slideDown'): ?> selected="selected"<?php endif;?>><?php echo __('Slide Down'); ?></option>
+					<option value="animation-slideLeft"<?php if($groupInfo['animation']=='animation-slideLeft'): ?> selected="selected"<?php endif;?>><?php echo __('Slide Left'); ?></option>
+					<option value="animation-slideRight"<?php if($groupInfo['animation']=='animation-slideRight'): ?> selected="selected"<?php endif;?>><?php echo __('Slide Right'); ?></option>
+					<option value="animation-zoomIn"<?php if($groupInfo['animation']=='animation-zoomIn'): ?> selected="selected"<?php endif;?>><?php echo __('Zoom In'); ?></option>
+					<option value="animation-pivotTopLeft"<?php if($groupInfo['animation']=='animation-pivotTopLeft'): ?> selected="selected"<?php endif;?>><?php echo __('Pivot Top-Left'); ?></option>
+					<option value="animation-recoil"<?php if($groupInfo['animation']=='animation-recoil'): ?> selected="selected"<?php endif;?>><?php echo __('Recoil'); ?></option>
+					<option value="animation-none"<?php if($groupInfo['animation']=='animation-none'): ?> selected="selected"<?php endif;?>><?php echo __('No Animation'); ?></option>
+				</select>
+			</div>
+			<div>
+				<label><?php echo __('Responsiveness'); ?></label>
+				<select id="groupmenu_responsive" name="responsive">
+					<option value="mcp-push-cover"<?php if($groupInfo['responsive']=='mcp-push-cover'): ?> selected="selected"<?php endif;?>><?php echo __('Responsive multi-level push covering (default)'); ?></option>
+					<option value="mcp-push-overlap"<?php if($groupInfo['responsive']=='mcp-push-overlap'): ?> selected="selected"<?php endif;?>><?php echo __('Responsive multi-level push overlapping'); ?></option>
+					<option value="menu-creator-pro-rp-switcher"<?php if($groupInfo['responsive']=='menu-creator-pro-rp-switcher'): ?> selected="selected"<?php endif;?>><?php echo __('Responses into switcher'); ?></option>
+					<option value="disable"<?php if($groupInfo['responsive']=='disable'): ?> selected="selected"<?php endif;?>><?php echo __('No responsiveness'); ?></option>
+				</select>
+			</div>
+			<div>
+				<label><?php echo __('Sub-Menu Trigger'); ?></label>
+				<select id="sub_trigger" name="sub_menu_trigger">
+					<option value="0"<?php if($groupInfo['sub_menu_trigger']==0): ?> selected="selected"<?php endif;?>><?php echo __('On Hover'); ?></option>
+					<option value="1"<?php if($groupInfo['sub_menu_trigger']==1): ?> selected="selected"<?php endif;?>><?php echo __('On Click'); ?></option>
+				</select>
+			</div>	
+			<div>
+				<label><?php echo __('Enable sticky menu'); ?></label>
+				<select id="enable-sticky" name="enable_sticky">
+					<option value="0"<?php if($groupInfo['enable_sticky']==0): ?> selected="selected"<?php endif;?>><?php echo __('No'); ?></option>
+					<option value="1"<?php if($groupInfo['enable_sticky']==1): ?> selected="selected"<?php endif;?>><?php echo __('Yes'); ?></option>
+				</select>
+			</div>
+			<div class="button-action">
+				<button type="button" class="btn btn-small" onclick="saveGroup();"><?php echo __('Save Change');?></button>
+			</div>
+		</div>
+	</form>
+</section>
+<section class="enable-group">
+	<h4><strong><?php echo __('How to embed?'); ?></strong></h4>
+	<textarea  style="width: 100%;height: 20em;padding: 8px 20px;" id="groupmenu_description"><?php echo $groupInfo['description']; ?></textarea>
+</section>
+<script type="text/javascript">
+    require(['jquery'],function($){
+        var installScript = $('#groupmenu_description').text();
+		var fomarted = installScript.replace(/<br\/>/gi, "\n");
+		$('#groupmenu_description').html(fomarted);
+    });
+	function saveGroup(){
+		require(['jquery'],function($){
+			var dataUrl = $("#baseurl").val() + "menupro/index/updategroupmenu";
+			$.ajax({
+				showLoader: true,
+				url : dataUrl,
+				dataType : 'json',
+				type : 'POST',
+				data: $('#mega-menu-changer').serialize(),			
+			}).done(function (data) {
+				if(data.mess != "Ok"){
+					alert(data.mess);
+					window.location.reload();
+				}
+			});
+		});	
+	}
+</script>

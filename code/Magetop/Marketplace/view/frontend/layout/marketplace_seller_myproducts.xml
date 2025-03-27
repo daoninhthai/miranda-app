@@ -1,0 +1,17 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="market-layout" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<update handle="customer_account"/>
+	<update handle="mk_default"/>
+	<heads>
+		<css src="Magetop_Marketplace::css/marketplace_new.css"/>
+	</heads>
+    <body>
+        <referenceContainer name="market.content">
+			<block class="Magento\Framework\View\Element\Template" name="magetop_marketplace.create_new_products_top" template="Magetop_Marketplace::product/list_products_top.phtml" cacheable="false"/>
+			<container htmlTag="div" htmlClass="mk-container-admin seller-dashboard">		
+				<uiComponent name="magetop_products_listing_front"/>
+				<block class="Magento\Framework\View\Element\Template" name="marketplace_product_list_js" template="Magetop_Marketplace::product/list/js.phtml" cacheable="false" before="-"/>
+			</container>
+			<!-- <block class="Magetop\Marketplace\Block\Productlist" name="magetop_marketplace.seller_list_products" template="product/list_products.phtml" cacheable="false"/> -->
+        </referenceContainer>
+    </body>
+</page>

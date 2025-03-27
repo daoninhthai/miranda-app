@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+	<event name="checkout_submit_all_after">
+        <observer name="mpdhl_sales_order_place_after_observer" instance="Magetop\SellerDHLShipping\Observer\SalesOrderPlaceAfterObserver"/>
+    </event>
+    <event name="generate_api_shipment">
+        <observer name="mpdhl_sales_shipment_observer" instance="Magetop\SellerDHLShipping\Observer\CreateShipmentObserver"/>
+    </event>
+</config>

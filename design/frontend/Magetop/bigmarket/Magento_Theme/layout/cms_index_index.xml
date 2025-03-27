@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+  <body>
+    <referenceContainer name="page.top">
+		<block ifconfig="themes/newsletter/enabled" class="Magento\Newsletter\Block\Subscribe" name="popup.newsletter" template="subscribe-popup.phtml">
+			<block class="Magento\Cms\Block\Block" name="footer.socail">
+				<arguments>
+					<argument name="block_id" xsi:type="string">footer_socail</argument>
+				</arguments>
+			</block>
+		</block>
+    </referenceContainer>
+	<referenceContainer name="main">
+		<container name="main.bottom" after="-">
+			<block ifconfig="themes/home_blog/enabled" class="Magetop\Blog\Block\Home\Recent" name="home.blog.recent" template="Magetop_Blog::home_recent.phtml" before="-"/>
+			<block class="Magento\Cms\Block\Block" name="home-bottom-content">
+				<arguments>
+					<argument name="block_id" xsi:type="string">home-bottom-content</argument>
+				</arguments>
+			</block>
+			<block ifconfig="themes/home_instagram/enabled" class="Magetop\Themes\Block\Socail\Instagram" name="home.instagram" template="Magetop_Themes::socail/instagram.phtml" after="-"/>
+		</container>
+	</referenceContainer>
+	<referenceContainer name="columns.top">
+		<block class="Magento\Cms\Block\Block" name="home.top.page" before="-">
+			<arguments>
+				<argument name="block_id" xsi:type="string">home-top-page</argument>
+			</arguments>
+		</block>
+    </referenceContainer>
+	<referenceContainer name="page.main.title" remove="true"/>
+  </body>
+</page>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!-- /**
+ * Magetop 
+ * @category    Magetop 
+ * @copyright   Copyright (c) 2017 Magetop (http://magetop.com/) 
+ * @Author: Hanh Nguyen<hanhkaka.nguyen37@gamil.com>
+ * @@Create Date: 2017-05-5
+ * @@Modify Date: 2017-06-05
+ */ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">        
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="pslider_cats_listing_data_source" xsi:type="string">Magetop\Pslider\Model\ResourceModel\Grid\Collection</item>                
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="PsliderGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Magetop\Pslider\Model\ResourceModel\Grid\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">PsliderGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Magetop\Pslider\Model\ResourceModel\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">pslider_cats</argument>
+            <argument name="resourceModel" xsi:type="string">Magetop\Pslider\Model\ResourceModel\PsliderCats</argument>
+        </arguments>
+    </virtualType>
+</config>

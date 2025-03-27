@@ -1,0 +1,9 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="market-layout" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<update handle="customer_account"/>
+	<update handle="mk_default"/>
+    <body>
+        <referenceContainer name="market.content">
+            <block class="Magetop\Marketplace\Block\Transactionlist" name="magetop_marketplace.seller_list_transactions" template="seller/list_transactions.phtml" cacheable="false"/>
+        </referenceContainer>
+    </body>
+</page>

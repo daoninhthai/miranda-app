@@ -1,0 +1,578 @@
+<?php
+/**
+ * Magetop 
+ * @category    Magetop 
+ * @copyright   Copyright (c) 2017 Magetop (http://magetop.com/) 
+ * @Author: Hanh Nguyen<hanhkaka.nguyen37@gamil.com>
+ * @@Create Date: 2017-05-5
+ * @@Modify Date: 2017-06-05
+ */
+ ?>
+<script type="text/javascript">
+    function viewGroup(id, groupTitle){
+		require([
+			'jquery',
+			'Magento_Ui/js/modal/modal'
+		],function($, modal){
+			var demoMCP = {
+				  init: function() {
+				   this.cacheDom();
+				   this.bindEvents();
+				   this.loadDefaultSettings()
+				  },
+				  cacheDom: function() {
+				   this.$window = $(window);
+				   this.$document = $(document);
+				   this.$body = $('body');
+				   this.$navigation = $('.mcp-wrapper');
+				   this.$main_nav = this.$body.find('.menu-creator-pro');
+				   this.$nav_fixed = this.$body.find('.navigation-fixed-top');
+				   this.$mega_menu_changer = $('#mega-menu-changer');
+				   this.$trigger_changer = $('#sub_trigger');
+				   this.$theme_changer = $('#design-color');
+				   this.$animation_changer = $('#groupmenu_animation');
+				   this.$anim_and_trig = $('#select-animation, #select-trigger');
+				   this.$tableItem = this.$body.find('.menu-creator-pro .table-layout');
+				   this.$tabItem = this.$body.find('.menu-creator-pro .tab-layout');
+				  },
+				  bindEvents: function() {
+				   this.$body.on('click', '.menu-creator-pro.trigger-click > li > a', this.triggerMenu);
+				   this.$body.on('mouseover', '.table-layout > ul > li.mcpdropdown', this.tableMenuHover);
+				   this.$body.on('click', '.tab-layout > ul > li.mcpdropdown', this.tabMenuClick);
+				   this.$document.on('click', 'html', this.triggerClickOutsideNav);
+				   this.$trigger_changer.on('change', this.changeTrigger.bind(this));
+				   this.$theme_changer.on('click', 'li', this.changeTheme);
+				   this.$animation_changer.on('change', this.changeAnimation.bind(this));
+				  },
+				  loadDefaultSettings: function() {
+				   this.cacheDom();
+				   this.createTableDefault();
+				   this.createTabDefault();
+				  },
+				  createTableDefault: function() {
+					$.each(this.$tableItem, function(index, element) {
+						var subDefault = $(element).find('>ul>li:first-child > div').html();
+						$(element).append('<div class="table-dropdown-content"></div>');
+						$(element).find('>ul>li:first-child').addClass('is-active');
+						$(element).find('>.table-dropdown-content').html(subDefault);
+					})
+				  },  
+				  createTabDefault: function() {
+					$.each(this.$tabItem, function(index, element) {
+						var subDefault = $(element).find('>ul>li:first-child > div').html();
+						$(element).append('<div class="tab-dropdown-content"></div>');
+						$(element).find('>ul>li:first-child').addClass('is-active');
+						$(element).find('>.tab-dropdown-content').html(subDefault);
+					})
+				  },
+				  triggerMenu: function(e) {
+				   e.preventDefault();
+				   var _this = $(this);
+				   _this.parent('li').toggleClass('is-click-active');
+				   _this.parent('li').siblings('li').removeClass('is-click-active');
+				   return false;
+				  },
+				  triggerClickOutsideNav: function(e) {
+				   if ($(e.target).closest('.mcp-wrapper').length === 0) {
+					$('.trigger-click > li').removeClass('is-click-active')
+				   }
+				  },
+				  tableMenuHover: function() {
+					   var _this = $(this);
+					   var data_dropdown = _this.find('> div').html();
+					   _this.addClass('is-active').siblings('li').removeClass('is-active');
+					   _this.parent().next('.table-dropdown-content').html(data_dropdown);
+				  },
+				  tabMenuClick: function(e) {
+					   e.preventDefault();
+					   var _this = $(this);
+					   var data_dropdown = _this.find('> div').html();
+					   _this.addClass('is-active').siblings('li').removeClass('is-active');
+					   _this.parent().next('.tab-dropdown-content').html(data_dropdown);
+					   return false;
+				  }, 
+				removeClassRegEx: function(target_element, target_pattern) {
+					var target = target_element;
+					var pattern = target_pattern;
+					var classes;
+					classes = target.attr('class').split(" ");
+					for (x in classes) {
+						console.log(classes[x]);
+						if (classes[x].match(pattern)) {
+							target.removeClass(classes[x])
+						}
+					}
+				},	
+				changeTrigger: function() {
+				   var trigger_value = this.$trigger_changer.val();
+				   if(trigger_value==1){
+					   this.$main_nav.addClass('trigger-click')
+				   }else{
+					   this.$main_nav.removeClass('trigger-click');
+				   }
+				},
+				changeTheme: function() {
+					var _this = $(this);
+					var theme_color = _this.attr('data-color');
+					_this.css('transform', 'scale(1.2)').siblings('li').css('transform', 'scale(1)');
+					$('#mbdesign_main_main_color').val(theme_color).css('background-color', theme_color);
+					var Id = $('.mcp-wrapper').attr('id')+'.mcp-wrapper';
+					var css = '<style>#view-content,#'+Id+' .menu-creator-pro, #'+Id+' .menu-creator-pro > li, #'+Id+' .menu-creator-pro li.is-active, #'+Id+' .menu-creator-pro .autosub li:hover, .no-header > ul > li:not(.nav-header):hover, #'+Id+' .bg-design, #'+Id+' .tab-layout > ul > li.is-active > a {background-color:'+theme_color+'} #'+Id+' .table-layout > ul > li > a:after {border-left-color:'+theme_color+'}#'+Id+' .btn { background: linear-gradient(to right,'+theme_color+' 50%,#111 50%);background-size: auto auto;background-size: 200% 100%; }#'+Id+' input[type="text"].linear, .mcp-wrapper input[type="email"].linear, #'+Id+' input[type="password"].linear { background: #aaaaaa80;background: linear-gradient(to right,'+theme_color+' 50px,#fff 0);}</style>';
+					$('.color-style').html(css);
+				},
+				changeAnimation: function() {
+					this.default_animation = this.$animation_changer.val();
+					demoMCP.removeClassRegEx(this.$main_nav, /^animation-/);
+					this.$main_nav.addClass(this.default_animation);
+				}
+			}
+			// start popup
+			var dataUrl = '<?php echo  $block->getBaseUrl(). 'menupro/index/view'; ?>';
+			var options = {
+        				type: 'slide',
+						title: 'You\'re previewing: <strong class="group-title">' + groupTitle +'</strong>',
+        				responsive: true,
+        				innerScroll: true,
+        				modalClass:'viewGroupModal',
+						clickableOverlay: false,
+        				buttons: []
+        	};
+        	var popup = modal(options, $('#viewGroupModal'));
+			var currentID = $('#viewCurrent').attr('data-id');
+			if(currentID != id){
+				$("#mb_design_color, #mColorPickerBg, #mColorPicker, #mColorPickerTest").remove();
+				$('#viewCurrent').attr('data-id', id);
+				$('#viewGroupModal').modal('openModal');
+				$('#view-content-smask').show();
+				$.ajax({
+					url : dataUrl,
+					dataType : 'json',
+					type : 'POST',
+					data: { groupmenuId: id }			
+				}).done(function (data) {					
+					$('#view-wrapper').html(data.html_result);
+					demoMCP.init();
+					$('#view-content-smask').hide();
+					/* Mcolorpicker */
+					jQuery(document).ready(function($){
+						(function($){var b,f,h,l,j=$(document),i=$("<div>"),k=$("<div>"),n=$("<div>"),o=$("<input>"),p=/^rgb[a]?\((\d+),\s*(\d+),\s*(\d+)(,\s*(\d+\.\d+)*)?\)/,q=/([a-f0-9])([a-f0-9])([a-f0-9])/,r=/#[a-f0-9]{3}/,s=/#[a-f0-9]{6}/;$.fn.mColorPicker=function(a){var c=$.fn.mColorPicker.getCookie("swatches");b=$.extend($.fn.mColorPicker.defaults,a);$.fn.mColorPicker.defaults.swatches.concat(b.swatches).slice(-10);f.enhancedSwatches&&c&&(b.swatches=c.split("||").concat(b.swatches).slice(0,10)||b.swatches);$("div#mColorPicker").length||$.fn.mColorPicker.drawPicker();$("#css_disabled_color_picker").length||$("head").prepend('<meta data-remove-me="true"/><style id="css_disabled_color_picker" type="text/css">.mColorPicker[disabled] + span, .mColorPicker[disabled="disabled"] + span, .mColorPicker[disabled="true"] + span {filter:alpha(opacity=50);-moz-opacity:0.5;-webkit-opacity:0.5;-khtml-opacity: 0.5;opacity: 0.5;cursor:default;}</style>');$("meta[data-remove-me=true]").remove();this.each($.fn.mColorPicker.drawPickerTriggers);return this};$.fn.mColorPicker.init={replace:"[type=color]",index:0,enhancedSwatches:!0,allowTransparency:!0,slogan:"Meta100 - Designing Fun",showLogo:!0};$.fn.mColorPicker.defaults={currentId:!1,currentInput:!1,currentColor:!1,changeColor:!1,color:!1,imageFolder:"images/",swatches:"#ffffff,#ffff00,#00ff00,#00ffff,#0000ff,#ff00ff,#ff0000,#4c2b11,#3b3b3b,#000000".split(",")};$.fn.mColorPicker.start=function(){$('input[data-mcolorpicker!="true"]').filter(function(){return"[type=color]"==f.replace?"color"==this.getAttribute("type"):$(this).is(f.replace)}).mColorPicker()};$.fn.mColorPicker.events=function(){$("#mColorPickerBg").on("click",$.fn.mColorPicker.closePicker);$(".mColorPicker").on("keyup",function(){try{$(this).css({"background-color":$(this).val()}).css({color:$.fn.mColorPicker.textColor($(this).css("background-color"))}).trigger("change")}catch(a){}});$(".mColorPickerTrigger").on("click",$.fn.mColorPicker.colorShow);$(".mColor, .mPastColor").on("mousemove",function(a){if(!b.changeColor)return!1;var c=$(this),g=c.offset(),d=b.currentInput,d=d.attr("data-hex")||d.attr("hex");b.color=c.css("background-color");c.hasClass("mPastColor")?b.color=$.fn.mColorPicker.setColor(b.color,d):c.hasClass("mColorTransparent")?b.color="transparent":c.hasClass("mPastColor")||(b.color=$.fn.mColorPicker.whichColor(a.pageX-g.left,a.pageY-g.top,d));b.currentInput.mSetInputColor(b.color)}).on("click",$.fn.mColorPicker.colorPicked);$("#mColorPickerInput").on("keyup",function(a){try{b.color=$(this).val(),b.currentInput.mSetInputColor(b.color),13==a.which&&$.fn.mColorPicker.colorPicked()}catch(c){}}).on("blur",function(){b.currentInput.mSetInputColor(b.color)});$("#mColorPickerWrapper").on("mouseleave",function(){if(!b.changeColor)return!1;var a=b.currentInput;b.currentInput.mSetInputColor($.fn.mColorPicker.setColor(b.currentColor,a.attr("data-hex")||a.attr("hex")))})};$.fn.mColorPicker.drawPickerTriggers=function(){var a=$(this),c=a.attr("id")||"color_"+f.index++,g="hidden"==a.attr("text")||"hidden"==a.attr("data-text")?!0:!1,d=$.fn.mColorPicker.setColor(a.val(),a.attr("data-hex")||a.attr("hex")),e=a.width(),h=a.height(),i=a.css("float"),j=$("<span>"),m=$("<span>"),k="";j.attr({id:"color_work_area","class":"mColorPickerInput"}).appendTo(l);m.attr({id:"mcp_"+c,"class":"mColorPickerTrigger"}).css({display:"inline-block",cursor:"pointer"}).insertAfter(a);$("<img>").attr({src:b.imageFolder+"color.png"}).css({border:0,margin:"0 0 0 3px","vertical-align":"text-bottom"}).appendTo(m);j.append(a);k=j.html().replace(/type=[^a-z ]*color[^a-z //>]*/gi,'type="'+(g?"hidden":"text")+'"');j.html("").remove();a=$(k).attr("id",c).addClass("mColorPicker").val(d).insertBefore(m);g&&m.css({border:"1px solid black","float":i,width:e,height:h}).addClass(a.attr("class")).html("&nbsp;");a.mSetInputColor(d);return a};$.fn.mColorPicker.drawPicker=function(){var a=$("<div>"),c=$("<a>"),g=$("<div>"),d=$("<div>");k.attr({id:"mColorPickerBg"}).css({display:"none",background:"black",opacity:0.01,position:"absolute",top:0,right:0,bottom:0,left:0}).appendTo(l);i.attr({id:"mColorPicker","data-mcolorpicker":!0}).css({position:"absolute",border:"1px solid #ccc",color:"#fff",width:"194px",height:"184px","font-size":"12px","font-family":"times",display:"none"}).appendTo(l);n.attr({id:"mColorPickerTest"}).css({display:"none"}).appendTo(l);d.attr({id:"mColorPickerWrapper"}).css({position:"relative",border:"solid 1px gray"}).appendTo(i);$("<div>").attr({id:"mColorPickerImg","class":"mColor"}).css({height:"136px",width:"192px",border:0,cursor:"crosshair","background-image":"url("+b.imageFolder+"picker.png)"}).appendTo(d);a.attr({id:"mColorPickerSwatches"}).css({"border-right":"1px solid #000"}).appendTo(d);$("<div>").addClass("mClear").css({clear:"both"}).appendTo(a);for(h=9;-1<h;h--)$("<div>").attr({id:"cell"+h,"class":"mPastColor"+(0<h?" mNoLeftBorder":"")}).css({"background-color":b.swatches[h].toLowerCase(),height:"18px",width:"18px",border:"1px solid #000","float":"left"}).html("&nbsp;").prependTo(a);g.attr({id:"mColorPickerFooter"}).css({"background-image":"url("+b.imageFolder+"grid.gif)",position:"relative",height:"26px"}).appendTo(d);o.attr({id:"mColorPickerInput",type:"text"}).css({border:"solid 1px gray","font-size":"10pt",margin:"3px",width:"80px"}).appendTo(g);f.allowTransparency&&$("<span>").attr({id:"mColorPickerTransparent","class":"mColor mColorTransparent"}).css({"font-size":"16px",color:"#000","padding-right":"30px","padding-top":"3px",cursor:"pointer",overflow:"hidden","float":"right"}).text("transparent").appendTo(g);f.showLogo&&c.attr({href:"http://meta100.com/",title:f.slogan,alt:f.slogan,target:"_blank"}).css({"float":"right"}).appendTo(g);$("<img>").attr({src:b.imageFolder+"meta100.png",title:f.slogan,alt:f.slogan}).css({border:0,"border-left":"1px solid #aaa",right:0,position:"absolute"}).appendTo(c);$(".mNoLeftBorder").css({"border-left":0})};$.fn.mColorPicker.closePicker=function(){k.hide();i.fadeOut()};$.fn.mColorPicker.colorShow=function(){var a=$(this),c=a.attr("id").replace("mcp_",""),g=a.offset(),d=$("#"+c),e=g.top+a.outerHeight(),f=g.left;if(d.attr("disabled"))return!1;b.currentColor=d.css("background-color");b.changeColor=!0;b.currentInput=d;b.currentId=c;e+i.height()>j.height()&&(e=g.top-i.height());f+i.width()>j.width()&&(f=g.left-i.width()+a.outerWidth());i.css({top:e+"px",left:f+"px"}).fadeIn("fast");k.show();b.color=$("#"+c).attr("data-text")?a.css("background-color"):d.css("background-color");b.color=$.fn.mColorPicker.setColor(b.color,d.attr("data-hex")||d.attr("hex"));o.val(b.color)};$.fn.mColorPicker.setInputColor=function(a,c){$("#"+a).mSetInputColor(c)};$.fn.mSetInputColor=function(a){var c=$(this),g={"background-color":a,"background-image":"transparent"==a?"url('"+b.imageFolder+"grid.gif')":"",color:$.fn.mColorPicker.textColor(a)};(c.attr("data-text")||c.attr("text"))&&c.next().css(g);c.val(a).css(g).trigger("change");o.val(a)};$.fn.mColorPicker.textColor=function(a){a=$.fn.mColorPicker.RGBtoHex(a);return"undefined"==typeof a||"transparent"==a?"black":400>parseInt(a.substr(1,2),16)+parseInt(a.substr(3,2),16)+parseInt(a.substr(5,2),16)?"white":"black"};$.fn.mColorPicker.setCookie=function(a,c,b){a=a+"="+escape(c);c=new Date;c.setDate(c.getDate()+b);a+="; expires="+c.toGMTString();document.cookie=a};$.fn.mColorPicker.getCookie=function(a){return(a=document.cookie.match("(^|;) ?"+a+"=([^;]*)(;|$)"))?unescape(a[2]):null};$.fn.mColorPicker.colorPicked=function(){b.changeColor=!1;$.fn.mColorPicker.closePicker();$.fn.mColorPicker.addToSwatch();b.currentInput.trigger("colorpicked")};$.fn.mColorPicker.addToSwatch=function(a){if(!f.enhancedSwatches)return!1;var c=[];h=0;"string"==typeof a&&(b.color=a);"transparent"!=b.color&&(c[0]=$.fn.mColorPicker.hexToRGB(b.color));$(".mPastColor").each(function(){var a=$(this);b.color=$.fn.mColorPicker.hexToRGB(a.css("background-color"));if(b.color!=c[0]&&c.length<10)c[c.length]=b.color;a.css("background-color",c[h++])});f.enhancedSwatches&&$.fn.mColorPicker.setCookie("swatches",c.join("||"),365)};$.fn.mColorPicker.whichColor=function(a,c,b){var d=[255,255,255];32>a?(d[1]=8*a,d[2]=0):64>a?(d[0]=256-8*(a-32),d[2]=0):96>a?(d[0]=0,d[2]=8*(a-64)):128>a?(d[0]=0,d[1]=256-8*(a-96)):160>a?(d[0]=8*(a-128),d[1]=0):(d[1]=0,d[2]=256-8*(a-160));for(var e=0;3>e;e++)64>c?d[e]+=(256-d[e])*(64-c)/64:128>=c?d[e]-=d[e]*(c-64)/64:128<c&&(d[e]=256-256*(a/192)),d[e]=Math.round(Math.min(d[e],255)),"true"==b&&(d[e]=$.fn.mColorPicker.decToHex(d[e]));return"true"==b?"#"+d.join(""):"rgb("+d.join(", ")+")"};$.fn.mColorPicker.setColor=function(a,c){return"true"==c?$.fn.mColorPicker.RGBtoHex(a):$.fn.mColorPicker.hexToRGB(a)};$.fn.mColorPicker.colorTest=function(a){n.css("background-color",a);return n.css("background-color")};$.fn.mColorPicker.decToHex=function(a){a=parseInt(a);return""+"0123456789ABCDEF".charAt(Math.floor(a/16))+(""+"0123456789ABCDEF".charAt(a-16*Math.floor(a/16)))};$.fn.mColorPicker.RGBtoHex=function(a){var c="#",b,a=a?a.toLowerCase():!1;if(!a)return"";if(s.test(a))return a.substr(0,7);if(r.test(a))return a.replace(q,"$1$1$2$2$3$3").substr(0,7);if(b=a.match(p)){for(a=1;4>a;a++)c+=$.fn.mColorPicker.decToHex(b[a]);return c}return $.fn.mColorPicker.colorTest(a)};$.fn.mColorPicker.hexToRGB=function(a){a=a?a.toLowerCase():!1;return!a?"":p.test(a)?a:r.test(a)?(s.test(a)||(a=a.replace(q,"$1$1$2$2$3$3")),"rgb("+parseInt(a.substr(1,2),16)+", "+parseInt(a.substr(3,2),16)+", "+parseInt(a.substr(5,2),16)+")"):$.fn.mColorPicker.colorTest(a)};f=$.fn.mColorPicker.init;j.ready(function(){l=$("body");$.fn.mColorPicker.events();f.replace&&("function"==typeof $.fn.mDOMupdate?$("input").mDOMupdate($.fn.mColorPicker.start):"function"==typeof $.fn.onquery?$("input").onquery($.fn.mColorPicker.start):($.fn.mColorPicker.start(),j.on("ajaxSuccess.mColorPicker",$.fn.mColorPicker.start)))})})(jQuery);
+						function getDirMcolorpicker () {
+								var detected = detectDirMcolorpicker();
+								var dir = detected!==false ? detected : $("#baseurl").val() + 'pub/static/adminhtml/Magento/backend/en_US/Magetop_Menupro/js/';
+							return dir;
+						}
+
+						function detectDirMcolorpicker() {
+							var base = location.href;
+							var e = document.getElementsByTagName('base');
+							for(var i=0; i<e.length; i+=1) {
+								if(e[i].href) { base = e[i].href; }
+							}
+							var e = document.getElementsByTagName('script');
+							for(var i=0; i<e.length; i+=1) {
+								if(e[i].src && /(^|\/)themes\.js([?#].*)?$/i.test(e[i].src)) {
+									var src = new URI(e[i].src);
+									var srcAbs = src.toAbsolute(base);
+									srcAbs.path = srcAbs.path.replace(/[^\/]+$/, ''); // remove filename
+									srcAbs.query = null;
+									srcAbs.fragment = null;
+									return srcAbs.toString();
+								}
+							}
+							return false;
+						}
+						$images = getDirMcolorpicker()+ 'images/';
+						$.fn.mColorPicker.init.replace = true ;
+						$.fn.mColorPicker.defaults.imageFolder = $images;
+						$.fn.mColorPicker.init.allowTransparency = true;
+						$.fn.mColorPicker.init.showLogo = false;
+						$(".mb-color").attr("data-hex", true).width("116px").mColorPicker();
+						jQuery(document).on({ 
+							mouseover: function() {
+								jQuery.fn.mColorPicker.events(); 
+								$('#mColorPickerWrapper').hide();
+							} 
+						});
+						$('body').click(function(event) {
+							$('#mColorPicker').hide();
+							var theme_color = document.getElementById("mbdesign_main_main_color").style.backgroundColor;
+							var Id = $('.mcp-wrapper').attr('id')+'.mcp-wrapper';
+							var css = '<style>#view-content-wrapper #view-content,#'+Id+' .menu-creator-pro, #'+Id+' .menu-creator-pro > li, #'+Id+' .menu-creator-pro li.is-active, #'+Id+' .menu-creator-pro .autosub li:hover, .no-header > ul > li:not(.nav-header):hover, #'+Id+' .bg-design, #'+Id+' .tab-layout > ul > li.is-active > a {background-color:'+theme_color+'} #'+Id+' .table-layout > ul > li > a:after {border-left-color:'+theme_color+'}#'+Id+' .btn { background: linear-gradient(to right,'+theme_color+' 50%,#111 50%);background-size: auto auto;background-size: 200% 100%; }#'+Id+' input[type="text"].linear,#'+Id+' input[type="email"].linear, #'+Id+' input[type="password"].linear { background: #aaaaaa80;background: linear-gradient(to right,'+theme_color+' 50px,#fff 0);}</style>';
+							$('.color-style').html(css);
+						});
+					});
+					/* end Mcolorpicker */
+				});
+			} else {
+				$('#viewGroupModal').modal('openModal');
+			}	
+		});
+	}
+	require([
+		'jquery',
+		'jquery/ui',
+		'mcp_sitemap',
+		'mcp_mbjs'
+		
+	],function($){
+        jQuery(document).ready(function($){
+			$('#navTab a').click(function (e) {
+				e.preventDefault();
+				$(this).tab('show');
+			})
+			$('.tab-pane .c-tooltip').tooltip({
+			  position: {
+				my: "center bottom",
+				at: "center top",
+				using: function( position, feedback ) {
+				  $( this ).css( position );
+				  $( "<div>" )
+					.addClass( "arrow" )
+					.addClass( feedback.vertical )
+					.addClass( feedback.horizontal )
+					.appendTo( this );
+				}
+			  }
+			});
+			
+        });
+    });	
+</script>
+<?php 
+$menuproHelper = $this->helper("Magetop\Menupro\Helper\Data");
+$cfg = $menuproHelper->getConfig('menupro/font');
+$html ='';
+
+/* google Font */
+if($cfg['google']) $html  = '<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family='.str_replace(' ', '+', $cfg['google']).':300,400,800,600,700" media="all" />';
+$html  .= "\n";
+/* Base Css */
+$html  .= '<style type="text/css">';
+if($cfg['google']) $html .= '.menu-creator-pro{font-family:'.$cfg['google'].'}';
+if($cfg['size']) $html .= '.menu-creator-pro li{font-size:'.$cfg['size'].'}';
+if($cfg['size1']) $html .= '.menu-creator-pro>li{font-size:'.$cfg['size1'].'}';
+if($cfg['padding']) $html .= '@media screen and (min-width: 1200px){.menu-creator-pro>li>a{padding:0 '.$cfg['padding'].'}}';
+if($cfg['line_height']) $html .= '.menu-creator-pro>li{line-height:'.$cfg['line_height'].'}.menu-creator-pro li.col_100 > span.fa-angle-down{margin-top:-'.$cfg['line_height'].'}';
+if($cfg['text_transform']) $html .= '.mcp-wrapper .menu-creator-pro>li>a{text-transform: uppercase}';
+$html  .= '</style>';
+echo $html;
+?>
+<div id="menupro_form">
+	<input type="hidden" id="current_active_menu" name='current_active_menu' value=""/>
+	<section class="span3">
+		<div class='tree-menu-list'>
+			<?php	
+				/*Display all menu here*/
+				$menu = $block->menuLists();
+				echo $menu;
+			?>
+		</div>
+		<div class='hint'>
+			<span>Hint: Use Ctrl+z to undo a mistake!</span>
+		</div>
+	</section>
+	<section class="span9" id="mcpAdd">
+		<form id="edit_form" enctype="multipart/form-data" method="post" action="<?php echo $this->helper("Magento\Backend\Helper\Data")->getUrl("menupro/menu/save/"); ?>"  data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>" data-mage-init='{"validation":{}}'>
+			<div>
+				<input type="hidden" value="<?php echo $block->getFormKey(); ?>" name="form_key">
+				<input type="hidden" value="" name="menu_id" id="menu_id">
+				<input type='hidden' id='separator_line' name='separator_line' value='<?php echo $menuproHelper->getSeparatorLine(); ?>'/>
+				<input type='hidden' id='baseurl' name='baseurl' value='<?php echo  $block->getBaseUrl(); ?>'/>
+				<input type='hidden' id='skin_baseurl' name='skin_baseurl' value='<?php echo  $block->getSkinBaseurl(); ?><?php //echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>'/>
+			</div>
+			<fieldset>
+				<div class="span5 offset3">
+					<button type="button" class="btn btn-small" onclick="location.reload();"><span><span><i class="icon-plus-sign"></i> Add new </span></span></button>
+					<button type="submit" class="btn btn-small btn-primary"><span><span><i class="icon-edit icon-white"></i> Save </span></span></button>
+					<button type="button" class="btn btn-small btn-danger" onclick="location.reload();"><span><span><i class="icon-remove-sign"></i> Cancel </span></span></button>
+					<a href="http://menucreatorpro.com/wiki" target='_blank' class="btn btn-small btn-info"><span><span><i class="icon-question-sign"></i> Help </span></span></a>
+				</div>
+			
+				<ul class="nav-tabs" id="navTab">
+					<li class="active"><a href="#details"><strong>Details</strong></a></li>
+					<li><a href="#advanced"><strong>Advanced options</strong></a></li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active form-horizontal" id="details">
+						<div class="span6">
+							<div class="control-group">
+								<label class="control-label required-label c-tooltip" title="The type of link: CMS Page, Category Page, Form ...">Menu item type </label>
+								<div class="controls">
+								   <select  class="span3 required-entry select" name="type" id="type" data-validate="{required:true}">
+										<option value = ''>Please select ---</option>
+										<optgroup label="Top url types">
+											<?php
+											$menuTypes = $menuproHelper->getMenuTypes();
+											foreach($menuTypes as $key => $value){
+												echo "<option value='" . $key . "'>$value</option>";
+											}
+											?>
+										</optgroup>
+										<optgroup label="Most used links">
+											<?php
+											$mostUsedLink = $menuproHelper->getMostUsedLinks();
+											foreach($mostUsedLink as $key => $value){
+												echo "<option value='" . $key . "'>$value</option>";
+											}
+											?>
+										</optgroup>	
+									</select>
+								</div>
+							</div>
+							<div class="control-group" style="display:none;">
+								<label class="control-label required-label">Select CMS page</label>
+								<div class="controls">
+								   <select  class="span3 required-entry" name="cms_page" id="cms_page">
+										<option value = ''>Please select ---</option>
+										<?php 
+											$cms = $block->getCmsCollectionsForGrid();
+											foreach($cms as $key=>$value){
+												echo "<option value='".$key."'>".$value."</option>";
+											}
+										?>
+									</select>
+								</div>
+							</div>
+							<div class="control-group" style="display:none;">
+								<label class="control-label required-label">Select static block</label>
+								<div class="controls">
+								   <select  class="span3 required-entry" name="static_block" id="static_block">
+										<option value = ''>Please select ---</option>
+										<?php 
+											$staticblock=$block->getStaticBlockCollectionsForGrid();
+											foreach ($staticblock as $key=>$value){
+												echo "<option value='".$key."'>".$value."</option>";
+											}
+										?>
+									</select>
+								</div>
+							</div>
+							<div class="control-group" style="display:none;">
+								<label class="control-label required-label">Select category page</label>
+								<div class="controls">
+								   <select  class="span3 required-entry" name="category_id" id="category_id">
+										<option value = ''>Please select ---</option>
+										<?php 
+											$categories = $block->getCategoryOptions();
+											foreach ($categories as $key=>$value){
+												echo "<option value='".$key."'>".$value."</option>";
+											}
+										?>
+									</select>
+								</div>
+							</div>
+							<div class="control-group" style="display:none;">						
+								<div class="controls">
+									<input type="checkbox" style="margin-top: 0px;" tabindex="1" onclick="this.value = this.checked ? 1 : 2;" value="" name="autosub" id="autosub">
+									<span class="autosub-label"> Auto show sub-categories</span>
+								</div>
+							</div>
+							<div class="control-group" style="display:none;">
+								<div class="controls">
+									<input type="checkbox" style="margin-top: 0px;" tabindex="1" onclick="MCP.useCategoryTitle();" value="" name="use_category_title" id="use_category_title">
+									<span class="use-category-title-label"> Change menu title </span>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label required-label c-tooltip" title="The title of menu item that will display in the menu">Menu title </label>
+								<div class="controls">
+								   <input type="text" id="title" name="title"  class="span3 required-entry input-text" placeholder="Enter title here...">
+								</div>
+							</div>
+                            <div class="control-group">
+								<label class="control-label c-tooltip" title="Enter custom class to apply custom style for this menu. ">Add custom class</label>
+								<div class="controls ">
+									<input type="text" class="span3 input-text" value="" placeholder="class-name-a  class-name-b .." name="class_subfix" id="class_subfix">
+								</div>
+							</div>	
+							<div class="control-group" style="display:none;">
+								<label class="control-label required-label" >Custom url </label>
+								<div class="controls">
+									<input type="hidden" class="" value="" name="url_value" id="url_value">
+									<input type="text" id="custom_urlvalue" value="" name="custom_urlvalue"  class="span3 required-entry" placeholder="Enter url here...">
+								</div>
+							</div>
+							
+							<div class="control-group" style="display:none;">
+								<label class="control-label required-label" >Product Id</label>
+								<div class="controls">
+									<input type="text" id="product_id" value="" name="product_id"  class="span3 required-entry input-text" placeholder="Enter product id...">
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label required-label c-tooltip" title="Set publication status.">Status </label>
+								<div class="controls ">
+								   <select name='is_active' id='status' class="span3 required-entry">
+									  <option value ="1">Enabled</option>
+									  <option value ="2">Disabled</option>
+									</select>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label required-label c-tooltip" title="Select which group of menu will appear in.">Assign menu group</label>
+								<div class="controls ">
+									<select name="groupmenu_id" id="group_id" class="span3 required-entry" onchange='MCP.filterByGroupId(this.value); MCP.switchColumnLayout();'>
+										<option value ="">Please select ---</option>
+										<?php 
+										$groupData = $block->getAllGroupArray();
+										foreach ($groupData as $group) {
+											echo "<option menu_type='". $group['menu_type'] ."' value='".$group['value']."'>".$group['label']."</option>";
+										}
+										?>
+									</select>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label required-label c-tooltip" title="Select a parent item.">Parent item</label>
+								<div class="controls">
+									<select name="parent_id" id="parent_id" class="span3 required-entry" onchange="MCP.switchColumnLayout()">
+										<option value = "">Please select ---</option>
+										<?php 
+											$parentNames = $block->getParentOptions();
+											foreach ($parentNames as $key => $value){
+												echo "<option level='". $value['level'] ."' group='".$value['group_id']."' value='".$key."'>".$value['title']."</option>";
+											} 
+										?>
+									</select>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label required-label c-tooltip" title="Select which store menu item will appear in.">Visible in</label>
+								<div class="controls">
+								   <?php echo $block->storeSwitcherMulti()?>
+								</div>
+							</div>
+							<div class="control-group" style="display:none;">
+								<label class="control-label required-label c-tooltip" title="Select sub menu items column layout."><span id="column_label">Sub column layout</span></label>
+								<div class="controls ">
+									<select class="span3 required-entry" name="dropdown_columns" id="dropdown_columns">
+										<option value = "">Please select ---</option>
+										<option value = "0">No sub item</option>
+										<option value = "1">1 Column</option>
+										<option value = "2">2 Columns</option>
+										<option value = "3">3 Columns</option>
+										<option value = "4">4 Columns</option>
+										<option value = "5">5 Columns</option>
+										<option value = "6">6 Columns</option>
+										<option value = "7">7 Columns</option> 
+										<option value = "8">8 Columns</option>
+										<option value = "9">9 Columns</option>
+										<option value = "10">10 Columns</option>
+										<option value = "11">11 Columns</option>
+										<option value = "12">12 Columns</option>
+										<option value = "100">Full page width [only item in first level]</option>
+									</select>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label c-tooltip" title="The option allow to hide the menu title.">Hide text title</label>
+								<div class="controls ">
+									<select class="span3 required-entry" name="hide_sub_header" id="hide_sub_header">
+									  <option value = "2">No</option>
+									  <option value = "1">Yes</option>
+									</select>
+								</div>
+							</div>
+						
+						</div>
+					</div>
+				  <!-- END FIRST TAB CONTENT -->
+				  <!-- BEGIN SECOND TAB CONTENT -->
+				  <div class="tab-pane form-horizontal" id="advanced">
+					<div class="span4">
+							<div class="control-group">
+								<label class="control-label c-tooltip" title="The access customer group that is allowed to view this item">Access permission</label>
+								<div class="controls">
+								   <select name="permission" id="permission"  class="span3">
+										<?php 
+										$permissions = $block->getPermissionCollections();
+										foreach ($permissions as $permission) {
+											echo "<option value='" . $permission['value'] . "'>". $permission['label'] . "</option>";
+										}
+										?>
+									</select>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label c-tooltip" title="Target browser window when item is clicked.">Target window </label>
+								<div class="controls ">
+								   <select class="span3" name="target" id="target">
+										<option value = "1">Parent</option>
+										<option value = "2">New Window</option>
+									</select>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label c-tooltip" title="Show or hide this menu item on phone devices.">Hide on Phone </label>
+								<div class="controls ">
+								   <select class="span3" name="hide_phone" id="hide_phone">
+										<option value = "2">No</option>
+										<option value = "1">Yes</option>
+									</select>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label c-tooltip" title="Show or hide this menu item on tablet devices.">Hide on Tablet </label>
+								<div class="controls ">
+								   <select class="span3" name="hide_tablet" id="hide_tablet">
+										<option value = "2">No</option>
+										<option value = "1">Yes</option>
+									</select>
+								</div>
+							</div>
+                            <div class="control-group">
+                                <label class="control-label c-tooltip" title="Search Engine Optimization. Example result: <a href='' title='[Title for SEO]'>Menu title</a> ">Custom link title</label>
+                                <div class="controls ">
+                                    <input type="text" class="span3 input-text" value="" placeholder="Custom item title for SEO" name="description" id="description">
+                                </div>
+                            </div>
+							<div class="control-group">
+								<label class="control-label c-tooltip" title="Upload small image will display beside menu item title">Upload item thumbnail </label>
+								<div class="controls">
+									<input type="file" class="input-file span3" value="" name="image" id="image">
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label c-tooltip" title="Enter font icon class[Example use font icon from font-awesome]">Use font icon instead image thumbnail?</label>
+								<div class="controls ">
+									<input type="text" class="span3 input-text" value="" placeholder="Enter font icon class. eg: fa-home" name="icon_class" id="icon_class">
+								</div>
+							</div>							
+							<div class="control-group">
+								<label class="control-label c-tooltip" title="Enable/Disable the Menu icon.">Show/hide thumbnail</label>
+								<div class="controls">
+								   <select class=" span3" name="image_status" id="image_status">
+									  <option value = "">Please select ---</option>
+									  <option value = "1">Show</option>
+									  <option value = "2">Hide</option>
+									</select>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label c-tooltip" title="Set menu item float left or right. Only apply for first level.">Text Align</label>
+								<div class="controls">
+								   <select class=" span3" name="text_align" id="text_align">
+									  <option value = "left">Left</option>
+									  <option value = "right">Right</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+				  <!-- END SECOND TAB CONTENT -->
+				</div>
+				<div class="span5 offset3">
+					<button type="button" class="btn btn-small" onclick="location.reload();"><span><span><i class="icon-plus-sign"></i> Add new </span></span></button>
+					<button type="submit" class="btn btn-small btn-primary"><span><span><i class="icon-edit icon-white"></i> Save </span></span></button>
+					<button type="button" class="btn btn-small btn-danger" onclick="location.reload();"><span><span><i class="icon-remove-sign"></i> Cancel </span></span></button>
+					<a href="http://menucreatorpro.com/wiki-document" target='_blank' class="btn btn-small btn-info"><span><span><i class="icon-question-sign"></i> Help </span></span></a>
+				</div>
+			</fieldset>
+		</form>
+	</section>
+</div>
+<div id="viewCurrent" data-id="0"></div>
+<div id="viewGroupModal" style="display:none;">
+	<div id="view-wrapper"></div>
+	<div id="view-content-smask"><i class="fa fa-spinner"></i></div>
+</div>

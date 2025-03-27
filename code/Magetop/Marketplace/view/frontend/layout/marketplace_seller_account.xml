@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="market-layout" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+	<update handle="customer_account"/>
+	<update handle="mk_default"/>
+    <body>
+        <referenceContainer name="market.content">
+            <block class="Magetop\Marketplace\Block\Account\Account" name="magetop_marketplace.seller_account" template="account/account.phtml" cacheable="false"/>
+        </referenceContainer>
+    </body>
+</page>

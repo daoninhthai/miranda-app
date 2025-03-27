@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author      Magetop Developer (Kien)
+ * @package     Magento Multi Vendor Marketplace
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Backend/etc/menu.xsd">
+    <menu>
+        <add id="Magetop_Marketplace::main_menu" title="Market Place" module="Magetop_Marketplace" sortOrder="15" resource="Magetop_Marketplace::marketplace"/>       
+        <add id="Magetop_Marketplace::sellers" title="Sellers" sortOrder="10" module="Magetop_Marketplace" parent="Magetop_Marketplace::main_menu" dependsOnModule="Magetop_Marketplace" resource="Magetop_Marketplace::sellers"/>
+        <add id="Magetop_Marketplace::sales" title="Sales" sortOrder="20" module="Magetop_Marketplace" parent="Magetop_Marketplace::main_menu" dependsOnModule="Magetop_Marketplace" resource="Magetop_Marketplace::sales"/>
+        <add id="Magetop_Marketplace::catalog" title="Catalog" sortOrder="30" module="Magetop_Marketplace" parent="Magetop_Marketplace::main_menu" dependsOnModule="Magetop_Marketplace" resource="Magetop_Marketplace::catalog"/>
+        <add id="Magetop_Marketplace::shippings" title="Shippings" sortOrder="40" module="Magetop_Marketplace" parent="Magetop_Marketplace::main_menu" dependsOnModule="Magetop_Marketplace" resource="Magetop_Marketplace::shippings"/>
+        <add id="Magetop_Marketplace::payments" title="Payments" sortOrder="50" module="Magetop_Marketplace" parent="Magetop_Marketplace::main_menu" dependsOnModule="Magetop_Marketplace" resource="Magetop_Marketplace::payments"/>
+        <add id="Magetop_Marketplace::others" title="Others" sortOrder="60" module="Magetop_Marketplace" parent="Magetop_Marketplace::main_menu" dependsOnModule="Magetop_Marketplace" resource="Magetop_Marketplace::others"/>  
+        <add id="Magetop_Marketplace::manage_sellers" title="Manage Seller's" module="Magetop_Marketplace" sortOrder="10" parent="Magetop_Marketplace::sellers" action="marketplace/sellers/index" resource="Magetop_Marketplace::manage_sellers"/>
+        <add id="Magetop_Marketplace::manage_partner" title="Manage Seller's Sales" module="Magetop_Marketplace" sortOrder="10" parent="Magetop_Marketplace::sales" action="marketplace/partner/index" resource="Magetop_Marketplace::manage_partner"/>
+        <add id="Magetop_Marketplace::manage_payments" title="Manage Payment Method" module="Magetop_Marketplace" sortOrder="20" parent="Magetop_Marketplace::sales" action="marketplace/payments/index" resource="Magetop_Marketplace::manage_payments"/>
+        <add id="Magetop_Marketplace::manage_transactions" title="Manage Withdrawals" module="Magetop_Marketplace" sortOrder="30" parent="Magetop_Marketplace::sales" action="marketplace/transactions/index" resource="Magetop_Marketplace::manage_transactions"/>
+        <add id="Magetop_Marketplace::manage_products" title="Manage Seller's Product" module="Magetop_Marketplace" sortOrder="10" parent="Magetop_Marketplace::catalog" action="marketplace/products/index" resource="Magetop_Marketplace::manage_products"/>
+        <add id="Magetop_Marketplace::manage_reviews" title="Manage Seller's Reviews" module="Magetop_Marketplace" sortOrder="10" parent="Magetop_Marketplace::others" action="marketplace/reviews/index" resource="Magetop_Marketplace::manage_reviews"/>
+        <add id="Magetop_Marketplace::configuration" title="Marketplace Configurations" module="Magetop_Marketplace" sortOrder="1000" parent="Magetop_Marketplace::others" action="adminhtml/system_config/edit/section/marketplace" resource="Magetop_Marketplace::configuration"/>
+    </menu>
+</config>

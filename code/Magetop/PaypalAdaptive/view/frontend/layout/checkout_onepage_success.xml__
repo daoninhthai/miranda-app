@@ -1,0 +1,7 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <body>
+		<referenceContainer name="order.success.additional.info">
+			<block class="Magetop\PaypalAdaptive\Block\Widget\Redirect" template="Magetop_PaypalAdaptive::html/pay.phtml"/>
+		</referenceContainer>
+	</body>
+</page>

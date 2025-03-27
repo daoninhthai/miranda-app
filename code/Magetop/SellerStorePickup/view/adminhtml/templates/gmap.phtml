@@ -1,0 +1,77 @@
+<!--
+/**
+ * @author      Magetop Developer (Kien)
+ * @package     Magento Multi Vendor Marketplace_Seller_Store_Pickup
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<div class="google-map" id="google-map">
+    <div id="button-reset" style="margin-top:20px; margin-bottom: -12px;">
+        <button type="button">
+            <span><?php echo __('Reset Google Map')?></span>
+        </button>
+    </div>        
+    <div id="notice-map"></div>        
+    <div id="googleMap" style="height: 400px;width: 100%;margin-top: 20px;border: 1px solid;"></div>
+</div>    
+<?php 
+    $id = $this->getRequest()->getParam('id'); 
+    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+	$_mkhelp = $objectManager->get('Magetop\Marketplace\Helper\Data');
+	$_mapkey =  $_mkhelp->getKeyMap();
+	if($id){
+    	$storepickup = $objectManager->create('Magetop\SellerStorePickup\Model\SellerStorePickup')->load($id);
+    }
+?>
+<?php if( isset($_SERVER['HTTPS'] ) ) { ?>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&key=<?php echo $_mapkey; ?>&libraries=places&sensor=false"></script>
+<?php }else{ ?>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&key=<?php echo $_mapkey; ?>&libraries=places&sensor=false"></script>
+<?php } ?>
+<script type="text/javascript">
+	require([
+		'jquery',
+		'Magento_Ui/js/modal/modal',
+		'mk_seller_store_pickup_map_js'
+	],
+	function($, modal, mkMap) {
+        var lat = 40.8516701;
+        var lon = -93.2599318;
+        var zoom_level = 4;
+        var shop_location = '';
+        <?php if($id){ ?>
+            lat = <?php echo $storepickup->getLatitude() ?>;
+            lon = <?php echo $storepickup->getLongitude() ?>;
+            zoom_level = <?php echo $storepickup->getZoomLevel() ?>;
+            shop_location = '<?php echo $storepickup->getShopLocation() ?>';
+        <?php } ?>
+        
+        loadMap = new mkMap();
+        loadMap.getSellerStorePickupPoint(lat,lon,zoom_level);
+        
+        function loadGMap(){
+            loadMap.getSellerStorePickupPoint(lat,lon,zoom_level);
+            console.log('loaded gmap');
+        }
+        setTimeout(loadGMap, 3000);
+        
+        $('#button-reset').click(function(){
+            loadMap.getSellerStorePickupPoint(lat,lon,zoom_level);
+            $('#sellerstorepickup_latitude').val(lat);
+            $('#sellerstorepickup_longitude').val(lon);
+            $('#sellerstorepickup_zoom_level').val(zoom_level);
+            $('#sellerstorepickup_shop_location').val(shop_location);
+            $('#sellerstorepickup_latitude').css('background','#FFFFFF');
+            $('#sellerstorepickup_longitude').css('background','#FFFFFF');
+            $('#sellerstorepickup_zoom_level').css('background','#FFFFFF');
+            $('#sellerstorepickup_shop_location').css('background','#FFFFFF');
+            console.log('reset map');
+        });
+        
+        $('#sellerstorepickup_tabs_store_map_section').one('click', function(){
+            setTimeout(loadGMap, 1000);
+        });
+    });
+</script> 

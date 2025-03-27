@@ -1,0 +1,16 @@
+<?php if($block->checkIsLogin()){ ?>
+    <?php if ( $block->checkIsSeller() ) { ?>
+        <li>
+            <a href="<?php echo $this->getUrl('marketplace/seller/dashboard'); ?>"><?php echo __("Seller Dashboard"); ?></a>
+        </li>
+    <?php } else { ?>
+        <li>
+            <a href="<?php echo $this->getUrl('marketplace/seller/become'); ?>"><?php echo __("Register Seller Account"); ?></a>
+        </li>
+    <?php } ?>
+    <li>
+        <a href="<?php echo $this->getUrl('customer/account/logout') ?>">
+            <i class="icon-key"></i><?php echo __('Log Out') ?>
+        </a>
+    </li>
+<?php } ?>

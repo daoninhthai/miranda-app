@@ -1,0 +1,97 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<tr class="row"
+    click="element.selectShippingMethod">
+    <td class="col col-method">
+        <input type="radio"
+               class="radio"
+               ifnot="method.error_message"
+               ko-checked="element.isSelected"
+               ko-value="method.carrier_code + '_' + method.method_code"
+               attr="'aria-labelledby': 'label_method_' + method.method_code + '_' + method.carrier_code + ' ' + 'label_carrier_' + method.method_code + '_' + method.carrier_code,
+                    'checked': element.rates().length == 1 || element.isSelected" />
+    </td>
+    <!-- ko ifnot: (method.error_message) -->
+    <td class="col col-price">
+        <each args="element.getRegion('price')" render=""></each>
+    </td>
+    <!-- /ko -->
+    <td class="col col-method"
+        attr="'id': 'label_method_' + method.method_code + '_' + method.carrier_code"
+        text="method.method_title"></td>
+    <td class="col col-carrier"
+        attr="'id': 'label_carrier_' + method.method_code + '_' + method.carrier_code"
+        text="method.carrier_title"></td>
+</tr>
+
+<tr class="row" attr="'id': 'marketplace' + '_' + method.carrier_code" style="display: none">
+    <td colspan="4">
+        <div class="seller_flat_rate" style="float: left;background: #FEF1E6 ;margin-left: 30px;border-radius: 10px;padding:0 10px;width: 70%;display: none">
+            <div class="block-title-seller">
+                <!-- ko foreach: window.checkoutConfig.seller_flat_rate -->
+                    <h4 data-bind="text: seller_name"></h4>
+                    <table>
+                        <tbody>
+                            <!-- ko foreach: detail -->
+                                <tr>
+                                    <td><input type="radio" data-bind="attr: {'id' : id ,'name': name ,'value' : value ,'price' : price}" /></td>
+                                    <td><label data-bind="text: price,attr: {'for' : id}" style="cursor: pointer;"></label></td>
+                                    <td><label data-bind="text: title,attr: {'for' : id}" style="cursor: pointer;"></label></td>
+                                </tr>
+                            <!-- /ko -->
+                        </tbody>
+                    </table>
+                <!-- /ko -->
+            </div>
+        </div>
+        <div class="seller_table_rate" style="float: left;background: #FEF1E6 ;margin-left: 30px;border-radius: 10px;padding:0 10px;width: 70%;display: none">
+            <div class="block-title-seller"></div>
+        </div>
+        <div class="seller_store_pickup" style="float: left;background: #FEF1E6 ;margin-left: 30px;border-radius: 10px;padding:0 10px;width: 70%;display: none">
+            <div class="block-title-seller">
+                <!-- ko foreach: window.checkoutConfig.seller_store_pickup -->
+                    <h4 data-bind="text: seller_name"></h4>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td colspan="2">
+                                    <select class="select_store_pickup" data-bind="attr: {'name' : input_name}">
+                                        <option data-bind="attr: {'class_detail_store' : class_detail_store ,'class_time_store' : class_time_store}" value="">--Select store--</option>
+                                        <!-- ko foreach: detail -->
+                                            <option data-bind="html: title, attr: {'id' : id ,'value' : value ,'price' : price ,'class_detail_store' : class_detail_store ,'class_time_store' : class_time_store ,'store_id' : store_id}"></option>
+                                        <!-- /ko -->
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div data-bind="attr: {'class' : class_detail_store}" style="margin: 0 0 30px 0"></div>
+                                    <div data-bind="attr: {'class' : class_time_store}" style="margin: 0 0 30px 0"></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                <!-- /ko -->
+            </div>
+        </div>
+    </td>
+</tr>
+
+<tr class="row" data-bind="visible: $parent.magetopShipping()" style="display: none"></tr>
+
+<tr class="row row-error"
+    if="method.error_message">
+    <td class="col col-error" colspan="4">
+        <div role="alert" class="message error">
+            <div text="method.error_message"></div>
+        </div>
+        <span class="no-display">
+            <input type="radio"
+                   attr="'value' : method.method_code, 'id': 's_method_' + method.method_code">
+        </span>
+    </td>
+</tr>

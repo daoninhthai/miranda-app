@@ -1,0 +1,170 @@
+<!--
+/**
+ * @author      Magetop Developer (Kien)
+ * @package     Magento Multi Vendor Marketplace_Seller_Coupon
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<?php
+    use Magento\Framework\App\Action\Action;
+    $_couponCollection = $block->getCollection();
+?>
+<div class="block content-messages mgt-theme-div">
+    <legend class="legend">
+        <span><?php echo __('All Coupons'); ?></span>
+    </legend>
+    <div class="table-wrapper">
+        <form method="post" id="newCoupon" class="" action="<?php echo $block->getUrl('sellercoupon/index/Addnew') ?>">
+            <button id="add-new-coupon" style="float: left;padding: 5px;margin-right: 20px;" type="submit" title="<?php echo __('Add New Coupon') ?>" class="button">
+                <span><span><?php echo __('Add New Coupon') ?></span></span>
+            </button>
+        </form>
+
+        <form method="post" id="massDeleteCoupon" class="" action="<?php echo $block->getUrl('sellercoupon/index/massDelete') ?>">
+            <button id="delete-allcoupon" style="float: left;padding: 5px;" type="button" title="<?php echo __('Delete Coupon') ?>" class="button">
+                <span><span><?php echo __('Delete Coupon') ?></span></span>
+            </button>
+            <table id="my-orders-table" class="data table table-order-items history">
+                <caption class="table-caption"><?php echo __('Orders') ?></caption>
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" name="selecteallcoupon" class="checkbox" /></th>
+                        <th class="col" scope="col"><?php echo __('ID'); ?>#</th>
+                        <th class="col" scope="col"><?php echo __('Coupon Code'); ?></th>
+                        <th class="col" scope="col"><?php echo __('Coupon Type'); ?></th>
+                        <th class="col" scope="col"><?php echo __('Coupon Value'); ?></th>
+                        <th class="col" scope="col"><?php echo __('From Date'); ?></th>
+                        <th class="col" scope="col"><?php echo __('Expire Date'); ?></th>
+                        <th class="col" scope="col"><?php echo __('Used Description'); ?></th>
+                        <th class="col" scope="col"><?php echo __('Status'); ?></th>
+                        <th class="col" scope="col">&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if ($_couponCollection->count()) { ?>
+                        <?php foreach($_couponCollection as $item){ ?>
+                            <tr class="">
+                                <td>
+                                    <input type="checkbox" class="checkbox" name="coupon_selected[]" value="<?php echo $item->getId(); ?>" />
+                                </td>
+                                <td class="col" data-th="#"><?php echo $item->getId() ?></td>
+                                <td class="col" data-th="#"><?php echo $item->getSellerCouponCode() ?></td>
+                                <td class="col" data-th="#"><?php echo $item->getSellerCouponType()==1?__('Coupon Price'):__('Coupon Percent') ?></td>
+                                <td class="col" data-th="#"><?php echo $item->getSellerCouponType()==1?Magento\Framework\App\ObjectManager::getInstance()->create('Magento\Framework\Pricing\Helper\Data')->currency($item->getSellerCouponPrice(), true, false):$item->getSellerCouponPrice().'%' ?></td>
+                                <td class="col" data-th="#"><?php echo $item->getCreatedAt() ?></td>
+                                <td class="col" data-th="#"><?php echo $item->getExpireDate() ?></td>
+                                <td class="col" data-th="#"><?php echo $item->getUsedDescription() ?></td>
+                                <td>
+                                    <span class="mst_label">
+                                        <style>
+                                            .grid-severity-notice {
+                                                background: #d0e5a9 none repeat scroll 0 0;
+                                                border: 1px solid #5b8116;
+                                                color: #185b00;
+                                                display: block;
+                                                font-weight: bold;
+                                                line-height: 17px;
+                                                padding: 0 3px;
+                                                text-align: center;
+                                                text-transform: uppercase;
+                                                float: left;
+                                            }
+                                            .grid-severity-critical {
+                                                background: #f9d4d4 none repeat scroll 0 0;
+                                                border: 1px solid #e22626;
+                                                color: #e22626;
+                                                display: block;
+                                                font-weight: bold;
+                                                line-height: 17px;
+                                                padding: 0 3px;
+                                                text-align: center;
+                                                text-transform: uppercase;
+                                                float: left;
+                                            }
+                                        </style>
+                                        <?php 
+                                            if ($item->getStatus()) {
+                                                echo '<span class="grid-severity-notice"><span>'.__('Enabled').'</span></span>';
+                                            } else {
+                                                echo '<span class="grid-severity-critical"><span>'.__('Disabled').'</span></span>';
+                                            }
+                                        ?>
+                                    </span>
+                                </td>
+                                <td class="col" data-th="Actions">
+                                    <a class="action view" href="<?php echo $this->getUrl('sellercoupon/index/view').'id/'.$item->getId() ?>">
+                                        <span><?php echo __('View'); ?></span>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    <?php } else { ?>
+                        <tr>
+                            <td colspan="7">
+                                <div class="message notice">
+                        			<div><?php echo __("You don't have any coupon at this time."); ?></div>
+                        		</div>
+                            </td>
+                        </tr>
+            		<?php } ?>
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <?php if ($block->getPagerHtml()): ?>
+    	<div class="toolbar bottom"><?php echo $block->getPagerHtml();?></div>
+    <?php endif ?>
+</div>
+<script>
+    require([
+        "jquery",
+        'Magento_Ui/js/modal/confirm',
+        'Magento_Ui/js/modal/alert',
+        "mage/calendar"
+    ], function($,confirmation,alert){
+        $('input[type=checkbox][name=selecteallcoupon]').on('click',function(){
+            if(this.checked==true){
+                $('input[type=checkbox][name^=coupon_selected]').each(function(){
+                    this.checked=true;
+                });		
+            }else{
+                $('input[type=checkbox][name^=coupon_selected]').each(function(){
+                    this.checked=false;
+                });			
+            }
+        });
+        $('button#delete-allcoupon').on('click',function(){
+            var _flag=0;
+            $('input[type=checkbox][name^=coupon_selected]').each(function(){
+                if(this.checked==true){
+                    _flag=1;
+                    return false;
+                }
+            });
+            if(!_flag){
+                alert({
+                    title:'<?php echo __('Attention') ?>',
+                    content:"<?php echo __("You haven't selected any items!") ?>",
+                    actions:{
+                        always: function(){}
+                    }
+                });
+            }else{
+                confirmation({
+                    title:'<?php echo __('Delete Coupon') ?>',
+                    content:'<?php echo __("Delete selected items?") ?>',
+                    actions:{
+                        confirm:function(){
+                            $('form#massDeleteCoupon').submit();
+                        },
+                        cancel: function(){},
+                        always: function(){}
+                    }
+                });		
+            }	
+        });	
+        $('.seller_coupon').addClass('current');
+    });
+</script>

@@ -1,0 +1,101 @@
+<!--
+/**
+ * @author      Magetop Developer (Kien)
+ * @package     Magento Multi Vendor Marketplace_Multiple_Flat_Rate_Shipping
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<div class="block content-shipping mgt-theme-div">
+    <form id="shipping-form" action="<?php echo $block->getUrl('sellerflatrateshipping/index/save') ?>" method="post" novalidate="novalidate">
+        <legend class="legend">
+            <span><?php echo __('Add New Shipping Flat Rate')?></span>
+        </legend>
+        <fieldset class="fieldset info shipping">
+            <div class="field field-title required">
+                <label class="label" for="title">
+                    <span><?php echo __('Title') ?></span>
+                </label>
+                <div class="control">
+                    <input value="" type="text" aria-required="true" name="title" class="input-text required-entry" data-validate="{required:true}"/>
+                </div>
+            </div>
+            <div class="field field-type required">
+                <label class="label" for="type">
+                    <span><?php echo __('Type') ?></span>
+                </label>
+                <div class="control">
+                    <select  name="type">
+                        <option value="1"><?php echo __('Per Order') ?></option>
+                        <option value="2"><?php echo __('Per Item') ?></option>
+                    </select>
+                </div>
+            </div>
+            <div class="field field-price required">
+                <label class="label" for="price">
+                    <span><?php echo __('Price') ?></span>
+                </label>
+                <div class="control">
+                    <input value="" type="text" aria-required="true" name="price" class="input-text required-entry" data-validate="{required:true}"/>
+                </div>
+            </div>
+            <div class="field field-free required">
+                <label class="label" for="free">
+                    <span><?php echo __('Free Shipping') ?></span>
+                </label>
+                <div class="control">
+                    <input value="" type="text" aria-required="true" name="free_shipping" class="input-text required-entry" data-validate="{required:true}"/>
+                    <p id="note_withdraw_amount" class="note">
+                        <span><?php echo __('Minimun order amount for free shipping') ?></span>
+                    </p>
+                </div>
+            </div>            
+            <div class="field field-sort_order required">
+                <label class="label" for="sort_order">
+                    <span><?php echo __('Sort Order') ?></span>
+                </label>
+                <div class="control">
+                    <input value="" type="text" aria-required="true" name="sort_order" class="input-text required-entry" data-validate="{required:true}"/>
+                </div>
+            </div>
+            <div class="field field-status required">
+                <label class="label" for="status">
+                    <span><?php echo __('Status') ?></span>
+                </label>
+                <div class="control">
+                    <select  name="status">
+                        <option value="1"><?php echo __('Enable') ?></option>
+                        <option value="0"><?php echo __('Disable') ?></option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button type="submit" class="action continue primary" title="<?php echo __('Continue') ?>"><span><?php echo __('Save') ?></span></button>
+            </div>
+            <div style="float: right;" class="primary">
+                <a href="javascript:;" onclick="javascript: window.history.back();" class="left"><?php echo __('Back') ?></a>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    require([
+        "jquery",
+        'Magento_Ui/js/modal/confirm',
+        'Magento_Ui/js/modal/alert',
+        "mage/calendar"
+    ], function($,confirmation,alert){
+        $('.multi_flat_rate_shipping').addClass('current');
+    });
+    require([
+        "jquery",
+        "mage/mage"
+    ], function($){
+        var dataForm = $('#shipping-form');
+        dataForm.mage('validation', {});
+        var _action = dataForm.attr('action');
+    });
+</script>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author      Magetop Developer (Kien)
+ * @package     Magento Multi Vendor Marketplace_Multiple_Flat_Rate_Shipping
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magetop_SellerFlatRateShipping::configuration" title="Flat Rate Configuration" module="Magetop_SellerFlatRateShipping" parent="Magetop_Marketplace::shippings" sortOrder="30" action="adminhtml/system_config/edit/section/carriers" resource="Magetop_SellerFlatRateShipping::configuration"/>
+    </menu>
+</config>

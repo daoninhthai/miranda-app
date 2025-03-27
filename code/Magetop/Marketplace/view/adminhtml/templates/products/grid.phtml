@@ -1,0 +1,30 @@
+<style>
+    .status_green, .status_yellow, .status_gray, .status_black, .status_blue, .status_lightpink{
+        border-radius: 15px;
+        color: #ffffff;
+        display: block;
+        font-weight: bold;
+        padding: 2px 5px;
+        text-align: center;
+        width: 100px;
+    }
+    .status_gray {
+        background-color: #999999;
+    }
+    .status_green {
+        background-color: #468847;
+    }
+    .status_yellow{
+        background-color: #f89406;
+    }
+    .status_black{
+        background-color: black;
+    }
+    .status_blue{
+        background-color: blue;
+    }
+    .status_lightpink{
+        background-color: lightpink;
+    }
+</style>
+<?php echo $block->getGridHtml(); ?>

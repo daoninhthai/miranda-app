@@ -1,0 +1,441 @@
+<!--
+/**
+ * @author      Magetop Developer (Kien)
+ * @package     Magento Multi Vendor Marketplace_Seller_Store_Locator
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<?php 
+    $storelocatorData = $block->getCollection()->getData(); 
+    if(!$storelocatorData){
+        $storelocatorData['id'] = '';
+        $storelocatorData['title'] = '';
+        $storelocatorData['phone_number'] = '';
+        $storelocatorData['mapicon'] = '';
+        $storelocatorData['status'] = 1;
+        $storelocatorData['address'] = '';
+        $storelocatorData['city'] = '';
+        $storelocatorData['state'] = '';
+        $storelocatorData['zipcode'] = '';
+        $storelocatorData['country'] = '';
+        $storelocatorData['store_time'] = '{"mon_in_time":["00","00","00"],"mon_out_time":["00","00","00"],"tue_in_time":["00","00","00"],"tue_out_time":["00","00","00"],"web_in_time":["00","00","00"],"web_out_time":["00","00","00"],"thu_in_time":["00","00","00"],"thu_out_time":["00","00","00"],"fri_in_time":["00","00","00"],"fri_out_time":["00","00","00"],"sat_in_time":["00","00","00"],"sat_out_time":["00","00","00"],"sun_in_time":["00","00","00"],"sun_out_time":["00","00","00"]}';
+        $storelocatorData['shop_location'] = '';
+        $storelocatorData['longitude'] = 11.154128700000001;
+        $storelocatorData['latitude'] = 48.810876847030585;
+        $storelocatorData['zoom_level'] = 2;  
+    }
+?>
+<div class="block content-locator mgt-theme-div">
+    <form id="locator-form" action="<?php echo $block->getUrl('sellerstorelocator/index/save') ?>" method="post" novalidate="novalidate" enctype="multipart/form-data">
+        <legend class="legend">
+            <span><?php echo __('Store Locator Information') ?><?php if(!$storelocatorData['id']) echo " - your current location is not available, setup your location below" ?></span>
+            <div class="primary" style="float: right;">
+                <button type="submit" class="action continue primary" title="<?php echo __('Continue') ?>"><span><?php echo __('Save') ?></span></button>
+            </div>
+        </legend>
+        <fieldset class="fieldset info locator">
+            <input type="hidden" value="<?php echo $storelocatorData['id'] ?>" name="id"/>
+            <div class="field field-title required">
+                <label class="label" for="title">
+                    <span><?php echo __('Store Name') ?></span>
+                </label>
+                <div class="control">
+                    <input id="sellerstorelocator_title" value="<?php echo $storelocatorData['title'] ?>" type="text" aria-required="true" name="title" class="input-text required-entry" data-validate="{required:true}"/>
+                </div>
+            </div>
+            <div class="field field-phone_number required">
+                <label class="label" for="phone_number">
+                    <span><?php echo __('Contact Number') ?></span>
+                </label>
+                <div class="control">
+                    <input id="sellerstorelocator_phone_number" value="<?php echo $storelocatorData['phone_number'] ?>" type="text" aria-required="true" name="phone_number" class="input-text required-entry" data-validate="{required:true}"/>
+                </div>
+            </div>
+            <div class="field field-mapicon">
+                <label class="label" for="mapicon">
+                    <span><?php echo __('Image') ?></span>
+                </label>
+                <div class="control">
+                    <input id="sellerstorelocator_mapicon" value="<?php echo $storelocatorData['mapicon'] ?>" type="file" aria-required="true" name="mapicon" class="input-text"/>
+                    <?php if($storelocatorData['mapicon']){ 
+						$_urlImage = $block->getUrlImage($storelocatorData['mapicon']);
+					?>
+    					<div class="block block-image" style="width: 150px;margin-top: 10px;">
+    						<img src="<?php echo $_urlImage ?>" title="" alt="" /><br />
+    						<input type="checkbox" id="mapicon_delete" value="1" name="mapicon[delete]" />
+    						<label class="label" for="mapicon_delete"><?php /* @escapeNotVerified */ echo __('Delete Image') ?></label>
+    						<input type="hidden" name="mapicon[value]" value="<?php echo $storelocatorData['mapicon'] ?>" />
+    					</div>
+					<?php } ?>
+                </div>
+            </div> 
+            <div class="field field-status required">
+                <label class="label" for="status">
+                    <span><?php echo __('Status') ?></span>
+                </label>
+                <div class="control">
+                    <select  name="status">
+                        <option <?php echo $storelocatorData['status']==1?'selected':'' ?> value="1"><?php echo __('Enable') ?></option>
+                        <option <?php echo $storelocatorData['status']==0?'selected':'' ?> value="0"><?php echo __('Disable') ?></option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+        <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <legend class="legend">
+            <span><?php echo __('Store Address') ?></span>
+        </legend>
+        <fieldset class="fieldset info locator">
+            <div class="field field-address required">
+                <label class="label" for="address">
+                    <span><?php echo __('Street Address') ?></span>
+                </label>
+                <div class="control">
+                    <input id="sellerstorelocator_address" value="<?php echo $storelocatorData['address'] ?>" type="text" aria-required="true" name="address" class="input-text required-entry" data-validate="{required:true}"/>
+                </div>
+            </div>
+            <div class="field field-city required">
+                <label class="label" for="city">
+                    <span><?php echo __('City') ?></span>
+                </label>
+                <div class="control">
+                    <input id="sellerstorelocator_city" value="<?php echo $storelocatorData['city'] ?>" type="text" aria-required="true" name="city" class="input-text required-entry" data-validate="{required:true}"/>
+                </div>
+            </div>
+            <div class="field field-country required">
+                <label class="label" for="country">
+                    <span><?php echo __('Country') ?></span>
+                </label>
+                <div class="control">
+                    <!--<input id="sellerstorelocator_country" value="<?php echo $storelocatorData['country'] ?>" type="text" aria-required="true" name="country" class="input-text required-entry" data-validate="{required:true}"/>-->
+                    <select id="sellerstorelocator_country" name="country" title="<?php /* @escapeNotVerified */ echo __('Country') ?>">
+                        <?php
+                            $_countries = \Magento\Framework\App\ObjectManager::getInstance()->create('Magento\Directory\Model\Config\Source\Country')->toOptionArray();
+                            foreach($_countries as $k=>$_countryitem) {
+                    	?>
+                                <option value="<?php echo $_countryitem['value']?>" <?php echo $_countryitem['value'] == $storelocatorData['country']?'selected="selected"':'' ?>><?php echo $_countryitem['label']?></option>
+                        <?php
+                    		}
+                        ?>
+                    </select>                                        
+                </div>
+            </div>
+            <div class="field field-state required">
+                <label class="label" for="state">
+                    <span><?php echo __('State/Province') ?></span>
+                </label>
+                <div class="control">
+                    <input id="sellerstorelocator_state" value="<?php echo $storelocatorData['state'] ?>" type="text" aria-required="true" name="state" class="input-text required-entry" data-validate="{required:true}"/>
+                </div>
+                <script type="text/javascript">
+                    require([
+                        'jquery',
+                        'mage/template',
+                        'jquery/ui',
+                        'mage/translate'
+                    ],
+                    function($, mageTemplate) {
+                        var regionJson = <?php echo $this->helper('Magetop\Marketplace\Helper\Data')->JsonEncode(\Magento\Framework\App\ObjectManager::getInstance()->create('\Magento\Directory\Helper\Data')->getRegionData()); ?>;
+                        if(regionJson[$('#sellerstorelocator_country').val()]){
+                            $('#sellerstorelocator_state').replaceWith("<select id='sellerstorelocator_state' name='state' title='State/Province'><option value=''>--Please Select--</option></select>");
+                            $.each(regionJson[$('#sellerstorelocator_country').val()], function(key, value) {
+                                if(key == '<?php echo $storelocatorData['state'] ?>'){
+                                    $('#sellerstorelocator_state').append('<option title="'+value.name+'" data-region-code="'+value.code+'" value="'+key+'" selected="selected">'+value.name+'</option>');   
+                                }else{
+                                    $('#sellerstorelocator_state').append('<option title="'+value.name+'" data-region-code="'+value.code+'" value="'+key+'">'+value.name+'</option>');  
+                                }                            
+                            });
+                        };                       
+                        $('#sellerstorelocator_country').on('change', function(event){
+                            if(regionJson[$(this).val()]){
+                                $('#sellerstorelocator_state').replaceWith("<select id='sellerstorelocator_state' name='state' title='State/Province'><option value=''>--Please Select--</option></select>");
+                                $.each(regionJson[$(this).val()], function(key, value) {
+                                    $('#sellerstorelocator_state').append('<option title="'+value.name+'" data-region-code="'+value.code+'" value="'+key+'">'+value.name+'</option>');                                        
+                                });
+                            }else{
+                                $('#sellerstorelocator_state').replaceWith('<input class="input-text" type="text" name="state" id="sellerstorelocator_state"/>');
+                            }
+                        });
+                    });
+                </script> 
+            </div>
+            <div class="field field-zipcode required">
+                <label class="label" for="zipcode">
+                    <span><?php echo __('Zip/Postal Code') ?></span>
+                </label>
+                <div class="control">
+                    <input id="sellerstorelocator_zipcode" value="<?php echo $storelocatorData['zipcode'] ?>" type="text" aria-required="true" name="zipcode" class="input-text required-entry" data-validate="{required:true}"/>
+                </div>
+            </div>
+        </fieldset>
+        <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <legend class="legend">
+            <span><?php echo __('Store Times (In 24 Hour Time Format)') ?></span>
+        </legend>
+        <fieldset class="fieldset info locator">
+            <?php $store_time = json_decode($storelocatorData['store_time']) ?>
+            <?php for($day = 2;$day<=8;$day++){ ?>
+                <div class="field required">
+                    <label class="label">
+                        <span>
+                            <?php 
+                                switch($day){
+                                    case 2 : 
+                                        echo __('Monday');
+                                        $text_day = 'mon';
+                                        $open_day = $store_time->mon_in_time;
+                                        $close_day = $store_time->mon_out_time;
+                                    break;
+                                    case 3 : 
+                                        echo __('Tuesday');
+                                        $text_day = 'tue';
+                                        $open_day = $store_time->tue_in_time;
+                                        $close_day = $store_time->tue_out_time;
+                                    break;
+                                    case 4 : 
+                                        echo __('Wednesday');
+                                        $text_day = 'web';
+                                        $open_day = $store_time->web_in_time;
+                                        $close_day = $store_time->web_out_time;
+                                    break;
+                                    case 5 : 
+                                        echo __('Thursday');
+                                        $text_day = 'thu';
+                                        $open_day = $store_time->thu_in_time;
+                                        $close_day = $store_time->thu_out_time;
+                                    break;
+                                    case 6 : 
+                                        echo __('Friday');
+                                        $text_day = 'fri';
+                                        $open_day = $store_time->fri_in_time;
+                                        $close_day = $store_time->fri_out_time;
+                                    break;
+                                    case 7 : 
+                                        echo __('Saturday');
+                                        $text_day = 'sat';
+                                        $open_day = $store_time->sat_in_time;
+                                        $close_day = $store_time->sat_out_time;
+                                    break;
+                                    case 8 : 
+                                        echo __('Sunday');
+                                        $text_day = 'sun';
+                                        $open_day = $store_time->sun_in_time;
+                                        $close_day = $store_time->sun_out_time;
+                                    break;
+                                }
+                            ?>
+                        </span>
+                    </label>
+                    <div class="field field-day required">
+                        <div class="control">
+        					<select name="store_time[<?php echo $text_day ?>_in_time][]" style="width: 10%">
+                                <?php 
+                                    for($i=0;$i<24;$i++){
+                                        if($i<10){
+                                ?>
+                                            <option <?php echo $open_day['0']=='0'.$i?'selected':'' ?> value='0<?php echo $i ?>'>0<?php echo $i ?></option>
+                                <?php
+                                        }else{
+                                ?>
+                                            <option <?php echo $open_day['0']==$i?'selected':'' ?> value='<?php echo $i ?>'><?php echo $i ?></option>
+                                <?php
+                                        }
+                                    } 
+                                ?>
+                            </select> :
+        					<select name="store_time[<?php echo $text_day ?>_in_time][]" style="width: 10%">
+                                <?php 
+                                    for($i=0;$i<60;$i++){
+                                        if($i<10){
+                                ?>
+                                            <option <?php echo $open_day['1']=='0'.$i?'selected':'' ?> value='0<?php echo $i ?>'>0<?php echo $i ?></option>
+                                <?php
+                                        }else{
+                                ?>
+                                            <option <?php echo $open_day['1']==$i?'selected':'' ?> value='<?php echo $i ?>'><?php echo $i ?></option>
+                                <?php
+                                        }
+                                    } 
+                                ?>
+                            </select> :
+        					<select name="store_time[<?php echo $text_day ?>_in_time][]" style="width: 10%">
+                                <?php 
+                                    for($i=0;$i<60;$i++){
+                                        if($i<10){
+                                ?>
+                                            <option <?php echo $open_day['2']=='0'.$i?'selected':'' ?> value='0<?php echo $i ?>'>0<?php echo $i ?></option>
+                                <?php
+                                        }else{
+                                ?>
+                                            <option <?php echo $open_day['2']==$i?'selected':'' ?> value='<?php echo $i ?>'><?php echo $i ?></option>
+                                <?php
+                                        }
+                                    } 
+                                ?>
+                            </select>
+                            <span style="margin: 0px 20px;"><?php echo __('To') ?></span>
+                            <select name="store_time[<?php echo $text_day ?>_out_time][]" style="width: 10%">
+                                <?php 
+                                    for($i=0;$i<24;$i++){
+                                        if($i<10){
+                                ?>
+                                            <option <?php echo $close_day['0']=='0'.$i?'selected':'' ?> value='0<?php echo $i ?>'>0<?php echo $i ?></option>
+                                <?php
+                                        }else{
+                                ?>
+                                            <option <?php echo $close_day['0']==$i?'selected':'' ?> value='<?php echo $i ?>'><?php echo $i ?></option>
+                                <?php
+                                        }
+                                    } 
+                                ?>
+                            </select> :
+        					<select name="store_time[<?php echo $text_day ?>_out_time][]" style="width: 10%">
+                                <?php 
+                                    for($i=0;$i<60;$i++){
+                                        if($i<10){
+                                ?>
+                                            <option <?php echo $close_day['1']=='0'.$i?'selected':'' ?> value='0<?php echo $i ?>'>0<?php echo $i ?></option>
+                                <?php
+                                        }else{
+                                ?>
+                                            <option <?php echo $close_day['1']==$i?'selected':'' ?> value='<?php echo $i ?>'><?php echo $i ?></option>
+                                <?php
+                                        }
+                                    } 
+                                ?>
+                            </select> :
+        					<select name="store_time[<?php echo $text_day ?>_out_time][]" style="width: 10%">
+                                <?php 
+                                    for($i=0;$i<60;$i++){
+                                        if($i<10){
+                                ?>
+                                            <option <?php echo $close_day['2']=='0'.$i?'selected':'' ?> value='0<?php echo $i ?>'>0<?php echo $i ?></option>
+                                <?php
+                                        }else{
+                                ?>
+                                            <option <?php echo $close_day['2']==$i?'selected':'' ?> value='<?php echo $i ?>'><?php echo $i ?></option>
+                                <?php
+                                        }
+                                    } 
+                                ?>
+                            </select>                                        
+        				</div>
+                    </div>
+                </div>
+            <?php } ?>
+        </fieldset>
+        <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <legend class="legend">
+            <span><?php echo __('Store Map') ?></span>
+        </legend>
+        <fieldset class="fieldset info locator">
+            <div class="field field-location required">
+                <label class="label" for="location">
+                    <span><?php echo __('Store Location') ?></span>
+                </label>
+                <div class="control">
+                    <input id="sellerstorelocator_shop_location" value="<?php echo $storelocatorData['shop_location'] ?>" type="text" aria-required="true" name="shop_location" class="input-text required-entry" data-validate="{required:true}"/>
+                </div>
+            </div> 
+            <div class="field field-longitude required">
+                <label class="label" for="longitude">
+                    <span><?php echo __('Longitude') ?></span>
+                </label>
+                <div class="control">
+                    <input id="sellerstorelocator_longitude" value="<?php echo $storelocatorData['longitude'] ?>" type="text" aria-required="true" name="longitude" class="input-text required-entry" data-validate="{required:true}"/>
+                </div>
+            </div>
+            <div class="field field-latitude required">
+                <label class="label" for="latitude">
+                    <span><?php echo __('Latitude') ?></span>
+                </label>
+                <div class="control">
+                    <input id="sellerstorelocator_latitude" value="<?php echo $storelocatorData['latitude'] ?>" type="text" aria-required="true" name="latitude" class="input-text required-entry" data-validate="{required:true}"/>
+                </div>
+            </div>
+            <div class="field field-zoom_level required">
+                <label class="label" for="zoom_level">
+                    <span><?php echo __('Zoom Level') ?></span>
+                </label>
+                <div class="control">
+                    <input id="sellerstorelocator_zoom_level" value="<?php echo $storelocatorData['zoom_level'] ?>" type="text" aria-required="true" name="zoom_level" class="input-text required-entry" data-validate="{required:true}"/>
+                </div>
+            </div>  
+            <div class="google-map" id="google-map">
+                <div id="button-reset" style="margin-top:20px; margin-bottom: -12px;">
+                    <button type="button">
+                        <span><?php echo __('Reset Google Map')?></span>
+                    </button>
+                </div>        
+                <div id="notice-map"></div>        
+                <div id="googleMap" style="height: 300px;width: 100%;margin-top: 20px;border: 1px solid;"></div>
+            </div>
+			<?php 
+				$_mkhelp = $this->helper('Magetop\Marketplace\Helper\Data');
+				$_mapkey =  $_mkhelp->getKeyMap();
+			?>	
+            <?php if( isset($_SERVER['HTTPS'] ) ) { ?>
+                <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&key=<?php echo $_mapkey; ?>&libraries=places&sensor=false"></script>
+            <?php }else{ ?>
+                <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&key=<?php echo $_mapkey; ?>&libraries=places&sensor=false"></script>
+            <?php } ?>
+            <script type="text/javascript">
+            	require([
+            		'jquery',
+            		'Magento_Ui/js/modal/modal',
+            		'mk_seller_store_locator_map_seller_js'
+            	],
+            	function($, modal, mkMap) {
+                    var lat = <?php echo $storelocatorData['latitude'] ?>;
+                    var lon = <?php echo $storelocatorData['longitude'] ?>;
+                    var zoom_level = <?php echo $storelocatorData['zoom_level'] ?>;
+                    var shop_location = '<?php echo $storelocatorData['shop_location'] ?>';
+                    
+                    loadMap = new mkMap();
+                    loadMap.getSellerStoreLocatorPoint(lat,lon,zoom_level);
+                    
+                    $('#button-reset').click(function(){
+                        loadMap.getSellerStoreLocatorPoint(lat,lon,zoom_level);
+                        $('#sellerstorelocator_latitude').val(lat);
+                        $('#sellerstorelocator_longitude').val(lon);
+                        $('#sellerstorelocator_zoom_level').val(zoom_level);
+                        $('#sellerstorelocator_shop_location').val(shop_location);
+                        $('#sellerstorelocator_latitude').css('background','#FFFFFF');
+                        $('#sellerstorelocator_longitude').css('background','#FFFFFF');
+                        $('#sellerstorelocator_zoom_level').css('background','#FFFFFF');
+                        $('#sellerstorelocator_shop_location').css('background','#FFFFFF');
+                        console.log('reset map');
+                    });
+                });
+            </script> 
+        </fieldset>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button type="submit" class="action continue primary" title="<?php echo __('Continue') ?>"><span><?php echo __('Save') ?></span></button>
+            </div>
+            <div style="float: right;" class="primary">
+                <a href="javascript:;" onclick="javascript: window.history.back();" class="left"><?php echo __('Back') ?></a>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    require([
+        "jquery",
+        'Magento_Ui/js/modal/confirm',
+        'Magento_Ui/js/modal/alert',
+        "mage/calendar"
+    ], function($,confirmation,alert){
+        $('.seller_locator').addClass('current');
+    });
+    require([
+        "jquery",
+        "mage/mage"
+    ], function($){
+        var dataForm = $('#locator-form');
+        dataForm.mage('validation', {});
+        var _action = dataForm.attr('action');
+    });
+</script>

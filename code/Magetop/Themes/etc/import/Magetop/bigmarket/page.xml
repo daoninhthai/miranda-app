@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <page>
+    <item>
+      <title><![CDATA[Home page]]></title>
+      <page_layout><![CDATA[1column]]></page_layout>
+      <identifier><![CDATA[home]]></identifier>
+      <content_heading><![CDATA[Bigmarket]]></content_heading>
+      <content><![CDATA[<div class="row hero-banner">
+	<div class="col-sm-4 col-xs-12 mb-pos-al">
+		<div class="i-hover">
+			<a href="#"><img class="hover-z" src="{{media url='bigmarket/home/hero-banner1.jpg'}}" alt=""/></a>
+		</div>
+	</div>
+	<div class="col-sm-4 col-xs-12 mb-pos-r4">
+		<div class="i-hover">
+			<a href="#"><img class="hover-z" src="{{media url='bigmarket/home/hero-banner2.jpg'}}" alt=""/></a>
+		</div>
+		<div class="i-hover">
+			<a href="#"><img class="hover-z" src="{{media url='bigmarket/home/hero-banner3.jpg'}}" alt=""/></a>
+		</div>
+	</div>
+	<div class="col-sm-4 col-xs-12 mb-pos-ar">
+		<div class="i-hover">
+			<a href="#"><img class="hover-z" src="{{media url='bigmarket/home/hero-banner4.jpg'}}" alt=""/></a>
+		</div>
+	</div>
+</div>
+<div class="home-special-list">
+	{{block class="Magetop\Pslider\Block\IndexBlock" name="pslider_1" group_id="1"}}
+</div>	
+<div class="home-special-categories">
+	{{block class="Magetop\Pslider\Block\IndexBlock" name="pslider_2" group_id="2"}}
+</div>]]></content>
+      <layout_update_xml><![CDATA[<referenceContainer name="main.top.slide">
+	<block class="Magento\Cms\Block\Block" name="slide">
+		<arguments>
+			<argument name="block_id" xsi:type="string">home-slide</argument>
+		</arguments>
+	</block>
+</referenceContainer>]]></layout_update_xml>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+  </page>
+</root>

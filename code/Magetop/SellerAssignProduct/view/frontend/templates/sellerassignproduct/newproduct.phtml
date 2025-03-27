@@ -1,0 +1,124 @@
+<!--
+/**
+ * @author      Magetop Developer (Kien)
+ * @package     Magento Multi Vendor Marketplace_Seller_Assign_Product
+ * @copyright   Copyright (c) Magetop (https://www.magetop.com)
+ * @terms       https://www.magetop.com/terms
+ * @license     https://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ **/
+-->
+<?php $_productCollection = $block->getLoadedProductCollection() ?>
+<div class="block content-assign-product mgt-theme-div">
+    <legend class="legend">
+        <span><?php echo __('Add a Product'); ?></span>
+    </legend>
+	<p><?php echo __('The product you are adding may already exist on store. Search our catalog for the product you want to sell and save yourself some time.'); ?><p>
+    <form id="assign_product_new_form" action="<?php echo $block->getUrl('sellerassignproduct/index/NewProduct') ?>" method="get" novalidate="novalidate">
+        <fieldset class="fieldset info assign-product">
+            <div class="field required">
+                <label class="label">
+                    <span><?php echo __('Search products in store') ?></span>
+                </label>
+                <div class="control">
+                    <input id="" value="<?php echo $this->getRequest()->getParam('key_search') ?>" type="text" placeholder="<?php echo __('Enter your product name or SKU') ?>" aria-required="true" name="key_search" class="input-text required-entry" data-validate="{required:true}"/>
+                </div>
+            </div>  
+        </fieldset>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button type="submit" class="action continue primary" title="<?php echo __('Continue') ?>"><span><?php echo __('Search') ?></span></button>
+            </div>
+            <div style="float: right" class="primary">
+                <a href="javascript:;" onclick="javascript: window.history.back();" class="left"><?php echo __('Back') ?></a>
+            </div>
+        </div>
+		<div class="mgt-action-note"><?php echo __('If it is not in store catalog:') ?> <a href="<?php echo $this->getUrl('marketplace/product/create') ?>"><?php echo __('Create a new product') ?></a></div>
+    </form>
+    <?php if ($_productCollection->count()){ ?>
+        <fieldset class="fieldset fieldset_assign_product">
+            <table class="data table">
+                <thead>
+                    <tr class="mst_content">
+                        <th><?php echo __('Products'); ?></th>
+                        <th><?php echo __('Name'); ?></th>
+                        <th><?php echo __('Sku'); ?></th>
+                        <th><?php echo __('Price'); ?></th>
+                        <th><?php echo __('Action'); ?></th>                     
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($_productCollection as $product) : ?>
+                        <tr class="item">
+                            <td>
+                                <span class="mst_label">
+                                    <div style="">
+                                        <?php $image = $block->getUrl('media/catalog').'product'.$product->getImage(); ?>
+                                        <img src="<?php echo $image ?>" style="width:100px;padding: 20px" />
+                                    </div>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="mst_label">
+                                    <a href="<?php echo $product->getProductUrl() ?>" class="product photo product-item-photo" tabindex="-1">
+                                        <?php echo $product->getName() ?>
+                                    </a>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="mst_label">
+                                    <?php echo $product->getSku(); ?>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="mst_label">
+                                    <?php echo \Magento\Framework\App\ObjectManager::getInstance()->get('Magento\Framework\Pricing\Helper\Data')->currency(@number_format($product->getPriceInfo()->getPrice('final_price')->getAmount()->getValue(),2),true,false); ?>
+                                </span>
+                            </td>
+                            <td>
+                                <a href="<?php echo $block->getUrl('sellerassignproduct/index/AddProduct',array('id'=>$product->getId())) ?>">
+                                    <button title="<?php echo __('Continue') ?>" class="action continue primary" type="submit">
+                                        <span>Sell Yours</span>
+                                    </button>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </fieldset>
+        <?php if ($block->getPagerHtml()): ?>
+            <div class="toolbar bottom" style="margin-top: 20px">
+                <?php echo $block->getPagerHtml(); ?>
+            </div>
+        <?php endif ?>
+        <div class="clear"></div>
+    <?php }else{ ?>
+            <?php if($this->getRequest()->getParam('key_search')){?>
+                <div class="message info empty" style="margin-top: 20px;"><div><?php /* @escapeNotVerified */ echo __('We can\'t find products matching the selection.') ?></div></div>
+            <?php } ?>
+    <?php } ?>
+</div>
+<style> 
+    .fieldset_assign_product {
+        border: 1px solid #c0c0c0;
+        margin-top: 20px;
+    }
+</style>
+<script>
+    require([
+        "jquery",
+        'Magento_Ui/js/modal/confirm',
+        'Magento_Ui/js/modal/alert',
+        "mage/calendar"
+    ], function($,confirmation,alert){
+        $('.seller_assign_product_new').addClass('current');
+    });
+    require([
+        "jquery",
+        "mage/mage"
+    ], function($){
+        var dataForm = $('#assign_product_new_form');
+        dataForm.mage('validation', {});
+        var _action = dataForm.attr('action');
+    });
+</script>

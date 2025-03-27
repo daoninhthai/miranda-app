@@ -1,0 +1,73 @@
+<div id="flat-rate-shipping">
+    <?php 
+        $data = explode(',',$block->getSellerFlatRateShipping()??'');
+        foreach($data as $dt){
+            $value = explode('-',$dt??'');
+            $seller = \Magento\Framework\App\ObjectManager::getInstance()->create('Magetop\Marketplace\Model\Sellers')->getCollection()->addFieldToFilter('user_id',$value[0])->getFirstItem();
+            if($seller->getData('storetitle') && count($value)>1){
+    ?>
+                <span class=""><?php echo __('Seller : ').$seller->getData('storetitle') ?> - <?php echo $value[1] ?> ( Flat Rate )</span><br />
+    <?php
+            }
+        }
+    ?>
+</div>
+<script type="text/javascript">
+    require([
+        'jquery'
+    ],function($) {
+            var element = $('#flat-rate-shipping').detach();
+            $('.order-shipping-method').append(element);
+        }
+    );
+</script>
+
+<div id="table-rate-shipping">
+    <?php 
+        $data = explode(',',$block->getSellerTableRateShipping()??'');
+        foreach($data as $dt){
+            $value = explode('-',$dt??'');
+            $seller = \Magento\Framework\App\ObjectManager::getInstance()->create('Magetop\Marketplace\Model\Sellers')->getCollection()->addFieldToFilter('user_id',$value[0])->getFirstItem();
+            if($seller->getData('storetitle') && count($value)>1){
+    ?>
+                <span style="float: left; width: 100%">
+                    <?php echo __('Seller : ').$seller->getData('storetitle') ?> - <?php echo $value[1] ?> (<?php echo __('Table rate')?>)
+                </span>
+    <?php
+            }
+        }
+    ?>
+</div>
+<script type="text/javascript">
+    require([
+        'jquery'
+    ],function($) {
+            var element = $('#table-rate-shipping').detach();
+            $('.order-shipping-method').append(element);
+        }
+    );
+</script>
+
+<div id="store-pickup">
+    <?php 
+        $data = explode(',',$block->getSellerStorePickupShipping()??'');
+        foreach($data as $dt){
+            $value = explode('-',$dt??'');
+            $seller = \Magento\Framework\App\ObjectManager::getInstance()->create('Magetop\Marketplace\Model\Sellers')->getCollection()->addFieldToFilter('user_id',$value[0])->getFirstItem();
+            if($seller->getData('storetitle') && count($value)>1){
+    ?>
+                <span class=""><?php echo __('Seller : ').$seller->getData('storetitle') ?> - <?php echo $value[1] ?></span><br />
+    <?php
+            }
+        }
+    ?>
+</div>
+<script type="text/javascript">
+    require([
+        'jquery'
+    ],function($) {
+            var element = $('#store-pickup').detach();
+            $('.order-shipping-method').append(element);
+        }
+    );
+</script>

@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!--/*** Header ***/-->
+        <referenceContainer name="header.panel.wrapper" htmlClass="top-header" htmlTag="div">
+            <container htmlClass="container" htmlTag="div" before="-">
+                <container htmlClass="row" htmlTag="div" before="-">
+                    <container name="top.bar.left" htmlClass="col-xs-5" htmlTag="div" before="-">
+                        <block class="Magento\Framework\View\Element\Html\Links" name="left.top.links">
+                            <arguments>
+                                <argument name="css_class" xsi:type="string">header-links</argument>
+                            </arguments>
+                        </block>
+                    </container>       
+                    <container name="top.bar.right" htmlClass="col-xs-7" htmlTag="div"/>                   
+                </container>
+            </container>
+        </referenceContainer>
+        <referenceContainer name="header.panel" label="Page Header Panel" htmlTag="div" htmlClass="pull-right">
+            <block class="Magento\Framework\View\Element\Html\Links" name="header.links">
+                <arguments>
+                    <argument name="css_class" xsi:type="string">header-links</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <move element="header.panel" destination="top.bar.right" before="-" />
+        <referenceContainer name="header-wrapper" htmlClass="header-content">
+            <container htmlClass="container" htmlTag="div" before="-">
+                <container htmlClass="row" htmlTag="div" before="-">
+                    <container name="head.logo" htmlClass="col-md-4 col-sm-12 col-xs-4" htmlTag="div" before="-"/>    
+                    <container name="head.search" htmlClass="col-md-5 col-sm-8 col-xs-8" htmlTag="div"/>                   
+                    <container name="head.cart" htmlClass="col-md-3 col-sm-4 col-xs-12" htmlTag="div"/>                   
+                </container>
+            </container>
+            <!-- Adding navigation.sections here -->
+            <container name="nav.wrapper" htmlClass="nav-wrapper" htmlTag="div" after="-">
+                <block class="Magento\Theme\Block\Html\Topmenu" name="navigation.sections" as="topNav" template="Magento_Theme::html/top_menu.phtml" />
+            </container>
+        </referenceContainer>
+        <move element="logo" destination="head.logo" before="-" />
+        <move element="top.search" destination="head.search" before="-" />
+        <move element="minicart" destination="head.cart" before="-" />
+        <!--/*** End Header ***/-->
+        <!--/*** Content ***/-->
+        <referenceContainer name="main.content" htmlTag="main" htmlId="maincontent" htmlClass="container"/>
+        <move element="breadcrumbs" destination="main.content" before="-" />
+        <!--/*** End Content ***/-->
+        <!--/*** Footer ***/-->
+        <referenceContainer name="footer_links" remove="true"/>
+        <referenceContainer name="report.bugs" remove="true"/>
+        <referenceContainer name="footer-container" htmlClass="footer-wrapper" htmlTag="div">
+            <container name="footer.top" label="Footer Top" htmlTag="div" htmlClass="footer-top" before="-"/>
+            <container name="footer.main.content" label="Footer main content" htmlTag="div" htmlClass="footer-main-content" after="footer.top">
+                <block class="Magento\Cms\Block\Block" name="footer-main-content">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">footer-main-content</argument>
+                    </arguments>
+                </block>
+            </container>
+            <container name="footer.bottom" label="Footer Bottom" htmlTag="div" htmlClass="footer-bottom" after="-">
+                <container htmlTag="div" htmlClass="container" before="-">
+                    <container name="footer.bottom.left" label="Footer Bottom" htmlTag="div" htmlClass="pull-left" before="-"/>
+                    <container name="footer.bottom.right" label="Footer Bottom" htmlTag="div" htmlClass="pull-right" before="-">
+                        <block class="Magento\Cms\Block\Block" name="footer-bottom-right">
+                            <arguments>
+                                <argument name="block_id" xsi:type="string">footer-bottom-right</argument>
+                            </arguments>
+                        </block>
+                    </container>
+                </container>
+            </container>
+        </referenceContainer>
+        <move element="form.subscribe" destination="footer.top" before="-" />
+        <move element="copyright" destination="footer.bottom.left" before="-" />
+        <!--/*** End Footer ***/-->
+    </body>
+</page>

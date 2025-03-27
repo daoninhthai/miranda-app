@@ -1,0 +1,274 @@
+<?php
+/**
+ * Copyright © 2020 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * @description:
+ *
+ */
+?>
+<?php
+    $_items = $block->getReviewsCollection()->getItems();
+    $format = $block->getDateFormat() ?: \IntlDateFormatter::SHORT;
+?>
+<?php if (count($_items)):?>
+<div class="block review-list" id="customer-reviews">
+    <div class="block-title">
+        <strong><?php /* @escapeNotVerified */ echo __('Customer Reviews') ?></strong>
+    </div>
+    <div class="block-content">
+        <div class="toolbar review-toolbar">
+            <?php echo $block->getChildHtml('toolbar') ?>
+        </div>
+        <ol class="items review-items">
+        <?php foreach ($_items as $_review):?>
+            <li class="item review-item" itemscope itemprop="review" itemtype="http://schema.org/Review">
+                <div class="review-title" itemprop="name">
+                    <?php echo $block->escapeHtml($_review->getTitle()) ?>
+                   <!-- <div class="review_button" style="float: right;width: 48%">
+                        <a class="review_button_a" att="review_button" style="float: left;margin-right: 10px">Image </a>
+                        <a class="review_button_a" att="review_button_video" style="float: left;margin-right: 10px">Video</a>
+                        <a class="review_button_a" att="review_button_helpful" style="float: left;margin-right: 10px">Helpful</a>
+                    </div> -->
+                </div>
+                <?php if (count($_review->getRatingVotes())): ?>
+                    <div class="review-ratings" style="float: left;width: 30%">
+                    <?php foreach ($_review->getRatingVotes() as $_vote): ?>
+                    <div class="rating-summary item" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+                        <span class="label rating-label"><span><?php echo $block->escapeHtml($_vote->getRatingCode()) ?></span></span>
+                        <div class="rating-result" title="<?php /* @escapeNotVerified */ echo $_vote->getPercent() ?>%">
+	                        <meta itemprop="worstRating" content = "1"/>
+	                        <meta itemprop="bestRating" content = "100"/>
+                            <span style="width:<?php /* @escapeNotVerified */ echo $_vote->getPercent() ?>%">
+                                <span itemprop="ratingValue"><?php /* @escapeNotVerified */ echo $_vote->getPercent() ?>%</span>
+                            </span>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+				<?php 
+					$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+					$reviewsOption = $objectManager->create('Magetop\ReviewManagement\Model\ReviewManagement')
+												   ->getCollection()
+												   ->addFieldToFilter('review_id',$_review->getId())
+												   ->addFieldToFilter('status',1);
+				?>
+                <div class="div_2" style="float: left;margin-left: 3%;width: 37%;">
+                    <div class="review-content" itemprop="description">
+                        <?php echo nl2br($block->escapeHtml($_review->getDetail())) ?>
+                    </div>
+                    <div class="review-details">
+                        <p class="review-author">
+                            <span class="review-details-label"><?php /* @escapeNotVerified */ echo __('Review by')?></span>
+                            <strong class="review-details-value" itemprop="author"><?php echo $block->escapeHtml($_review->getNickname()) ?></strong>
+                        </p>
+                        <p class="review-date">
+                            <span class="review-details-label"><?php /* @escapeNotVerified */ echo __('Posted on') ?></span>
+                            <time class="review-details-value" itemprop="datePublished" datetime="<?php /* @escapeNotVerified */ echo $block->formatDate($_review->getCreatedAt(), $format) ?>"><?php /* @escapeNotVerified */ echo $block->formatDate($_review->getCreatedAt(), $format) ?></time>
+                        </p>
+                    </div>
+					
+					<div class="review_helpful" style="">
+                        <?php 
+                            $count_comment = 0;
+                            $count_like = 0;
+                            $count_dislike = 0;
+                            foreach($reviewsOption as $value){
+                                if($value['type'] == 'comment') $count_comment ++;
+                                if($value['type'] == 'like') $count_like ++;
+                                if($value['type'] == 'dislike') $count_dislike ++;
+                            }
+                        ?>
+                        <div class="review_helpful_report" style=" margin-bottom: 5px; ">
+                            <a class="review_helpful_a review_helpful_comment_count_<?php echo $_review->getId() ?>">
+                                <?php echo __('Comments'); ?> (<span class="comment_count_<?php echo $_review->getId() ?>"><?php echo $count_comment ?></span>)
+                            </a> 
+                            <span class="title-helpful"><?php echo __('Helpful?'); ?></span>
+                            <a class="review_helpful_a review_helpful_like_<?php echo $_review->getId() ?>">
+                                <?php echo __('Like'); ?> (<span class="like_count_<?php echo $_review->getId() ?>"><?php echo $count_like ?></span>)
+                            </a>
+                            <a class="review_helpful_a review_helpful_dislike_<?php echo $_review->getId() ?>">
+                                <?php echo __('Dislike'); ?> (<span class="dislike_count_<?php echo $_review->getId() ?>"><?php echo $count_dislike ?></span>)
+                            </a>
+                        </div>
+                        <div class="review_helpful_comment_<?php echo $_review->getId() ?>" style="display: none;">
+                            <ul class="review_helpful_comment_list_<?php echo $_review->getId() ?>" style="list-style:none;padding:10px;border: 1px solid silver;margin-bottom: 10px;<?php if($count_comment == 0) echo "display:none"?>">
+                                <?php foreach($reviewsOption as $value){ ?>
+                                    <?php if($value['type'] == 'comment') { ?>
+                                    	<li style="border-bottom: 1px dashed silver;">
+                                            <span class="text"><?php echo $value['content'] ?></span><br />
+                                            <span class="dateandtime">Posted <?php echo $value['created_at'] ?>  by <i class="name"><?php echo $value['post_by'] ?></i></span>
+                                        </li> 
+                                    <?php } ?>
+                                <?php } ?>		       
+                            </ul>
+                            <div class="error message message_<?php echo $_review->getId() ?>" style="display: none;"></div>
+                            <textarea class="input review_helpful_comment_content_<?php echo $_review->getId() ?>" maxlength="500"></textarea>
+                            <button type="submit" title="<?php echo __('Submit') ?>" class="button review_helpful review_helpful_comment_submit_<?php echo $_review->getId() ?>"><span><span>Submit</span></span></button>
+                            <img src="<?php echo $block->getViewFileUrl('Magetop_ReviewManagement::images/loading.gif') ?>" class="review_helpful_comment_submit_loading_<?php echo $_review->getId() ?>" style="display: none;" />
+                        </div>
+                    </div>
+					
+                </div>
+                <div class="div_3" style="float: left;margin-left: 3%;width: 27%;">
+                    
+                    <div class="review_image">
+                        <?php
+                            $image = null;
+                            foreach($reviewsOption as $value){
+                                if($value['type'] == 'image') $image = $value['content'];
+                            }
+                        ?>
+                        <?php if($image){ ?>
+                            <a href="<?php echo $block->getUrl('pub/media').$image ?>" target="_blank">
+                                <img width="420px" src="<?php echo $block->getUrl('pub/media').$image ?>" />
+                            </a>
+                        <?php } ?>
+                    </div>
+                    <div class="review_video_youtube" style="">
+                        <?php
+                            $video = null;
+                            foreach($reviewsOption as $value){
+                                if($value['type'] == 'video') $video = $value['content'];
+                            }
+                        ?>
+                        <?php if($video){ ?>
+                            <?php echo preg_replace("/\s*[a-zA-Z\/\/:\.]*youtube.com\/watch\?v=([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i","<iframe width=\"200\" height=\"200\" src=\"//www.youtube.com/embed/$1\" frameborder=\"0\" allowfullscreen></iframe>",$video); ?>
+                        <?php } ?>
+                    </div>
+                    
+                    <script>
+                        require(['jquery','mage/mage'],function($){
+                            $('.review_button_a').click(function(){
+                                if($(this).attr('att') == 'review_button'){
+                                    $('.review_image').show();
+                                    $('.review_video_youtube').hide();
+                                    $('.review_helpful').hide();
+                                }
+                                if($(this).attr('att') == 'review_button_video'){
+                                    $('.review_image').hide();
+                                    $('.review_video_youtube').show();
+                                    $('.review_helpful').hide();
+                                }
+                                if($(this).attr('att') == 'review_button_helpful'){
+                                    $('.review_image').hide();
+                                    $('.review_video_youtube').hide();
+                                    $('.review_helpful').show();
+                                }
+                            });  
+                            $('.review_helpful_comment_count_<?php echo $_review->getId() ?>').click(function(){
+                                $('.review_helpful_comment_<?php echo $_review->getId() ?>').toggle();
+                            });
+                            <?php 
+                                $helper = $this->helper('Magetop\ReviewManagement\Helper\Data'); 
+                                $product_id = \Magento\Framework\App\ObjectManager::getInstance()->get('Magento\Framework\Registry')->registry('current_product')->getId();
+                                if($helper->checkLogin()){
+                            ?>
+                                    $('.review_helpful_like_<?php echo $_review->getId() ?>').click(function(){
+                                        url = '<?php echo $block->getUrl('reviewmanagement/index/SaveReviews') ?>'; 
+                                        $.ajax({
+                                        	type: "POST",
+                                        	url: url,
+                                        	data : 'isAjax=1&review_id=<?php echo $_review->getId() ?>&type=like&content=',
+                                        	cache: false,
+                                            beforeSend:  function() {
+                                                
+                                            },
+                                            success: function(data){
+                                                var json = JSON.parse(JSON.stringify(data));  
+                                                count_like = parseInt(json['count']) + parseInt($('.like_count_<?php echo $_review->getId() ?>').html());
+                                                $('.like_count_<?php echo $_review->getId() ?>').html(count_like);
+                                            }
+                                        });
+                                    });
+                                    $('.review_helpful_dislike_<?php echo $_review->getId() ?>').click(function(){
+                                        url = '<?php echo $block->getUrl('reviewmanagement/index/SaveReviews') ?>'; 
+                                        $.ajax({
+                                        	type: "POST",
+                                        	url: url,
+                                        	data : 'isAjax=1&review_id=<?php echo $_review->getId() ?>&type=dislike&content=',
+                                        	cache: false,
+                                            beforeSend:  function() {
+                                                
+                                            },
+                                            success: function(data){
+                                                var json = JSON.parse(JSON.stringify(data));  
+                                                count_dislike = parseInt(json['count']) + parseInt($('.dislike_count_<?php echo $_review->getId() ?>').html());
+                                                $('.dislike_count_<?php echo $_review->getId() ?>').html(count_dislike);        
+                                            }
+                                        });
+                                    });
+                                    $('.review_helpful_comment_submit_<?php echo $_review->getId() ?>').click(function(){
+                                        var minLength = 5;
+                                        var textarea = $('.review_helpful_comment_content_<?php echo $_review->getId() ?>');
+                                        if(textarea.val().split(/\s+/).length < minLength) {
+                                            $('.message_<?php echo $_review->getId() ?>').hide();
+                                            $('.message_<?php echo $_review->getId() ?>').html('You need to enter at least ' + minLength + ' characters');
+                                            $('.message_<?php echo $_review->getId() ?>').fadeIn(100);
+                                            return false;
+                                        }
+                                        url = '<?php echo $block->getUrl('reviewmanagement/index/SaveReviews') ?>'; 
+                                        $.ajax({
+                                        	type: "POST",
+                                        	url: url,
+                                        	data : 'isAjax=1&review_id=<?php echo $_review->getId() ?>&type=comment&content='+$('.review_helpful_comment_content_<?php echo $_review->getId() ?>').val(),
+                                        	cache: false,
+                                            beforeSend:  function() {
+                                                $('.review_helpful_comment_submit_<?php echo $_review->getId() ?>').hide();
+                                                $('.review_helpful_comment_submit_loading_<?php echo $_review->getId() ?>').show();
+                                                $('.message_<?php echo $_review->getId() ?>').hide();
+                                            },
+                                            success: function(data){
+                                                $('.review_helpful_comment_submit_<?php echo $_review->getId() ?>').show();
+                                                $('.review_helpful_comment_submit_loading_<?php echo $_review->getId() ?>').hide();
+                                                var json = JSON.parse(JSON.stringify(data));
+                                                count_comment = parseInt(json['count']) + parseInt($('.comment_count_<?php echo $_review->getId() ?>').html());
+                                                $('.comment_count_<?php echo $_review->getId() ?>').html(count_comment); 
+                                                $('.review_helpful_comment_list_<?php echo $_review->getId() ?>').append(json['content']);   
+                                                $('.review_helpful_comment_list_<?php echo $_review->getId() ?>').show();  
+                                                $('.review_helpful_comment_content_<?php echo $_review->getId() ?>').val('');    
+                                            }
+                                        });
+                                    });
+                            <?php }else{ ?>
+                                    $('.review_helpful_like_<?php echo $_review->getId() ?>,.review_helpful_dislike_<?php echo $_review->getId() ?>,.review_helpful_comment_submit_<?php echo $_review->getId() ?>').click(function(){
+                                        $('.message_<?php echo $_review->getId() ?>').hide();
+                                        <?php if(!$helper->checkLogin()){ ?>
+                                            $('.message_<?php echo $_review->getId() ?>').html('Please <a href="<?php echo $block->getUrl('customer/account/login') ?>"><?php echo __('Sign in') ?></a> or <a href="<?php echo $block->getUrl('customer/account/create') ?>"><?php echo __('create an account') ?></a>');
+                                        <?php }else{ ?>
+                                            $('.message_<?php echo $_review->getId() ?>').html('<?php echo __('Only purchased product can write comments') ?>');
+                                        <?php } ?>
+                                        $('.message_<?php echo $_review->getId() ?>').fadeIn(100);
+                                    });
+                            <?php } ?>
+                        });
+                    </script>
+                    <style>
+                        .review_button_a,.review_helpful_a{
+                            cursor: pointer;
+                        }
+                    </style>
+                </div>
+            </li>
+        <?php endforeach; ?>
+        </ol>
+        <div class="toolbar review-toolbar">
+            <?php echo $block->getChildHtml('toolbar') ?>
+        </div>
+    </div>
+</div>
+<?php endif;?>
+<style>
+    .review_helpful_report { margin: 10px 0 0 0; }
+    .review_helpful_report a { margin: 0 8px 0 0; }
+    .button.review_helpful { margin: 10px 0 0 0; }
+    .review-items iframe { width: 100% !important; }
+    .title-helpful { color: #f90; font-weight: bold; }
+</style>

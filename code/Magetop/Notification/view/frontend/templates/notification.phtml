@@ -54,12 +54,19 @@ $notifyBlock = $objectManager->create('Magetop\Notification\Block\Notification')
                             <h3><?= __('Notifications') ?></h3>
                         </div>
                         <div class="notification-list">
-                            <?php $notifications = $notifyBlock->getNotifications(1,$seller->getUserId()); ?>
-                            <?php if (count($notifications) > 0): ?>
+
+                            <?php
+                            $notificationsData = $notifyBlock->getNotifications($seller->getUserId(), 1);
+                            $notifications = $notificationsData['items'];
+                            ?>
+                            <?php if (!empty($notifications)): ?>
                                 <?php foreach ($notifications as $notification): ?>
-                                    <div class="notification-item <?= $notification->getStatus() == 0 ? 'unread' : '' ?>" data-notification-id="<?= $notification->getId() ?>">
+                                    <div class="notification-item <?= $notification->getStatus() == 0 ? 'unread' : '' ?>"
+                                         data-notification-id="<?= $notification->getId() ?>">
                                         <div class="notification-content"><?= $notification->getContent() ?></div>
-                                        <div class="notification-time"><?= $block->formatDate($notification->getCreatedAt(), \IntlDateFormatter::MEDIUM, true) ?></div>
+                                        <div class="notification-time">
+                                            <?= $block->formatDate($notification->getCreatedAt(), \IntlDateFormatter::MEDIUM, true) ?>
+                                        </div>
                                     </div>
                                 <?php endforeach; ?>
                             <?php else: ?>
@@ -283,25 +290,93 @@ $notifyBlock = $objectManager->create('Magetop\Notification\Block\Notification')
             transform: scale(1);
         }
     }
+    #view-more-notifiy {
+        color: #3498db;
+        cursor: pointer;
+        font-weight: 500;
+        text-align: center;
+        padding: 8px 0;
+        display: block;
+        transition: all 0.3s ease;
+    }
 
+    #view-more-notifiy:hover {
+        text-decoration: underline;
+        background-color: #f8f9fa;
+    }
+
+    #view-more-notifiy.hidden {
+        display: none;
+    }
 </style>
 
 <script>
     require(['jquery'], function($) {
         $(document).ready(function() {
+            var currentPage = 1;
+
+            // Function to handle notification clicks
+            function setupNotificationClicks() {
+                $('.notification-item.unread').off('click').on('click', function(e) {
+                    e.stopPropagation();
+                    var notificationId = $(this).data('notification-id');
+                    var $this = $(this);
+
+                    $.ajax({
+                        url: '<?= $block->getUrl('marketplace/notification/markAsRead') ?>',
+                        type: 'POST',
+                        data: {id: notificationId},
+                        success: function(response) {
+                            if (response.success) {
+                                $this.removeClass('unread');
+                                var counter = $('.notification-counter');
+                                var count = parseInt(counter.text()) - 1;
+                                if (count > 0) {
+                                    counter.text(count);
+                                } else {
+                                    counter.remove();
+                                }
+                            }
+                        }
+                    });
+                });
+            }
+
+            // Initial setup of click handlers
+            setupNotificationClicks();
+
+            // View More functionality
             $('#view-more-notifiy').click(function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                currentPage++;
 
                 $.ajax({
                     url: '<?= $block->getUrl('marketplace/notification/viewmore') ?>',
                     type: 'POST',
-                    data: {id: <?= $seller->getUserId() ?>},
+                    data: {
+                        id: <?= $seller->getUserId() ?>,
+                        page: currentPage
+                    },
                     success: function(response) {
+                        if (response.success && response.html) {
+                            if (response.count > 0) {
+                                $('.notification-list').append(response.html);
+                                setupNotificationClicks(); // Re-setup click handlers
+                            }
 
-
-                    }.bind(this)
+                            if (!response.has_more) {
+                                $('#view-more-notifiy').hide();
+                            }
+                        }
+                    }
                 });
             });
 
+            // Initial check for more notifications
+            <?php if (!$notificationsData['has_more']): ?>
+            $('#view-more-notifiy').hide();
+            <?php endif; ?>
 
             // Toggle dropdown
             $('#notification-bell').click(function(e) {
@@ -313,34 +388,6 @@ $notifyBlock = $objectManager->create('Magetop\Notification\Block\Notification')
             $(document).click(function() {
                 $('#notification-dropdown').hide();
             });
-
-            // Mark as read when clicking on notification
-            $('.notification-item.unread').click(function() {
-                var notificationId = $(this).data('notification-id')
-                console.log($(this))
-                console.log(notificationId)
-                // AJAX call to mark as read
-                $.ajax({
-                    url: '<?= $block->getUrl('marketplace/notification/markAsRead') ?>',
-                    type: 'POST',
-                    data: {id: notificationId},
-                    success: function(response) {
-                        if (response.success) {
-                            $(this).removeClass('unread');
-                            // Update counter
-                            var counter = $('.notification-counter');
-                            var count = parseInt(counter.text()) - 1;
-                            if (count > 0) {
-                                counter.text(count);
-                            } else {
-                                counter.remove();
-                            }
-                        }
-                    }.bind(this)
-                });
-            });
         });
     });
-
-
 </script>

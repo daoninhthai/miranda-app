@@ -16,20 +16,30 @@ class Notification extends Template
         parent::__construct($context, $data);
     }
 
-    public function getNotifications($page,$sellerId)
+    public function getNotifications($sellerId, $page = 1, $pageSize = 5)
     {
         if (!$sellerId) {
-            return [];
+            return [
+                'items' => [],
+                'total' => 0,
+                'has_more' => false
+            ];
         }
 
         $collection = $this->_notificationFactory->create()->getCollection()
             ->addFieldToFilter('seller_id', $sellerId)
-            ->setOrder('created_at', 'DESC')
-            ->setPageSize(5) // Lấy 5 thông báo gần nhất
-            ->setCurPage($page);
-        return $collection;
-    }
+            ->setOrder('created_at', 'DESC');
 
+        $total = $collection->getSize();
+        $collection->setPageSize($pageSize)
+            ->setCurPage($page);
+
+        return [
+            'items' => $collection->getItems(), // Return array of items
+            'total' => $total,
+            'has_more' => ($page * $pageSize) < $total
+        ];
+    }
     public function getUnreadCount($sellerId)
     {
         if (!$sellerId) {

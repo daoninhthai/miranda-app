@@ -28,14 +28,15 @@ class Notification extends Template
 
         $collection = $this->_notificationFactory->create()->getCollection()
             ->addFieldToFilter('seller_id', $sellerId)
-            ->setOrder('created_at', 'DESC');
+            ->setOrder('status', 'ASC') // Ưu tiên status = 0 (chưa đọc) lên đầu
+            ->setOrder('created_at', 'DESC'); // Sau đó sắp xếp theo thời gian
 
         $total = $collection->getSize();
         $collection->setPageSize($pageSize)
             ->setCurPage($page);
 
         return [
-            'items' => $collection->getItems(), // Return array of items
+            'items' => $collection->getItems(),
             'total' => $total,
             'has_more' => ($page * $pageSize) < $total
         ];

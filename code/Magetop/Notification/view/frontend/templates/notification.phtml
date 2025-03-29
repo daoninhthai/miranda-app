@@ -308,6 +308,16 @@ $notifyBlock = $objectManager->create('Magetop\Notification\Block\Notification')
     #view-more-notifiy.hidden {
         display: none;
     }
+
+    .notification-item.unread {
+        background-color: #f8fafc;
+        border-left: 3px solid #3498db;
+        font-weight: 500;
+    }
+
+    .notification-item.unread .notification-content {
+        color: #2c3e50;
+    }
 </style>
 
 <script>

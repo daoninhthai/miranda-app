@@ -41,31 +41,37 @@ class InstallSchema implements InstallSchemaInterface
             )
                 ->addColumn(
                     'seller_id',
-                    Table::TYPE_INTEGER,
+                    \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
                     null,
-                    ['nullable' => false],
-                    'Seller Id'
+                    ['nullable' => true],
+                    'Seller ID'
                 )
                 ->addColumn(
                     'type',
-                    Table::TYPE_TEXT,
+                    \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
                     null,
-                    ['nullable' => false, 'default' => ''],
+                    ['nullable' => true],
                     'Type'
                 )
                 ->addColumn(
                     'content',
-                    Table::TYPE_INTEGER,
-                    null,
-                    ['nullable' => false],
+                    \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+                    255,
+                    ['nullable' => true],
                     'Content'
                 )
                 ->addColumn(
                     'status',
                     Table::TYPE_INTEGER,
                     null,
-                    ['nullable' => false],
+                    ['nullable' => true],
                     'Status'
+                )->addColumn(
+                    'created_at',
+                    \Magento\Framework\DB\Ddl\Table::TYPE_DATETIME,
+                    null,
+                    ['nullable' => false, 'default' => '0000-00-00 00:00:00'],
+                    'Created At'
                 )
                 ->setComment('Multivendor notification')
                 ->setOption('type', 'InnoDB')

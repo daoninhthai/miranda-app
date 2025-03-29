@@ -15,7 +15,6 @@ class ProductsCustom extends \Magetop\Marketplace\Controller\Adminhtml\Products\
         }
 
         $model = $this->_getModel(false);
-
         $error = false;
 
         try {
@@ -31,26 +30,53 @@ class ProductsCustom extends \Magetop\Marketplace\Controller\Adminhtml\Products\
                 throw new \Exception(__('Status Field Name is not specified.'));
             }
 
-            foreach($ids as $id) {
+            foreach ($ids as $id) {
                 $sellerProductModel = $this->_objectManager->create($this->_modelClass)
                     ->load($id)
                     ->setData($this->_statusField, $status)
                     ->save();
-                $product = $objectManager->create('\Magento\Catalog\Api\ProductRepositoryInterface')->getById($sellerProductModel->getProductId());
+
+                $product = $objectManager->create('\Magento\Catalog\Api\ProductRepositoryInterface')
+                    ->getById($sellerProductModel->getProductId());
                 $product->setStatus($status);
                 $objectManager->create('\Magento\Catalog\Api\ProductRepositoryInterface')->save($product);
 
                 $resource = $objectManager->get('Magento\Framework\App\ResourceConnection');
                 $connection = $resource->getConnection();
-                $tableName = $resource->getTableName('multivendor_product'); //gives table name with prefix
-                $sql = "Select * FROM " . $tableName . " WHERE product_id = " . $sellerProductModel->getProductId();
-                $result = $connection->fetchAll($sql); // gives associated array, table fields as
-                if($status == 1){
+                $tableName = $resource->getTableName('multivendor_product');
+                $sql = "SELECT * FROM " . $tableName . " WHERE product_id = " . $sellerProductModel->getProductId();
+                $result = $connection->fetchAll($sql);
+
+                if ($status == 1) {
                     $pStatus = __('Approved');
-                }else{
+                    $notificationType = 1; // Type for approved products
+                } else {
                     $pStatus = __('Unapproved');
+                    $notificationType = 2; // Type for unapproved products
                 }
-                $this->_objectManager->create('Magetop\Marketplace\Helper\EmailSeller')->sendProductSellerEmail($product->getName(), $result[0]['user_id'], $pStatus);
+
+                // Send email
+                $this->_objectManager->create('Magetop\Marketplace\Helper\EmailSeller')
+                    ->sendProductSellerEmail($product->getName(), $result[0]['user_id'], $pStatus);
+
+                // Add notification record
+                $notifyModel = $this->_objectManager->create('Magetop\Notification\Model\Notification');
+                $notificationContent = __('Your product "%1" has been %2', $product->getName(), strtolower($pStatus));
+
+                $notificationData = [
+                    'seller_id' => $result[0]['user_id'], // Get seller ID from multivendor_product table
+                    'type' => $notificationType, // 1 for approved, 2 for unapproved
+                    'content' => $notificationContent,
+                    'status' => 0, // 0 for unread, 1 for read
+                    'created_at' => date('Y-m-d H:i:s') // Current timestamp
+                ];
+
+                $notifyModel->setData($notificationData);
+                $notifyModel->save();
+//                $connection->insert(
+//                    $resource->getTableName('multivendor_notification'),
+//                    $notificationData
+//                );
             }
 
         } catch (\Magento\Framework\Exception\LocalizedException $e) {
@@ -68,6 +94,5 @@ class ProductsCustom extends \Magetop\Marketplace\Controller\Adminhtml\Products\
         }
 
         $this->_redirect('*/*');
-
     }
 }

@@ -18,10 +18,6 @@ class ProductsGridProductStatus extends AbstractRenderer
             $cell = '<span class="status_green">Approved</span>';
         }elseif ($row->getStatus() == 2) {
             $cell = '<span class="status_gray">Unapproved</span>';
-        }elseif ($row->getStatus() == 3) {
-            $cell = '<span class="status_blue">Active</span>';
-        }elseif ($row->getStatus() == 4) {
-            $cell = '<span class="status_lightpink">Inactive</span>';
         }else{
             $cell = '<span class="status_black"><span>Not Submitted</span>';
         }

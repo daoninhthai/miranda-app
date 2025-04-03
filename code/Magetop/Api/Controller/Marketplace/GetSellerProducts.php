@@ -18,26 +18,26 @@ class GetSellerProducts extends \Magetop\Api\Controller\AbstractController
 {
     protected $_imageProduct;
     protected $_resource;
-	protected $_product;
-	protected $_modelSession;
-	protected $_summaryFactory;
+    protected $_product;
+    protected $_modelSession;
+    protected $_summaryFactory;
 
     public function __construct(
         \Magento\Catalog\Helper\Image $imageProduct,
-		\Magento\Framework\App\ResourceConnection $resource,
-		\Magento\Catalog\Model\Product $product,
-		\Magento\Customer\Model\Session $modelSession,
-		\Magento\Review\Model\Review\SummaryFactory $summaryFactory,
+        \Magento\Framework\App\ResourceConnection $resource,
+        \Magento\Catalog\Model\Product $product,
+        \Magento\Customer\Model\Session $modelSession,
+        \Magento\Review\Model\Review\SummaryFactory $summaryFactory,
         Context $context,
         EventManager $eventManager,
         AppEmulation $appEmulation,
         DataHelper $dataHelper
     ) {
         $this->_imageProduct = $imageProduct;
-		$this->_resource = $resource;
-		$this->_product = $product;
-		$this->_modelSession = $modelSession;
-		$this->_summaryFactory = $summaryFactory;
+        $this->_resource = $resource;
+        $this->_product = $product;
+        $this->_modelSession = $modelSession;
+        $this->_summaryFactory = $summaryFactory;
         parent::__construct($context, $eventManager, $appEmulation, $dataHelper);
     }
 
@@ -68,22 +68,16 @@ class GetSellerProducts extends \Magetop\Api\Controller\AbstractController
                     switch($product->getMkproductstatus()){
                         case 0 :
                             $approval = __('PENDING');
-                        break;
+                            break;
                         case 1 :
                             $approval = __('APPROVED');
-                        break;
+                            break;
                         case 2 :
                             $approval = __('UNAPPROVED');
-                        break;
+                            break;
                         case 3 :
-                            $approval = __('ACTIVE');
-                        break;
-                        case 4 :
-                            $approval = __('INACTIVE');
-                        break;
-                        case 5 :
                             $approval = __('NOT SUBMITTED');
-                        break;
+                            break;
                     }
                     $productsData[] = array(
                         'product-id' => $product->getId(),
@@ -110,43 +104,43 @@ class GetSellerProducts extends \Magetop\Api\Controller\AbstractController
 
         return $this->returnResultJson($responseData);
     }
-	protected function _getProductCollection($customerId)
-	{
-		$collection = null;
-		$orderBy = $this->getRequest()->getParam('product_list_order','position');
-		$sortOrder = $this->getRequest()->getParam('product_list_dir','ASC');
+    protected function _getProductCollection($customerId)
+    {
+        $collection = null;
+        $orderBy = $this->getRequest()->getParam('product_list_order','position');
+        $sortOrder = $this->getRequest()->getParam('product_list_dir','ASC');
         $seller_search = $this->getRequest()->getParam('seller_search',null);
         $litmit = $this->getRequest()->getParam('product_list_limit',9);
-		$curPage = $this->getRequest()->getParam('p',1);
-		if($customerId)
-		{
-			$customerSession = $this->_modelSession;
-			$tableMKproduct = $this->_resource->getTableName('multivendor_product');
-			$collection = $this->_product->getCollection();
-			$collection->addAttributeToSelect(array('*'));
+        $curPage = $this->getRequest()->getParam('p',1);
+        if($customerId)
+        {
+            $customerSession = $this->_modelSession;
+            $tableMKproduct = $this->_resource->getTableName('multivendor_product');
+            $collection = $this->_product->getCollection();
+            $collection->addAttributeToSelect(array('*'));
             $collection->addAttributeToFilter('status',1);
             $collection->addAttributeToFilter('visibility', array('in' => array(2,3,4)));
-			if($customerSession->isLoggedIn()){
+            if($customerSession->isLoggedIn()){
 
-			}else{
-				$collection->addAttributeToFilter('status',1);
-			}
-			$collection->getSelect()->joinLeft(array('mk_product'=>$tableMKproduct),'e.entity_id = mk_product.product_id',array('mkproductstatus'=>"mk_product.status"))
-				->where('mk_product.user_id=?',$customerId)
+            }else{
+                $collection->addAttributeToFilter('status',1);
+            }
+            $collection->getSelect()->joinLeft(array('mk_product'=>$tableMKproduct),'e.entity_id = mk_product.product_id',array('mkproductstatus'=>"mk_product.status"))
+                ->where('mk_product.user_id=?',$customerId)
                 ->where('mk_product.status = 1');
-			//$collection->addAttributeToSort($orderBy,$sortOrder);
+            //$collection->addAttributeToSort($orderBy,$sortOrder);
             if($seller_search){
                 $collection->addAttributeToFilter('name', array('like' => '%'.$seller_search.'%'));
             }
-			if($litmit > 0)
-			{
-				$collection->setPageSize($litmit);
-			}
-			if($curPage > 1)
-			{
-				$collection->setCurPage($curPage);
-			}
-		}
-		return $collection;
-	}
+            if($litmit > 0)
+            {
+                $collection->setPageSize($litmit);
+            }
+            if($curPage > 1)
+            {
+                $collection->setCurPage($curPage);
+            }
+        }
+        return $collection;
+    }
 }

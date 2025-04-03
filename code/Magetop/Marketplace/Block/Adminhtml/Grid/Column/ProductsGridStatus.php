@@ -8,7 +8,7 @@
  **/
 namespace Magetop\Marketplace\Block\Adminhtml\Grid\Column;
 use \Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractRenderer;
-class ProductsGridProductName extends AbstractRenderer
+class ProductsGridStatus extends AbstractRenderer
 {
     protected $_customerCollectionFactory;
     protected $_product;
@@ -27,8 +27,8 @@ class ProductsGridProductName extends AbstractRenderer
     public function render(\Magento\Framework\DataObject $row)
     {
         $product = \Magento\Framework\App\ObjectManager::getInstance()->create('Magento\Catalog\Model\Product')->load($row->getProductId());
-        $url = $this->_objectmanager->create('Magento\Backend\Helper\Data')->getUrl('catalog/product/edit', array('id'=>$product->getId()));
-        $cell = '<a title="View Product" href="'.$url.'">'.$product->getName().'</a>';
+        $cell = '<p>'.$product->getStatus()==1?__('Enabled'):__('Disabled').'</p>';
         return $cell;
     }
+
 }

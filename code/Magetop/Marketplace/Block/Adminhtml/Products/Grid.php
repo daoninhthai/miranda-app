@@ -139,20 +139,33 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
             ]
         );
         $this->addColumn(
-            'product_status',
+            'product_approval',
             [
-                'header' => __('Status'),
+                'header' => __('Approval'),
                 'index' => 'status',
                 'type' => 'options',
                 'options' => array(
                     '0'=>'Pending',
                     '1'=>'Approved',
                     '2'=>'Unapproved',
-                    '3'=>'Active',
-                    '4'=>'Inactive',
-                    '5'=>'Not Submitted'
+                    '3'=>'Not Submitted'
                 ),
                 'renderer' => 'Magetop\Marketplace\Block\Adminhtml\Grid\Column\ProductsGridProductStatus'
+            ]
+        );
+        $this->addColumn(
+            'product_status',
+            [
+                'header' => __('Status'),
+                'index' => 'product_id',
+                'type' => 'options',
+                'options' => array(
+                    '1'=>'Enabled',
+                    '2'=>'Disabled',
+                    '3'=>'Out of Stock',
+
+                ),
+                'renderer' => 'Magetop\Marketplace\Block\Adminhtml\Grid\Column\ProductsGridStatus'
             ]
         );
         $block = $this->getLayout()->getBlock('grid.bottom.links');
@@ -184,22 +197,6 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'label' => __('Unapproval'),
                 'url' => $this->getUrl('*/*/massStatus/status/2/', ['_current' => true]),
                 'confirm' => "Are you sure you wan't to Unapproval selected items?"
-            ]
-        );
-        $this->getMassactionBlock()->addItem(
-            'active',
-            [
-                'label' => __('Active'),
-                'url' => $this->getUrl('*/*/massStatus/status/3/', ['_current' => true]),
-                'confirm' => "Are you sure you wan't to Active selected items?"
-            ]
-        );
-        $this->getMassactionBlock()->addItem(
-            'inactive',
-            [
-                'label' => __('Inactive'),
-                'url' => $this->getUrl('*/*/massStatus/status/4/', ['_current' => true]),
-                'confirm' => "Are you sure you wan't to Inactive selected items?"
             ]
         );
         return $this;

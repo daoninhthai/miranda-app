@@ -27,7 +27,7 @@ class ProductsGridStatus extends AbstractRenderer
     public function render(\Magento\Framework\DataObject $row)
     {
         $product = \Magento\Framework\App\ObjectManager::getInstance()->create('Magento\Catalog\Model\Product')->load($row->getProductId());
-        $cell = '<p>'.$product->getStatus()==1?__('Enabled'):__('Disabled').'</p>';
+        $cell = '<p>'.($product->getStatus()==1?__('Enabled'):__('Disabled')).'</p>';
         return $cell;
     }
 

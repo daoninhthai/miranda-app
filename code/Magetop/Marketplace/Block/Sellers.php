@@ -25,7 +25,7 @@ class Sellers extends \Magento\Framework\View\Element\Template
     /**
      * @var \Magento\Directory\Model\ResourceModel\Country\CollectionFactory
      */
-    protected $_directoriesFactory;	
+    protected $_directoriesFactory;
 	 /**
      * Core registry
      *
@@ -41,8 +41,8 @@ class Sellers extends \Magento\Framework\View\Element\Template
     protected $_formKey;
     protected $_mkProduct;
     protected $_country;
-    protected $_mkCoreOrder;    
-  
+    protected $_mkCoreOrder;
+
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
         \Magento\Directory\Model\ResourceModel\Country\CollectionFactory $directoriesFactory,
@@ -57,7 +57,7 @@ class Sellers extends \Magento\Framework\View\Element\Template
 		FormKey  $formKey,
 		MkProduct $mkProduct,
 		Country $country,
-        OrderFactory $mkCoreOrder,        
+        OrderFactory $mkCoreOrder,
         array $data = []
     ) {
         parent::__construct($context, $data);
@@ -73,7 +73,7 @@ class Sellers extends \Magento\Framework\View\Element\Template
 		$this->_formKey = $formKey;
 		$this->_mkProduct = $mkProduct;
 		$this->_country = $country;
-        $this->_mkCoreOrder = $mkCoreOrder;        
+        $this->_mkCoreOrder = $mkCoreOrder;
     }
 	/**
 	* get list Sellers
@@ -92,17 +92,17 @@ class Sellers extends \Magento\Framework\View\Element\Template
 				$productId = $_product->getId();
 			}else{
 				$productId = $_pId;
-			}			
+			}
 			$mkProductModel = $this->_mkProduct->create();
 			$mkCollection = $mkProductModel->getCollection()
 				->addFieldToFilter('product_id',$productId)
                 ->addFieldToFilter('status',1);
-                
-            //Kien 19/5/2020 - update filter seller approve        
+
+            //Kien 19/5/2020 - update filter seller approve
             $tableMKuser = $this->_resource->getTableName('multivendor_user');
             $mkCollection->getSelect()->joinLeft(array('mk_user'=>$tableMKuser),'main_table.user_id = mk_user.user_id',array())
                 ->where('mk_user.userstatus = 1');
-            
+
 			$mkProductData = $mkCollection->getFirstItem();
 			if($mkProductData->getUserId())
 			{
@@ -116,8 +116,10 @@ class Sellers extends \Magento\Framework\View\Element\Template
 				$seller = $sellers->getFirstItem();
 			}
 		}
+
 		return $seller;
 	}
+
 	/**
 	* get seller reviews
 	**/
@@ -126,7 +128,7 @@ class Sellers extends \Magento\Framework\View\Element\Template
 		$reviewsModel = $this->_reviewsFactory->create();
 		return $reviewsModel->getMKReview($userId);
 	}
-	/* 
+	/*
 	* get list reivew
 	*/
 	function getMKReViewItem($useId)
@@ -158,7 +160,7 @@ class Sellers extends \Magento\Framework\View\Element\Template
             if ($collection) {
                 // create pager block for collection
                 $pager = $this->getLayout()->createBlock('Magento\Theme\Block\Html\Pager','my.custom.pager');
-                $pager->setAvailableLimit(array(5=>5,10=>10,20=>20,'30'=>'30')); 
+                $pager->setAvailableLimit(array(5=>5,10=>10,20=>20,'30'=>'30'));
                 $pager->setCollection($collection);
                 $this->setChild('pager', $pager);
                 $collection->load();
@@ -172,7 +174,7 @@ class Sellers extends \Magento\Framework\View\Element\Template
     public function getPagerHtml()
     {
         return $this->getChildHtml('pager');
-    } 
+    }
 	function getMkProduct()
 	{
 		if($this->_coreRegistry->registry('product'))
@@ -181,7 +183,7 @@ class Sellers extends \Magento\Framework\View\Element\Template
 		}
 		return null;
 	}
-	/* 
+	/*
 	* get str country
 	* param $countryId
 	*/
@@ -216,12 +218,12 @@ class Sellers extends \Magento\Framework\View\Element\Template
 		return $this->_catalogImages;
 	}
 	/**
-	* check customer session 
+	* check customer session
 	**/
 	function checkMkCustomerLogin()
 	{
         $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-        $customer = $objectManager->create('Magento\Customer\Model\Session')->isLoggedIn();	   	   	   	   	   	   	   
+        $customer = $objectManager->create('Magento\Customer\Model\Session')->isLoggedIn();
 		if($customer){
 			return true;
 		}else{
@@ -231,7 +233,7 @@ class Sellers extends \Magento\Framework\View\Element\Template
     function checkCustomerOrderSeller($seller_id,$customer_email)
     {
         $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-        $ReviewOnOnlyOrderPurchase = $objectManager->create('Magetop\Marketplace\Helper\Data')->getReviewOnOnlyOrderPurchase();	   	   
+        $ReviewOnOnlyOrderPurchase = $objectManager->create('Magetop\Marketplace\Helper\Data')->getReviewOnOnlyOrderPurchase();
         if($ReviewOnOnlyOrderPurchase){
             $orders = $this->_mkCoreOrder->create()->getCollection();
             $tableSalelist = $this->_resource->getTableName('multivendor_saleslist');
@@ -246,7 +248,7 @@ class Sellers extends \Magento\Framework\View\Element\Template
         }else{
             return true;
         }
-    }  
+    }
     /**
      * @return array
      */

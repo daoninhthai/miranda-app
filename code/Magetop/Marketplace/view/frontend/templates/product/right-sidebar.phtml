@@ -8,7 +8,7 @@
  **/
  /* var Magetop\Marketplace\Block\Seller */
 ?>
-<?php 
+<?php
     $helperMk = $this->helper(\Magetop\Marketplace\Helper\Collection::class);
 	$seller = $block->getSellerProfile();
     $arKeyReview = array('price','value','quality');
@@ -17,7 +17,7 @@
 <?php $product = $block->getMkProduct(); ?>
 <?php $reviews = $block->getMKsellerReview($seller->getUserId()); ?>
 <?php $totalReview = 0; $i = 0; ?>
-<?php 
+<?php
         if(count($reviews)){
             foreach($reviews as $key => $review) {
                 if(in_array($key, $arKeyReview)) {
@@ -72,10 +72,10 @@
                 </div>
 
                 <div class="mst_term mv-row">
-                    <a href="#return-policies" class="store-name"><?php echo __('Return Policy'); ?></a>
+                    <a href="javascript:void(0)" id="return-policy-link" class="store-name"><?php echo __('Return Policy'); ?></a>
                 </div>
                 <div class="mst_term mv-row">
-                    <a href="#shipping-policies" class="store-name"><?php echo __('Shipping Policy'); ?></a>
+                    <a href="javascript:void(0)" id="return-shipping-policies-link" class="store-name"><?php echo __('Shipping Policy'); ?></a>
                 </div>
                 <div style="width:100%;" class="detail_seller_links">
                     <a href="<?php echo  $helperMk->getRewriteUrl('marketplace/seller/view/vendor/'.$seller->getStoreurl()); ?>"
@@ -108,6 +108,32 @@
         </form>
     </div>
 </div>
+    <!-- Popup Return Policy -->
+    <div id="return-policy-popup" style="display:none;">
+        <div class="return-policy-content">
+            <h3><?php echo __('Return Policy'); ?></h3>
+            <div class="return-policy-text">
+                <?php echo $seller->getData('returnpolicy') ? $block->escapeHtml($seller->getData('returnpolicy')) : __('No return policy specified.'); ?>
+            </div>
+            <button type="button" class="action-close" title="<?php echo __('Close'); ?>">
+                <span><?php echo __('Close'); ?></span>
+            </button>
+        </div>
+    </div>
+    <!-- Popup Shipping Policy -->
+    <div id="return-shipping-policies-popup" style="display:none;">
+        <div class="return-shipping-policies-content">
+            <h3><?php echo __('Shipping Policy'); ?></h3>
+            <div class="return-shipping-policies-text">
+                <?php echo $seller->getData('shippingpolicy') ? $block->escapeHtml($seller->getData('shippingpolicy')) : __('No return shipping policies specified.'); ?>
+            </div>
+            <button type="button" class="action-close" title="<?php echo __('Close'); ?>">
+                <span><?php echo __('Close'); ?></span>
+            </button>
+        </div>
+    </div>
+
+
 <script>
 require(['jquery', 'mage/mage'], function($) {
     var dataForm = $('#contact_seller_form');
@@ -116,5 +142,66 @@ require(['jquery', 'mage/mage'], function($) {
         ignore: ignore ? ':hidden:not(' + ignore + ')' : ':hidden'
     }).find('input:text').attr('autocomplete', 'off');
 })
+
+require([
+    'jquery',
+    'Magento_Ui/js/modal/modal'
+], function($, modal) {
+    $(document).ready(function() {
+        // Tạo options cho popup
+        var options = {
+            type: 'popup',
+            responsive: true,
+            innerScroll: true,
+            title: '<?php echo __('Return Policy'); ?>',
+            buttons: [{
+                text: '<?php echo __('Close'); ?>',
+                class: '',
+                click: function () {
+                    this.closeModal();
+                }
+            }]
+        };
+
+        // Khởi tạo popup
+        var popup = modal(options, $('#return-policy-popup'));
+
+        // Mở popup khi click vào link
+        $('#return-policy-link').on('click', function() {
+            $('#return-policy-popup').modal('openModal');
+        });
+    });
+});
+
+
+require([
+    'jquery',
+    'Magento_Ui/js/modal/modal'
+], function($, modal) {
+    $(document).ready(function() {
+        // Tạo options cho popup
+        var options = {
+            type: 'popup',
+            responsive: true,
+            innerScroll: true,
+            title: '<?php echo __('Return Shipping Policy'); ?>',
+            buttons: [{
+                text: '<?php echo __('Close'); ?>',
+                class: '',
+                click: function () {
+                    this.closeModal();
+                }
+            }]
+        };
+
+        // Khởi tạo popup
+        var popup = modal(options, $('#return-shipping-policies-popup'));
+
+        // Mở popup khi click vào link
+        $('#return-shipping-policies-link').on('click', function() {
+            $('#return-shipping-policies-popup').modal('openModal');
+        });
+    });
+});
 </script>
 <?php endif; ?>

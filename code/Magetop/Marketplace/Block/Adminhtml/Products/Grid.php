@@ -157,8 +157,13 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
             'product_status',
             [
                 'header' => __('Status'),
-                'index' => 'product_id',
-                'filter' => false,
+                'index' => 'status',
+                'type' => 'options',
+                'options' => array(
+                    '1'=>'Enabled',
+                    '2'=>'Disabled'
+
+                ),
                 'renderer' => 'Magetop\Marketplace\Block\Adminhtml\Grid\Column\ProductsGridStatus'
             ]
         );

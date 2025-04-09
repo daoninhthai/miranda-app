@@ -17,7 +17,7 @@ class Partner extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      */
     protected function _construct()
     {
-        $this->_init('multivendor_saleperpartner', 'id');
+            $this->_init('multivendor_saleperpartner', 'id');
     }
 
     protected function _beforeDelete(\Magento\Framework\Model\AbstractModel $object)

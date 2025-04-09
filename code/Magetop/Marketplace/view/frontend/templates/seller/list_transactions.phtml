@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
 * @author      Magetop Developer (Kien)
 * @package     Magento Multi Vendor Marketplace
@@ -19,19 +19,19 @@ $paymentmethodCollection = $block->getPaymentMethods()
 <!-- Withdrawal Request -->
 <div class="mst_mv_wrapper mvblock mgt-theme-div">
 	<div class="box-title">
-		<span><?php echo __('Withdrawal Request'); ?></span>           
+		<span><?php echo __('Withdrawal Request'); ?></span>
 	</div>
 	<div class="fieldset mst_mv_fieldset">
 		<div class="content-withdrawal">
     		<p>
-    			<strong><?php echo __('Your balance'); ?>:</strong> 
+    			<strong><?php echo __('Your balance'); ?>:</strong>
     			<b class="value" style="color: #ff3333;">
     				<?php echo $block->getPrice($_transactionDetail['amountremain']-$block->getPendingAmount(\Magento\Framework\App\ObjectManager::getInstance()->create('Magento\Customer\Model\Session')->getId())) ?>
     			</b>
     		</p>
     		<table summary="Withdrawal Request" id="withdrawal-request" class="data table withdrawal-request">
     			<caption class="table-caption"><?php echo __('Withdrawal Request'); ?></caption>
-                <?php 
+                <?php
                     if($paymentmethodCollection->count()){
                 ?>
             			<thead>
@@ -53,40 +53,58 @@ $paymentmethodCollection = $block->getPaymentMethods()
                             <?php } ?>
             			</tbody>
                 <?php } ?>
-    		</table>	
+    		</table>
 		</div>
 	</div>
-</div>	
+</div>
 <!-- End Withdrawal Request -->
 
 <!-- Transaction History -->
-<div class="mst_mv_wrapper mvblock mgt-theme-div">	
+<div class="mst_mv_wrapper mvblock mgt-theme-div">
 	<div class="box-title">
-		<span><?php echo __('Withdrawals History'); ?></span>           
+		<span><?php echo __('Withdrawals History'); ?></span>
 	</div>
     <div class="fieldset mst_mv_fieldset">
         <div class="grid">
             <div class="detail-transaction">
 				<p>
                     <div style="float: left;margin-bottom: 30px;">
-                        <strong><?php echo __('Total Amount Received'); ?>:</strong> 
+                    <div>
+                        <strong><?php echo __('Total Amount Received'); ?>:</strong>
                         <b class="value">
-                             <?php echo $block->getPrice($_transactionDetail['amountreceived']) ?>
+                            <?php echo $block->getPrice($_transactionDetail['amountreceived']) ?>
+                        </b>
+                    </div><br>
+                    <div>
+                        <strong><?php echo __('Total Sales'); ?>:</strong>
+                        <b class="value">
+                            <?php echo $block->getTotalSales() ?>
                         </b>
                     </div>
+
+                    </div>
                     <div style="float: right;">
-                        <strong><?php echo __('Total Amount Pending'); ?>:</strong> 
-                        <b class="value">
-                             <?php echo $block->getPrice($block->getPendingAmount(\Magento\Framework\App\ObjectManager::getInstance()->create('Magento\Customer\Model\Session')->getId())) ?>
-                        </b>   
-                    </div>                 
+                        <div>
+                            <strong><?php echo __('Total Amount Pending'); ?>:</strong>
+                            <b class="value">
+                                <?php echo $block->getPrice($block->getPendingAmount(\Magento\Framework\App\ObjectManager::getInstance()->create('Magento\Customer\Model\Session')->getId())) ?>
+                            </b>
+                        </div><br>
+                        <div>
+                            <strong><?php echo __('Total Commission'); ?>:</strong>
+                            <b class="value">
+                                <?php echo $block->getTotalCommission() ?>
+                            </b>
+                        </div>
+
+                    </div>
                 </p>
 			</div>
             <div class="wrap-mv-content">
                 <form method="post" action="<?php echo $block->getUrl() ?>marketplace/seller/myTransactions">
                     <table cellspacing="0" class="border mst-table-style">
                         <thead>
-                            <tr id="mst_mv_tr_heading">                            
+                            <tr id="mst_mv_tr_heading">
                                 <th><span><?php echo __('Transaction Id'); ?></span></th>
                                 <th><span><?php echo __('Date'); ?></span></th>
                                 <th><span>&nbsp;</span></th>
@@ -100,7 +118,7 @@ $paymentmethodCollection = $block->getPaymentMethods()
                                 <td>
                                     <span class="mst_mv_td_span">
                                         <input type="text" value="<?php echo $fromDate; ?>" class="input-text" id="special_from_date" name="from_date" placeholder="<?php echo __('From'); ?>" />
-                                    </span>				    			
+                                    </span>
                                     <span class="mst_mv_td_span">
                                         <input type="text" value="<?php echo $toDate; ?>" class="input-text" id="special_to_date" name="to_date" placeholder="<?php echo __('To'); ?>" />
                                     </span>
@@ -122,17 +140,17 @@ $paymentmethodCollection = $block->getPaymentMethods()
                             <th><?php echo __('Payment Method'); ?></th>
                             <th><?php echo __('Amount'); ?></th>
                             <th><?php echo __('Admin Comment'); ?></th>
-                            <th><?php echo __('Created'); ?></th>      
-                            <th><?php echo __('Status'); ?></th>      
-                            <th><?php echo __('View'); ?></th>               
+                            <th><?php echo __('Created'); ?></th>
+                            <th><?php echo __('Status'); ?></th>
+                            <th><?php echo __('View'); ?></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if(count($_transactionCollection)) : ?>                    
+                        <?php if(count($_transactionCollection)) : ?>
                             <?php foreach($_transactionCollection as $transaction) : ?>
                                 <tr class="item">
                                     <td>
-                                        #<?php echo $transaction->getId() ?>	
+                                        #<?php echo $transaction->getId() ?>
                                     </td>
                                     <td>
                                         <span class="mst_label">
@@ -141,7 +159,7 @@ $paymentmethodCollection = $block->getPaymentMethods()
                                     </td>
                                     <td>
                                         <span class="mst_label">
-                                            <?php 
+                                            <?php
                                                 if($transaction->getTransactionIdOnline()){
                                                     echo __('Marketplace Paypal Adaptive');
                                                 }else{

@@ -3,6 +3,11 @@
     <type name="Magetop\Marketplace\Controller\Product\Builder">
         <plugin name="configurable" type="Magetop\Marketplace\Controller\Product\Builder\Plugin" sortOrder="50"/>
     </type>
+    <type name="Magento\Catalog\Controller\Product\View">
+        <plugin name="magetop_marketplace_product_approval_check"
+                type="Magetop\Marketplace\Plugin\Catalog\Controller\Product\View"
+                sortOrder="10"/>
+    </type>
     <type name="Magento\Catalog\Model\Product\CopyConstructor\Composite">
         <arguments>
             <argument name="constructors" xsi:type="array">

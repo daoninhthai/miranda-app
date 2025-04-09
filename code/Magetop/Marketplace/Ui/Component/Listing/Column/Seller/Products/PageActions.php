@@ -21,5 +21,5 @@ class PageActions extends \Magento\Ui\Component\Listing\Columns\Column
             }
         }
         return $dataSource;
-    }    
+    }
 }

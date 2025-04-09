@@ -19,8 +19,8 @@ class Transactionlist extends \Magento\Framework\View\Element\Template
      * @var Magento\Framework\App\ResourceConnection
     */
 	protected $_resource;
-	protected $_transactionsFactory;    
-    protected $_partnerFactory;   
+	protected $_transactionsFactory;
+    protected $_partnerFactory;
     protected $_objectmanager;
     protected $_customerSession;
     protected $_priceHelper;
@@ -33,10 +33,10 @@ class Transactionlist extends \Magento\Framework\View\Element\Template
         \Magento\Framework\View\Element\Template\Context $context,
 		ResourceConnection $resource,
 		CustomerFactory $customerFactory,
-        \Magetop\Marketplace\Model\TransactionsFactory $transactionsFactory,  
-        \Magetop\Marketplace\Model\PartnerFactory $partnerFactory,      
-        \Magento\Framework\ObjectManagerInterface $objectmanager,  
-        \Magento\Customer\Model\Session $customerSession,  
+        \Magetop\Marketplace\Model\TransactionsFactory $transactionsFactory,
+        \Magetop\Marketplace\Model\PartnerFactory $partnerFactory,
+        \Magento\Framework\ObjectManagerInterface $objectmanager,
+        \Magento\Customer\Model\Session $customerSession,
         \Magento\Framework\Pricing\Helper\Data $priceHelper,
         \Magetop\Marketplace\Model\SaleslistFactory $saleslistFactory,
         array $data = []
@@ -45,30 +45,30 @@ class Transactionlist extends \Magento\Framework\View\Element\Template
 		$this->_resource = $resource;
 		$this->_customerFactory = $customerFactory;
         $this->_transactionsFactory = $transactionsFactory;
-        $this->_partnerFactory = $partnerFactory;   
-        $this->_objectmanager = $objectmanager;   
-        $this->_customerSession = $customerSession;   
+        $this->_partnerFactory = $partnerFactory;
+        $this->_objectmanager = $objectmanager;
+        $this->_customerSession = $customerSession;
         $this->_priceHelper = $priceHelper;
 		$this->_saleslistFactory = $saleslistFactory;
     }
-    
+
     public function getPaymentMethods()
     {
         return $this->_objectmanager->create('Magetop\Marketplace\Model\Payments')->getCollection()
-                                                                                  ->addFieldToFilter('status',1)   
+                                                                                  ->addFieldToFilter('status',1)
                                                                                   ->setOrder('sortorder','ASC');
     }
-    
+
     public function getPaymentMethodById($id)
     {
         return $this->_objectmanager->create('Magetop\Marketplace\Model\Payments')->load($id)->getData();
     }
-    
+
     public function getPrice($price)
     {
         return \Magento\Framework\App\ObjectManager::getInstance()->get('Magento\Framework\Pricing\Helper\Data')->currency($price,true,false);
     }
-    
+
     public function getPendingAmount($seller_id)
     {
         $data = $this->_objectmanager->create('Magetop\Marketplace\Model\Transactions')->getCollection()
@@ -80,7 +80,7 @@ class Transactionlist extends \Magento\Framework\View\Element\Template
         }
         return $value;
     }
-    
+
     public function checkAmountPay($can_withdraw,$amount)
     {
         if($can_withdraw >= $amount){
@@ -89,7 +89,7 @@ class Transactionlist extends \Magento\Framework\View\Element\Template
             return false;
         }
     }
-    
+
     function getDetailTransaction()
 	{
         $customerSession = $this->_customerSession;
@@ -113,7 +113,7 @@ class Transactionlist extends \Magento\Framework\View\Element\Template
         	if(count($params)){
         		if(isset($params['transaction_id']) && $params['transaction_id'] != ''){
         			$transactionId = trim($params['transaction_id']);
-        			$collection->addFieldToFilter('transaction_id',array('like'=>'%'.$transactionId.'%'));	
+        			$collection->addFieldToFilter('transaction_id',array('like'=>'%'.$transactionId.'%'));
         		}
         		$fromDate = isset($params['from_date']) ? trim($params['from_date']) : '';
         		$toDate = isset($params['to_date']) ? trim($params['to_date']) : '';
@@ -140,7 +140,7 @@ class Transactionlist extends \Magento\Framework\View\Element\Template
         }
         return $collection;
 	}
-    
+
     protected function _prepareLayout()
     {
         $collection = $this->getTransactions();
@@ -148,7 +148,7 @@ class Transactionlist extends \Magento\Framework\View\Element\Template
         if ($collection) {
             // create pager block for collection
             $pager = $this->getLayout()->createBlock('Magento\Theme\Block\Html\Pager','my.custom.pager');
-            $pager->setAvailableLimit(array(5=>5,10=>10,20=>20,'30'=>'30')); 
+            $pager->setAvailableLimit(array(5=>5,10=>10,20=>20,'30'=>'30'));
             $pager->setCollection($collection);
             $this->setChild('pager', $pager);
             $collection->load();
@@ -162,9 +162,9 @@ class Transactionlist extends \Magento\Framework\View\Element\Template
     public function getPagerHtml()
     {
         return $this->getChildHtml('pager');
-    } 
-    
-    /* 
+    }
+
+    /*
 	* get Price Helper
 	* return \Magento\Framework\Pricing\Helper\Data
 	*/
@@ -202,7 +202,7 @@ class Transactionlist extends \Magento\Framework\View\Element\Template
 		}
 		return $collection;
 	}
-    
+
     function getMkDetailTransactionForPay($transactionId)
 	{
 		$transaction = null;
@@ -214,19 +214,19 @@ class Transactionlist extends \Magento\Framework\View\Element\Template
 		}
 		return $collection;
 	}
-    
+
     function getDetailPartnerForPay($sellerid)
 	{
         $collection = $this->_partnerFactory->create()->getCollection()->addFieldToFilter('sellerid',$sellerid)->getFirstItem();
         return $collection;
 	}
-    
+
     public function getSellerDetailById($seller_id){
 		$customer = $this->_objectmanager->create('Magento\Customer\Model\Customer')->load( $seller_id );
 		$customer_name = $customer->getData('firstname') . ' ' . $customer->getData('lastname');
         return $customer_name;
     }
-    /* 
+    /*
 	* get data from saleslist model
 	*/
 	function getSalelist($transactionId)
@@ -246,7 +246,7 @@ class Transactionlist extends \Magento\Framework\View\Element\Template
 		}
 		return $collection;
 	}
-	
+
 	/**
 	* get order address
 	* return $item
@@ -268,7 +268,7 @@ class Transactionlist extends \Magento\Framework\View\Element\Template
 	}
 	/**
 	* get Mk config
-	* @return string 
+	* @return string
 	**/
 	function getMkConfig($field)
 	{
@@ -278,4 +278,26 @@ class Transactionlist extends \Magento\Framework\View\Element\Template
 	{
 		return $this->_storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
 	}
+    function getTotalSales()
+	{
+        $customerSession = $this->_customerSession;
+        if($customerSession->isLoggedIn()){$sellerid = $customerSession->getId();
+            $totalSales =  \Magento\Framework\App\ObjectManager::getInstance()->create('\Magetop\Marketplace\Model\Partner')->load($sellerid,'sellerid')->getData('totalsale');
+            return $this->getPrice($totalSales);
+        }else{
+            return $this->getPrice(null);
+        }
+
+	}
+    function getTotalCommission()
+    {
+        $customerSession = $this->_customerSession;
+        if($customerSession->isLoggedIn()){$sellerid = $customerSession->getId();
+            $totalCommission = \Magento\Framework\App\ObjectManager::getInstance()->create('\Magetop\Marketplace\Model\Partner')->load($sellerid,'sellerid')->getData('commission');
+            return  $this->getPrice($totalCommission);
+        }else{
+            return $this->getPrice(null);
+        }
+
+    }
 }

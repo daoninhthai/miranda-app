@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
 * @author      Magetop Developer (Kien)
 * @package     Magento Multi Vendor Marketplace
@@ -25,7 +25,7 @@ $limit = $this->getRequest()->getParam('limit',5);
                     <form method="post" action="<?php echo $block->getUrl() ?>marketplace/seller/myProducts">
                         <table cellspacing="0" class="border mst-table-style">
                             <thead>
-                                <tr id="mst_mv_tr_heading">                            
+                                <tr id="mst_mv_tr_heading">
                                     <th><span><?php echo __('Product Id'); ?></span></th>
                                     <th><span><?php echo __('Date'); ?></span></th>
                                     <th><span><?php echo __('Product Status'); ?></span></th>
@@ -40,7 +40,7 @@ $limit = $this->getRequest()->getParam('limit',5);
                                     <td>
                                         <span class="mst_mv_td_span">
                                             <input type="text" value="<?php echo $fromDate; ?>" class="input-text" id="special_from_date" name="from_date" placeholder="<?php echo __('From'); ?>">
-                                        </span>				    			
+                                        </span>
                                         <span class="mst_mv_td_span">
                                             <input type="text" value="<?php echo $toDate; ?>" class="input-text" id="special_to_date" name="to_date" placeholder="<?php echo __('To'); ?>">
                                         </span>
@@ -51,10 +51,10 @@ $limit = $this->getRequest()->getParam('limit',5);
                                                 <?php echo __('--- All ---'); ?>
                                             </option>
                                             <option value="1" <?php if($productStatus == '1') { echo 'selected'; } ?>>
-                                                <?php echo __('Approved'); ?>	
+                                                <?php echo __('Approved'); ?>
                                             </option>
                                             <option value="0" <?php if($productStatus == '0') { echo 'selected'; } ?>>
-                                                <?php echo __('Unapproved'); ?>	
+                                                <?php echo __('Unapproved'); ?>
                                             </option>
                                         </select>
                                     </td>
@@ -83,9 +83,9 @@ $limit = $this->getRequest()->getParam('limit',5);
                                     <th><?php echo __('Status'); ?></th>
                                     <th><?php echo __('QTY'); ?></th>
                                     <!--<th><?php echo __('Earn Amount'); ?></th>-->
-                                    <th><?php echo __('# '); ?></th>                       
+                                    <th><?php echo __('# '); ?></th>
                                 </tr>
-                            </thead>
+                            </thead>abc
                             <tbody>
                                 <?php foreach($_productCollection as $product) : ?>
                                     <tr class="item">
@@ -93,7 +93,7 @@ $limit = $this->getRequest()->getParam('limit',5);
                                             <input type="checkbox" class="checkbox" name="product_selected[]" value="<?php echo $product->getId(); ?>" />
                                         </td>
                                         <td>
-                                            #<?php echo $product->getId(); ?>	
+                                            #<?php echo $product->getId(); ?>
                                         </td>
                                         <td>
                                             <span class="mst_label">
@@ -121,7 +121,7 @@ $limit = $this->getRequest()->getParam('limit',5);
                                         </td>
                                         <td>
                                             <span class="mst_label">
-                                                <?php 
+                                                <?php
                                                     if ($product->getMkproductstatus()) {
                                                         echo '<span class="grid-severity-notice"><span>Approved</span></span>';
                                                     } else {
@@ -185,11 +185,11 @@ $limit = $this->getRequest()->getParam('limit',5);
             if(this.checked==true){
                 $('input[type=checkbox][name^=product_selected]').each(function(){
                     this.checked=true;
-                });		
+                });
             }else{
                 $('input[type=checkbox][name^=product_selected]').each(function(){
                     this.checked=false;
-                });			
+                });
             }
         });
         $('button#delete-allproduct').on('click',function(){
@@ -219,9 +219,9 @@ $limit = $this->getRequest()->getParam('limit',5);
                         cancel: function(){},
                         always: function(){}
                     }
-                });		
-            }	
-        });	
+                });
+            }
+        });
     });
 </script>
 <style>

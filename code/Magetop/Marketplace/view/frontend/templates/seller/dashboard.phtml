@@ -130,6 +130,9 @@
                 				<li class="total_payout">
                 					<p><?php echo __('Total Payout'); ?> - <?php echo $block->getMkPriceHelper()->currency($partnerAmount['amountreceived'],true,false); ?></p>
                 				</li>
+                                <li class="total_commission">
+                					<p><?php echo __('Total Commission'); ?> - <?php echo $block->getMkPriceHelper()->currency($partnerAmount['commission'],true,false); ?></p>
+                				</li>
                 			</ul>
                 		</div>
                 	</div>
@@ -188,7 +191,7 @@
             		</div>
             		<div class="fieldset mst_mv_fieldset">
             			<div class="sale-chart">
-                			<?php 
+                			<?php
                     			if ( $this->getRequest()->getPost('select_filter') ) {
                     				$select_filter = $this->getRequest()->getPost('select_filter');
                         			switch ( $this->getRequest()->getPost('select_filter') ) {
@@ -201,7 +204,7 @@
                         					$date_from = date("Y-m-d", strtotime("first day of this month"));
                         					$date_to = date("Y-m-d", strtotime("last day of this month"));
                         					$custom_sale = $block->getCustomsale( $select_filter, $date_from , $date_to );
-                        					break;	
+                        					break;
                         				case "last week":
                         					$date_from = date("Y-m-d", strtotime("monday last week"));
                         					$date_to = date("Y-m-d", strtotime("sunday last week"));
@@ -211,7 +214,7 @@
                         					$date_from = date("Y-m-d", strtotime("monday this week"));
                         					$date_to = date("Y-m-d", strtotime("sunday this week"));
                         					$custom_sale = $block->getCustomsale( $select_filter, $date_from , $date_to );
-                        					break;	
+                        					break;
                         				case "custom":
                         					$date_from = $this->getRequest()->getPost('date_from');
                         					$date_to = $this->getRequest()->getPost('date_to');
@@ -221,12 +224,12 @@
                         					$date_from = $this->getRequest()->getPost('date_from');
                         					$date_to = $this->getRequest()->getPost('date_to');
                         					$custom_sale = $block->getCustomsale( $select_filter, $date_from , $date_to );
-                        					break;	
+                        					break;
                         				default:
                         					$date_from = date("Y-m-d", strtotime("first day of this month"));
                         					$date_to = date("Y-m-d", strtotime("last day of this month"));
                         					$custom_sale = $block->getCustomsale( $select_filter, $date_from , $date_to );
-                        			}	
+                        			}
                     			}else {
                     				$date_from = date("Y-m-d", strtotime("first day of this month"));
                     				$date_to = date("Y-m-d", strtotime("last day of this month"));
@@ -289,7 +292,7 @@
                     					formatter: function (x) { return x + ""}
                     				});
 								});
-                			});	
+                			});
             			</script>
                         <div style="clear: both;"></div>
             		</div>
@@ -432,3 +435,14 @@
         </div>
     </div>
 </div>
+
+<style>
+    .total_commission {
+        background: gray;
+        padding: 10px 20px;
+    }
+    .mst_mv_wrapper .content_wr ul.marketplace_totalsale li {
+        width: 33% !important;
+        margin: 0 !important;
+    }
+</style>

@@ -17,11 +17,11 @@ class SellerDashboard extends \Magento\Framework\View\Element\Template
 	protected $_orderAddess;
 	protected $_country;
     protected $_saleslistFactory;
-    protected $_transactionsFactory;    
-    protected $_partnerFactory;   
+    protected $_transactionsFactory;
+    protected $_partnerFactory;
     protected $_reviewsFactory;
     protected $_productsFactory;
-	
+
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
 		\Magento\Customer\Model\Session $customerSession,
@@ -31,8 +31,8 @@ class SellerDashboard extends \Magento\Framework\View\Element\Template
 		\Magento\Sales\Model\Order\Address $orderAddess,
 		\Magento\Directory\Model\Country $country,
 		\Magetop\Marketplace\Model\SaleslistFactory $saleslistFactory,
-        \Magetop\Marketplace\Model\TransactionsFactory $transactionsFactory,  
-        \Magetop\Marketplace\Model\PartnerFactory $partnerFactory,    
+        \Magetop\Marketplace\Model\TransactionsFactory $transactionsFactory,
+        \Magetop\Marketplace\Model\PartnerFactory $partnerFactory,
         \Magetop\Marketplace\Model\ReviewsFactory $reviewsFactory,
 		\Magento\Catalog\Model\ProductFactory $productsFactory,
         array $data = []
@@ -45,12 +45,12 @@ class SellerDashboard extends \Magento\Framework\View\Element\Template
 		$this->_country = $country;
 		$this->_saleslistFactory = $saleslistFactory;
         $this->_transactionsFactory = $transactionsFactory;
-        $this->_partnerFactory = $partnerFactory;  
+        $this->_partnerFactory = $partnerFactory;
         $this->_reviewsFactory = $reviewsFactory;
         $this->_productsFactory = $productsFactory;
         parent::__construct($context, $data);
     }
-    
+
     public function getTodaySales(){
         $customerSession = $this->_customerSession;
 		$sellerid = $customerSession->getId();
@@ -62,17 +62,17 @@ class SellerDashboard extends \Magento\Framework\View\Element\Template
 			$tableSalelist = $this->_resource->getTableName('multivendor_saleslist');
 			$coreOrderModel = $this->_mkCoreOrder->create();
 			$orders = $coreOrderModel->getCollection();
-            
+
             //Code get time in today -> tomorrow
 			$fromDate = date('Y-m-d');
 			$toDate = date("Y-m-d", strtotime('tomorrow'));
-            
+
             if($fromDate != '' && $toDate != '')
 			{
 				$orders->addFieldToFilter('created_at',array('gteq'=>$fromDate));
 				$orders->addFieldToFilter('created_at',array('lteq'=>$toDate));
 			}
-            
+
 			$orders->getSelect()->joinLeft(
                 array('mk_sales_list'=>$tableSalelist),'main_table.entity_id = mk_sales_list.orderid',
                 array('total_commis'=>"SUM(totalcommision)",'totalamount'=>"SUM(totalamount)",'actualparterprocost'=>"SUM(actualparterprocost)",'sellerid')
@@ -93,17 +93,17 @@ class SellerDashboard extends \Magento\Framework\View\Element\Template
 			$tableSalelist = $this->_resource->getTableName('multivendor_saleslist');
 			$coreOrderModel = $this->_mkCoreOrder->create();
 			$orders = $coreOrderModel->getCollection();
-            
+
             //Code get time in today -> tomorrow
 			$fromDate = date('Y-m-d');
 			$toDate = date("Y-m-d", strtotime('tomorrow'));
-            
+
             /* if($fromDate != '' && $toDate != '')
 			{
 				$orders->addFieldToFilter('created_at',array('gteq'=>$fromDate));
 				$orders->addFieldToFilter('created_at',array('lteq'=>$toDate));
 			} */
-            
+
 			$orders->getSelect()->joinLeft(
                 array('mk_sales_list'=>$tableSalelist),'main_table.entity_id = mk_sales_list.orderid',
                 array('total_commis'=>"SUM(totalcommision)",'totalamount'=>"SUM(totalamount)",'actualparterprocost'=>"SUM(actualparterprocost)",'sellerid')
@@ -124,17 +124,17 @@ class SellerDashboard extends \Magento\Framework\View\Element\Template
 			$tableSalelist = $this->_resource->getTableName('multivendor_saleslist');
 			$coreOrderModel = $this->_mkCoreOrder->create();
 			$orders = $coreOrderModel->getCollection();
-            
+
             //Code get time in today -> tomorrow
 			$fromDate = date('Y-m-d');
 			$toDate = date("Y-m-d", strtotime('tomorrow'));
-            
+
             if($fromDate != '' && $toDate != '')
 			{
 				$orders->addFieldToFilter('created_at',array('gteq'=>$fromDate));
 				$orders->addFieldToFilter('created_at',array('lteq'=>$toDate));
 			}
-            
+
 			$orders->getSelect()->joinLeft(
                 array('mk_sales_list'=>$tableSalelist),'main_table.entity_id = mk_sales_list.orderid',
                 array('total_commis'=>"SUM(totalcommision)",'totalamount'=>"SUM(totalamount)",'actualparterprocost'=>"SUM(actualparterprocost)",'sellerid')
@@ -161,27 +161,27 @@ class SellerDashboard extends \Magento\Framework\View\Element\Template
 			$tableSalelist = $this->_resource->getTableName('multivendor_saleslist');
 			$coreOrderModel = $this->_mkCoreOrder->create();
 			$orders = $coreOrderModel->getCollection();
-            
+
             //Code get time in week
             $d = time();
             $dayIndex = date('w', $d);
-            if ($dayIndex >= 2) { 
+            if ($dayIndex >= 2) {
                 $dx = strtotime(date('Y-m-d 00:00:00', $d-($dayIndex-2)*24*3600));
                 $dy = strtotime(date('Y-m-d 23:59:59', $dx+6*24*3600));
             } else {
-                $dy = strtotime(date('Y-m-d 00:00:00', $d+(1-$dayIndex )*24*3600)); 
+                $dy = strtotime(date('Y-m-d 00:00:00', $d+(1-$dayIndex )*24*3600));
                 $dx = strtotime(date('Y-m-d 23:59:59', $dy-6*24*3600));
             }
-            
+
 			$fromDate = date('Y-m-d', $dx);
 			$toDate =  date('Y-m-d', $dy);
-            
+
             if($fromDate != '' && $toDate != '')
 			{
 				$orders->addFieldToFilter('created_at',array('gteq'=>$fromDate));
 				$orders->addFieldToFilter('created_at',array('lteq'=>$toDate));
 			}
-            
+
 			$orders->getSelect()->joinLeft(
                 array('mk_sales_list'=>$tableSalelist),'main_table.entity_id = mk_sales_list.orderid',
                 array('total_commis'=>"SUM(totalcommision)",'totalamount'=>"SUM(totalamount)",'actualparterprocost'=>"SUM(actualparterprocost)",'sellerid')
@@ -208,17 +208,17 @@ class SellerDashboard extends \Magento\Framework\View\Element\Template
 			$tableSalelist = $this->_resource->getTableName('multivendor_saleslist');
 			$coreOrderModel = $this->_mkCoreOrder->create();
 			$orders = $coreOrderModel->getCollection();
-            
+
             //Code get time in month
 			$fromDate = date("Y-m-d", strtotime("first day of this month"));
 			$toDate =  date("Y-m-d", strtotime("last day of this month"));
-            
+
             if($fromDate != '' && $toDate != '')
 			{
 				$orders->addFieldToFilter('created_at',array('gteq'=>$fromDate));
 				$orders->addFieldToFilter('created_at',array('lteq'=>$toDate));
 			}
-            
+
 			$orders->getSelect()->joinLeft(
                 array('mk_sales_list'=>$tableSalelist),'main_table.entity_id = mk_sales_list.orderid',
                 array('total_commis'=>"SUM(totalcommision)",'totalamount'=>"SUM(totalamount)",'actualparterprocost'=>"SUM(actualparterprocost)",'sellerid')
@@ -245,17 +245,17 @@ class SellerDashboard extends \Magento\Framework\View\Element\Template
 			$tableSalelist = $this->_resource->getTableName('multivendor_saleslist');
 			$coreOrderModel = $this->_mkCoreOrder->create();
 			$orders = $coreOrderModel->getCollection();
-            
+
             //Code get time in month
 			$fromDate = date("Y-m-d", strtotime("first day of january"));
 			$toDate =  date("Y-m-d", strtotime("last day of december"));
-            
+
             if($fromDate != '' && $toDate != '')
 			{
 				$orders->addFieldToFilter('created_at',array('gteq'=>$fromDate));
 				$orders->addFieldToFilter('created_at',array('lteq'=>$toDate));
 			}
-            
+
 			$orders->getSelect()->joinLeft(
                 array('mk_sales_list'=>$tableSalelist),'main_table.entity_id = mk_sales_list.orderid',
                 array('total_commis'=>"SUM(totalcommision)",'totalamount'=>"SUM(totalamount)",'actualparterprocost'=>"SUM(actualparterprocost)",'sellerid')
@@ -282,17 +282,17 @@ class SellerDashboard extends \Magento\Framework\View\Element\Template
 			$tableSalelist = $this->_resource->getTableName('multivendor_saleslist');
 			$coreOrderModel = $this->_mkCoreOrder->create();
 			$orders = $coreOrderModel->getCollection();
-            
+
             //Code get time in month
 			$fromDate = date("Y-m-d", strtotime("first day of january"));
 			$toDate =  date("Y-m-d", strtotime("last day of december"));
-            
+
             /* if($fromDate != '' && $toDate != '')
 			{
 				$orders->addFieldToFilter('created_at',array('gteq'=>$fromDate));
 				$orders->addFieldToFilter('created_at',array('lteq'=>$toDate));
 			} */
-            
+
 			$orders->getSelect()->joinLeft(
                 array('mk_sales_list'=>$tableSalelist),'main_table.entity_id = mk_sales_list.orderid',
                 array('total_commis'=>"SUM(totalcommision)",'totalamount'=>"SUM(totalamount)",'actualparterprocost'=>"SUM(actualparterprocost)",'sellerid')
@@ -311,32 +311,32 @@ class SellerDashboard extends \Magento\Framework\View\Element\Template
 	public function getMonthlysale() {
 		$customerSession = $this->_customerSession;
 		$sellerid = $customerSession->getId();
-		$data = array();	
+		$data = array();
 		$curryear = date('Y');
-		
+
 		for($i=1;$i<=12;$i++){
-			
+
 			$mkSalelistModel = $this->_saleslistFactory->create();
 			$tableSalelist = $this->_resource->getTableName('multivendor_saleslist');
 			$coreOrderModel = $this->_mkCoreOrder->create();
 			$orders = $coreOrderModel->getCollection();
-			
+
 			$fromDate = $curryear."-".$i."-01 00:00:00";
 			$toDate = $curryear."-".$i."-31 23:59:59";
-            
+
             if($fromDate != '' && $toDate != '')
 			{
 				$orders->addFieldToFilter('created_at',array('gteq'=>$fromDate));
 				$orders->addFieldToFilter('created_at',array('lteq'=>$toDate));
 			}
-			
+
 			$orders->getSelect()->joinLeft(
                 array('mk_sales_list'=>$tableSalelist),'main_table.entity_id = mk_sales_list.orderid',
                 array('total_commis'=>"SUM(totalcommision)",'totalamount'=>"SUM(totalamount)",'actualparterprocost'=>"SUM(actualparterprocost)",'sellerid')
             );
 			$orders->getSelect()->where('mk_sales_list.sellerid=?',$sellerid);
 			$orders->getSelect()->group('main_table.entity_id');
-			
+
 		    $sum = array();
 		    $temp = 0;
 			foreach ($orders as $record) {
@@ -349,7 +349,7 @@ class SellerDashboard extends \Magento\Framework\View\Element\Template
 	public function getCustomsale( $select_filter , $date_from , $date_to ) {
 		$customerSession = $this->_customerSession;
 		$sellerid = $customerSession->getId();
-		$data = array();	
+		$data = array();
 		$curryear = date('Y');
 		/*$date = '05/30/2020';
 		$end = '06/06/2020'; */
@@ -361,33 +361,33 @@ class SellerDashboard extends \Magento\Framework\View\Element\Template
 			$year = date('Y', strtotime($date));
 			$month = date('m', strtotime($date));
 			$day = date('d', strtotime($date));
-			
+
 			$fromDate = $year."-".$month."-".$day." 00:00:00";
 			$toDate = $year."-".$month."-".$day." 23:59:59";
-			
+
 			$date = date("Y-m-d", strtotime("+1 day", strtotime($date)));
-					
+
 			$mkSalelistModel = $this->_saleslistFactory->create();
 			$tableSalelist = $this->_resource->getTableName('multivendor_saleslist');
 			$coreOrderModel = $this->_mkCoreOrder->create();
 			$orders = $coreOrderModel->getCollection();
-			
+
 			/* $fromDate = $curryear."-04-".$i." 00:00:00";
 			$toDate = $curryear."-04-".$i." 23:59:59"; */
-            
+
             if($fromDate != '' && $toDate != '')
 			{
 				$orders->addFieldToFilter('created_at',array('gteq'=>$fromDate));
 				$orders->addFieldToFilter('created_at',array('lteq'=>$toDate));
 			}
-			
+
 			$orders->getSelect()->joinLeft(
                 array('mk_sales_list'=>$tableSalelist),'main_table.entity_id = mk_sales_list.orderid',
                 array('total_commis'=>"SUM(totalcommision)",'totalamount'=>"SUM(totalamount)",'actualparterprocost'=>"SUM(actualparterprocost)",'sellerid')
             );
 			$orders->getSelect()->where('mk_sales_list.sellerid=?',$sellerid);
 			$orders->getSelect()->group('main_table.entity_id');
-			
+
 		    $sum = array();
 		    /* old $temp = 0;
 			foreach ($orders as $record) {
@@ -415,7 +415,7 @@ class SellerDashboard extends \Magento\Framework\View\Element\Template
         $collection = $this->_partnerFactory->create()->getCollection()->addFieldToFilter('sellerid',$sellerid)->getFirstItem();
         return $collection;
     }
-	/* 
+	/*
 	* get List Sellers orders
 	* @param int $cutomerId
 	* return $items
@@ -438,7 +438,7 @@ class SellerDashboard extends \Magento\Framework\View\Element\Template
 				if(isset($params['order_id']) && $params['order_id'] != '')
 				{
 					$orderId = trim($params['order_id']);
-					$orders->addFieldToFilter('increment_id',array('like'=>'%'.$orderId.'%'));	
+					$orders->addFieldToFilter('increment_id',array('like'=>'%'.$orderId.'%'));
 				}
 				$fromDate = isset($params['from_date']) ? trim($params['from_date']) : '';
 				$toDate = isset($params['to_date']) ? trim($params['to_date']) : '';
@@ -492,7 +492,7 @@ class SellerDashboard extends \Magento\Framework\View\Element\Template
 		}
 		return $collection;
     }
-	/* 
+	/*
 	* get Price Helper
 	* return \Magento\Framework\Pricing\Helper\Data
 	*/
@@ -500,7 +500,7 @@ class SellerDashboard extends \Magento\Framework\View\Element\Template
 	{
 		return $this->_priceHelper;
 	}
-	/* 
+	/*
 	* get data from saleslist model
 	*/
 	function getSalelist($orderId,$porductId)
@@ -596,11 +596,11 @@ class SellerDashboard extends \Magento\Framework\View\Element\Template
 			$tableSalelist = $this->_resource->getTableName('multivendor_saleslist');
 			$coreOrderModel = $this->_mkCoreOrder->create();
 			$orders = $coreOrderModel->getCollection();
-            
+
             //Code get time in today -> tomorrow
 			/* $fromDate = date('Y-m-d');
 			$toDate = date("Y-m-d", strtotime('tomorrow'));
-            
+
             if($fromDate != '' && $toDate != '')
 			{
 				$orders->addFieldToFilter('created_at',array('gteq'=>$fromDate));
@@ -609,9 +609,9 @@ class SellerDashboard extends \Magento\Framework\View\Element\Template
 			if ( $code != 'all' ) {
 			$orders->addFieldToFilter('status', $code );
 			}
-			
+
 			// $orders->addAttributeToFilter('status', array('nin' => array('canceled','complete')));
-            
+
 			$orders->getSelect()->joinLeft(
                 array('mk_sales_list'=>$tableSalelist),'main_table.entity_id = mk_sales_list.orderid',
                 array('total_commis'=>"SUM(totalcommision)",'totalamount'=>"SUM(totalamount)",'actualparterprocost'=>"SUM(actualparterprocost)",'sellerid')
@@ -637,11 +637,11 @@ class SellerDashboard extends \Magento\Framework\View\Element\Template
         */
 		$litmit = 5;
 		$customerSession = $this->_customerSession;
-		$sellerid = $customerSession->getId();			
+		$sellerid = $customerSession->getId();
 		$tableMKproduct = $this->_resource->getTableName('multivendor_product');
 		$collection->getSelect()->joinLeft(array('mk_product'=>$tableMKproduct),'e.entity_id = mk_product.product_id',array('mkproductstatus'=>"mk_product.status"))->where('mk_product.user_id=?',$sellerid );
 		$collection->setPageSize($litmit);
-		   
+
 		$saleyearly = $this->_resource->getTableName('sales_bestsellers_aggregated_yearly');
 		$collection->getSelect()->joinLeft(array('saleyearly'=>$saleyearly),'e.entity_id = saleyearly.product_id' , array('saleyearly.qty_ordered AS qty_ordered') )->where('saleyearly.store_id=?',$storeId )->order('qty_ordered DESC');
 		return $collection->load();
@@ -662,7 +662,7 @@ class SellerDashboard extends \Magento\Framework\View\Element\Template
         */
 		$litmit = 5;
 		$customerSession = $this->_customerSession;
-		$sellerid = $customerSession->getId();			
+		$sellerid = $customerSession->getId();
 		$tableMKproduct = $this->_resource->getTableName('multivendor_product');
 		$collection->getSelect()->joinLeft(array('mk_product'=>$tableMKproduct),'e.entity_id = mk_product.product_id',array('mkproductstatus'=>"mk_product.status"))->where('mk_product.user_id=?',$sellerid );
 		//$collection->setPageSize($litmit);

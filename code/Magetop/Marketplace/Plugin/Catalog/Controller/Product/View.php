@@ -29,20 +29,18 @@ class View
         try {
             $product = $this->productRepository->getById($productId);
 
-            // Kiểm tra xem sản phẩm có thuộc seller marketplace không
             $sellerProduct = $this->sellerProductFactory->create()
                 ->getCollection()
                 ->addFieldToFilter('product_id', $productId)
                 ->getFirstItem();
 
-            // Nếu là sản phẩm của seller và chưa được admin approve
             if ($sellerProduct && $sellerProduct->getData('status') != 1) {
                 $resultForward = $this->forwardFactory->create();
                 return $resultForward->forward('noroute'); // Trả về 404
             }
 
         } catch (\Exception $e) {
-            // Xử lý nếu có lỗi
+
         }
 
         return $proceed();

@@ -11,7 +11,8 @@
 $helperMk = $this->helper(\Magetop\Marketplace\Helper\Collection::class);
 $seller = $block->getSellerProfile();
 $arKeyReview = array('price','value','quality');
-if($seller) :  
+
+if($seller) :
     $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
 	$customer = $objectManager->create('Magento\Customer\Model\Session');
 	$reviews = $block->getMKsellerReview($seller->getUserId());
@@ -32,11 +33,11 @@ if($seller) :
 ?>
 	<div class="mst_mv_wrapper">
         <?php
-            $moduleManager = \Magento\Framework\App\ObjectManager::getInstance()->create('Magento\Framework\Module\Manager');	
-            if($moduleManager->isEnabled('Magetop_SellerVacation')){ 
+            $moduleManager = \Magento\Framework\App\ObjectManager::getInstance()->create('Magento\Framework\Module\Manager');
+            if($moduleManager->isEnabled('Magetop_SellerVacation')){
         ?>
-            <?php 
-                $Helper = $this->helper('Magetop\SellerVacation\Helper\Data'); 
+            <?php
+                $Helper = $this->helper('Magetop\SellerVacation\Helper\Data');
                 $data = $Helper->getVacationBySellerId($seller->getUserId());
                 if($data->getData()){
                     $sellerVacation = $data->getData();
@@ -52,7 +53,7 @@ if($seller) :
             <img class="seller-banner" src="<?php echo $bannerimg; ?>" alt="banner"/>
         </div>
 		<div class="mk-table">
-			<div class="mb-d-content seller-main-info">			
+			<div class="mb-d-content seller-main-info">
 				<div class="top-info">
 					<div class="seller-logo">
 						<?php if($seller->getLogoimg() != '') : ?>
@@ -87,11 +88,11 @@ if($seller) :
                     <a class="ask-question btn btn-success btn-circle-sm"><?php echo __('Ask Question'); ?></a>
 				<?php } else { ?>
                     <a class="contact-me btn btn-success btn-circle-sm" href="<?php echo $block->getUrl() ?>customer/account/login/"><?php echo __('Ask Question'); ?></a>
-				<?php } ?>			
+				<?php } ?>
 			</div>
 		</div>
 		<div class="seller-connect mb-d-content">
-            <h5 class="mst_info_title"><?php echo __('Connect with Us'); ?></h5>			
+            <h5 class="mst_info_title"><?php echo __('Connect with Us'); ?></h5>
             <ul>
                 <li><a href="http://www.facebook.com/<?php echo $seller->getFacebookid() ?>" target="_blank" title="<?php echo __('Find us on Facebook'); ?>"><i class="fa fa-facebook"></i></a></li>
                 <li><a href="http://twitter.com/<?php echo $seller->getTwitterid(); ?>" target="_blank" title="<?php echo __('Find us on Twitter'); ?>"><i class="fa fa-twitter"></i></a></li>
@@ -145,7 +146,7 @@ if($seller) :
                 </div>
 				<div class="data item content" id="about" data-role="content">
                     <?php if($moduleManager->isEnabled('Magetop_SellerAttributeManagement')){ ?>
-						<div class="mst_mv_detail">	
+						<div class="mst_mv_detail">
 							<div class="label mst_info_title"><?php echo __('Seller Information');?></div>
 							<div class="mb-d-content">
 							   <?php
@@ -186,14 +187,24 @@ if($seller) :
 									}
 								?>
 								<div style="clear: both;"></div>
-							</div>	
+							</div>
+                            <div>
+                                <?php
+
+                                $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+                                $model = $objectManager->create('Magetop\SellerStoreLocator\Model\SellerStoreLocator');
+                                $storeLocationId = $model-> load($seller->getId(), 'seller_id')->getData('id');
+                                ?>
+                                <a href="<?php echo
+                                    $this->getUrl()."sellerstorelocator/index/viewstore/id/".$storeLocationId; ?>"><?php echo __('View store')?></a>
+                            </div>
 						</div>
 					<?php } ?>
 					<div class="mb-d-content">
 						<div class="info-description">
 							<?php echo $seller->getDescription();?>
 						</div>
-					</div>					
+					</div>
                 </div>
 				<?php if($seller->getReturnpolicy() ||  $seller->getShippingpolicy()) : ?>
 					<div class="data item title"
@@ -219,7 +230,7 @@ if($seller) :
 							</div>
 							<div id="shipping-policies" style="padding-top: 10px; margin-top: 20px;" class="fieldset mst_mv_fieldset">
 							   <div class="mst_mv_detail">
-								  <div class="label mst_info_title"><?php echo __('Shipping Policies'); ?></div> 	
+								  <div class="label mst_info_title"><?php echo __('Shipping Policies'); ?></div>
 								  <div class="mst_content">
 									<p><?php echo $seller->getShippingpolicy(); ?></p>
 								  </div>
@@ -254,7 +265,7 @@ if($seller) :
 							<div class="value">
 								<span class="reviews_label mst_span" style="width:10%"><?php echo __('Value') ?> </span><span class="reviews_label">:</span>
 								<div class="wrapp-rating">
-									<div class="rating" style="width:<?php echo ceil($reviews['value']);?>%;"></div>								
+									<div class="rating" style="width:<?php echo ceil($reviews['value']);?>%;"></div>
 								</div>
 								<span>&nbsp;&nbsp;&nbsp;(<?php echo $reviews['feedcount']?>)</span>
 								<div class="clear"></div>
@@ -323,11 +334,11 @@ if($seller) :
 									<h2><?php echo __('Write Your Own Feedback'); ?></h2>
 								</div>
 								<div class="block-content">
-                                    <?php 
+                                    <?php
                                         $sellerInfor = $block->getInforSeller();
                                         $url_request = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
                                         $http_mode	= (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS']==='on');
-                                        if($http_mode)$url_request = str_replace('http:', 'https:', $url_request);  
+                                        if($http_mode)$url_request = str_replace('http:', 'https:', $url_request);
                                     ?>
 									<form  enctype="multipart/form-data"  action="<?php echo $this->getUrl() ?>marketplace/seller/saveReview/vendor/<?php echo $seller->getStoreurl(); ?>" method="post" id="review-form">
 										<input type="hidden" value="<?php echo $block->getMKFormKey(); ?>" name="form_key"/>
@@ -372,7 +383,7 @@ if($seller) :
 																	<input type="radio" name="reivew_price" id="Price_4" value="80" class="radio"/>
 																	<label id="Price_4_label" class="rating-4" for="Price_4" title="<?php echo __('4 stars'); ?>"><span><?php echo __('4 stars'); ?></span></label>
 																	<input type="radio" name="reivew_price" id="Price_5" value="100" class="radio"/>
-																	<label id="Price_5_label" class="rating-5" for="Price_5" title="<?php echo __('5 stars'); ?>"><span><?php echo __('5 stars'); ?></span></label>						
+																	<label id="Price_5_label" class="rating-5" for="Price_5" title="<?php echo __('5 stars'); ?>"><span><?php echo __('5 stars'); ?></span></label>
 																</div>
 															</div>
 															<div class="field choice review-field-rating">
@@ -418,12 +429,12 @@ if($seller) :
 							<?php }else{ ?>
 								<center><p class="loginmsg"><a href="<?php echo $helperMk->getRewriteUrl('marketplace/seller/view/vendor/'.$seller->getStoreurl()); ?>" class="button-large"><?php echo __('You need to buy items  to review for this seller'); ?></a></p></center>
 							<?php } ?>
-						<?php endif; ?>	
+						<?php endif; ?>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div> 	
+	</div>
     <?php if ($customer->getId() > 0 ) { ?>
     	<div id="ask-popup-mpdal" class="ask-question-content">
         	<form id="withdraw-form" action="<?php echo $block->getUrl() ?>marketplace/seller/sendmailSeller/" method="post" novalidate="novalidate">
@@ -444,8 +455,8 @@ if($seller) :
                             <textarea aria-required="true" name="ask" id="m-ask" title="<?php echo __('Ask'); ?>" class="input-text required-entry" data-validate="{required:true}" style="height: 100px"></textarea>
                         </div>
                     </div>
-                    <input type="hidden" value="<?php echo $seller->getId(); ?>" name="seller_id" /> 
-                    <input type="hidden" value="<?php echo $customer->getId(); ?>" name="customer_id" /> 
+                    <input type="hidden" value="<?php echo $seller->getId(); ?>" name="seller_id" />
+                    <input type="hidden" value="<?php echo $customer->getId(); ?>" name="customer_id" />
                     <input type="hidden" name="email" value="<?php echo $customer->getCustomer()->getEmail(); ?>" />
                     <input type="hidden" name="redirect_url" value="<?php echo $helperMk->getRewriteUrl('marketplace/seller/view/vendor/'.$seller->getStoreurl()); ?>" />
                     <div class="actions-toolbar">
@@ -478,12 +489,12 @@ if($seller) :
     					}
     				}]
     			};
-    
+
     			var popup = modal(options, $('#ask-popup-mpdal'));
     			$('.ask-question').click(function() {
     				$('#ask-popup-mpdal').modal('openModal');
     			});
-    			
+
     			var dataForm = $('#withdraw-form');
     			dataForm.mage('validation', {});
     			var _action=dataForm.attr('action');
@@ -498,11 +509,11 @@ if($seller) :
     			jQuery('.no-rating-link').click(function(){
     				$('#tab-label-reviews-title').click();
     				$("html, body").delay(200).animate({
-    					scrollTop: $('#reviews').offset().top 
+    					scrollTop: $('#reviews').offset().top
     				}, 200);
     			});
-    		})(jQuery);	
-    	});	
+    		})(jQuery);
+    	});
     </script>
     <script>
 		require(['jquery','mage/mage'],function($){
@@ -516,7 +527,7 @@ if($seller) :
 				ignore: ignore ? ':hidden:not(' + ignore + ')' : ':hidden'
 			}).find('input:text').attr('autocomplete', 'off');
 		})
-	</script>    
+	</script>
 <?php endif; ?>
 
 <style>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2020 Magento, Inc. All rights reserved.
+ * Copyright ï¿½ 2013-2020 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 
@@ -13,7 +13,7 @@
     <div class="block-title">
         <strong><?php /* @escapeNotVerified */ echo __('Order Information') ?></strong>
     </div>
-    <div class="block-content">
+    <div class="block-content" style="display: flex;flex-wrap: wrap; ">
     <?php if (!$_order->getIsVirtual()): ?>
         <div class="box box-order-shipping-address">
             <strong class="box-title"><span><?php /* @escapeNotVerified */ echo __('Shipping Address') ?></span></strong>
@@ -33,7 +33,7 @@
                 <?php /* @escapeNotVerified */ echo __('No shipping information available'); ?>
             <?php endif; ?>
             <div id="store-pickup">
-                <?php 
+                <?php
                     $data = explode(',',$_order->getTableRateShipping());
                     foreach($data as $dt){
                         $value = explode('-',$dt);
@@ -68,3 +68,9 @@
         </div>
     </div>
 </div>
+
+<style>
+    .block-content > div{
+        flex: 25%;
+    }
+</style>

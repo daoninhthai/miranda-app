@@ -48,6 +48,11 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     protected function _prepareCollection()
     {
         $collection = $this->_productsCollection->create()->getCollection();
+        $collection->getSelect()->join(
+            ['status_table' => $collection->getTable('catalog_product_entity_int')],
+            'main_table.product_id = status_table.entity_id and status_table.attribute_id = 97',
+            array('value')
+        );
         $this->setCollection($collection);
         parent::_prepareCollection();
         return $this;
@@ -153,18 +158,32 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'renderer' => 'Magetop\Marketplace\Block\Adminhtml\Grid\Column\ProductsGridProductStatus'
             ]
         );
+//        $this->addColumn(
+//            'product_status',
+//            [
+//                'header' => __('Status'),
+//                'index' => 'status',
+//                'type' => 'options',
+//                'options' => array(
+//                    '1'=>'Enabled',
+//                    '2'=>'Disabled'
+//
+//                ),
+//                'renderer' => 'Magetop\Marketplace\Block\Adminhtml\Grid\Column\ProductsGridStatus'
+//            ]
+//        );
+
         $this->addColumn(
-            'product_status',
+            'status_enable',
             [
                 'header' => __('Status'),
-                'index' => 'status',
+                'index' => 'value',
                 'type' => 'options',
                 'options' => array(
                     '1'=>'Enabled',
                     '2'=>'Disabled'
 
                 ),
-                'renderer' => 'Magetop\Marketplace\Block\Adminhtml\Grid\Column\ProductsGridStatus'
             ]
         );
         $block = $this->getLayout()->getBlock('grid.bottom.links');

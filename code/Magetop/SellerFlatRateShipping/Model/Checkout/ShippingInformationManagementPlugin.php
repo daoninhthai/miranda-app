@@ -35,6 +35,7 @@ class ShippingInformationManagementPlugin
             $data = explode('split',$flatRate??'');
             \Magento\Framework\App\ObjectManager::getInstance()->create('\Magento\Catalog\Model\Session')->setFlatRateShippingPrice($data[0]);
             $quote = $this->quoteRepository->getActive($cartId);
+
             $quote->setFlatRateShipping(substr($data[1],0,-1));
         }
     }

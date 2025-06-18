@@ -14,4 +14,4 @@
             <module name="Magento_Checkout"/>
         </sequence>
     </module>
-</config>
+</config>    <!-- Handle async operation error -->
